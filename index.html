@@ -1,1 +1,1909 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>InnoPulse Assessment | The Growth System</title></head><body><h1>InnoPulse Assessment</h1><p>Deploying — full assessment coming shortly.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InnoPulse Assessment | The Growth System</title>
+<meta name="description" content="Measure your organisation’s innovation health, identify value leakage, and receive a practical innovation capability report.">
+<meta name="theme-color" content="#1c2400">
+<link rel="canonical" href="https://judelbrecht2-star.github.io/innopulse-assessment/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%225%22 fill=%22%231c2400%22/><path d=%22M3 13 L9 13 L9 7 L15 7 L15 17 L21 17%22 fill=%22none%22 stroke=%22%23a8e617%22 stroke-width=%222%22/></svg>">
+<!-- Open Graph -->
+<meta property="og:title" content="InnoPulse Assessment | The Growth System">
+<meta property="og:description" content="Measure your organisation’s innovation health, identify value leakage, and receive a practical innovation capability report.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://judelbrecht2-star.github.io/innopulse-assessment/">
+<meta property="og:image" content="https://judelbrecht2-star.github.io/innopulse-assessment/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Analytics 4 (replace G-XXXXXXXXXX with your GA4 Measurement ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+  function ipTrack(name, params){ try{ gtag('event', name, params||{}); }catch(e){} }
+</script>
+<style>
+:root{
+  --cream:#f2f2ea;
+  --cream2:#e9e9dd;
+  --ink:#16160f;
+  --navy:#1c2400;
+  --navy2:#262f00;
+  --lime:#a8e617;
+  --lime2:#5f8a00;
+  --lime-glow:#d4ff4d;
+  --muted:#5f5f57;
+  --line:#e0e0d2;
+  --white:#ffffff;
+  --red:#d6483c;
+  --amber:#e0a72e;
+  --green:#5f8a00;
+  --shadow:0 10px 30px rgba(28,36,0,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.app{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+a{color:var(--lime2)}
+h1,h2,h3,h4{margin:0 0 8px;line-height:1.2}
+p{margin:0 0 10px}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.center{text-align:center}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.col{flex:1;min-width:0}
+.hide{display:none !important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0 22px;flex-wrap:wrap;gap:10px}
+.brandmark{display:flex;align-items:center;gap:10px}
+.brandmark .logo{
+  width:40px;height:40px;border-radius:11px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  box-shadow:var(--shadow);
+}
+.brandmark .logo svg{width:24px;height:24px}
+.brandmark .name{font-weight:800;font-size:15px;letter-spacing:.2px}
+.brandmark .sub{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px}
+.toppill{
+  font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  background:var(--navy);color:var(--lime);padding:7px 14px;border-radius:999px;
+}
+button{font-family:inherit;cursor:pointer}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 24px;border-radius:12px;border:none;font-weight:700;font-size:14.5px;
+  transition:transform .15s ease, box-shadow .15s ease, background .2s ease;
+  text-decoration:none;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--lime);color:var(--navy);box-shadow:0 6px 18px rgba(168,230,23,.35)}
+.btn-primary:hover{background:var(--lime-glow);box-shadow:0 8px 22px rgba(168,230,23,.5)}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn-dark{background:var(--navy);color:var(--lime)}
+.btn-dark:hover{background:var(--navy2)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--lime2);color:var(--lime2)}
+.btn-sm{padding:9px 16px;font-size:13px;border-radius:10px}
+.btn-block{width:100%}
+.btn[disabled]{pointer-events:none}
+.card{
+  background:var(--white);border-radius:var(--radius);padding:24px;
+  box-shadow:var(--shadow);border:1px solid var(--line);
+}
+.card-dark{
+  background:linear-gradient(135deg,var(--navy) 0%, var(--navy2) 100%);
+  color:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);
+}
+.card-dark .muted{color:#b9c98a}
+.section{margin-bottom:22px}
+.eyebrow{
+  font-size:11.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--lime2);margin-bottom:6px;
+}
+.card-dark .eyebrow{color:var(--lime)}
+.tagline{font-size:16px;color:var(--muted);max-width:620px}
+.hero-title{font-size:clamp(28px,4.5vw,42px);font-weight:900;letter-spacing:-.5px;margin-bottom:10px}
+.hero-title .accent{color:var(--lime2)}
+.trust{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0;}
+.trust-item{
+  display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--muted);
+  background:var(--white);border:1px solid var(--line);border-radius:999px;padding:7px 13px;
+}
+.trust-item svg{width:15px;height:15px;flex-shrink:0;color:var(--lime2)}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+.field .hint{font-size:12px;color:var(--muted);margin-top:4px}
+input[type=text],input[type=email],input[type=tel],select,textarea{
+  width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--line);
+  font-size:14.5px;font-family:inherit;background:#fff;color:var(--ink);
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--lime2);box-shadow:0 0 0 3px rgba(168,230,23,.25);
+}
+textarea{resize:vertical;min-height:90px}
+.req{color:var(--red)}
+.radio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.radio-card{
+  position:relative;border:1.5px solid var(--line);border-radius:12px;padding:14px 12px;
+  cursor:pointer;font-weight:600;font-size:13.5px;text-align:center;background:#fff;
+  transition:border-color .15s ease, background .15s ease, transform .1s ease;
+}
+.radio-card:hover{border-color:var(--lime2)}
+.radio-card.sel{border-color:var(--lime2);background:#f5fbe0;color:var(--lime2)}
+.radio-card input{position:absolute;opacity:0;pointer-events:none}
+.quiz-wrap{max-width:760px;margin:0 auto}
+.progress-shell{margin-bottom:22px}
+#progOuter{height:10px;border-radius:999px;background:var(--cream2);overflow:hidden;position:relative;}
+#progFill{height:100%;background:linear-gradient(90deg,var(--lime2),var(--lime));border-radius:999px;width:0%;transition:width .5s cubic-bezier(.4,0,.2,1);}
+#progLabel{font-size:12.5px;color:var(--muted);font-weight:700;margin-top:8px;display:flex;justify-content:space-between}
+.journey{display:flex;justify-content:space-between;margin-bottom:18px;position:relative}
+.journey::before{content:'';position:absolute;top:13px;left:5%;right:5%;height:2px;background:var(--line);z-index:0;}
+.journey .jpath{position:absolute;top:13px;left:5%;height:2px;background:var(--lime2);z-index:1;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.jnode{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.jdot{width:14px;height:14px;border-radius:50%;background:var(--white);border:2px solid var(--line);transition:all .4s ease}
+.jnode.done .jdot{background:var(--lime2);border-color:var(--lime2)}
+.jnode.active .jdot{background:var(--lime);border-color:var(--lime2);box-shadow:0 0 0 5px rgba(168,230,23,.25);animation:pulseDot 1.6s infinite}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 4px rgba(168,230,23,.22)}50%{box-shadow:0 0 0 9px rgba(168,230,23,.05)}}
+.jlabel{font-size:10.5px;font-weight:700;color:var(--muted);text-align:center}
+.jnode.active .jlabel,.jnode.done .jlabel{color:var(--lime2)}
+#qBody{position:relative;min-height:260px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);}
+.qcard .qpill{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--lime2);background:#f1f8de;padding:5px 12px;border-radius:999px;margin-bottom:14px;}
+.qcard h3{font-size:19px;font-weight:700;margin-bottom:18px}
+.qopts{display:flex;flex-direction:column;gap:10px}
+.qopt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;font-weight:600;font-size:14px;transition:all .15s ease;}
+.qopt:hover{border-color:var(--lime2);background:#fafdf0}
+.qopt.sel{border-color:var(--lime2);background:#f5fbe0}
+.qopt .num{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--muted);flex-shrink:0;}
+.qopt.sel .num{background:var(--lime2);border-color:var(--lime2);color:#fff}
+.qnav{display:flex;justify-content:space-between;margin-top:20px;gap:10px}
+.kbd-hint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px}
+.out-l{animation:slideOutL .28s ease forwards}
+.out-r{animation:slideOutR .28s ease forwards}
+.in-l{animation:slideInL .32s ease forwards}
+.in-r{animation:slideInR .32s ease forwards}
+@keyframes slideOutL{to{opacity:0;transform:translateX(-26px)}}
+@keyframes slideOutR{to{opacity:0;transform:translateX(26px)}}
+@keyframes slideInL{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInR{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:translateX(0)}}
+.pillar-intro{max-width:640px;margin:0 auto;text-align:center;padding:10px 0}
+.picon{width:108px;height:108px;margin:6px auto 18px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--lime-glow), var(--lime2) 75%);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(95,138,0,.35);animation:iconPop 1.5s cubic-bezier(.2,.8,.3,1.2);}
+.picon svg{width:54px;height:54px;color:var(--navy)}
+@keyframes iconPop{0%{transform:scale(.4) rotate(-25deg);opacity:0}55%{transform:scale(1.08) rotate(6deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+.picon.spin svg{animation:spinSlow 1.5s ease-out}
+@keyframes spinSlow{from{transform:rotate(-160deg)}to{transform:rotate(0)}}
+.picon.grow svg{animation:growIn 1.5s ease-out}
+@keyframes growIn{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+.pillar-eq{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--navy);background:var(--lime);padding:6px 14px;border-radius:999px;margin-bottom:10px;}
+.barrier-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:6px 14px;margin-top:10px;}
+.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+.gauge-card{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+.gauge-card .gh{background:var(--navy);color:var(--lime);font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:9px 12px;text-align:center;}
+.gauge-card .gb{padding:12px;text-align:center}
+.gauge-card svg{width:100%;height:auto;display:block}
+.gauge-card .gname{font-weight:700;font-size:13px;margin:4px 0 2px}
+.band-w{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-top:4px}
+.band-w.low{background:#fbe6e3;color:var(--red)}
+.band-w.medium{background:#fbf1da;color:var(--amber)}
+.band-w.high{background:#e7f5cf;color:var(--green)}
+.bar-tag{display:block;font-size:11px;color:var(--muted);margin-top:6px;font-weight:600}
+.gfill{transition:stroke-dasharray 1.1s cubic-bezier(.2,.7,.3,1)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.kpi{border-radius:14px;padding:18px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+.kpi .kval{font-size:30px;font-weight:900;letter-spacing:-1px}
+.kpi .klabel{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.kpi .ksub{font-size:12.5px;color:var(--muted);margin-top:4px}
+.kpi.warn{border-color:#f0d3a0;background:#fffaf0}
+.kpi.risk{border-color:#f5c2bb;background:#fff5f3}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.ind-card{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+.ind-card h4{font-size:13px;margin-bottom:6px}
+.ind-bar{height:8px;border-radius:999px;background:var(--cream2);overflow:hidden;margin:8px 0}
+.ind-bar .fill{height:100%;border-radius:999px;width:0%;transition:width 1s cubic-bezier(.2,.7,.3,1)}
+.ind-val{font-weight:800;font-size:18px}
+.ind-status{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:2px 9px;border-radius:999px}
+.ind-status.low{background:#fbe6e3;color:var(--red)}
+.ind-status.medium{background:#fbf1da;color:var(--amber)}
+.ind-status.high{background:#e7f5cf;color:var(--green)}
+.heatmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.heat-cell{border-radius:10px;padding:12px;color:#fff;font-weight:700;font-size:13px}
+.heat-cell .hv{font-size:22px;font-weight:900;display:block;margin-top:4px}
+.heat-low{background:linear-gradient(135deg,#d6483c,#b53a30)}
+.heat-medium{background:linear-gradient(135deg,#e0a72e,#c08a1c)}
+.heat-high{background:linear-gradient(135deg,#5f8a00,#3f5e00)}
+.pillar-card{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff;cursor:pointer;transition:box-shadow .15s ease, transform .1s ease}
+.pillar-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.pillar-card .ptitle{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.pillar-card .pscore{font-size:26px;font-weight:900}
+.pbar{height:8px;border-radius:999px;background:var(--cream2);overflow:hidden;margin:10px 0}
+.pbar .pfill{height:100%;border-radius:999px;width:0%;transition:width 1.1s cubic-bezier(.2,.7,.3,1)}
+.modal-bg{position:fixed;inset:0;background:rgba(28,36,0,.55);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal{background:#fff;border-radius:18px;max-width:680px;width:100%;max-height:88vh;overflow:auto;padding:28px;position:relative}
+.modal .close{position:absolute;top:16px;right:16px;background:var(--cream2);border:none;border-radius:50%;width:34px;height:34px;font-size:18px;font-weight:800;cursor:pointer}
+.eqflow{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;position:relative;padding:6px 0;width:100%}
+.eqflow .eqnode{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 16px;font-weight:800;font-size:13px;justify-content:center;white-space:nowrap;position:relative;z-index:2;transition:border-color .3s ease, box-shadow .3s ease;}
+.eqflow .eqnode .dot{width:9px;height:9px;border-radius:50%;background:var(--line);flex-shrink:0}
+.eqflow .eqnode.weak{border-color:var(--red);animation:flicker 1.4s infinite}
+.eqflow .eqnode.weak .dot{background:var(--red)}
+.eqflow .eqnode.medium .dot{background:var(--amber)}
+.eqflow .eqnode.ok .dot{background:var(--lime2)}
+@keyframes flicker{0%,100%{opacity:1}45%{opacity:1}50%{opacity:.35}55%{opacity:1}80%{opacity:.6}85%{opacity:1}}
+.eqflow .eqlink{font-size:18px;font-weight:900;color:var(--line);display:flex;align-items:center;flex-shrink:0}
+.eqflow .eqlink.run{color:var(--lime2)}
+.eqflow .eqlink.broken{color:var(--red)}
+.eqflow .eqresult{flex-basis:100%;margin-top:10px;font-size:12px;font-weight:700;color:var(--muted);text-align:center;}
+.eqflow.broken-state .eqresult{color:var(--red)}
+.lw-wrap{max-width:880px;margin:4px auto 0;padding:0;position:relative}
+.lw-lines{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.lw-grid{display:grid;grid-template-columns:1fr 1.35fr 1fr;grid-template-areas:".          top         ." "left       center      right" "bottomleft .           bottomright";gap:10px 10px;align-items:center;position:relative;z-index:1;}
+.lw-top{grid-area:top}
+.lw-left{grid-area:left}
+.lw-right{grid-area:right}
+.lw-bottomleft{grid-area:bottomleft}
+.lw-bottomright{grid-area:bottomright}
+.lw-center{grid-area:center}
+.lw-node,.lw-center{position:relative;text-align:center;opacity:0;transform:scale(.85);transition:opacity .5s ease, transform .5s cubic-bezier(.3,1.4,.4,1);}
+.lw-node.show,.lw-center.show{opacity:1;transform:scale(1)}
+.lw-node.band-high{--lw-color:var(--green);--lw-fill:rgba(95,138,0,.10)}
+.lw-node.band-medium{--lw-color:var(--amber);--lw-fill:rgba(224,167,46,.14)}
+.lw-node.band-low{--lw-color:var(--red);--lw-fill:rgba(214,72,60,.10)}
+.lw-center.band-high{--lw-color:var(--green)}
+.lw-center.band-medium{--lw-color:var(--amber)}
+.lw-center.band-low{--lw-color:var(--red)}
+.lw-circle{width:96px;height:96px;border-radius:50%;margin:0 auto 4px;border:3px solid var(--lw-color);background:var(--lw-fill);box-shadow:0 0 0 6px var(--lw-fill);display:flex;align-items:center;justify-content:center;}
+.lw-pct{font-size:24px;font-weight:900;color:var(--lw-color)}
+.lw-label{font-size:11.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--navy);margin-bottom:2px}
+.lw-desc{font-size:11.5px;color:var(--muted);line-height:1.35;max-width:150px;margin:0 auto}
+.lw-center-ring{width:214px;height:214px;margin:0 auto;border-radius:50%;background:conic-gradient(var(--lw-color) calc(var(--lw-pct) * 1%), var(--line) 0);display:flex;align-items:center;justify-content:center;padding:9px;}
+.lw-center-inner{width:100%;height:100%;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px var(--line);}
+.lw-eyebrow-sm{font-size:10px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);line-height:1.4}
+.lw-bignum{font-size:34px;font-weight:900;color:var(--lw-color);line-height:1.15;margin:2px 0}
+@media (max-width:680px){.lw-grid{grid-template-columns:1fr;grid-template-areas:"center" "top" "right" "bottomright" "bottomleft" "left";gap:14px;}.lw-lines{display:none}.lw-center-ring{width:188px;height:188px}}
+.tank-wrap{display:flex;justify-content:center;align-items:flex-end;gap:36px;flex-wrap:wrap;padding:10px 0}
+.tank{position:relative;width:120px;height:200px;border:3px solid var(--navy);border-radius:0 0 14px 14px;border-top:none;overflow:hidden;background:#fff}
+.tank .liquid{position:absolute;bottom:0;left:0;width:100%;background:linear-gradient(180deg,var(--lime-glow),var(--lime2));transition:height 1.4s cubic-bezier(.3,.8,.3,1)}
+.tank .liquid::before{content:'';position:absolute;top:-4px;left:0;width:200%;height:10px;background:inherit;border-radius:50%;animation:wobble 3s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:translateX(0) scaleY(1)}50%{transform:translateX(-25%) scaleY(.6)}}
+.tank .crack{position:absolute;background:var(--cream);opacity:0;transition:opacity .4s ease}
+.tank .crack.show{opacity:1}
+.leak-particle{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--lime2);animation:leakOut 1.6s ease-in forwards;opacity:.9;}
+@keyframes leakOut{0%{transform:translate(0,0) scale(1);opacity:.95}100%{transform:translate(var(--lx,40px),var(--ly,90px)) scale(.3);opacity:0}}
+.tank-label{text-align:center;font-size:12px;font-weight:700;color:var(--muted);margin-top:10px}
+.tank-pct{font-size:22px;font-weight:900;color:var(--navy)}
+.tw-line{white-space:pre-wrap}
+.tw-label{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--lime)}
+.road-wrap{position:relative;padding:30px 0 10px}
+.road-line{position:absolute;top:50%;left:3%;right:3%;height:4px;background:var(--cream2);border-radius:2px}
+.road-fill{position:absolute;top:50%;left:3%;height:4px;background:linear-gradient(90deg,var(--lime2),var(--lime));border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.3,.8,.3,1)}
+.road-stops{display:flex;justify-content:space-between;position:relative}
+.road-stop{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+.road-dot{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--cream2);z-index:1}
+.road-stop.active .road-dot{background:var(--lime);border-color:var(--lime2);box-shadow:0 0 0 6px rgba(168,230,23,.22)}
+.road-stop.passed .road-dot{background:var(--lime2);border-color:var(--lime2)}
+.road-stop .rlabel{font-size:11px;font-weight:700;text-align:center;color:var(--muted)}
+.road-stop.active .rlabel,.road-stop.passed .rlabel{color:var(--lime2)}
+.footer{margin-top:36px;text-align:center;font-size:12px;color:var(--muted)}
+.flex-between{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;font-weight:700;background:var(--cream2);color:var(--navy);padding:5px 12px;border-radius:999px}
+.offer-card{border:1.5px solid var(--line);border-radius:14px;padding:16px;background:#fff}
+.offer-card.active{border-color:var(--lime2);background:#f5fbe0}
+.card-dark .offer-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.15);color:#fff}
+.card-dark .offer-card.active{background:rgba(168,230,23,.12);border-color:var(--lime)}
+.offer-badge{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--lime);margin-bottom:8px}
+.lockmsg{font-size:13px;background:#fffaf0;border:1px solid #f0d3a0;border-radius:10px;padding:12px 14px;margin-top:10px}
+.banner-ok{font-size:13px;background:#e7f5cf;border:1px solid #c4e98c;border-radius:10px;padding:10px 14px;margin-top:10px;color:var(--lime2);font-weight:700}
+.banner-err{font-size:13px;background:#fbe6e3;border:1px solid #f0b5ac;border-radius:10px;padding:10px 14px;margin-top:10px;color:var(--red);font-weight:700}
+.banner-info{font-size:13px;background:#eef4ff;border:1px solid #b9cdf0;border-radius:10px;padding:10px 14px;margin-top:10px;color:#274690;font-weight:700}
+table.regtable{width:100%;border-collapse:collapse;font-size:12.5px}
+table.regtable th,table.regtable td{border:1px solid var(--line);padding:6px 8px;text-align:left}
+table.regtable th{background:var(--cream2);font-weight:800}
+@media print{body{background:#fff}.no-print{display:none !important}.app{max-width:none;padding:0}}
+body.printing .app{display:none}
+body.printing #report{display:block;max-width:760px;margin:0 auto;padding:24px}
+#report .rp-section{margin-bottom:22px;page-break-inside:avoid}
+#report .rp-header{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--navy);padding-bottom:12px;margin-bottom:18px}
+#report .rp-header h1{font-size:20px;margin:0}
+#report .rp-meta{font-size:11.5px;color:var(--muted)}
+#report .rp-band{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:800;font-size:12px;color:#fff}
+#report h2{font-size:15px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:10px}
+#report table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:6px}
+#report table th,#report table td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+#report table th{background:var(--cream2)}
+#report ul{margin:0 0 8px;padding-left:18px;font-size:12.5px}
+#report .rp-foot{font-size:11px;color:var(--muted);text-align:center;margin-top:30px;border-top:1px solid var(--line);padding-top:10px}
+@media (max-width:640px){.topbar{flex-direction:column;align-items:flex-start}.qcard{padding:18px}.journey .jlabel{display:none}}
+</style>
+</head>
+<body><div class="app" id="app"></div><div id="report" class="hide"></div>
+<form name="ip-honeypot" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true" tabindex="-1"><label>Website<input type="text" id="ip_hp" name="website" autocomplete="off" tabindex="-1"></label></form>
+<script>
+const PILLARS = [
+  {
+    "id": "sii",
+    "name": "Strategic Innovation Intent",
+    "short": "Strategic Intent",
+    "eq": "Innovation Intent",
+    "barrier": "Confusion",
+    "weight": 0.25,
+    "desc": "How clearly leadership defines, communicates and aligns innovation goals with the broader business strategy.",
+    "barrierNote": "When intent is unclear, people don't know what 'innovation' means here, what's expected of them, or how their work connects to it \u2014 the result is Confusion.",
+    "commentPrompt": "Any comments on your organisation's Strategic Innovation Intent \u2014 how innovation is planned, prioritised and communicated?",
+    "bands": {
+      "low": {
+        "text": "Leadership has not clearly defined or communicated innovation goals. This causes misalignment and confusion \u2014 employees can't see how their work contributes to innovation, so efforts become fragmented, under-resourced and disconnected from strategy.",
+        "actions": [
+          "Define clear, actionable innovation objectives that link directly to the business strategy and communicate them at every level.",
+          "Build structured communication channels (innovation platforms, leadership updates, town halls) so the strategy is understood, not just written down.",
+          "Foster an open culture where employees feel safe to contribute ideas toward the stated innovation priorities."
+        ]
+      },
+      "medium": {
+        "text": "Innovation goals exist but communication and alignment gaps remain. Some teams understand the priorities and engage strongly; others are unclear, producing patchy, inconsistent innovation effort across the business.",
+        "actions": [
+          "Refine and sharpen the innovation strategy so it is specific, measurable and tied to clear priorities.",
+          "Run workshops, hackathons or cross-functional sessions to build shared understanding and engagement.",
+          "Give departments explicit guidance on how their role contributes to the innovation strategy."
+        ]
+      },
+      "high": {
+        "text": "Leadership has clearly defined and communicated innovation goals that are well aligned with the overall strategy. Employees understand their role, producing a coordinated, confident innovation effort.",
+        "actions": [
+          "Sustain momentum \u2014 celebrate wins and keep reinforcing the strategic 'why' behind innovation.",
+          "Expand horizons: explore new markets, technologies or business models as part of the strategy.",
+          "Develop innovation leadership capability so alignment is sustained as the organisation grows."
+        ]
+      }
+    },
+    "solutions": {
+      "low": ["Innovation Capability Assessment","Executive Workshops","Organisation infrastructure analysis"],
+      "medium": ["Executive Workshops","Innovation Portfolio Dashboard","ISO 56000 alignment review"],
+      "high": ["Innovation Portfolio Dashboard","Innovation Coaching","ISO 56000 alignment review"]
+    },
+    "questions": [
+      "Our organisation has developed and implemented a Corporate Innovation Strategy.",
+      "Our organisational strategies are clear, including innovation strategy and its goals, and how it links with the broader business goals.",
+      "Departments and divisions have designed their operations to accommodate the implementation innovation strategic objectives and goals.",
+      "Our organisation has right strategies to stimulate and encourage innovation (has a formal process to generate and nurture new, innovative ideas, both internally and externally).",
+      "Innovation implementation plans are available and accessible to employees",
+      "Employees at all levels contribute to the development process of the implementation plans.",
+      "Innovation targets are spelt out in organisational strategy.",
+      "Funding and budget for innovation is available and widely communicated to the organisation.",
+      "Innovation targets are communicated and monitored regularly.",
+      "Innovation is given the same attention and importance as core organisational values.",
+      "There are mechanisms in place to measure innovation success in our organisation.",
+      "Our organisation innovation strategy is focussed on achieving cost reduction through new, more efficient ways of production and internal organisation of the firm and reliability (process development, quality, performance, improved process flexibility and control).",
+      "Our organisational innovation approach as outlined in the strategy is customer focused.",
+      "Our organisation innovates for enhanced service delivery.",
+      "Our organisation innovates to achieve industry prominence and dominance (brand supremacy).",
+      "Innovation excellence is encouraged in our organisation.",
+      "Our organisation identifies innovation opportunities for maximum impact and leverage.",
+      "Our organisation allocates budget and resources for innovation management and implementation.",
+      "Our organisational strategic approach towards innovation is meant to attract the best human resources and strategic partnerships/investments."
+    ]
+  },
+  {
+    "id": "iem",
+    "name": "Innovation Environment Management",
+    "short": "Culture & Environment",
+    "eq": "Culture",
+    "barrier": "Resistance",
+    "weight": 0.25,
+    "desc": "The leadership, governance, policies and culture that determine whether the organisation is actually 'ready' for innovation \u2014 including how it treats risk and failure.",
+    "barrierNote": "Where the environment doesn't reward, protect time for, or de-risk innovation, people instinctively push back \u2014 the result is Resistance.",
+    "commentPrompt": "Any comments on the innovation environment \u2014 leadership, governance, policies, time, recognition and risk appetite?",
+    "bands": {
+      "low": {
+        "text": "A supportive environment for innovation is largely absent \u2014 little time, recognition, governance or appetite for risk. Without psychological safety, people fear failure and resist proposing or pursuing new ideas, so creativity stalls.",
+        "actions": [
+          "Introduce policies that recognise and reward innovation contributions.",
+          "Give employees protected time and resources to engage in innovation activity.",
+          "Build leadership practices that reduce fear of failure and promote learning from experimentation."
+        ]
+      },
+      "medium": {
+        "text": "Some supportive elements exist \u2014 recognition, time or governance \u2014 but they're applied inconsistently across teams. Pockets of innovation thrive while others face real barriers, creating uneven cultural readiness.",
+        "actions": [
+          "Align leadership and governance practices so innovation policies are applied consistently across all teams.",
+          "Provide clear guidelines on acceptable risk-taking to reduce uncertainty.",
+          "Regularly review and refresh innovation policies so they stay relevant and effective."
+        ]
+      },
+      "high": {
+        "text": "A robust, supportive innovation environment is fully embedded \u2014 recognition, time, governance and risk appetite all enable people to experiment without fear of failure.",
+        "actions": [
+          "Keep reinforcing reward and recognition policies for innovation.",
+          "Develop leaders as visible innovation champions who model risk-taking.",
+          "Maintain the culture through continuous learning and adaptation as conditions change."
+        ]
+      }
+    },
+    "solutions": {
+      "low": ["Organisation infrastructure analysis","Staff awareness alignment workshops","Risk analysis"],
+      "medium": ["Staff awareness alignment workshops","Innovation Coaching","Root cause analysis training"],
+      "high": ["Innovation Coaching","ISO 56000 alignment review","Innovation Portfolio Dashboard"]
+    },
+    "questions": [
+      "Innovation is structurally integrated in all the organisation\u2019s divisions and departments.",
+      "Managers of departments and divisions understand their role in driving innovation in their respective areas of operation.",
+      "Our organisation gives time and space to employees to be innovative and experiment with new ideas.",
+      "Our organisation encourages employees to be entrepreneurial in their respective areas of operation and thus enabling them to be innovative in their execution of their duties.",
+      "Our organisation is willing to take risk to develop new ideas and value-adding new ideas for adoption and implementation.",
+      "Managers in our organisation do not punish employees for mistakes committed during experimentation of innovations, instead draw lessons from the experience for future improvements.",
+      "Our organisation has a well-established platform for innovators both internally and externally to share and exchange knowledge on possible innovations.",
+      "Innovation is recognised and incentivised both internally and externally (actively rewards novel ideas).",
+      "There are clear policy guidelines for innovation recognition and rewards.",
+      "In our organisation innovation is driven and promoted by senior/executive. leadership",
+      "There is a coordinated effort by leadership to promote innovation and access to resources for innovation.",
+      "The importance that our organisation places on innovation can be gauged by the frequency and intensity of management communication about the topic.",
+      "Training opportunities for innovation are made available for all employees.",
+      "Innovation performance is incorporated in the employment conditions.",
+      "Innovation performance is incorporated in departmental/divisional scorecard.",
+      "Our organisation has put in place governance structures to manage innovation.",
+      "Our organisation has put in place policies and systems to guide and enable innovation",
+      "There is a positive climate and culture for innovation that foster effective cross-functional teams while providing a strong support and empowerment to these teams.",
+      "In our organisation, management has taken the mystery out of innovation be clearly defining what innovation means for us."
+    ]
+  },
+  {
+    "id": "oic",
+    "name": "Organisational Innovation Capability",
+    "short": "Competency & Skills",
+    "eq": "Competency & Skills",
+    "barrier": "Anxiety",
+    "weight": 0.2,
+    "desc": "How prepared, trained and confident people are to actually play a role in the innovation process \u2014 as ideators, reviewers, implementers and more.",
+    "barrierNote": "When people aren't equipped or clear on their role, they feel unprepared and exposed \u2014 the result is Anxiety.",
+    "commentPrompt": "Any comments on organisational innovation capability \u2014 training, skills, networks and readiness to participate?",
+    "bands": {
+      "low": {
+        "text": "Employees are neither prepared nor trained to contribute to innovation. Without role clarity or skills development, people feel anxious and unsupported, leading to disengagement and missed opportunities.",
+        "actions": [
+          "Develop clear role descriptions for everyone who can take part in the innovation process.",
+          "Roll out structured training so people have the skills and confidence to contribute.",
+          "Build a supportive environment where people feel safe participating in innovation activity."
+        ]
+      },
+      "medium": {
+        "text": "Some employees are prepared and trained; others are not. This unevenness fragments the innovation process \u2014 under-prepared teams feel anxious and disengaged while others move ahead.",
+        "actions": [
+          "Expand training programmes so all employees, not just some, are equipped to contribute.",
+          "Standardise innovation roles and responsibilities to enable cross-functional collaboration.",
+          "Provide ongoing feedback and mentorship to build confidence in innovation roles."
+        ]
+      },
+      "high": {
+        "text": "Employees are well-trained, competent and actively engaged across innovation roles \u2014 ideators, reviewers, implementers. People feel confident, valued and empowered to contribute.",
+        "actions": [
+          "Continue investing in training and skills development to keep pace with new methods and technology.",
+          "Recognise and reward contributions to reinforce engagement.",
+          "Use data on participation and outcomes to keep improving the capability programme."
+        ]
+      }
+    },
+    "solutions": {
+      "low": ["Skills analysis (people readiness)","Employee training","Staff awareness alignment workshops"],
+      "medium": ["Employee training","Innovation Coaching","Root cause analysis training"],
+      "high": ["Innovation Coaching","Skills analysis (people readiness)","ISO 56000 alignment review"]
+    },
+    "questions": [
+      "Our organisation has the necessary key and core technology competencies which are matched with tangible and intangible skills and assets required for innovation.",
+      "Our organisation has sufficient knowledge and expertise required to manage innovation",
+      "Our organisation prioritises continuous learning, where knowledge is continuously exchanged, learnt and developed to empower its human capital to be competent.",
+      "The organisation embraces teamwork and cooperation to enhance the activity of sharing knowledge, information and learning to support innovation efforts.",
+      "Training on innovation has installed a spirit of entrepreneurship in the organisation.",
+      "In our organisation the knowledge resources required to facilitate innovation are identified, acquired and maintained.",
+      "Communities of practice have been established through-out the organisation to facilitate innovation.",
+      "In our organisation innovation teams are consciously diverse and multi-cultural, to improve the probability of innovative outcomes.",
+      "Our organisation maintains networks with external (outside the organisation) specialists and experts to stimulate and facilitate innovation.",
+      "Our organisation formally manages its external networks to promote and measure the impact of these networks on innovation and innovation processes in the organisation.",
+      "Our organisational innovation approach is measured regularly using local and international innovation measurement standards."
+    ]
+  },
+  {
+    "id": "ipm",
+    "name": "Innovation Process Management",
+    "short": "Process",
+    "eq": "Process",
+    "barrier": "Frustration",
+    "weight": 0.15,
+    "desc": "Whether there is a clear, working process that takes an idea from submission through to evaluation and implementation, with defined roles along the way.",
+    "barrierNote": "When there's no clear pathway for an idea to go anywhere, people who raise ideas hit a dead end \u2014 the result is Frustration.",
+    "commentPrompt": "Any comments on the innovation process \u2014 how ideas are submitted, reviewed, decentralised, or connected to outside partners?",
+    "bands": {
+      "low": {
+        "text": "No real process exists for managing ideas. People don't know how to submit input or what role they could play, so contributions go nowhere and value is lost \u2014 generating real frustration.",
+        "actions": [
+          "Define clear roles across the innovation process (ideator, reviewer, implementer, etc.).",
+          "Develop simple criteria for how ideas are evaluated and progressed.",
+          "Create a feedback loop so contributors know what happened to their idea."
+        ]
+      },
+      "medium": {
+        "text": "A process exists but is only partially developed or inconsistently followed. Some ideas progress, others stall \u2014 creating bottlenecks, confusion about ownership and frustration where effort doesn't translate into outcomes.",
+        "actions": [
+          "Standardise the innovation process across departments so everyone follows the same steps.",
+          "Train employees on how the process works and how to engage with it.",
+          "Monitor ideas as they move through the pipeline and fix bottlenecks as they appear."
+        ]
+      },
+      "high": {
+        "text": "A clear, consistently applied process takes ideas from submission through to implementation, with roles defined and feedback provided \u2014 supporting continuous improvement and scale.",
+        "actions": [
+          "Keep refining the process as technology and the market evolve.",
+          "Encourage cross-functional collaboration to widen the pool of ideas captured.",
+          "Track process performance with metrics and use them to drive further improvement."
+        ]
+      }
+    },
+    "solutions": {
+      "low": ["Innovation Process Development","Ideation Software","Staff awareness alignment workshops"],
+      "medium": ["Ideation Software","Innovation Process Development","Innovation Portfolio Dashboard"],
+      "high": ["Innovation Portfolio Dashboard","ISO 56000 alignment review","Innovation Coaching"]
+    },
+    "questions": [
+      "Innovation management is decentralised to ensure that each department and divisions take responsibility for driving innovation, however the programmes are coordinated at corporate level.",
+      "In our organisation systems have been put in place to enable any staff member access to the accumulated knowledge resources of the organisation to facilitate innovation.",
+      "Our organisation collaborates with external partners that are participants in the innovation eco-system (i.e. research institutions, universities and government entities)."
+    ]
+  },
+  {
+    "id": "roi",
+    "name": "Return on Innovation",
+    "short": "Implementation & ROI",
+    "eq": "Implementation",
+    "barrier": "False Starts",
+    "weight": 0.15,
+    "desc": "Whether innovation activity is actually implemented and its value measured, captured and communicated \u2014 including how IP from new ideas is protected.",
+    "barrierNote": "When ideas generate excitement but never get implemented or measured, momentum fizzles before value is realised \u2014 the result is False Starts.",
+    "commentPrompt": "Any comments on your organisation's return on innovation \u2014 implementation, measurement of impact, and IP protection?",
+    "bands": {
+      "low": {
+        "text": "Little value is being captured from innovation activity. Initiatives generate initial excitement but stall before implementation or aren't measured \u2014 repeated false starts erode confidence in future innovation efforts.",
+        "actions": [
+          "Align innovation projects clearly with strategic objectives before they start.",
+          "Put in place simple mechanisms to track progress and measure return over time.",
+          "Resource and govern projects properly so they're carried through to implementation, not abandoned."
+        ]
+      },
+      "medium": {
+        "text": "Some value is captured but inconsistently \u2014 certain projects deliver results while others stall or aren't measured, often due to resource constraints, risk aversion or silos that prevent scaling what works.",
+        "actions": [
+          "Strengthen governance so every initiative is evaluated against its potential to deliver value.",
+          "Encourage cross-functional collaboration to scale practices that are working.",
+          "Develop clear KPIs/metrics so value creation is measurable and repeatable."
+        ]
+      },
+      "high": {
+        "text": "Innovation activity is consistently implemented, measured and communicated, with clear alignment to strategic goals \u2014 delivering tangible, sustained value and a strong basis for future investment.",
+        "actions": [
+          "Keep refining innovation processes to stay agile as conditions change.",
+          "Share the value created from innovation openly to build stakeholder confidence.",
+          "Use long-term, data-driven metrics to evaluate and sustain impact."
+        ]
+      }
+    },
+    "solutions": {
+      "low": ["Impact and Value of Innovation","Innovation Portfolio Dashboard","Innovation in a box (pilot)"],
+      "medium": ["Innovation Portfolio Dashboard","Impact and Value of Innovation","Root cause analysis training"],
+      "high": ["Innovation Portfolio Dashboard","ISO 56000 alignment review","Innovation Coaching"]
+    },
+    "questions": [
+      "There are visible/noticeable organisational changes and improvements as a result of innovation implementation.",
+      "Employees become more motivated from being included in the innovation process as well as getting access to training opportunities.",
+      "Skills attraction and retention is high as result of investment in innovation.",
+      "In our organisation innovation is recognised as a core part of organisational and personal performance management.",
+      "Our organisation recognises and rewards activities and outcomes in innovation.",
+      "Innovation makes a significant and meaningful contribution to our organisation's success",
+      "An executive innovation dashboard has been developed and is being used in our organisation.",
+      "In our organisation the actual innovation progress (time, content, cost) is tracked against budgeted / planned innovation progress.",
+      "Our organisation has a policy for Intellectual property management.",
+      "Ideas, proposals and concepts submitted to the organisation are protected through the IP Management policy."
+    ]
+  }
+];
+
+/* ============================================================
+   CONFIG — InnoPulse / The Growth System
+   ============================================================ */
+const CONFIG = {
+  brand:'The Growth System',
+  product:'InnoPulse',
+  productFull:'Get You InnoPulse Checked',
+  tagline:'A strategic diagnostic that reveals where your organisation\u2019s innovation value is flowing \u2014 and where it\u2019s leaking.',
+  narrative:'Innovation is not an event. It\u2019s a system. When one part of the system breaks, value leaks out of the organisation.',
+  bookingUrl:'mailto:info@thegrowthsystem.co.za?subject=InnoPulse%20Check%20%E2%80%94%20Results%20Workshop',
+  bookingLabel:'Book a results workshop with The Growth System',
+  emailGate:true,
+  // Google Apps Script Web App endpoint — receives each completed assessment as JSON
+  submitUrl:'https://script.google.com/macros/s/AKfycbyx6NNYLKDkrHabDFn_gIn1rK3aNei4ecxjt20V-cchyY0p4paovVJ8x87Zp6K4Vh6z/exec',
+  // Optional legacy webhook (kept for compatibility; leave blank)
+  webhookUrl:'',
+  // Booking workshop link (Google Calendar appointment schedule / Form). Placeholder until live.
+  workshopUrl:'https://judelbrecht2-star.github.io/innopulse-assessment/#book',
+  // Google Form backup submission (shown if the API submission fails). Placeholder until created.
+  backupFormUrl:'https://forms.gle/REPLACE_WITH_BACKUP_FORM',
+  dontKnowValue:40,
+  weights:{sii:0.25, iem:0.25, oic:0.20, ipm:0.15, roi:0.15},
+  offers:[
+    {id:1,name:'InnoPulse Capability Assessment & Strategy Workshop',price:'R75 000 \u2013 R150 000 (scope dependent)',
+      desc:'A full diagnostic of your organisation\u2019s innovation capability across all 5 pillars, plus a 1\u20132 day executive strategy workshop to align leadership on priorities and next steps.'},
+    {id:2,name:'InnoDrive \u2014 6-Week Innovation Sprint',price:'R250 000 (indicative)',
+      desc:'A focused 6-week sprint to systemise the innovation process in your highest-leakage area \u2014 building the process, tools and training to convert ideas into value.'},
+    {id:3,name:'Systemic Innovation Programme',price:'R400 000+ (indicative)',
+      desc:'A multi-month programme that embeds an end-to-end innovation management system across strategy, culture, capability, process and ROI \u2014 aligned to ISO 56002.'}
+  ],
+  pathways:{
+    low:{stage:'Stabilise',offerId:1,tagline:'Build the foundations \u2014 strategy clarity, governance and a working process \u2014 before scaling anything.'},
+    medium:{stage:'Systemise',offerId:2,tagline:'Turn pockets of good practice into a consistent, organisation-wide system.'},
+    high:{stage:'Scale',offerId:3,tagline:'Scale what is working, sharpen measurement, and protect the value you are already creating.'}
+  }
+};
+
+const SCALE = [
+  {v:100, l:'Totally agree'},
+  {v:75,  l:'Mostly agree'},
+  {v:CONFIG.dontKnowValue, l:'Don\u2019t know'},
+  {v:25,  l:'Don\u2019t agree'},
+  {v:0,   l:'Totally don\u2019t agree'}
+];
+const BANDS = {
+  high:{min:70, label:'High', value:'Innovation enablement is building and increasing organisational value.'},
+  medium:{min:40, label:'Medium', value:'Innovation enablement is maintaining organisational value, but not yet building it.'},
+  low:{min:0, label:'Low', value:'Innovation enablement is largely absent \u2014 organisational value is being destroyed.'}
+};
+function bandOf(score){
+  if(score >= BANDS.high.min) return 'high';
+  if(score >= BANDS.medium.min) return 'medium';
+  return 'low';
+}
+const OVERALL_TEXT = {
+  low:'Your organisation is currently losing innovation value across multiple parts of the system. Foundational elements \u2014 strategy clarity, an enabling culture, trained people, a working process and a track record of implementation \u2014 are not yet reliably in place. The priority is to stabilise: fix the one or two biggest leaks before investing further.',
+  medium:'Your organisation has real innovation enablement in some areas, and that is maintaining value \u2014 but it is not yet consistently building it. Pockets of strength exist alongside gaps that quietly drain value. The priority is to systemise: turn what already works into a consistent, organisation-wide approach.',
+  high:'Your organisation has strong innovation enablement across most of the system, and innovation is actively building organisational value. The priority now is to scale what is working, sharpen how value is measured, and protect the gains you have made.'
+};
+
+const PROFILE_FIELDS = [
+  {id:'respondent', label:'Your name (optional \u2014 you can stay anonymous)', type:'text', required:false, placeholder:'e.g. Judy Adams'},
+  {id:'company', label:'Company / organisation name', type:'text', required:true, placeholder:'e.g. Fourier IT'},
+  {id:'industry', label:'Industry', type:'select', required:true, options:[
+    'Information & Communication Technology','Manufacturing','Financial Services','Mining & Resources',
+    'Energy & Utilities','Healthcare & Life Sciences','Retail & Consumer','Logistics & Transport',
+    'Public Sector / Government','Education','Professional Services','Agriculture','Other'
+  ]},
+  {id:'service', label:'Years of service at your organisation', type:'radio', required:true, options:['<1 year','1 \u2013 5 years','6 \u2013 10 years','>10 years']},
+  {id:'age', label:'Your age', type:'radio', required:true, options:['20 \u2013 30','31 \u2013 40','41 \u2013 50','Over 50']},
+  {id:'education', label:'Your level of education', type:'radio', required:true, options:['Below Matric','Matric','3-year Tertiary Qualification','4-year+ Tertiary Qualification']},
+  {id:'gender', label:'Your gender', type:'radio', required:true, options:['Male','Female','Prefer not to say']}
+];
+
+const GATE_FIELDS = [
+  {id:'gname', label:'Full name', type:'text', required:true, placeholder:'Your name'},
+  {id:'email', label:'Email address', type:'email', required:true, placeholder:'you@company.com'},
+  {id:'phone', label:'Phone number', type:'tel', required:true, placeholder:'e.g. 082 123 4567'}
+];
+
+const STEPS = [];
+PILLARS.forEach((p,pi)=>{
+  STEPS.push({type:'intro', pi});
+  p.questions.forEach((q,qi)=>STEPS.push({type:'q', pi, qi}));
+  STEPS.push({type:'comment', pi});
+});
+const totalQ = PILLARS.reduce((s,p)=>s+p.questions.length,0);
+
+let state = loadState();
+let SAVED = loadSaved();
+function defaultState(){
+  return { view:'hero', step:0, profile:{}, gate:{}, answers:{}, comments:{}, unlocked:false, editingId:null, viewId:null, teamOn:false, cmpId:'', seen:{} };
+}
+function loadState(){
+  try{ const raw = localStorage.getItem('innopulse-state'); if(!raw) return defaultState(); const s = JSON.parse(raw); return Object.assign(defaultState(), s); }catch(e){ return defaultState(); }
+}
+function loadSaved(){
+  try{ const raw = localStorage.getItem('innopulse-saved'); if(!raw) return []; return JSON.parse(raw) || []; }catch(e){ return []; }
+}
+function save(){ try{ localStorage.setItem('innopulse-state', JSON.stringify(state)); }catch(e){} }
+function saveAll(){ try{ localStorage.setItem('innopulse-saved', JSON.stringify(SAVED)); }catch(e){} }
+
+function pillarScoreOf(answers, pi){
+  const p = PILLARS[pi]; let total = 0, n = 0;
+  for(let qi=0; qi<p.questions.length; qi++){ const k = pi+'_'+qi; if(answers[k] != null){ total += answers[k]; n++; } }
+  if(n === 0) return null; return Math.round((total/n)*10)/10;
+}
+function scoresOf(answers){ return PILLARS.map((_,i)=>pillarScoreOf(answers,i)); }
+function overallOf(scores){
+  if(scores.some(s=>s==null)) return null; let t = 0;
+  PILLARS.forEach((p,i)=> t += scores[i]*CONFIG.weights[p.id]); return Math.round(t*10)/10;
+}
+function fmtPct(v){ return (v==null) ? '\u2014' : Math.round(v)+'%'; }
+function visibilityRisk(answers){
+  let count = 0, total = 0;
+  Object.keys(answers).forEach(k=>{ total++; if(answers[k] === CONFIG.dontKnowValue) count++; });
+  const pct = total ? Math.round((count/total)*1000)/10 : 0;
+  let level = 'low'; if(pct >= 25) level = 'high'; else if(pct >= 10) level = 'medium';
+  return {pct, count, total, level};
+}
+function avgOf(answers, items){
+  let total=0, n=0;
+  items.forEach(([pi,qi])=>{ const k = pi+'_'+qi; if(answers[k] != null){ total += answers[k]; n++; } });
+  if(n === 0) return null; return Math.round((total/n)*10)/10;
+}
+const INDICATORS = [
+  { id:'readiness', name:'Innovation Readiness Index', desc:'Is there a defined strategy and the structures to act on it?', calc:(a)=>avgOf(a,[[0,0],[0,1],[0,3],[1,0],[1,1],[1,9]]) },
+  { id:'execution', name:'Execution Confidence', desc:'Can ideas actually be carried through to implementation?', calc:(a)=>avgOf(a,[[2,0],[2,1],[2,2],[3,0],[3,1],[3,2],[4,0],[4,5]]) },
+  { id:'leadership', name:'Leadership Alignment', desc:'Does leadership define, communicate and actively drive innovation?', calc:(a)=>avgOf(a,[[0,0],[0,1],[0,7],[1,9],[1,10],[1,11]]) },
+  { id:'idea2value', name:'Idea-to-Value Maturity', desc:'Do ideas move through a process and translate into measured value?', calc:(a)=>avgOf(a,[[3,0],[3,1],[3,2],[4,0],[4,3],[4,5],[4,7]]) },
+  { id:'cultureRisk', name:'Culture Resistance', desc:'How much does the culture push back against new ideas and risk-taking?', inverse:true,
+    calc:(a)=>{ const v = avgOf(a,[[1,2],[1,3],[1,4],[1,5],[1,7]]); return v==null ? null : Math.round((100-v)*10)/10; } },
+  { id:'govGap', name:'Governance Gap', desc:'Are there policies, governance and measurement systems guiding innovation?', inverse:true,
+    calc:(a)=>{ const v = avgOf(a,[[1,8],[1,15],[1,16],[0,7],[0,10]]); return v==null ? null : Math.round((100-v)*10)/10; } },
+  { id:'enablement', name:'Employee Enablement', desc:'Are employees trained, resourced and included in the innovation process?', calc:(a)=>avgOf(a,[[2,2],[2,4],[2,5],[1,12],[0,5]]) },
+  { id:'roiReady', name:'ROI Measurement Readiness', desc:'Is the value of innovation tracked, reported and protected (IP)?', calc:(a)=>avgOf(a,[[4,6],[4,7],[4,8],[4,9],[2,10]]) }
+];
+function indicatorStatus(val, inverse){
+  if(val == null) return {cls:'medium', label:'No data'};
+  if(inverse){ if(val >= 60) return {cls:'low', label:'High risk'}; if(val >= 30) return {cls:'medium', label:'Watch'}; return {cls:'high', label:'Low risk'}; }
+  if(val >= 70) return {cls:'high', label:'Strong'}; if(val >= 40) return {cls:'medium', label:'Developing'}; return {cls:'low', label:'At risk'};
+}
+function indicatorColor(val, inverse){
+  const s = indicatorStatus(val, inverse);
+  if(s.cls === 'high') return 'var(--green)'; if(s.cls === 'medium') return 'var(--amber)'; return 'var(--red)';
+}
+function valueLeakage(scores){
+  const weak = []; PILLARS.forEach((p,i)=>{ if(scores[i] != null && scores[i] < 40) weak.push(p); });
+  const med = PILLARS.filter((p,i)=> scores[i] != null && scores[i] >= 40 && scores[i] < 70);
+  let level = 'low'; if(weak.length >= 2) level = 'high'; else if(weak.length === 1 || med.length >= 3) level = 'medium';
+  return {level, contributors: weak, watch: med};
+}
+function dominantBarrier(scores){
+  let idx = 0, min = 101; scores.forEach((s,i)=>{ if(s != null && s < min){ min = s; idx = i; } });
+  return {pillar: PILLARS[idx], score: scores[idx], index: idx};
+}
+function pathwayOf(overall){ const b = bandOf(overall); return Object.assign({band:b}, CONFIG.pathways[b]); }
+function offerById(id){ return CONFIG.offers.find(o=>o.id===id); }
+function recommendedSolutions(scores){
+  const ranked = PILLARS.map((p,i)=>({p, score:scores[i], i})).filter(x=>x.score != null).sort((a,b)=>a.score-b.score).slice(0,2);
+  return ranked.map(x=>({ pillar:x.p, score:x.score, band:bandOf(x.score), solutions:x.p.solutions[bandOf(x.score)] }));
+}
+function quickWins(scores, vis){
+  const wins = [];
+  if(vis.level !== 'low'){ wins.push('Run a short "what does innovation mean here" briefing \u2014 '+vis.pct+'% of answers were "Don\u2019t know", which is itself a visibility risk worth closing first.'); }
+  const ranked = PILLARS.map((p,i)=>({p, score:scores[i], i})).filter(x=>x.score != null).sort((a,b)=>a.score-b.score);
+  ranked.slice(0,2).forEach(x=>{ const band = bandOf(x.score); const action = x.p.bands[band].actions[0]; wins.push(x.p.short+': '+action); });
+  return wins.slice(0,3);
+}
+function ninetyDayPlan(scores){
+  const ranked = PILLARS.map((p,i)=>({p, score:scores[i], i})).filter(x=>x.score != null).sort((a,b)=>a.score-b.score);
+  const weakest = ranked[0], second = ranked[1], third = ranked[2];
+  return [
+    {window:'Days 1\u201330', title:'Stabilise \u2014 '+weakest.p.short, text: weakest.p.bands[bandOf(weakest.score)].actions[0]},
+    {window:'Days 31\u201360', title:'Strengthen \u2014 '+second.p.short, text: second.p.bands[bandOf(second.score)].actions[0]},
+    {window:'Days 61\u201390', title:'Systemise \u2014 '+third.p.short, text: third.p.bands[bandOf(third.score)].actions[0]}
+  ];
+}
+function trendOf(base){
+  const prior = SAVED.filter(r=> r.id !== base.id && r.profile && base.profile &&
+    (r.profile.company||'').trim().toLowerCase() === (base.profile.company||'').trim().toLowerCase() && r.createdAt < base.createdAt
+  ).sort((a,b)=>b.createdAt-a.createdAt)[0];
+  if(!prior) return null;
+  const delta = Math.round((base.overall - prior.overall)*10)/10;
+  const pillarDeltas = PILLARS.map((p,i)=> Math.round(((base.scores[i]||0) - (prior.scores[i]||0))*10)/10);
+  return {prior, delta, pillarDeltas};
+}
+function execInsight(scores, overall, vis){
+  const db = dominantBarrier(scores); const band = bandOf(overall);
+  const impact = db.score < 40 ? 'High' : (db.score < 70 ? 'Medium' : 'Low');
+  const action = db.pillar.bands[bandOf(db.score)].actions[0];
+  return { lines:[ 'Analysis Complete','', 'Primary Barrier Detected:', db.pillar.barrier.toUpperCase()+'  ('+db.pillar.short+')','', 'Impact: '+impact,'', 'Recommended Action:', action,'', 'Overall Innovation Health: '+fmtPct(overall)+' \u2014 '+BANDS[band].label+' band.' ], db, band, impact, action };
+}
+
+function gaugeColor(score){
+  const b = bandOf(score);
+  return b === 'high' ? 'var(--green)' : (b === 'medium' ? 'var(--amber)' : 'var(--red)');
+}
+function gaugeSVG(score, opts){
+  opts = opts || {};
+  const color = opts.color || gaugeColor(score);
+  const dash = opts.animate
+    ? `style="stroke-dasharray:0 100" class="gfill" data-w="${score}"`
+    : `style="stroke-dasharray:${score} 100"`;
+  return `<svg viewBox="0 0 120 84" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 66 A50 50 0 0 1 110 66" fill="none" stroke="#e7e7db" stroke-width="13" stroke-linecap="round"/>
+    <path d="M10 66 A50 50 0 0 1 110 66" fill="none" stroke="${color}" stroke-width="13" stroke-linecap="round" pathLength="100" ${dash}/>
+    <text x="60" y="58" text-anchor="middle" font-size="20" font-weight="800" fill="#16160f">${fmtPct(score)}</text>
+    <text x="10" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#8a8a7e">0</text>
+    <text x="110" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#8a8a7e">100</text>
+  </svg>`;
+}
+function gaugesBlock(scores, overall, opts){
+  opts = opts || {};
+  const band = bandOf(overall);
+  let html = `<div class="gauges">`;
+  html += `<div class="gauge-card">
+      <div class="gh">Innovation Health</div>
+      <div class="gb">
+        ${gaugeSVG(overall, {animate:true, color:'var(--lime2)'})}
+        <div class="gname">Overall</div>
+        <span class="band-w ${band}">${BANDS[band].label}</span>
+      </div>
+    </div>`;
+  PILLARS.forEach((p,i)=>{
+    const s = scores[i];
+    const b = bandOf(s);
+    const enabled = b === 'high';
+    html += `<div class="gauge-card">
+      <div class="gh">${p.short}</div>
+      <div class="gb">
+        ${gaugeSVG(s, {animate:true})}
+        <div class="gname">${p.eq}</div>
+        <span class="band-w ${b}">${BANDS[b].label}</span>
+        <span class="bar-tag">${enabled ? '\u2713 Enabled' : 'Barrier: '+p.barrier}</span>
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+  return html;
+}
+function radarSVG(scores, opts){
+  opts = opts || {};
+  const overlay = opts.overlay;
+  const overlayLabel = opts.overlayLabel || 'Comparison';
+  const N = PILLARS.length;
+  const cx = 150, cy = 150, R = 110;
+  const angle = (i)=> (Math.PI*2 * i / N) - Math.PI/2;
+  const pt = (i, r)=> [cx + r*Math.cos(angle(i)), cy + r*Math.sin(angle(i))];
+  let rings = '';
+  [0.25,0.5,0.75,1].forEach(f=>{
+    const pts = PILLARS.map((_,i)=>pt(i, R*f).join(',')).join(' ');
+    rings += `<polygon points="${pts}" fill="none" stroke="#e7e7db" stroke-width="1"/>`;
+  });
+  let axes = '', labels = '';
+  PILLARS.forEach((p,i)=>{
+    const [x,y] = pt(i, R);
+    axes += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e7e7db" stroke-width="1"/>`;
+    const [lx,ly] = pt(i, R+26);
+    labels += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="11" font-weight="700" fill="#5f5f57">${p.short}</text>`;
+  });
+  function poly(arr, color, fillOpacity, delayBase){
+    const pts = PILLARS.map((_,i)=>{ const s = arr[i] == null ? 0 : arr[i]; return pt(i, R * (s/100)); });
+    const pointsStr = pts.map(p=>p.join(',')).join(' ');
+    let dots = '';
+    pts.forEach(([x,y],i)=>{ dots += `<circle class="radar-dot" cx="${x}" cy="${y}" r="4" fill="${color}" style="animation-delay:${delayBase + i*0.12}s"/>`; });
+    return { poly:`<polygon points="${pointsStr}" fill="${color}" fill-opacity="${fillOpacity}" stroke="${color}" stroke-width="2.5" class="radar-poly" style="animation-delay:${delayBase}s"/>`, dots };
+  }
+  let overlayHtml = '';
+  if(overlay){ const o = poly(overlay, '#8a8a7e', 0.08, 0.05); overlayHtml = o.poly + o.dots; }
+  const main = poly(scores, '#a8e617', 0.32, overlay ? 0.4 : 0.05);
+  return `<svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px">
+    <style>
+      .radar-poly{opacity:0;transform:scale(.6);transform-origin:150px 150px;animation:radarGrow .7s cubic-bezier(.2,.8,.3,1.1) forwards}
+      .radar-dot{opacity:0;animation:radarDot .4s ease forwards}
+      @keyframes radarGrow{to{opacity:1;transform:scale(1)}}
+      @keyframes radarDot{to{opacity:1}}
+    </style>
+    ${rings}${axes}
+    ${overlayHtml}
+    ${main.poly}${main.dots}
+    ${labels}
+    ${overlay ? `<text x="150" y="310" text-anchor="middle" font-size="10" font-weight="700" fill="#8a8a7e">Lime = You \u00b7 Grey = ${overlayLabel}</text>` : ''}
+  </svg>`;
+}
+
+const EQ_CHAIN = [
+  {id:'sii', label:'Innovation Intent'},
+  {id:'oic', label:'Capability'},
+  {id:'iem', label:'Culture'},
+  {id:'ipm', label:'Process'},
+  {id:'roi', label:'Implementation'},
+  {id:'results', label:'Results'}
+];
+function pillarIndexById(id){ return PILLARS.findIndex(p=>p.id===id); }
+function eqNodeStatus(score){
+  if(score == null) return 'pending';
+  const b = bandOf(score);
+  return b === 'low' ? 'weak' : (b === 'medium' ? 'medium' : 'ok');
+}
+function equationFlowHTML(scores, overall){
+  let weakCount = 0;
+  if(scores){ PILLARS.forEach((p,i)=>{ if(scores[i] != null && scores[i] < 40) weakCount++; }); }
+  let html = `<div class="eqflow ${weakCount>=2?'broken-state':''}">`;
+  EQ_CHAIN.forEach((node, idx)=>{
+    let status = 'pending', scoreVal = null;
+    if(node.id === 'results'){ scoreVal = overall; status = scores ? eqNodeStatus(overall) : 'pending'; }
+    else if(scores){ const pi = pillarIndexById(node.id); scoreVal = scores[pi]; status = eqNodeStatus(scoreVal); }
+    const cls = scores ? status : 'medium';
+    html += `<div class="eqnode ${cls}"><span class="dot"></span>${node.label}${scores && scoreVal!=null ? ' \u2014 '+fmtPct(scoreVal) : ''}</div>`;
+    if(idx < EQ_CHAIN.length-1){
+      let linkCls = 'run';
+      if(scores){
+        const nextNode = EQ_CHAIN[idx+1];
+        const sA = scoreVal; let sB;
+        if(nextNode.id === 'results') sB = overall; else sB = scores[pillarIndexById(nextNode.id)];
+        if((sA != null && sA < 40) || (sB != null && sB < 40)) linkCls = 'broken';
+      }
+      html += `<div class="eqlink ${linkCls}">${linkCls==='broken'?'\u2715':'\u2192'}</div>`;
+    }
+  });
+  html += `<div class="eqresult">`;
+  if(!scores){ html += `The Innovation Leadership Equation: when intent, capability, culture, process and implementation are all present, value flows through to results. When one breaks, value leaks out.`; }
+  else if(weakCount >= 2){ html += `Multiple parts of the system are breaking down \u2014 value is leaking before it reaches results.`; }
+  else if(weakCount === 1){ html += `One part of the system is under strain, causing the flow of value to flicker.`; }
+  else { html += `Value is flowing through the system end to end.`; }
+  html += `</div></div>`;
+  return html;
+}
+function lwBandClass(b){ return b === 'high' ? 'band-high' : (b === 'medium' ? 'band-medium' : 'band-low'); }
+function leadershipWheelHTML(scores, overall){
+  const positions = ['top','right','bottomright','bottomleft','left'];
+  const band = bandOf(overall);
+  const overallPct = Math.max(0, Math.min(100, Math.round(overall)));
+  let nodes = '';
+  PILLARS.forEach((p,i)=>{
+    const s = scores[i]; const b = bandOf(s); const pos = positions[i] || 'top'; const delay = 0.12 + i*0.12;
+    nodes += `<div class="lw-node lw-${pos} ${lwBandClass(b)}" data-lwnode style="transition-delay:${delay}s">
+        <div class="lw-circle"><div class="lw-pct">${fmtPct(s)}</div></div>
+        <div class="lw-label">${p.short}</div>
+        <div class="lw-desc">${p.desc}</div>
+      </div>`;
+  });
+  const center = `<div class="lw-center ${lwBandClass(band)}" data-lwnode style="transition-delay:0.05s">
+      <div class="lw-center-ring" style="--lw-pct:${overallPct}">
+        <div class="lw-center-inner">
+          <div class="lw-eyebrow-sm">Innovation<br>Health</div>
+          <div class="lw-bignum">${fmtPct(overall)}</div>
+          <div class="lw-eyebrow-sm">Overall Score</div>
+        </div>
+      </div>
+    </div>`;
+  return `<div class="lw-wrap"><svg class="lw-lines" data-lwlines></svg><div class="lw-grid">${nodes}${center}</div></div>`;
+}
+function drawLeadershipLines(container){
+  const wrap = container.querySelector('.lw-wrap');
+  const svg = wrap && wrap.querySelector('[data-lwlines]');
+  const hub = wrap && wrap.querySelector('.lw-center-ring');
+  if(!wrap || !svg || !hub) return;
+  const wrapRect = wrap.getBoundingClientRect();
+  if(wrapRect.width === 0 || wrapRect.height === 0) return;
+  const hubRect = hub.getBoundingClientRect();
+  const hubCx = hubRect.left + hubRect.width/2 - wrapRect.left;
+  const hubCy = hubRect.top + hubRect.height/2 - wrapRect.top;
+  const hubR = hubRect.width/2;
+  svg.setAttribute('viewBox', `0 0 ${wrapRect.width} ${wrapRect.height}`);
+  let html = '';
+  wrap.querySelectorAll('.lw-node').forEach(node=>{
+    const circle = node.querySelector('.lw-circle'); if(!circle) return;
+    const rect = circle.getBoundingClientRect();
+    const cx = rect.left + rect.width/2 - wrapRect.left;
+    const cy = rect.top + rect.height/2 - wrapRect.top;
+    const r = rect.width/2;
+    const color = getComputedStyle(node).getPropertyValue('--lw-color').trim() || 'var(--line)';
+    const dx = cx - hubCx, dy = cy - hubCy;
+    const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+    const ux = dx/dist, uy = dy/dist;
+    const x1 = hubCx + ux*hubR, y1 = hubCy + uy*hubR;
+    const x2 = cx - ux*r, y2 = cy - uy*r;
+    html += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="2"/>`;
+    html += `<circle cx="${x1}" cy="${y1}" r="4" fill="${color}"/>`;
+    html += `<circle cx="${x2}" cy="${y2}" r="4" fill="${color}"/>`;
+  });
+  svg.innerHTML = html;
+}
+function animateLeadershipWheel(container){
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    container.querySelectorAll('[data-lwnode]').forEach(el=>el.classList.add('show'));
+    setTimeout(()=>drawLeadershipLines(container), 520);
+  }));
+  if(!window.__lwResizeBound){
+    window.__lwResizeBound = true;
+    window.addEventListener('resize', ()=>{ document.querySelectorAll('#barrierCard').forEach(c=>drawLeadershipLines(c)); });
+  }
+}
+
+function valueLeakageHTML(scores, overall){
+  const weak = PILLARS.map((p,i)=>({p,score:scores[i],i})).filter(x=>x.score!=null && x.score < 40);
+  const liquidPct = Math.max(6, Math.round(overall));
+  let cracks = '';
+  weak.forEach((w,idx)=>{
+    const topPct = 100 - liquidPct + 6 + idx*22;
+    cracks += `<div class="crack" data-crack style="top:${Math.min(78,topPct)}%;left:${20+idx*28}%;width:34px;height:3px;transform:rotate(${idx%2?20:-20}deg)"></div>`;
+  });
+  return `<div class="tank-wrap">
+    <div>
+      <div class="tank" data-tank>
+        <div class="liquid" data-liquid style="height:0%"></div>
+        ${cracks}
+      </div>
+      <div class="tank-label">Innovation Value retained<br><span class="tank-pct">${fmtPct(overall)}</span></div>
+    </div>
+    <div style="max-width:300px">
+      <p class="small muted" style="margin-bottom:6px"><strong>${CONFIG.narrative}</strong></p>
+      ${weak.length
+        ? `<p class="small">Cracks have formed at: <strong>${weak.map(w=>w.p.short).join(', ')}</strong> \u2014 each weak pillar is a point where innovation value leaks out before it reaches results.</p>`
+        : `<p class="small">No major cracks detected \u2014 the system is holding value well. Keep reinforcing the pillars that are still in the medium band.</p>`}
+    </div>
+  </div>`;
+}
+function animateValueLeakage(container, scores, overall){
+  const tank = container.querySelector('[data-tank]');
+  const liquid = container.querySelector('[data-liquid]');
+  if(!liquid) return;
+  const liquidPct = Math.max(6, Math.round(overall));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    liquid.style.height = liquidPct+'%';
+    container.querySelectorAll('[data-crack]').forEach((c,idx)=>{
+      setTimeout(()=>{ c.classList.add('show'); spawnLeakParticles(tank, c, idx); }, 700 + idx*250);
+    });
+  }));
+}
+function spawnLeakParticles(tank, crackEl, idx){
+  if(!tank) return;
+  const count = 6;
+  for(let n=0;n<count;n++){
+    const p = document.createElement('div'); p.className = 'leak-particle';
+    p.style.left = crackEl.style.left; p.style.top = crackEl.style.top;
+    const lx = 30 + Math.random()*50; const ly = 60 + Math.random()*60;
+    p.style.setProperty('--lx', lx+'px'); p.style.setProperty('--ly', ly+'px');
+    p.style.animationDelay = (Math.random()*0.6)+'s';
+    tank.appendChild(p); setTimeout(()=>p.remove(), 2600);
+  }
+  if(!crackEl._leakInterval){
+    crackEl._leakInterval = setInterval(()=>{
+      if(!document.body.contains(tank)){ clearInterval(crackEl._leakInterval); return; }
+      spawnLeakParticlesOnce(tank, crackEl);
+    }, 2400);
+  }
+}
+function spawnLeakParticlesOnce(tank, crackEl){
+  for(let n=0;n<3;n++){
+    const p = document.createElement('div'); p.className = 'leak-particle';
+    p.style.left = crackEl.style.left; p.style.top = crackEl.style.top;
+    const lx = 30 + Math.random()*50; const ly = 60 + Math.random()*60;
+    p.style.setProperty('--lx', lx+'px'); p.style.setProperty('--ly', ly+'px');
+    p.style.animationDelay = (Math.random()*0.4)+'s';
+    tank.appendChild(p); setTimeout(()=>p.remove(), 2600);
+  }
+}
+const ROAD_STOPS = ['Discovery','Alignment','Systemisation','Operationalisation','Scale'];
+function roadHTML(overall){
+  const idx = Math.min(4, Math.floor(overall/20));
+  let stops = '';
+  ROAD_STOPS.forEach((s,i)=>{
+    let cls = ''; if(i < idx) cls = 'passed'; else if(i === idx) cls = 'active';
+    stops += `<div class="road-stop ${cls}"><div class="road-dot"></div><div class="rlabel">${s}</div></div>`;
+  });
+  return `<div class="road-wrap">
+    <div class="road-line"></div>
+    <div class="road-fill" data-roadfill style="width:0%"></div>
+    <div class="road-stops">${stops}</div>
+  </div>
+  <div class="small muted center">Currently at: <strong>${ROAD_STOPS[idx]}</strong></div>`;
+}
+function animateRoad(container, overall){
+  const idx = Math.min(4, Math.floor(overall/20));
+  const fillPct = (idx/(ROAD_STOPS.length-1))*94;
+  const el = container.querySelector('[data-roadfill]'); if(!el) return;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ el.style.width = Math.min(94,fillPct)+'%'; }));
+}
+const PILLAR_ICONS = {
+  sii: {cls:'spin', svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 12 L16 8 L12 16 L8 12 Z" fill="currentColor"/></svg>`},
+  oic: {cls:'grow', svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><circle cx="12" cy="12" r="2.4"/><path d="M8 7.5 L10.5 10.5 M16 7.5 L13.5 10.5 M8 16.5 L10.5 13.5 M16 16.5 L13.5 13.5"/></svg>`},
+  iem: {cls:'grow', svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="9" r="2.4"/><circle cx="9" cy="18" r="2.6"/><circle cx="18" cy="17" r="2.2"/><path d="M8 10 L9 15.4 M10.4 8 L15 8.6 M11 18.4 L16 16.6"/></svg>`},
+  ipm: {cls:'grow', svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="10" width="5" height="4" rx="1"/><rect x="9" y="6" width="5" height="4" rx="1"/><rect x="16" y="14" width="6" height="4" rx="1"/><path d="M7 12 H9 M14 8 H16 V14"/></svg>`},
+  roi: {cls:'grow', svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20 L9 12 L13 15 L21 5"/><path d="M21 5 H15 M21 5 V11"/></svg>`}
+};
+function pillarIconHTML(pillarId){
+  const ic = PILLAR_ICONS[pillarId] || PILLAR_ICONS.sii;
+  return `<div class="picon ${ic.cls}">${ic.svg}</div>`;
+}
+
+const $app = ()=>document.getElementById('app');
+function topbarHTML(){
+  return `<div class="topbar">
+    <div class="brandmark">
+      <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#a8e617" stroke-width="2"><path d="M3 13 L9 13 L9 7 L15 7 L15 17 L21 17"/></svg></div>
+      <div>
+        <div class="name">${CONFIG.product} <span style="color:var(--lime2)">Check</span></div>
+        <div class="sub">by ${CONFIG.brand}</div>
+      </div>
+    </div>
+    <div class="toppill">${CONFIG.productFull}</div>
+  </div>`;
+}
+function render(){
+  const root = $app();
+  switch(state.view){
+    case 'hero': root.innerHTML = renderHero(); attachHero(); break;
+    case 'intake': root.innerHTML = renderIntake(); attachIntake(); break;
+    case 'quiz': root.innerHTML = renderQuiz(); attachQuiz(); break;
+    case 'preview': root.innerHTML = renderPreview(); attachPreview(); break;
+    case 'dashboard': root.innerHTML = renderDashboard(); attachDashboard(); break;
+    default: root.innerHTML = renderHero(); attachHero();
+  }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function renderHero(){
+  return `${topbarHTML()}
+  <div class="section card center" style="padding:36px 24px">
+    <div class="eyebrow">The Innovation Leadership Equation</div>
+    <h1 class="hero-title">Discover the hidden health<br>of your organisation\u2019s <span class="accent">innovation system</span>.</h1>
+    <p class="tagline center" style="margin:0 auto 22px">${CONFIG.tagline}</p>
+    ${equationFlowHTML(null, null)}
+    <div class="trust">
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 L20 6 V12 C20 17 16.4 20.7 12 22 C7.6 20.7 4 17 4 12 V6 Z"/><path d="M9 12 L11.5 14.5 L16 9.5"/></svg> ISO 56002-aligned diagnostic</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg> ~15 minutes, 62 questions</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11 V7 a5 5 0 0 1 10 0 v4"/></svg> Your answers stay private</span>
+    </div>
+    <div style="margin-top:18px">
+      <button class="btn btn-primary" data-begin>Begin My InnoPulse Check \u2192</button>
+    </div>
+    <p class="small muted" style="margin-top:14px">${CONFIG.narrative}</p>
+  </div>
+  <div class="footer">${CONFIG.brand} \u00b7 ${CONFIG.productFull}</div>`;
+}
+function attachHero(){
+  const btn = document.querySelector('[data-begin]');
+  if(btn) btn.addEventListener('click', ()=>{ ipTrack('assessment_started'); state.view='intake'; save(); render(); });
+}
+function updProfile(id, val){ state.profile[id] = (val == null ? '' : String(val)).trim(); save(); }
+function captureProfileInputs(){
+  PROFILE_FIELDS.filter(f=>f.type !== 'radio').forEach(f=>{
+    const el = document.getElementById('pf_'+f.id);
+    if(el && el.value != null) state.profile[f.id] = String(el.value).trim();
+  });
+}
+function setProfile(id, val){ captureProfileInputs(); state.profile[id] = val; save(); renderIntakeInPlace(); }
+function renderIntakeInPlace(){ const root = $app(); root.innerHTML = renderIntake(); attachIntake(); }
+function intakeComplete(){ return PROFILE_FIELDS.every(f=> !f.required || (state.profile[f.id] && state.profile[f.id].length)); }
+function renderIntake(){
+  let fields = '';
+  PROFILE_FIELDS.forEach(f=>{
+    const val = state.profile[f.id] || '';
+    if(f.type === 'text'){
+      fields += `<div class="field">
+        <label for="pf_${f.id}">${f.label}${f.required?' <span class="req">*</span>':''}</label>
+        <input type="text" id="pf_${f.id}" placeholder="${f.placeholder||''}" value="${escapeHtml(val)}" oninput="updProfile('${f.id}',this.value)">
+      </div>`;
+    } else if(f.type === 'select'){
+      fields += `<div class="field">
+        <label for="pf_${f.id}">${f.label}${f.required?' <span class="req">*</span>':''}</label>
+        <select id="pf_${f.id}" onchange="updProfile('${f.id}',this.value)">
+          <option value="" ${val?'':'selected'} disabled>Select\u2026</option>
+          ${f.options.map(o=>`<option value="${escapeHtml(o)}" ${val===o?'selected':''}>${o}</option>`).join('')}
+        </select>
+      </div>`;
+    } else if(f.type === 'radio'){
+      fields += `<div class="field">
+        <label>${f.label}${f.required?' <span class="req">*</span>':''}</label>
+        <div class="radio-grid">
+          ${f.options.map(o=>`<label class="radio-card ${val===o?'sel':''}">
+            <input type="radio" name="pf_${f.id}" value="${escapeHtml(o)}" ${val===o?'checked':''} onclick="setProfile('${f.id}','${escapeJs(o)}')">
+            ${o}
+          </label>`).join('')}
+        </div>
+      </div>`;
+    }
+  });
+  const canStart = intakeComplete();
+  return `${topbarHTML()}
+  <div class="section card" style="max-width:640px;margin:0 auto">
+    <div class="eyebrow">Step 1 of 3 \u2014 Tell us a little about you</div>
+    <h2>A few quick details</h2>
+    <p class="muted" style="margin-bottom:18px">This helps us benchmark your results and personalise your InnoPulse report. Demographic answers are anonymised.</p>
+    ${fields}
+    <button class="btn btn-primary btn-block" data-start ${canStart?'':'disabled'}>Start the InnoPulse Check \u2192</button>
+    ${canStart ? '' : '<p class="small muted" style="margin-top:8px">Please complete the required fields above to continue.</p>'}
+  </div>
+  <div class="footer">${CONFIG.brand} \u00b7 ${CONFIG.productFull}</div>`;
+}
+function attachIntake(){
+  const btn = document.querySelector('[data-start]');
+  if(btn) btn.addEventListener('click', ()=>{
+    captureProfileInputs();
+    if(!intakeComplete()){ save(); renderIntakeInPlace(); return; }
+    state.view='quiz'; state.step=0; save(); render();
+  });
+}
+function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeJs(s){ return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
+
+let quizBusy = false;
+function journeyHTML(activePi, done){
+  const nodes = PILLARS.map(p=>p.short).concat(['Results']);
+  const total = nodes.length - 1;
+  const progressIdx = done ? total : activePi;
+  const pathPct = (progressIdx / total) * 90;
+  let html = `<div class="journey"><div class="jpath" data-jpath style="width:${pathPct}%"></div>`;
+  nodes.forEach((label,i)=>{
+    let cls = '';
+    if(done){ cls = (i===total) ? 'active' : 'done'; }
+    else if(i < activePi) cls = 'done';
+    else if(i === activePi) cls = 'active';
+    html += `<div class="jnode ${cls}"><div class="jdot"></div><div class="jlabel">${label}</div></div>`;
+  });
+  html += `</div>`;
+  return html;
+}
+function renderQuiz(){
+  const step = STEPS[state.step];
+  const answeredCount = Object.keys(state.answers).length;
+  const pct = Math.round((answeredCount/totalQ)*100);
+  let body = '';
+  if(step.type === 'intro') body = renderPillarIntro(step.pi);
+  else if(step.type === 'q') body = renderQuestion(step);
+  else if(step.type === 'comment') body = renderCommentStep(step);
+  return `${topbarHTML()}
+  <div class="quiz-wrap">
+    ${journeyHTML(step.pi, false)}
+    <div class="progress-shell">
+      <div id="progOuter"><div id="progFill" style="width:${pct}%"></div></div>
+      <div id="progLabel"><span>Question ${answeredCount} of ${totalQ}</span><span>${pct}% complete</span></div>
+    </div>
+    <div id="qBody"><div class="qcard">${body}</div></div>
+  </div>
+  <div class="footer">${CONFIG.brand} \u00b7 ${CONFIG.productFull}</div>`;
+}
+function renderPillarIntro(pi){
+  const p = PILLARS[pi];
+  return `<div class="pillar-intro">
+    ${pillarIconHTML(p.id)}
+    <div class="pillar-eq">${p.eq}</div>
+    <h3>${p.name}</h3>
+    <p class="muted">${p.desc}</p>
+    <div class="barrier-chip">\u26a0 If weak, this shows up as: <strong>${p.barrier}</strong></div>
+    <p class="small muted" style="margin-top:10px">${p.barrierNote}</p>
+    <div style="margin-top:22px">
+      <button class="btn btn-primary" data-intro-start>Start ${p.short} questions \u2192</button>
+    </div>
+  </div>`;
+}
+function renderQuestion(step){
+  const p = PILLARS[step.pi];
+  const qText = p.questions[step.qi];
+  const current = state.answers[step.pi+'_'+step.qi];
+  let opts = '';
+  SCALE.forEach((opt,oi)=>{
+    const sel = current === opt.v;
+    opts += `<div class="qopt ${sel?'sel':''}" data-opt="${opt.v}" tabindex="0" role="button">
+      <span class="num">${oi+1}</span>${opt.l}
+    </div>`;
+  });
+  return `<div class="qpill">${p.short} \u00b7 Question ${step.qi+1} of ${p.questions.length}</div>
+    <h3>${qText}</h3>
+    <div class="qopts">${opts}</div>
+    <div class="qnav">
+      <button class="btn btn-ghost btn-sm" data-back ${state.step===0?'disabled':''}>\u2190 Back</button>
+      <span class="small muted" style="align-self:center">${current!=null?'Answered \u2014 click to change, or use 1\u20135':'Choose an option (1\u20135)'}</span>
+    </div>
+    <div class="kbd-hint">Tip: press 1\u20135 to answer, \u2190 \u2192 to navigate</div>`;
+}
+function renderCommentStep(step){
+  const p = PILLARS[step.pi];
+  const isLast = step.pi === PILLARS.length-1;
+  const val = state.comments[step.pi] || '';
+  return `<div class="qpill">${p.short} \u00b7 Optional comment</div>
+    <h3>Anything you'd like to add about ${p.short.toLowerCase()}?</h3>
+    <p class="muted small">${p.commentPrompt}</p>
+    <textarea id="cmt_${step.pi}" placeholder="Optional \u2014 your comments are anonymised.">${escapeHtml(val)}</textarea>
+    <div class="qnav">
+      <button class="btn btn-ghost btn-sm" data-back>\u2190 Back</button>
+      <button class="btn btn-primary" data-comment-next>${isLast?'See my results \u2192':'Continue to '+PILLARS[step.pi+1].short+' \u2192'}</button>
+    </div>`;
+}
+function updateProgress(){
+  const answeredCount = Object.keys(state.answers).length;
+  const pct = Math.round((answeredCount/totalQ)*100);
+  const fill = document.getElementById('progFill');
+  const label = document.getElementById('progLabel');
+  if(fill) fill.style.width = pct+'%';
+  if(label) label.innerHTML = `<span>Question ${answeredCount} of ${totalQ}</span><span>${pct}% complete</span>`;
+  const step = STEPS[state.step];
+  const jpath = document.querySelector('[data-jpath]');
+  if(jpath && step){ const total = PILLARS.length; jpath.style.width = ((step.pi/total)*90)+'%'; }
+}
+function goTo(newIndex, direction){
+  if(quizBusy) return;
+  if(newIndex < 0) newIndex = 0;
+  if(newIndex >= STEPS.length){ finish(); return; }
+  quizBusy = true;
+  const qBody = document.getElementById('qBody');
+  const outCls = direction === 'fwd' ? 'out-l' : 'out-r';
+  const inCls = direction === 'fwd' ? 'in-r' : 'in-l';
+  if(qBody){
+    qBody.firstElementChild.classList.add(outCls);
+    setTimeout(()=>{
+      state.step = newIndex; save();
+      const step = STEPS[state.step];
+      let body = '';
+      if(step.type === 'intro') body = renderPillarIntro(step.pi);
+      else if(step.type === 'q') body = renderQuestion(step);
+      else if(step.type === 'comment') body = renderCommentStep(step);
+      qBody.innerHTML = `<div class="qcard ${inCls}">${body}</div>`;
+      updateProgress(); attachQuiz(); quizBusy = false;
+    }, 240);
+  } else { state.step = newIndex; save(); render(); quizBusy = false; }
+}
+function setAnswer(pi, qi, val){
+  if(quizBusy) return;
+  state.answers[pi+'_'+qi] = val; save();
+  document.querySelectorAll('.qopt').forEach(el=>{ el.classList.toggle('sel', Number(el.dataset.opt) === val); });
+  setTimeout(()=> goTo(state.step+1, 'fwd'), 220);
+}
+function quizNext(){ goTo(state.step+1, 'fwd'); }
+function quizBack(){ goTo(state.step-1, 'back'); }
+function attachQuiz(){
+  document.querySelectorAll('.qopt').forEach(el=>{
+    el.addEventListener('click', ()=>{ const step = STEPS[state.step]; setAnswer(step.pi, step.qi, Number(el.dataset.opt)); });
+  });
+  const back = document.querySelector('[data-back]'); if(back) back.addEventListener('click', quizBack);
+  const introBtn = document.querySelector('[data-intro-start]'); if(introBtn) introBtn.addEventListener('click', quizNext);
+  const cmtNext = document.querySelector('[data-comment-next]');
+  if(cmtNext) cmtNext.addEventListener('click', ()=>{
+    const step = STEPS[state.step];
+    const ta = document.getElementById('cmt_'+step.pi);
+    if(ta) state.comments[step.pi] = ta.value.trim();
+    save(); goTo(state.step+1, 'fwd');
+  });
+}
+document.addEventListener('keydown', (e)=>{
+  if(state.view !== 'quiz' || quizBusy) return;
+  const step = STEPS[state.step];
+  if(step.type === 'q' && e.key >= '1' && e.key <= '5'){ const opt = SCALE[Number(e.key)-1]; setAnswer(step.pi, step.qi, opt.v); }
+  else if(e.key === 'ArrowRight'){ if(step.type !== 'q' || state.answers[step.pi+'_'+step.qi] != null) quizNext(); }
+  else if(e.key === 'ArrowLeft'){ quizBack(); }
+});
+function finish(){
+  const scores = scoresOf(state.answers);
+  const overall = overallOf(scores);
+  const vis = visibilityRisk(state.answers);
+  const id = 'r_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);
+  const record = { id, createdAt: Date.now(), profile: Object.assign({}, state.profile), gate: {}, answers: Object.assign({}, state.answers), comments: Object.assign({}, state.comments), scores, overall, vis, unlocked:false };
+  SAVED.push(record); saveAll();
+  ipTrack('assessment_completed', {overall_score: overall});
+  state.view = 'preview'; state.viewId = id; save(); render();
+}
+
+function getRecord(id){ return SAVED.find(r=>r.id===id); }
+function renderPreview(){
+  const rec = getRecord(state.viewId);
+  if(!rec) return renderHero();
+  const band = bandOf(rec.overall);
+  const db = dominantBarrier(rec.scores);
+  return `${topbarHTML()}
+  <div class="section card" style="max-width:640px;margin:0 auto">
+    <div class="eyebrow">Your InnoPulse preview</div>
+    <h2>Innovation Health: <span style="color:${gaugeColor(rec.overall)}">${fmtPct(rec.overall)}</span> \u2014 ${BANDS[band].label}</h2>
+    <p class="muted">${OVERALL_TEXT[band]}</p>
+    <div class="lockmsg">\ud83d\udd12 The full InnoPulse dashboard \u2014 pillar-by-pillar gauges, your innovation risk indicators, value-leakage map, quick wins and a 90-day action plan \u2014 is ready. Enter your details below to unlock it (and we'll email a copy of your report to you).</div>
+    <div class="section" style="margin-top:18px">
+      ${GATE_FIELDS.map(f=>`<div class="field">
+        <label for="gf_${f.id}">${f.label} <span class="req">*</span></label>
+        <input type="${f.type}" id="gf_${f.id}" placeholder="${f.placeholder||''}" value="${escapeHtml(state.gate[f.id]||'')}">
+      </div>`).join('')}
+      <div id="gateMsg"></div>
+      <button class="btn btn-primary btn-block" data-unlock>Unlock my full InnoPulse dashboard \u2192</button>
+      <p class="small muted" style="margin-top:10px">Your details are stored only for this assessment record and to share your report with you. Primary barrier detected: <strong>${db.pillar.barrier}</strong> (${db.pillar.short}).</p>
+    </div>
+  </div>
+  <div class="footer">${CONFIG.brand} \u00b7 ${CONFIG.productFull}</div>`;
+}
+function attachPreview(){
+  const btn = document.querySelector('[data-unlock]');
+  if(btn) btn.addEventListener('click', unlock);
+}
+function validEmail(s){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s); }
+function validPhone(s){ return /[0-9]{6,}/.test((s||'').replace(/[^0-9]/g,'')); }
+
+/* Build the submission payload from a record (server expects this shape) */
+function buildPayload(rec){
+  const band = bandOf(rec.overall);
+  const db = dominantBarrier(rec.scores);
+  const pathway = pathwayOf(rec.overall);
+  const offer = offerById(pathway.offerId);
+  const ind = {};
+  INDICATORS.forEach(i=>{ ind[i.id] = i.calc(rec.answers); });
+  const pillars = {};
+  PILLARS.forEach((p,i)=>{ pillars[p.id] = rec.scores[i]; });
+  const hp = document.getElementById('ip_hp');
+  return {
+    assessmentId: rec.assessmentId || rec.id,
+    name: rec.gate.gname || rec.profile.respondent || '',
+    email: rec.gate.email || '',
+    phone: rec.gate.phone || '',
+    company: rec.profile.company || '',
+    industry: rec.profile.industry || '',
+    service: rec.profile.service || '',
+    age: rec.profile.age || '',
+    education: rec.profile.education || '',
+    gender: rec.profile.gender || '',
+    overall: rec.overall,
+    pillars: pillars,
+    indicators: ind,
+    visibilityRisk: rec.vis ? rec.vis.pct : '',
+    band: BANDS[band].label,
+    dominantBarrier: db.pillar.barrier,
+    pathway: pathway.stage,
+    offer: offer ? offer.name : '',
+    comments: PILLARS.map((p,i)=> rec.comments[i] ? (p.short+': '+rec.comments[i]) : '').filter(Boolean).join(' | '),
+    website: hp ? hp.value : '' /* honeypot */
+  };
+}
+
+/* Queue + retry helpers for offline fallback */
+function getPending(){ try{ return JSON.parse(localStorage.getItem('innopulse-pending')||'[]'); }catch(e){ return []; } }
+function setPending(arr){ try{ localStorage.setItem('innopulse-pending', JSON.stringify(arr)); }catch(e){} }
+function queuePending(payload){ const q = getPending(); q.push({payload, ts:Date.now()}); setPending(q); }
+function flushPending(){
+  const q = getPending();
+  if(!q.length || !CONFIG.submitUrl) return;
+  const remaining = [];
+  let idx = 0;
+  (function next(){
+    if(idx >= q.length){ setPending(remaining); return; }
+    const item = q[idx++];
+    submitPayload(item.payload).then(res=>{
+      if(!(res && res.ok)) remaining.push(item);
+    }).catch(()=>{ remaining.push(item); }).finally(next);
+  })();
+}
+
+/* Core POST to Apps Script (text/plain avoids CORS preflight) */
+function submitPayload(payload){
+  if(!CONFIG.submitUrl) return Promise.resolve({ok:false, error:'No endpoint configured'});
+  return fetch(CONFIG.submitUrl, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify(payload)
+  }).then(r=>r.json());
+}
+
+function unlock(){
+  const rec = getRecord(state.viewId);
+  if(!rec) return;
+  const values = {}; let errs = [];
+  GATE_FIELDS.forEach(f=>{
+    const el = document.getElementById('gf_'+f.id);
+    const v = el ? el.value.trim() : '';
+    values[f.id] = v;
+    if(f.required && !v) errs.push(f.label+' is required.');
+  });
+  if(!errs.length && !validEmail(values.email)) errs.push('Please enter a valid email address.');
+  if(!errs.length && !validPhone(values.phone)) errs.push('Please enter a valid phone number.');
+  const msg = document.getElementById('gateMsg');
+  if(errs.length){ if(msg) msg.innerHTML = `<div class="banner-err">${errs.join(' ')}</div>`; return; }
+
+  state.gate = values; rec.gate = values; rec.unlocked = true; rec.unlockedAt = Date.now();
+  if(!rec.assessmentId){ rec.assessmentId = 'IP-'+new Date(rec.createdAt).toISOString().slice(0,10).replace(/-/g,'')+'-'+rec.id.slice(-6).toUpperCase(); }
+  saveAll(); save();
+
+  // Loading state
+  const btn = document.querySelector('[data-unlock]');
+  if(btn){ btn.disabled = true; btn.textContent = 'Submitting your results\u2026'; }
+  if(msg) msg.innerHTML = `<div class="banner-info">Saving your results, ${escapeHtml((values.gname||'').split(' ')[0])}\u2026</div>`;
+
+  const payload = buildPayload(rec);
+  sendToWebhook(rec); /* legacy hook, no-op unless webhookUrl set */
+
+  submitPayload(payload).then(res=>{
+    if(res && res.ok){
+      ipTrack('lead_submitted', {company: payload.company});
+      ipTrack('report_generated');
+      rec.submitted = true; if(res.pdfUrl) rec.pdfUrl = res.pdfUrl; saveAll();
+      if(msg) msg.innerHTML = `<div class="banner-ok">Thanks, ${escapeHtml((values.gname||'').split(' ')[0])} \u2014 your results were saved and a copy is on its way to your email. Opening your dashboard\u2026</div>`;
+      setTimeout(()=>{ state.view = 'dashboard'; save(); render(); }, 900);
+    } else {
+      showSubmitError(rec, payload, (res && res.error) || 'Submission failed.');
+    }
+  }).catch(err=>{
+    // network failure -> offline fallback
+    queuePending(payload);
+    showSubmitError(rec, payload, 'Network error \u2014 your results are saved locally and will retry automatically.');
+  });
+}
+
+function showSubmitError(rec, payload, errText){
+  const msg = document.getElementById('gateMsg');
+  const btn = document.querySelector('[data-unlock]');
+  if(btn){ btn.disabled = false; btn.textContent = 'Unlock my full InnoPulse dashboard \u2192'; }
+  if(msg){
+    msg.innerHTML = `<div class="banner-err">${escapeHtml(errText)}</div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn btn-dark btn-sm" data-retry>Retry submission</button>
+        <a class="btn btn-ghost btn-sm" href="${CONFIG.backupFormUrl}" target="_blank" rel="noopener">Use backup form</a>
+        <button class="btn btn-ghost btn-sm" data-skip>Continue to dashboard anyway</button>
+      </div>`;
+    const retry = msg.querySelector('[data-retry]');
+    if(retry) retry.addEventListener('click', ()=>{
+      if(btn){ btn.disabled = true; }
+      msg.innerHTML = `<div class="banner-info">Retrying\u2026</div>`;
+      submitPayload(payload).then(res=>{
+        if(res && res.ok){
+          ipTrack('lead_submitted', {company: payload.company});
+          rec.submitted = true; if(res.pdfUrl) rec.pdfUrl = res.pdfUrl; saveAll();
+          state.view='dashboard'; save(); render();
+        } else { showSubmitError(rec, payload, (res&&res.error)||'Submission failed again.'); }
+      }).catch(()=>{ queuePending(payload); showSubmitError(rec, payload, 'Still offline \u2014 saved locally, will retry later.'); });
+    });
+    const skip = msg.querySelector('[data-skip]');
+    if(skip) skip.addEventListener('click', ()=>{ state.view='dashboard'; save(); render(); });
+  }
+}
+
+function sendToWebhook(rec){
+  if(!CONFIG.webhookUrl) return;
+  try{ fetch(CONFIG.webhookUrl, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(registerRow(rec)) }).catch(()=>{}); }catch(e){}
+}
+function registerColumns(){
+  return ['Date','Name','Company','Email','Phone','Industry','Years of Service','Age','Education','Gender','Overall Score','Band','Visibility Risk %','Dominant Barrier'].concat(PILLARS.map(p=>p.short+' Score'));
+}
+function registerRow(rec){
+  const band = bandOf(rec.overall); const db = dominantBarrier(rec.scores);
+  const row = {
+    'Date': new Date(rec.createdAt).toISOString().slice(0,10),
+    'Name': rec.gate.gname || '', 'Company': rec.profile.company || '',
+    'Email': rec.gate.email || '', 'Phone': rec.gate.phone || '',
+    'Industry': rec.profile.industry || '', 'Years of Service': rec.profile.service || '',
+    'Age': rec.profile.age || '', 'Education': rec.profile.education || '', 'Gender': rec.profile.gender || '',
+    'Overall Score': rec.overall, 'Band': BANDS[band].label,
+    'Visibility Risk %': rec.vis ? rec.vis.pct : '', 'Dominant Barrier': db.pillar.barrier
+  };
+  PILLARS.forEach((p,i)=>{ row[p.short+' Score'] = rec.scores[i]; });
+  return row;
+}
+function registeredRecords(){ return SAVED.filter(r=>r.unlocked); }
+function downloadBlob(content, filename, type){
+  const blob = new Blob([content], {type}); const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+}
+function csvEscape(v){ const s = String(v==null?'':v); if(/[",\n]/.test(s)) return '"'+s.replace(/"/g,'""')+'"'; return s; }
+function exportRegisterCSV(){
+  const cols = registerColumns(); const rows = registeredRecords().map(registerRow);
+  let csv = cols.map(csvEscape).join(',')+'\n';
+  rows.forEach(r=>{ csv += cols.map(c=>csvEscape(r[c])).join(',')+'\n'; });
+  downloadBlob(csv, 'innopulse-register.csv', 'text/csv;charset=utf-8;');
+}
+function exportRegisterXLSX(){
+  const cols = registerColumns(); const rows = registeredRecords().map(registerRow);
+  function buildAndDownload(){
+    const ws = XLSX.utils.json_to_sheet(rows, {header:cols});
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'InnoPulse Register');
+    XLSX.writeFile(wb, 'innopulse-register.xlsx');
+  }
+  if(typeof XLSX !== 'undefined'){ buildAndDownload(); return; }
+  const script = document.createElement('script');
+  script.src = 'https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js';
+  script.onload = buildAndDownload;
+  script.onerror = ()=>{ alert('Could not load Excel library \u2014 exporting as CSV instead.'); exportRegisterCSV(); };
+  document.head.appendChild(script);
+}
+window.addEventListener('online', flushPending);
+
+function renderDashboard(){
+  const rec = getRecord(state.viewId);
+  if(!rec) return renderHero();
+  const {scores, overall, vis} = rec;
+  const band = bandOf(overall);
+  const db = dominantBarrier(scores);
+  const vl = valueLeakage(scores);
+  const insight = execInsight(scores, overall, vis);
+  const trend = trendOf(rec);
+  const pathway = pathwayOf(overall);
+  const offer = offerById(pathway.offerId);
+  const wins = quickWins(scores, vis);
+  const plan = ninetyDayPlan(scores);
+  const recs = recommendedSolutions(scores);
+  return `${topbarHTML()}
+  <div class="section">
+    <div class="eyebrow">InnoPulse Results \u2014 ${escapeHtml(rec.profile.company||'Your organisation')}</div>
+    <h1 class="hero-title">${BANDS[band].label} band \u2014 Innovation Health ${fmtPct(overall)}</h1>
+    <p class="tagline">${OVERALL_TEXT[band]}</p>
+  </div>
+  <div class="section card" id="pulseCard">
+    <div class="eyebrow">Innovation Health Pulse</div>
+    ${equationFlowHTML(scores, overall)}
+  </div>
+  <div class="section kpi-grid">
+    <div class="kpi">
+      <div class="klabel">Overall Innovation Health</div>
+      <div class="kval" style="color:${gaugeColor(overall)}">${fmtPct(overall)}</div>
+      <div class="ksub">${BANDS[band].label} band${trend?` \u00b7 ${trend.delta>=0?'+':''}${trend.delta} pts vs last assessment`:''}</div>
+    </div>
+    <div class="kpi ${db.score<40?'risk':''}">
+      <div class="klabel">Dominant Barrier</div>
+      <div class="kval" style="font-size:22px">${db.pillar.barrier}</div>
+      <div class="ksub">${db.pillar.short} \u2014 ${fmtPct(db.score)}</div>
+    </div>
+    <div class="kpi ${vl.level==='high'?'risk':(vl.level==='medium'?'warn':'')}">
+      <div class="klabel">Value Leakage Risk</div>
+      <div class="kval" style="font-size:22px;text-transform:capitalize">${vl.level}</div>
+      <div class="ksub">${vl.contributors.length} pillar(s) below 40%</div>
+    </div>
+    <div class="kpi ${vis.level==='high'?'risk':(vis.level==='medium'?'warn':'')}">
+      <div class="klabel">Visibility Risk</div>
+      <div class="kval" style="font-size:22px">${vis.pct}%</div>
+      <div class="ksub">"Don't know" answers \u2014 ${vis.level} risk</div>
+    </div>
+  </div>
+  <div class="section card" id="barrierCard">
+    <div class="eyebrow">The Innovation Leadership Equation \u2014 live</div>
+    <h3>Where is value leaking out of your system?</h3>
+    ${leadershipWheelHTML(scores, overall)}
+  </div>
+  <div class="section card" id="tankCard">
+    <div class="eyebrow">Value Leakage Visualisation</div>
+    <h3>Innovation Value Tank</h3>
+    ${valueLeakageHTML(scores, overall)}
+  </div>
+  <div class="section card-dark" id="insightCard">
+    <div class="eyebrow">Executive Insight</div>
+    <div class="tw-label">InnoPulse Intelligence</div>
+    <div id="twLines" style="font-size:15px;font-weight:700;margin-top:8px"></div>
+  </div>
+  <div class="section card">
+    <div class="eyebrow">Pillar Gauges</div>
+    <h3>The 5 Pillars \u2014 InnoPulse Score</h3>
+    ${gaugesBlock(scores, overall)}
+  </div>
+  <div class="section card">
+    <div class="row" style="align-items:center;justify-content:space-between">
+      <div><div class="eyebrow">Innovation Radar</div><h3 style="margin-bottom:0">Pillar profile</h3></div>
+      ${cmpSelectHTML(rec)}
+    </div>
+    <div id="radarWrap" style="display:flex;justify-content:center;margin-top:10px">${radarSVG(scores)}</div>
+    <div id="benchmarkBars"></div>
+  </div>
+  <div class="section card">
+    <div class="eyebrow">Pillar Heatmap</div>
+    <div class="heatmap">
+      ${PILLARS.map((p,i)=>`<div class="heat-cell heat-${bandOf(scores[i])}">${p.short}<span class="hv">${fmtPct(scores[i])}</span></div>`).join('')}
+    </div>
+  </div>
+  <div class="section card">
+    <div class="eyebrow">Where Value Is Leaking \u2014 Diagnostic Indicators</div>
+    <h3>8 Executive Indicators</h3>
+    <div class="ind-grid">
+      ${INDICATORS.map(ind=>{
+        const val = ind.calc(rec.answers);
+        const st = indicatorStatus(val, ind.inverse);
+        const color = indicatorColor(val, ind.inverse);
+        return `<div class="ind-card">
+          <div class="flex-between"><h4>${ind.name}</h4><span class="ind-status ${st.cls}">${st.label}</span></div>
+          <div class="ind-val" style="color:${color}">${fmtPct(val)}</div>
+          <div class="ind-bar"><div class="fill" data-indfill data-w="${val||0}" style="background:${color}"></div></div>
+          <div class="small muted">${ind.desc}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>
+  <div class="row section">
+    <div class="col card">
+      <div class="eyebrow">Quick Wins</div>
+      <h3>Start here</h3>
+      <ul style="margin:0;padding-left:18px">${wins.map(w=>`<li style="margin-bottom:8px">${w}</li>`).join('')}</ul>
+    </div>
+    <div class="col card">
+      <div class="eyebrow">First 90 Days</div>
+      <h3>Action plan</h3>
+      ${plan.map(s=>`<div style="margin-bottom:10px"><strong>${s.window} \u2014 ${s.title}</strong><div class="small muted">${s.text}</div></div>`).join('')}
+    </div>
+  </div>
+  <div class="section card">
+    <div class="eyebrow">Pillar Detail</div>
+    <h3>Click a pillar to explore its score, key actions and recommended solutions</h3>
+    <div class="row" style="margin-top:10px">
+      ${PILLARS.map((p,i)=>{
+        const b = bandOf(scores[i]);
+        const color = b==='high'?'var(--green)':(b==='medium'?'var(--amber)':'var(--red)');
+        return `<div class="col pillar-card" data-pillar="${i}" style="min-width:200px">
+          <div class="ptitle">
+            <div><div class="small muted" style="text-transform:uppercase;font-weight:800;letter-spacing:1px">${p.short}</div><div style="font-weight:700">${p.eq}</div></div>
+            <div class="pscore" style="color:${color}">${fmtPct(scores[i])}</div>
+          </div>
+          <div class="pbar"><div class="pfill" data-w="${scores[i]}" style="background:${color}"></div></div>
+          <span class="band-w ${b}">${BANDS[b].label}</span>
+          ${b!=='high' ? `<div class="small muted" style="margin-top:8px">Barrier: <strong>${p.barrier}</strong></div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>
+  </div>
+  <div class="section card">
+    <div class="eyebrow">Maturity Journey</div>
+    <h3>Discovery \u2192 Alignment \u2192 Systemisation \u2192 Operationalisation \u2192 Scale</h3>
+    <div id="roadWrap">${roadHTML(overall)}</div>
+  </div>
+  <div class="section card-dark">
+    <div class="eyebrow">Recommended Path: ${pathway.stage}</div>
+    <h3>${pathway.tagline}</h3>
+    <div class="row" style="margin-top:14px;align-items:stretch">
+      ${CONFIG.offers.map(o=>{
+        const isRec = o.id === pathway.offerId;
+        return `<div class="col offer-card ${isRec?'active':''}" style="min-width:220px">
+          ${isRec ? `<span class="offer-badge">\u2605 Recommended for you</span>` : ''}
+          <strong>${o.name}</strong>
+          <div style="margin-top:8px"><span class="tag" style="background:${isRec?'var(--lime)':'rgba(255,255,255,.1)'};color:${isRec?'var(--navy)':'#fff'}">${o.price}</span></div>
+          <p class="muted" style="margin-top:8px;font-size:12.5px">${o.desc}</p>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="row" style="margin-top:14px">
+      ${recs.map(r=>`<div class="col" style="min-width:220px">
+        <div class="small" style="font-weight:800;color:var(--lime);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">${r.pillar.short} \u00b7 ${BANDS[r.band].label}</div>
+        <div class="tag-list">${r.solutions.map(s=>`<span class="tag" style="background:rgba(255,255,255,.08);color:#fff">${s}</span>`).join('')}</div>
+      </div>`).join('')}
+    </div>
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-primary" data-booking href="${CONFIG.workshopUrl}" target="_blank" rel="noopener">Book Your Results Workshop \u2192</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)" href="${CONFIG.bookingUrl}">${CONFIG.bookingLabel}</a>
+    </div>
+  </div>
+  ${trend ? trendCardHTML(trend) : ''}
+  <div class="section card">
+    <div class="eyebrow">Export & Records</div>
+    <div class="row">
+      <button class="btn btn-ghost" data-print>Download PDF report</button>
+      <button class="btn btn-ghost" data-export-json>Export this result (JSON)</button>
+      <button class="btn btn-ghost" data-export-csv>Download respondent register (CSV)</button>
+      <button class="btn btn-ghost" data-export-xlsx>Download respondent register (Excel)</button>
+    </div>
+    <p class="small muted" style="margin-top:10px">The respondent register automatically records every completed &amp; unlocked InnoPulse Check \u2014 ${registeredRecords().length} response${registeredRecords().length===1?'':'s'} captured so far.</p>
+  </div>
+  <div class="footer">${CONFIG.brand} \u00b7 ${CONFIG.productFull} \u00b7 <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
+}
+
+function cmpSelectHTML(rec){
+  const others = registeredRecords().filter(r=>r.id!==rec.id);
+  const sameCompany = others.filter(r=>(r.profile.company||'').trim().toLowerCase()===(rec.profile.company||'').trim().toLowerCase());
+  let opts = `<option value="">No comparison</option>`;
+  if(sameCompany.length){ opts += `<option value="team">Team average (${sameCompany.length} other response${sameCompany.length===1?'':'s'})</option>`; }
+  others.forEach(r=>{ opts += `<option value="${r.id}">${escapeHtml(r.profile.company||'Unnamed')} \u2014 ${new Date(r.createdAt).toLocaleDateString()}</option>`; });
+  if(others.length===0) return '';
+  return `<select id="cmpSelect" style="max-width:260px"><optgroup label="Compare radar to">${opts}</optgroup></select>`;
+}
+function updateRadar(rec){
+  const sel = document.getElementById('cmpSelect');
+  const wrap = document.getElementById('radarWrap');
+  const bench = document.getElementById('benchmarkBars');
+  if(!sel || !wrap) return;
+  const val = sel.value;
+  if(!val){ wrap.innerHTML = radarSVG(rec.scores); bench.innerHTML=''; return; }
+  let overlay, label;
+  if(val === 'team'){
+    const others = registeredRecords().filter(r=>r.id!==rec.id && (r.profile.company||'').trim().toLowerCase()===(rec.profile.company||'').trim().toLowerCase());
+    overlay = PILLARS.map((_,i)=>{ const vals = others.map(o=>o.scores[i]).filter(v=>v!=null); return vals.length ? Math.round((vals.reduce((a,b)=>a+b,0)/vals.length)*10)/10 : null; });
+    label = 'Team average';
+  } else { const other = getRecord(val); overlay = other.scores; label = (other.profile.company||'Comparison')+' \u2014 '+new Date(other.createdAt).toLocaleDateString(); }
+  wrap.innerHTML = radarSVG(rec.scores, {overlay, overlayLabel:label});
+  let bars = `<div class="section" style="margin-top:10px"><div class="eyebrow">Team Benchmark</div>`;
+  PILLARS.forEach((p,i)=>{
+    const you = rec.scores[i]||0; const them = overlay[i]==null?0:overlay[i];
+    bars += `<div style="margin-bottom:10px">
+      <div class="small" style="font-weight:700;margin-bottom:4px">${p.short}</div>
+      <div class="ind-bar"><div class="fill" data-w="${you}" style="background:var(--lime2);width:0"></div></div>
+      <div class="ind-bar" style="margin-top:2px"><div class="fill" data-w="${them}" style="background:#b9b9aa;width:0"></div></div>
+      <div class="small muted">You: ${fmtPct(you)} \u00b7 ${label}: ${fmtPct(them)}</div>
+    </div>`;
+  });
+  bars += `</div>`;
+  bench.innerHTML = bars;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ bench.querySelectorAll('[data-w]').forEach(el=>{ el.style.width = el.dataset.w+'%'; }); }));
+}
+function trendCardHTML(trend){
+  return `<div class="section card">
+    <div class="eyebrow">Trend vs Previous Assessment</div>
+    <h3>Overall Health: ${trend.delta>=0?'+':''}${trend.delta} pts since ${new Date(trend.prior.createdAt).toLocaleDateString()}</h3>
+    <div class="ind-grid">
+      ${PILLARS.map((p,i)=>`<div class="ind-card">
+        <h4>${p.short}</h4>
+        <div class="ind-val" style="color:${trend.pillarDeltas[i]>=0?'var(--green)':'var(--red)'}">${trend.pillarDeltas[i]>=0?'+':''}${trend.pillarDeltas[i]}</div>
+        <div class="small muted">pts vs previous</div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+function openPillar(i){
+  const rec = getRecord(state.viewId);
+  const p = PILLARS[i]; const score = rec.scores[i]; const b = bandOf(score); const comment = rec.comments[i];
+  const html = `<div class="modal-bg" data-modal-bg>
+    <div class="modal">
+      <button class="close" data-modal-close>\u00d7</button>
+      ${pillarIconHTML(p.id)}
+      <div class="pillar-eq">${p.eq} \u00b7 Barrier if weak: ${p.barrier}</div>
+      <h2>${p.name}</h2>
+      <div class="row" style="align-items:center;margin-bottom:10px">
+        <div class="kval" style="color:${b==='high'?'var(--green)':(b==='medium'?'var(--amber)':'var(--red)')}">${fmtPct(score)}</div>
+        <span class="band-w ${b}">${BANDS[b].label}</span>
+      </div>
+      <p>${p.bands[b].text}</p>
+      <h4>Key actions</h4>
+      <ul>${p.bands[b].actions.map(a=>`<li>${a}</li>`).join('')}</ul>
+      <h4>Recommended solutions</h4>
+      <div class="tag-list">${p.bands[b].solutions ? p.bands[b].solutions.map(s=>`<span class="tag">${s}</span>`).join('') : p.solutions[b].map(s=>`<span class="tag">${s}</span>`).join('')}</div>
+      ${comment ? `<h4>Your comment</h4><p class="muted">${escapeHtml(comment)}</p>` : ''}
+    </div>
+  </div>`;
+  const div = document.createElement('div'); div.innerHTML = html;
+  document.body.appendChild(div.firstElementChild);
+  document.querySelector('[data-modal-close]').addEventListener('click', closePillar);
+  document.querySelector('[data-modal-bg]').addEventListener('click', (e)=>{ if(e.target.dataset.modalBg!=null && e.target===e.currentTarget) closePillar(); });
+}
+function closePillar(){ const bg = document.querySelector('[data-modal-bg]'); if(bg) bg.remove(); }
+function buildPrintReport(rec){
+  const band = bandOf(rec.overall); const db = dominantBarrier(rec.scores); const vl = valueLeakage(rec.scores);
+  const wins = quickWins(rec.scores, rec.vis); const plan = ninetyDayPlan(rec.scores); const recs = recommendedSolutions(rec.scores);
+  const bandColor = band==='high'?'var(--green)':(band==='medium'?'var(--amber)':'var(--red)');
+  const html = `
+    <div class="rp-header">
+      <div><h1>${CONFIG.productFull}</h1><div class="rp-meta">${CONFIG.brand} \u00b7 Innovation Capability Report</div></div>
+      <div class="rp-meta" style="text-align:right">${escapeHtml(rec.profile.company||'')}<br>${new Date(rec.createdAt).toLocaleDateString()}</div>
+    </div>
+    <div class="rp-section">
+      <h2>Executive Summary</h2>
+      <p>Overall Innovation Health: <strong>${fmtPct(rec.overall)}</strong> \u2014 <span class="rp-band" style="background:${bandColor}">${BANDS[band].label}</span></p>
+      <p>${OVERALL_TEXT[band]}</p>
+      <p>Dominant barrier: <strong>${db.pillar.barrier}</strong> (${db.pillar.short}, ${fmtPct(db.score)}). Visibility risk: <strong>${rec.vis.pct}%</strong> "Don't know" responses (${rec.vis.level} risk). Value leakage risk: <strong>${vl.level}</strong>.</p>
+    </div>
+    <div class="rp-section">
+      <h2>Pillar Scores \u2014 The Innovation Leadership Equation</h2>
+      <table><tr><th>Pillar</th><th>Equation term</th><th>Score</th><th>Band</th><th>Barrier if weak</th></tr>
+        ${PILLARS.map((p,i)=>`<tr><td>${p.name}</td><td>${p.eq}</td><td>${fmtPct(rec.scores[i])}</td><td>${BANDS[bandOf(rec.scores[i])].label}</td><td>${p.barrier}</td></tr>`).join('')}
+      </table>
+    </div>
+    <div class="rp-section"><h2>Quick Wins</h2><ul>${wins.map(w=>`<li>${w}</li>`).join('')}</ul></div>
+    <div class="rp-section"><h2>First 90 Days</h2><ul>${plan.map(s=>`<li><strong>${s.window} \u2014 ${s.title}:</strong> ${s.text}</li>`).join('')}</ul></div>
+    <div class="rp-section"><h2>Recommended Solutions</h2>${recs.map(r=>`<p><strong>${r.pillar.short}</strong> (${BANDS[r.band].label}): ${r.solutions.join(', ')}</p>`).join('')}</div>
+    <div class="rp-section">
+      <h2>Respondent Details</h2>
+      <table>
+        <tr><th>Name</th><td>${escapeHtml(rec.gate.gname||'')}</td><th>Email</th><td>${escapeHtml(rec.gate.email||'')}</td></tr>
+        <tr><th>Phone</th><td>${escapeHtml(rec.gate.phone||'')}</td><th>Company</th><td>${escapeHtml(rec.profile.company||'')}</td></tr>
+        <tr><th>Industry</th><td>${escapeHtml(rec.profile.industry||'')}</td><th>Years of service</th><td>${escapeHtml(rec.profile.service||'')}</td></tr>
+      </table>
+    </div>
+    <div class="rp-foot">${CONFIG.narrative}<br>${CONFIG.brand} \u00b7 ${CONFIG.productFull} \u00b7 Report generated ${new Date().toLocaleString()}</div>
+  `;
+  const report = document.getElementById('report');
+  report.innerHTML = html; report.classList.remove('hide'); document.body.classList.add('printing');
+  const restore = ()=>{ document.body.classList.remove('printing'); report.classList.add('hide'); window.removeEventListener('afterprint', restore); };
+  window.addEventListener('afterprint', restore);
+  setTimeout(()=>window.print(), 50);
+}
+function attachDashboard(){
+  const rec = getRecord(state.viewId);
+  if(!rec) return;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('.gfill').forEach(el=>{ el.style.strokeDasharray = el.dataset.w+' 100'; });
+    document.querySelectorAll('.pbar .pfill').forEach(el=>{ el.style.width = el.dataset.w+'%'; });
+    document.querySelectorAll('[data-indfill]').forEach(el=>{ el.style.width = (el.dataset.w||0)+'%'; });
+  }));
+  const barrierCard = document.getElementById('barrierCard'); if(barrierCard) animateLeadershipWheel(barrierCard);
+  const tankCard = document.getElementById('tankCard'); if(tankCard) animateValueLeakage(tankCard, rec.scores, rec.overall);
+  const roadWrap = document.getElementById('roadWrap'); if(roadWrap) animateRoad(roadWrap, rec.overall);
+  const insight = execInsight(rec.scores, rec.overall, rec.vis);
+  const twLines = document.getElementById('twLines');
+  if(twLines){ twLines.innerHTML = ''; insight.lines.forEach((line)=>{ const div = document.createElement('div'); div.className = 'tw-line'; div.textContent = line || ' '; twLines.appendChild(div); }); }
+  const cmp = document.getElementById('cmpSelect'); if(cmp) cmp.addEventListener('change', ()=>updateRadar(rec));
+  document.querySelectorAll('[data-pillar]').forEach(el=>{ el.addEventListener('click', ()=>openPillar(Number(el.dataset.pillar))); });
+  const booking = document.querySelector('[data-booking]'); if(booking) booking.addEventListener('click', ()=>ipTrack('booking_clicked'));
+  const printBtn = document.querySelector('[data-print]'); if(printBtn) printBtn.addEventListener('click', ()=>buildPrintReport(rec));
+  const expJson = document.querySelector('[data-export-json]'); if(expJson) expJson.addEventListener('click', ()=>{ downloadBlob(JSON.stringify(rec, null, 2), 'innopulse-result-'+rec.id+'.json', 'application/json'); });
+  const expCsv = document.querySelector('[data-export-csv]'); if(expCsv) expCsv.addEventListener('click', exportRegisterCSV);
+  const expXlsx = document.querySelector('[data-export-xlsx]'); if(expXlsx) expXlsx.addEventListener('click', exportRegisterXLSX);
+  const restart = document.querySelector('[data-restart]'); if(restart) restart.addEventListener('click', ()=>{ state = defaultState(); save(); render(); });
+}
+window.addEventListener('load', function(){ render(); flushPending(); });
+
+</script>
+</body>
+</html>
