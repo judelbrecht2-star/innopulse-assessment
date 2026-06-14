@@ -2227,7 +2227,7 @@ function trackEvent(name, params){
    is unreachable, the respondent's own copy (export tools on the dashboard)
    still works. */
 function sendToWebhook(rec){
-  if(!CONFIG.webhookUrl) return;
+  if(!CONFIG.webhookUrl) return; // wired
   try{
     const band = bandOf(rec.overall);
     const db = dominantBarrier(rec.scores);
