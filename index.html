@@ -2386,4 +2386,389 @@ function renderDashboard(){
 
   <div class="section card">
     <div class="row" style="align-items:center;justify-content:space-between">
-      <div><div class="eyebrow">Innovation Rada
+      <div><div class="eyebrow">Innovation Radar</div><h3 style="margin-bottom:0">Pillar profile</h3></div>
+      ${cmpSelectHTML(rec)}
+    </div>
+    <div id="radarWrap" style="display:flex;justify-content:center;margin-top:10px">${radarSVG(scores)}</div>
+    <div id="benchmarkBars"></div>
+  </div>
+
+  <div class="section card" id="tankCard">
+    <div class="eyebrow">Value Leakage Visualisation</div>
+    <h3>Innovation Value Tank</h3>
+    ${valueLeakageHTML(scores, overall)}
+  </div>
+
+  <div class="section card-dark" id="insightCard">
+    <div class="eyebrow">Executive Insight</div>
+    <div class="tw-label">InnoPulse Intelligence</div>
+    <div id="twLines" style="font-size:15px;font-weight:700;margin-top:8px"></div>
+  </div>
+
+  <div class="section card">
+    <div class="eyebrow">Where Value Is Leaking — Diagnostic Indicators</div>
+    <h3>8 Executive Indicators</h3>
+    <div class="ind-grid">
+      ${INDICATORS.map(ind=>{
+        const val = ind.calc(rec.answers);
+        const st = indicatorStatus(val, ind.inverse);
+        const color = indicatorColor(val, ind.inverse);
+        return `<div class="ind-card">
+          <div class="flex-between"><h4>${ind.name}</h4><span class="ind-status ${st.cls}">${st.label}</span></div>
+          <div class="ind-val" style="color:${color}">${fmtPct(val)}</div>
+          <div class="ind-bar"><div class="fill" data-indfill data-w="${val||0}" style="background:${color}"></div></div>
+          <div class="small muted">${ind.desc}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>
+
+  <div class="row section">
+    <div class="col card">
+      <div class="eyebrow">Quick Wins</div>
+      <h3>Start here</h3>
+      <ul style="margin:0;padding-left:18px">${wins.map(w=>`<li style="margin-bottom:8px">${w}</li>`).join('')}</ul>
+    </div>
+    <div class="col card">
+      <div class="eyebrow">First 90 Days</div>
+      <h3>Action plan</h3>
+      ${plan.map(s=>`<div style="margin-bottom:10px"><strong>${s.window} — ${s.title}</strong><div class="small muted">${s.text}</div></div>`).join('')}
+    </div>
+  </div>
+
+  <div class="section card">
+    <div class="eyebrow">Pillar Detail</div>
+    <h3>Click a pillar to explore its score, key actions and recommended solutions</h3>
+    <div class="row" style="margin-top:10px">
+      ${PILLARS.map((p,i)=>{
+        const b = bandOf(scores[i]);
+        const color = b==='high'?'var(--green)':(b==='medium'?'var(--amber)':'var(--red)');
+        return `<div class="col pillar-card" data-pillar="${i}" style="min-width:200px">
+          <div class="ptitle">
+            <div><div class="small muted" style="text-transform:uppercase;font-weight:800;letter-spacing:1px">${p.short}</div><div style="font-weight:700">${p.eq}</div></div>
+            <div class="pscore" style="color:${color}">${fmtPct(scores[i])}</div>
+          </div>
+          <div class="pbar"><div class="pfill" data-w="${scores[i]}" style="background:${color}"></div></div>
+          <span class="band-w ${b}">${BANDS[b].label}</span>
+          ${b!=='high' ? `<div class="small muted" style="margin-top:8px">Barrier: <strong>${p.barrier}</strong></div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>
+  </div>
+
+  <div class="section card">
+    <div class="eyebrow">Maturity Journey</div>
+    <h3>Discovery → Alignment → Systemisation → Operationalisation → Scale</h3>
+    <div id="roadWrap">${roadHTML(overall)}</div>
+  </div>
+
+  <div class="section card-dark">
+    <div class="eyebrow">Recommended Path: ${pathway.stage}</div>
+    <h3>${pathway.tagline}</h3>
+    <div class="row" style="margin-top:14px;align-items:stretch">
+      ${CONFIG.offers.map(o=>{
+        const isRec = o.id === pathway.offerId;
+        return `<div class="col offer-card ${isRec?'active':''}" style="min-width:220px">
+          ${isRec ? `<span class="offer-badge">★ Recommended for you</span>` : ''}
+          <strong>${o.name}</strong>
+          <div style="margin-top:8px"><span class="tag" style="background:${isRec?'var(--lime)':'rgba(255,255,255,.1)'};color:${isRec?'var(--navy)':'#fff'}">${o.price}</span></div>
+          <p class="muted" style="margin-top:8px;font-size:12.5px">${o.desc}</p>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="row" style="margin-top:14px">
+      ${recs.map(r=>`<div class="col" style="min-width:220px">
+        <div class="small" style="font-weight:800;color:var(--lime);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">${r.pillar.short} · ${BANDS[r.band].label}</div>
+        <div class="tag-list">${r.solutions.map(s=>`<span class="tag" style="background:rgba(255,255,255,.08);color:#fff">${s}</span>`).join('')}</div>
+      </div>`).join('')}
+    </div>
+    <div style="margin-top:18px">${bookingLinkHTML()}</div>
+  </div>
+
+  ${trend ? trendCardHTML(trend) : ''}
+
+  <div class="section card">
+    <div class="eyebrow">Export & Records</div>
+    <div class="row">
+      <button class="btn btn-ghost" data-print>Download PDF report</button>
+      <button class="btn btn-ghost" data-export-json>Export this result (JSON)</button>
+      <button class="btn btn-ghost" data-export-csv>Download respondent register (CSV)</button>
+      <button class="btn btn-ghost" data-export-xlsx>Download respondent register (Excel)</button>
+    </div>
+    <p class="small muted" style="margin-top:10px">The respondent register automatically records every completed &amp; unlocked InnoPulse Check — ${registeredRecords().length} response${registeredRecords().length===1?'':'s'} captured so far.</p>
+  </div>
+
+  <div class="footer">${CONFIG.brand} · ${CONFIG.productFull} · <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
+}
+
+/* ---------- Comparison / Team mode ---------- */
+function cmpSelectHTML(rec){
+  const others = registeredRecords().filter(r=>r.id!==rec.id);
+  const sameCompany = others.filter(r=>(r.profile.company||'').trim().toLowerCase()===(rec.profile.company||'').trim().toLowerCase());
+  let opts = `<option value="">No comparison</option>`;
+  if(sameCompany.length){
+    opts += `<option value="team">Team average (${sameCompany.length} other response${sameCompany.length===1?'':'s'})</option>`;
+  }
+  others.forEach(r=>{
+    opts += `<option value="${r.id}">${escapeHtml(r.profile.company||'Unnamed')} — ${new Date(r.createdAt).toLocaleDateString()}</option>`;
+  });
+  if(others.length===0) return '';
+  return `<select id="cmpSelect" style="max-width:260px"><optgroup label="Compare radar to">${opts}</optgroup></select>`;
+}
+function updateRadar(rec){
+  const sel = document.getElementById('cmpSelect');
+  const wrap = document.getElementById('radarWrap');
+  const bench = document.getElementById('benchmarkBars');
+  if(!sel || !wrap) return;
+  const val = sel.value;
+  if(!val){ wrap.innerHTML = radarSVG(rec.scores); bench.innerHTML=''; return; }
+  let overlay, label;
+  if(val === 'team'){
+    const others = registeredRecords().filter(r=>r.id!==rec.id &&
+      (r.profile.company||'').trim().toLowerCase()===(rec.profile.company||'').trim().toLowerCase());
+    overlay = PILLARS.map((_,i)=>{
+      const vals = others.map(o=>o.scores[i]).filter(v=>v!=null);
+      return vals.length ? Math.round((vals.reduce((a,b)=>a+b,0)/vals.length)*10)/10 : null;
+    });
+    label = 'Team average';
+  } else {
+    const other = getRecord(val);
+    overlay = other.scores;
+    label = (other.profile.company||'Comparison')+' — '+new Date(other.createdAt).toLocaleDateString();
+  }
+  wrap.innerHTML = radarSVG(rec.scores, {overlay, overlayLabel:label});
+  // benchmark bars (#8 animation)
+  let bars = `<div class="section" style="margin-top:10px"><div class="eyebrow">Team Benchmark</div>`;
+  PILLARS.forEach((p,i)=>{
+    const you = rec.scores[i]||0;
+    const them = overlay[i]==null?0:overlay[i];
+    bars += `<div style="margin-bottom:10px">
+      <div class="small" style="font-weight:700;margin-bottom:4px">${p.short}</div>
+      <div class="ind-bar"><div class="fill" data-w="${you}" style="background:var(--lime2);width:0"></div></div>
+      <div class="ind-bar" style="margin-top:2px"><div class="fill" data-w="${them}" style="background:#b9b9aa;width:0"></div></div>
+      <div class="small muted">You: ${fmtPct(you)} · ${label}: ${fmtPct(them)}</div>
+    </div>`;
+  });
+  bars += `</div>`;
+  bench.innerHTML = bars;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    bench.querySelectorAll('[data-w]').forEach(el=>{ el.style.width = el.dataset.w+'%'; });
+  }));
+}
+
+/* ---------- Trend card ---------- */
+function trendCardHTML(trend){
+  return `<div class="section card">
+    <div class="eyebrow">Trend vs Previous Assessment</div>
+    <h3>Overall Health: ${trend.delta>=0?'+':''}${trend.delta} pts since ${new Date(trend.prior.createdAt).toLocaleDateString()}</h3>
+    <div class="ind-grid">
+      ${PILLARS.map((p,i)=>`<div class="ind-card">
+        <h4>${p.short}</h4>
+        <div class="ind-val" style="color:${trend.pillarDeltas[i]>=0?'var(--green)':'var(--red)'}">${trend.pillarDeltas[i]>=0?'+':''}${trend.pillarDeltas[i]}</div>
+        <div class="small muted">pts vs previous</div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+/* ---------- Pillar detail modal ---------- */
+let _modalLastFocus = null;
+function _modalKeydown(e){
+  const bg = document.querySelector('[data-modal-bg]');
+  if(!bg) return;
+  if(e.key === 'Escape'){
+    e.preventDefault();
+    closePillar();
+    return;
+  }
+  if(e.key === 'Tab'){
+    const focusable = bg.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if(!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length-1];
+    if(e.shiftKey && document.activeElement === first){
+      e.preventDefault(); last.focus();
+    } else if(!e.shiftKey && document.activeElement === last){
+      e.preventDefault(); first.focus();
+    }
+  }
+}
+function openPillar(i){
+  const rec = getRecord(state.viewId);
+  const p = PILLARS[i];
+  const score = rec.scores[i];
+  const b = bandOf(score);
+  const comment = rec.comments[i];
+  const html = `<div class="modal-bg" data-modal-bg>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pillarModalTitle">
+      <button class="close" data-modal-close aria-label="Close dialog">×</button>
+      ${pillarIconHTML(p.id)}
+      <div class="pillar-eq">${p.eq} · Barrier if weak: ${p.barrier}</div>
+      <h2 id="pillarModalTitle">${p.name}</h2>
+      <div class="row" style="align-items:center;margin-bottom:10px">
+        <div class="kval" style="color:${b==='high'?'var(--green)':(b==='medium'?'var(--amber)':'var(--red)')}">${fmtPct(score)}</div>
+        <span class="band-w ${b}">${BANDS[b].label}</span>
+      </div>
+      <p>${p.bands[b].text}</p>
+      <h4>Key actions</h4>
+      <ul>${p.bands[b].actions.map(a=>`<li>${a}</li>`).join('')}</ul>
+      <h4>Recommended solutions</h4>
+      <div class="tag-list">${p.bands[b].solutions ? p.bands[b].solutions.map(s=>`<span class="tag">${s}</span>`).join('') : p.solutions[b].map(s=>`<span class="tag">${s}</span>`).join('')}</div>
+      ${comment ? `<h4>Your comment</h4><p class="muted">${escapeHtml(comment)}</p>` : ''}
+    </div>
+  </div>`;
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  document.body.appendChild(div.firstElementChild);
+  _modalLastFocus = document.activeElement;
+  const closeBtn = document.querySelector('[data-modal-close]');
+  closeBtn.addEventListener('click', closePillar);
+  document.querySelector('[data-modal-bg]').addEventListener('click', (e)=>{ if(e.target.dataset.modalBg!=null && e.target===e.currentTarget) closePillar(); });
+  document.addEventListener('keydown', _modalKeydown);
+  closeBtn.focus();
+}
+function closePillar(){
+  const bg = document.querySelector('[data-modal-bg]');
+  if(bg) bg.remove();
+  document.removeEventListener('keydown', _modalKeydown);
+  if(_modalLastFocus && typeof _modalLastFocus.focus === 'function') _modalLastFocus.focus();
+  _modalLastFocus = null;
+}
+
+/* ---------- Print report ---------- */
+function buildPrintReport(rec){
+  const band = bandOf(rec.overall);
+  const db = dominantBarrier(rec.scores);
+  const vl = valueLeakage(rec.scores);
+  const wins = quickWins(rec.scores, rec.vis);
+  const plan = ninetyDayPlan(rec.scores);
+  const recs = recommendedSolutions(rec.scores);
+  const bandColor = band==='high'?'var(--green)':(band==='medium'?'var(--amber)':'var(--red)');
+  const html = `
+    <div class="rp-header">
+      <div>
+        <h1>${CONFIG.productFull}</h1>
+        <div class="rp-meta">${CONFIG.brand} · Innovation Capability Report</div>
+      </div>
+      <div class="rp-meta" style="text-align:right">
+        ${escapeHtml(rec.profile.company||'')}<br>
+        ${new Date(rec.createdAt).toLocaleDateString()}
+      </div>
+    </div>
+
+    <div class="rp-section">
+      <h2>Executive Summary</h2>
+      <p>Overall Innovation Health: <strong>${fmtPct(rec.overall)}</strong> —
+        <span class="rp-band" style="background:${bandColor}">${BANDS[band].label}</span>
+      </p>
+      <p>${OVERALL_TEXT[band]}</p>
+      <p>Dominant barrier: <strong>${db.pillar.barrier}</strong> (${db.pillar.short}, ${fmtPct(db.score)}). Visibility risk: <strong>${rec.vis.pct}%</strong> "Don't know" responses (${rec.vis.level} risk). Value leakage risk: <strong>${vl.level}</strong>.</p>
+    </div>
+
+    <div class="rp-section">
+      <h2>Pillar Scores — The Innovation Leadership Equation</h2>
+      <table>
+        <tr><th>Pillar</th><th>Equation term</th><th>Score</th><th>Band</th><th>Barrier if weak</th></tr>
+        ${PILLARS.map((p,i)=>`<tr><td>${p.name}</td><td>${p.eq}</td><td>${fmtPct(rec.scores[i])}</td><td>${BANDS[bandOf(rec.scores[i])].label}</td><td>${p.barrier}</td></tr>`).join('')}
+      </table>
+    </div>
+
+    <div class="rp-section">
+      <h2>Quick Wins</h2>
+      <ul>${wins.map(w=>`<li>${w}</li>`).join('')}</ul>
+    </div>
+
+    <div class="rp-section">
+      <h2>First 90 Days</h2>
+      <ul>${plan.map(s=>`<li><strong>${s.window} — ${s.title}:</strong> ${s.text}</li>`).join('')}</ul>
+    </div>
+
+    <div class="rp-section">
+      <h2>Recommended Solutions</h2>
+      ${recs.map(r=>`<p><strong>${r.pillar.short}</strong> (${BANDS[r.band].label}): ${r.solutions.join(', ')}</p>`).join('')}
+    </div>
+
+    <div class="rp-section">
+      <h2>Respondent Details</h2>
+      <table>
+        <tr><th>Name</th><td>${escapeHtml(rec.gate.gname||'')}</td><th>Email</th><td>${escapeHtml(rec.gate.email||'')}</td></tr>
+        <tr><th>Phone</th><td>${escapeHtml(rec.gate.phone||'')}</td><th>Company</th><td>${escapeHtml(rec.profile.company||'')}</td></tr>
+        <tr><th>Industry</th><td>${escapeHtml(rec.profile.industry||'')}</td><th>Years of service</th><td>${escapeHtml(rec.profile.service||'')}</td></tr>
+      </table>
+    </div>
+
+    <div class="rp-foot">${CONFIG.narrative}<br>${CONFIG.brand} · ${CONFIG.productFull} · Report generated ${new Date().toLocaleString()}</div>
+  `;
+  const report = document.getElementById('report');
+  report.innerHTML = html;
+  report.classList.remove('hide');
+  document.body.classList.add('printing');
+  const restore = ()=>{
+    document.body.classList.remove('printing');
+    report.classList.add('hide');
+    window.removeEventListener('afterprint', restore);
+  };
+  window.addEventListener('afterprint', restore);
+  setTimeout(()=>window.print(), 50);
+}
+
+/* ---------- Attach / animate ---------- */
+function attachDashboard(){
+  const rec = getRecord(state.viewId);
+  if(!rec) return;
+  // gauges + pillar bars
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.querySelectorAll('.pbar .pfill').forEach(el=>{ el.style.width = el.dataset.w+'%'; });
+    document.querySelectorAll('[data-indfill]').forEach(el=>{ el.style.width = (el.dataset.w||0)+'%'; });
+  }));
+  // leadership equation wheel
+  const barrierCard = document.getElementById('barrierCard');
+  if(barrierCard) animateLeadershipWheel(barrierCard);
+  // value leakage tank
+  const tankCard = document.getElementById('tankCard');
+  if(tankCard) animateValueLeakage(tankCard, rec.scores, rec.overall);
+  // maturity road
+  const roadWrap = document.getElementById('roadWrap');
+  if(roadWrap) animateRoad(roadWrap, rec.overall);
+  // exec insight
+  const insight = execInsight(rec.scores, rec.overall, rec.vis);
+  const twLines = document.getElementById('twLines');
+  if(twLines){
+    twLines.innerHTML = '';
+    insight.lines.forEach((line)=>{
+      const div = document.createElement('div');
+      div.className = 'tw-line';
+      div.textContent = line || ' ';
+      twLines.appendChild(div);
+    });
+  }
+  // comparison select
+  const cmp = document.getElementById('cmpSelect');
+  if(cmp) cmp.addEventListener('change', ()=>updateRadar(rec));
+  // pillar cards
+  document.querySelectorAll('[data-pillar]').forEach(el=>{
+    el.addEventListener('click', ()=>openPillar(Number(el.dataset.pillar)));
+  });
+  // export buttons
+  const printBtn = document.querySelector('[data-print]');
+  if(printBtn) printBtn.addEventListener('click', ()=>buildPrintReport(rec));
+  const expJson = document.querySelector('[data-export-json]');
+  if(expJson) expJson.addEventListener('click', ()=>{
+    downloadBlob(JSON.stringify(rec, null, 2), 'innopulse-result-'+rec.id+'.json', 'application/json');
+  });
+  const expCsv = document.querySelector('[data-export-csv]');
+  if(expCsv) expCsv.addEventListener('click', exportRegisterCSV);
+  const expXlsx = document.querySelector('[data-export-xlsx]');
+  if(expXlsx) expXlsx.addEventListener('click', exportRegisterXLSX);
+  const restart = document.querySelector('[data-restart]');
+  if(restart) restart.addEventListener('click', ()=>{
+    state = defaultState();
+    save();
+    render();
+  });
+}
+
+/* ============================================================
+   BOOTSTRAP
+   ============================================================ */
+window.addEventListener('load', render);
+</script></body></html>
