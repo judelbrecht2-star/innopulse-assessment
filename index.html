@@ -2234,7 +2234,7 @@ function sendToWebhook(rec){
     const path = pathwayOf(rec.overall);
     const offer = offerById(path.offerId);
     const payload = {
-      event: 'innopulse_unlock',
+      event: 'innopulse_unlock', name: rec.gate.gname||'', email: rec.gate.email||'', phone: rec.gate.phone||'', company: rec.profile.company||'', industry: rec.profile.industry||'', service: rec.profile.service||'', age: rec.profile.age||'', education: rec.profile.education||'', gender: rec.profile.gender||'', overall: rec.overall, visibilityRisk: rec.vis?rec.vis.pct:'', comments: Object.keys(rec.comments||{}).map(function(k){return rec.comments[k];}).filter(Boolean).join(' | '), assessmentId: rec.id, pathway: path.stage, offer: offer?offer.name:'', pillars: {sii: rec.scores[0], iem: rec.scores[1], oic: rec.scores[2], ipm: rec.scores[3], roi: rec.scores[4]}, hp: '',
       sentAt: new Date().toISOString(),
       recordId: rec.id,
       gate: rec.gate,
