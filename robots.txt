@@ -34,4 +34,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://judelbrecht2-star.github.io/innopulse-assessment/sitemap.xml
+Sitemap: https://innopulse.thegrowthsystem.co.za/sitemap.xml
