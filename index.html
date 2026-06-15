@@ -13,12 +13,12 @@
   <meta property="og:site_name" content="The Growth System">
   <meta property="og:title" content="Innovation Capability Assessment (InnoPulse) | The Growth System">
   <meta property="og:description" content="Measure your organisation's innovation maturity across five pillars with InnoPulse, the free innovation capability assessment from The Growth System.">
-  <meta property="og:url" content="https://innopulse.thegrowthsystem.co.za/">
+  <meta property="og:url" content="https://innopulse.thegrowthsystem.co.za/"><meta property="og:image" content="https://innopulse.thegrowthsystem.co.za/logo.png"><meta property="og:image:alt" content="The Growth System logo">
   <meta property="og:locale" content="en_ZA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Innovation Capability Assessment (InnoPulse) | The Growth System">
-  <meta name="twitter:description" content="Measure your organisation's innovation maturity across five pillars with InnoPulse from The Growth System.">
-  <meta name="theme-color" content="#1c2400">
+  <meta name="twitter:description" content="Measure your organisation's innovation maturity across five pillars with InnoPulse from The Growth System."><meta name="twitter:image" content="https://innopulse.thegrowthsystem.co.za/logo.png">
+  <meta name="theme-color" content="#1c2400"><link rel="icon" type="image/png" href="/logo.png"><link rel="apple-touch-icon" href="/logo.png"><link rel="manifest" href="/site.webmanifest">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,7 +27,7 @@
           "@type": "Organization",
           "@id": "https://thegrowthsystem.co.za/#organization",
           "name": "The Growth System",
-          "url": "https://thegrowthsystem.co.za",
+          "url": "https://thegrowthsystem.co.za","logo": "https://innopulse.thegrowthsystem.co.za/logo.png",
           "description": "The Growth System helps organisations build innovation capability through innovation capability assessments, innovation strategy, innovation management systems and ISO 56001 readiness.",
           "areaServed": ["South Africa", "Gauteng", "Pretoria", "Johannesburg"],
           "knowsAbout": ["Innovation Management", "Innovation Capability Assessment", "ISO 56001", "Innovation Strategy", "Innovation Management Systems", "Innovation Leadership", "Innovation Culture"],
@@ -123,11 +123,11 @@ p{margin:0 0 10px}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0 22px;flex-wrap:wrap;gap:10px}
 .brandmark{display:flex;align-items:center;gap:10px}
 .brandmark .logo{
-  width:40px;height:40px;border-radius:11px;background:var(--navy);
+  width:40px;height:40px;border-radius:11px;background:#fff;padding:5px;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
   box-shadow:var(--shadow);
 }
-.brandmark .logo svg{width:24px;height:24px}
+.brandmark .logo svg,.brandmark .logo img{width:30px;height:auto;display:block}
 .brandmark .name{font-weight:800;font-size:15px;letter-spacing:.2px}
 .brandmark .sub{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px}
 .toppill{
@@ -1631,7 +1631,7 @@ const $app = ()=>document.getElementById('app');
 function topbarHTML(){
   return `<div class="topbar">
     <div class="brandmark">
-      <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#a8e617" stroke-width="2"><path d="M3 13 L9 13 L9 7 L15 7 L15 17 L21 17"/></svg></div>
+      <div class="logo"><img src="/logo.png" alt="The Growth System logo" width="30" height="30" decoding="async" style="display:block;width:30px;height:auto"></div>
       <div>
         <div class="name">${CONFIG.product} <span style="color:var(--lime2)">Check</span></div>
         <div class="sub">by ${CONFIG.brand}</div>
@@ -1676,7 +1676,7 @@ function renderHero(){
     <p class="small muted" style="margin-top:14px">${CONFIG.narrative}</p>
   </div>
 
-  <div class="footer">${CONFIG.brand} · ${CONFIG.productFull}</div>
+  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>
   ${videoModalHTML()}`;
 }
 function attachHero(){
@@ -1933,7 +1933,7 @@ function renderIntake(){
     <button class="btn btn-primary btn-block" data-start ${canStart?'':'disabled'}>Start the InnoPulse Check →</button>
     ${canStart ? '' : '<p class="small muted" style="margin-top:8px">Please complete the required fields above to continue.</p>'}
   </div>
-  <div class="footer">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 function attachIntake(){
   const btn = document.querySelector('[data-start]');
@@ -2005,7 +2005,7 @@ function renderQuiz(){
     </div>
     <div id="qBody"><div class="qcard">${body}</div></div>
   </div>
-  <div class="footer">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 
 function renderPillarIntro(pi){
@@ -2208,7 +2208,7 @@ function renderPreview(){
       <p class="small muted" style="margin-top:10px">Your details are stored only for this assessment record and to share your report with you — never sold or shared with third parties. Primary barrier detected: <strong>${db.pillar.barrier}</strong> (${db.pillar.short}).</p>
     </div>
   </div>
-  <div class="footer">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 
 function attachPreview(){
@@ -2572,7 +2572,7 @@ function renderDashboard(){
     <p class="small muted" style="margin-top:10px">The respondent register automatically records every completed &amp; unlocked InnoPulse Check — ${registeredRecords().length} response${registeredRecords().length===1?'':'s'} captured so far.</p>
   </div>
 
-  <div class="footer">${CONFIG.brand} · ${CONFIG.productFull} · <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
+  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull} · <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
 }
 
 /* ---------- Comparison / Team mode ---------- */
