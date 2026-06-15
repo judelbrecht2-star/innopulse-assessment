@@ -12,4 +12,10 @@
           <changefreq>monthly</changefreq>
           <priority>0.8</priority>
     </url>
+    <url>
+          <loc>https://innopulse.thegrowthsystem.co.za/iso-56001-readiness.html</loc>
+          <lastmod>2026-06-15</lastmod>
+          <changefreq>monthly</changefreq>
+          <priority>0.8</priority>
+    </url>
 </urlset>
