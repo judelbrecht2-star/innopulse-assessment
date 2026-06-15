@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://www.youtube.com"><link rel="preconnect" href="https://i.ytimg.com">
 <title>Innovation Capability Assessment (InnoPulse) | The Growth System</title>
   <meta name="description" content="InnoPulse by The Growth System is a free innovation capability assessment measuring your organisation's innovation maturity across five pillars. Get a personalised report and benchmark your innovation performance.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -1786,7 +1786,7 @@ function methodologySectionHTML(){
       <p class="tagline center" style="margin:0 auto 18px">Why innovation efforts stall — and the framework behind this assessment. Click to watch a 2-minute overview.</p>
       <div class="meth-media">
         <div class="meth-img-wrap" data-meth-open tabindex="0" role="button" aria-label="Watch the methodology overview video">
-          <img class="meth-img" src="innovation-methodology.jpg" alt="Illustration of common innovation barriers — confusion, frustration, resistance, anxiety and false starts — leading to busy teams with no impact, alongside The Growth System's Clarity, Process, Capability, Culture, Results methodology.">
+          <img class="meth-img" loading="lazy" decoding="async" src="innovation-methodology.jpg" alt="Illustration of common innovation barriers — confusion, frustration, resistance, anxiety and false starts — leading to busy teams with no impact, alongside The Growth System's Clarity, Process, Capability, Culture, Results methodology.">
           <span class="meth-video-icon" aria-hidden="true">${playIconSVG()}</span>
         </div>
         <div class="meth-watch-label" data-meth-open tabindex="0" role="button" aria-label="Watch the methodology overview video">
@@ -1829,7 +1829,7 @@ function openMethodologyVideo(){
   trackEvent('methodology_video_open');
   _methScrollY = window.scrollY;
   _methLastFocus = document.activeElement;
-  frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/6EYP4k5iNkQ?rel=0" title="InnoPulse Methodology Overview" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  frame.innerHTML = `<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/6EYP4k5iNkQ?rel=0" title="InnoPulse Methodology Overview" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   bg.classList.remove('hide');
   document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', _methKeydown);
