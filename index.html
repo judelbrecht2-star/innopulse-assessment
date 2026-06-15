@@ -574,10 +574,9 @@ body.printing #report{display:block;max-width:760px;margin:0 auto;padding:24px}
 <!-- Funnel analytics (optional): to enable GA4 event tracking, set CONFIG.analyticsId
      in the script below to your GA4 Measurement ID (e.g. "G-XXXXXXXXXX") and
      uncomment the two tags below. trackEvent() will then forward hero/intake/
-     quiz/gate/unlock events to GA4 automatically — no other code changes needed.
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
--->
+     quiz/gate/unlock events to GA4 automatically — no other code changes needed. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBMSDG3MQV"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WBMSDG3MQV');</script>
 </head>
 <body><div class="app" id="app"></div><div id="report" class="hide"></div><script>
 const PILLARS = [
@@ -943,10 +942,10 @@ const CONFIG = {
   // Optional automation hook: if set, each unlocked result is POSTed here as JSON
   // (e.g. a Zapier / Power Automate / Make.com flow that appends a row to Excel 365, SharePoint or Google Sheets,
   // or a serverless function that emails the report to the respondent and logs the lead for TGS)
-  webhookUrl:'',
+  webhookUrl:'https://script.google.com/macros/s/AKfycbyx6NNYLKDkrHabDFn_gIn1rK3aNei4ecxjt20V-cchyY0p4paovVJ8x87Zp6K4Vh6z/exec',
   // Optional GA4 Measurement ID for funnel analytics — see the commented snippet in <head>.
   // Leave blank to disable; trackEvent() calls are then just no-ops.
-  analyticsId:'',
+  analyticsId:'G-WBMSDG3MQV',
   dontKnowValue:40,
   weights:{sii:0.25, iem:0.25, oic:0.20, ipm:0.15, roi:0.15},
   offers:[
