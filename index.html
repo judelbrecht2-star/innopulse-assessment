@@ -158,7 +158,7 @@ const PILLARS = [
   {
     "id": "iem",
     "name": "Innovation Environment Management",
-    "short": "Culture & Environment",
+    "short": "Environment",
     "eq": "Culture",
     "barrier": "Resistance",
     "weight": 0.25,
@@ -227,7 +227,7 @@ const PILLARS = [
   {
     "id": "oic",
     "name": "Organisational Innovation Capability",
-    "short": "Competency & Skills",
+    "short": "Capability",
     "eq": "Competency & Skills",
     "barrier": "Anxiety",
     "weight": 0.2,
@@ -359,7 +359,7 @@ const PILLARS = [
   {
     "id": "roi",
     "name": "Return on Innovation",
-    "short": "Implementation & ROI",
+    "short": "Return on Innovation",
     "eq": "Implementation",
     "barrier": "False Starts",
     "weight": 0.15,
@@ -883,7 +883,82 @@ function radarSVG(scores, opts){
       .radar-dot{opacity:0;animation:radarDot .4s ease forwards}
       @keyframes radarGrow{to{opacity:1;transform:scale(1)}}
       @keyframes radarDot{to{opacity:1}}
-    </style>
+    
+/* ============================================================
+   Section Progress Navigation (journey stepper) — redesigned
+   Completed / Current / Upcoming states + animated progress line
+   ============================================================ */
+.journey{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  position:relative; width:100%;
+  --orb:18px; --orb-current:24px;
+  --green:#B7E63A; --green-deep:#5F8A00; --grey:#cfcfc4; --grey-line:#e2e2d6;
+  padding-top:4px;
+}
+.journey::before, .journey::after{
+  content:""; position:absolute; top:calc(4px + var(--orb-current)/2);
+  left:calc(100%/6/2); right:calc(100%/6/2);
+  height:3px; transform:translateY(-50%); border-radius:3px; z-index:0;
+}
+.journey::before{ background:var(--grey-line); }
+.journey::after{
+  background:linear-gradient(90deg,var(--green-deep),var(--green));
+  right:auto; width:var(--tgs-fill,0px);
+  box-shadow:0 0 8px rgba(183,230,58,.45);
+  transition:width .65s cubic-bezier(.4,0,.2,1);
+}
+.journey .jpath{ display:none !important; }
+.jnode{
+  position:relative; z-index:1; flex:1 1 0;
+  display:flex; flex-direction:column; align-items:center; gap:9px; min-width:0;
+}
+.jnode .jdot{
+  width:var(--orb); height:var(--orb); border-radius:50%;
+  background:#fff; border:2px solid var(--grey); box-sizing:border-box; position:relative;
+  box-shadow:0 0 0 5px var(--bg,#f4f4ec);
+  transition:background .5s ease, border-color .5s ease, box-shadow .5s ease,
+             width .35s cubic-bezier(.34,1.56,.64,1), height .35s cubic-bezier(.34,1.56,.64,1);
+}
+.jnode.completed .jdot{
+  background:var(--green); border-color:var(--green-deep);
+  box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 10px rgba(183,230,58,.55);
+}
+.jnode.completed .jdot::after{
+  content:""; position:absolute; left:50%; top:46%; width:5px; height:9px;
+  border:solid var(--green-deep); border-width:0 2px 2px 0;
+  transform:translate(-50%,-55%) rotate(45deg);
+}
+.jnode.current .jdot, .jnode.active .jdot{
+  width:var(--orb-current); height:var(--orb-current);
+  background:#fff; border:3px solid var(--green-deep);
+  box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 0 4px rgba(183,230,58,.35);
+  animation:tgsPulse 2s ease-in-out infinite;
+}
+.jnode.current .jdot::before, .jnode.active .jdot::before{
+  content:""; position:absolute; left:50%; top:50%; width:8px; height:8px;
+  background:var(--green); border-radius:50%; transform:translate(-50%,-50%);
+}
+@keyframes tgsPulse{
+  0%,100%{ box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 0 4px rgba(183,230,58,.35), 0 0 6px rgba(183,230,58,.30); }
+  50%{ box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 0 8px rgba(183,230,58,.12), 0 0 14px rgba(183,230,58,.55); }
+}
+.jnode > span, .jnode .jlabel{
+  font-size:clamp(10px,1.3vw,13px); line-height:1.25; text-align:center;
+  letter-spacing:.01em; color:#9a9a8c; font-weight:500;
+  max-width:min(118px,18vw); transition:color .4s ease,font-weight .4s ease;
+}
+.jnode.completed > span, .jnode.completed .jlabel{ color:#5F8A00; }
+.jnode.current > span, .jnode.current .jlabel, .jnode.active > span{ color:#16160f; font-weight:700; }
+@media (max-width:640px){
+  .journey{ --orb:14px; --orb-current:19px; }
+  .jnode{ gap:6px; }
+  .jnode > span, .jnode .jlabel{ font-size:9.5px; max-width:52px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .jnode.current .jdot, .jnode.active .jdot{ animation:none; }
+  .journey::after{ transition:width .2s linear; }
+}
+</style>
     ${rings}${axes}
     ${overlayHtml}
     ${main.poly}${main.dots}
@@ -2376,4 +2451,40 @@ function attachDashboard(){
    BOOTSTRAP
    ============================================================ */
 window.addEventListener('load', render);
-</script><section id="learn" style="max-width:920px;margin:64px auto 80px;padding:0 22px;font-family:'Instrument Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.7;color:#1f2433"><header style="text-align:center;margin-bottom:48px"><h2 style="font-size:30px;font-weight:800;margin:0 0 12px;color:#0f1530">Understanding Innovation Capability &amp; Management</h2><p style="font-size:17px;color:#4a5168;max-width:700px;margin:0 auto">A plain-language guide to innovation management, ISO 56001 and innovation maturity, and how the InnoPulse assessment by The Growth System helps organisations in South Africa measure and improve their capacity to innovate. <a href="/innovation-capability.html" style="color:#5f8a00;font-weight:600">Read our full guide to innovation capability →</a></p></header><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is innovation management?</h3><p>Innovation management is the structured, repeatable practice of generating, prioritising, developing and scaling new ideas so they create measurable value for an organisation. It treats innovation as a managed capability rather than a series of lucky breaks, with defined leadership accountability, processes, resources, culture and metrics. Effective innovation management aligns innovation activity with business strategy, balances incremental improvements with breakthrough initiatives, and builds the organisational systems that turn creativity into commercial and operational outcomes.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is ISO 56001?</h3><p>ISO 56001 is the international standard that specifies requirements for an Innovation Management System (IMS), allowing organisations to certify that they manage innovation in a systematic, auditable way. Building on the ISO 56000 family of guidance, it provides a recognised framework covering innovation leadership, strategy, supporting structures, processes and continual improvement. Achieving ISO 56001 readiness signals to partners, investors and customers that an organisation can innovate reliably and sustainably rather than sporadically.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">Why measure innovation capability?</h3><p>Measuring innovation capability turns an abstract aspiration into a manageable, improvable system. Without measurement, leaders cannot see where innovation breaks down, whether investment is paying off, or how their organisation compares to peers. A capability assessment surfaces specific strengths and gaps across strategy, processes, culture and execution, creating a shared evidence base for decisions. This converts innovation from a matter of opinion into a tracked performance area with baselines, targets and accountability.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is an innovation assessment?</h3><p>An innovation assessment is a structured diagnostic that evaluates how well an organisation generates, develops and commercialises new value. It typically scores performance across several dimensions, such as innovation strategy, idea and execution management, organisational culture, leadership and the financial returns on innovation. The InnoPulse assessment by The Growth System measures five weighted pillars across 62 questions to produce an overall innovation maturity score, a pillar-by-pillar profile, and a recommended improvement pathway.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is innovation maturity?</h3><p>Innovation maturity describes how deeply and consistently the disciplines of innovation are embedded in an organisation. Low-maturity organisations innovate occasionally and reactively, relying on individuals; high-maturity organisations innovate systematically, with clear strategy, repeatable processes, supportive culture and measured returns. An innovation maturity model lets an organisation place itself on that spectrum and chart a path to the next level rather than guessing where to invest.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">How can a business improve its innovation performance?</h3><p>Innovation performance improves when an organisation strengthens the system around it rather than chasing isolated ideas. Practical steps include setting a clear innovation strategy linked to business goals, defining a managed pipeline from idea to launch, building a culture that rewards experimentation and tolerates intelligent failure, equipping leaders to sponsor innovation, and tracking returns so resources flow to what works. Starting with an honest capability assessment ensures these efforts target the real constraints.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is innovation culture?</h3><p>Innovation culture is the set of shared values, behaviours and norms that determine whether people in an organisation are willing and able to innovate. It shows up in psychological safety to challenge the status quo, encouragement of experimentation, openness to ideas from anywhere, and how the organisation responds to failure and risk. A strong innovation culture multiplies the impact of good strategy and process; a weak one quietly undermines them.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">How do you implement an innovation management system?</h3><p>Implementing an Innovation Management System (IMS) means putting in place the structures that make innovation repeatable and aligned to the ISO 56001 framework. The typical sequence is to assess current capability and maturity, define innovation strategy and governance, design processes for capturing and developing ideas, allocate resources and roles, embed supportive culture and leadership, and then measure and continually improve. Beginning with a capability assessment provides the baseline that every later step builds on.</p></article><h2 style="font-size:25px;font-weight:800;color:#0f1530;margin:52px 0 18px;text-align:center">The Five Pillars of Innovation Capability</h2><p style="text-align:center;color:#4a5168;max-width:680px;margin:0 auto 26px">InnoPulse measures innovation capability across five weighted pillars that together describe how an organisation turns ideas into value.</p><div style="display:grid;gap:14px"><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Strategic Innovation Intent (25%)</strong><p style="margin:6px 0 0">How clearly innovation is tied to strategy, with leadership direction, ambition and resourcing behind it.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Idea &amp; Execution Management (25%)</strong><p style="margin:6px 0 0">How effectively ideas are captured, prioritised, developed and delivered through a managed pipeline.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Organisational Innovation Culture (20%)</strong><p style="margin:6px 0 0">How far the culture supports experimentation, collaboration, psychological safety and learning from failure.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Innovation Process Maturity (15%)</strong><p style="margin:6px 0 0">How consistent and repeatable the organisation's innovation processes, methods and governance are.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Return on Innovation (15%)</strong><p style="margin:6px 0 0">How well innovation activity translates into measurable commercial, operational and strategic returns.</p></div></div><h2 style="font-size:25px;font-weight:800;color:#0f1530;margin:52px 0 14px;text-align:center">About The Growth System</h2><p>The Growth System is an innovation management consultancy based in South Africa, serving clients across Gauteng, Pretoria and Johannesburg. As an Innovation360 Gold Partner with deep ISO 56001 expertise, The Growth System helps organisations build the strategy, systems and culture needed to innovate systematically. Its services include Innovation Capability Assessments, Innovation Strategy, Innovation Management Systems, ISO 56001 Readiness, Innovation Leadership Development, Innovation Culture Development, CApIL Certification, InnoDrive and Outsourced Innovation Management.</p><h2 style="font-size:25px;font-weight:800;color:#0f1530;margin:52px 0 18px;text-align:center">Frequently Asked Questions</h2><div style="display:grid;gap:14px"><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">How long does the InnoPulse assessment take?</summary><p style="margin:10px 0 0">The assessment covers 62 questions across five pillars and typically takes 15 to 20 minutes to complete, after which you receive an instant innovation maturity score and a recommended pathway.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">Is the InnoPulse assessment free?</summary><p style="margin:10px 0 0">Yes. The InnoPulse innovation capability assessment is free to complete. It gives organisations an objective baseline of their innovation maturity and highlights where to focus improvement.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">Who is the assessment for?</summary><p style="margin:10px 0 0">It is designed for executives, innovation leaders and managers who want an evidence-based view of their organisation's ability to innovate and a clear path to improve it.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">What do I receive after completing it?</summary><p style="margin:10px 0 0">You receive an overall innovation maturity score, a breakdown across the five pillars, benchmarking insight, and a recommended improvement pathway tailored to your results.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">How does this relate to ISO 56001?</summary><p style="margin:10px 0 0">The assessment maps to the disciplines described in the ISO 56000 family and ISO 56001 Innovation Management System framework, making it a practical first step toward ISO 56001 readiness.</p></details></div><p style="text-align:center;margin:44px 0 0;color:#4a5168">The Growth System &mdash; innovation management in South Africa. <a href="mailto:info@thegrowthsystem.co.za" style="color:#0f1530;font-weight:600">Contact us</a> to discuss your innovation capability.</p></section></body></html>
+</script><section id="learn" style="max-width:920px;margin:64px auto 80px;padding:0 22px;font-family:'Instrument Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.7;color:#1f2433"><header style="text-align:center;margin-bottom:48px"><h2 style="font-size:30px;font-weight:800;margin:0 0 12px;color:#0f1530">Understanding Innovation Capability &amp; Management</h2><p style="font-size:17px;color:#4a5168;max-width:700px;margin:0 auto">A plain-language guide to innovation management, ISO 56001 and innovation maturity, and how the InnoPulse assessment by The Growth System helps organisations in South Africa measure and improve their capacity to innovate. <a href="/innovation-capability.html" style="color:#5f8a00;font-weight:600">Read our full guide to innovation capability →</a></p></header><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is innovation management?</h3><p>Innovation management is the structured, repeatable practice of generating, prioritising, developing and scaling new ideas so they create measurable value for an organisation. It treats innovation as a managed capability rather than a series of lucky breaks, with defined leadership accountability, processes, resources, culture and metrics. Effective innovation management aligns innovation activity with business strategy, balances incremental improvements with breakthrough initiatives, and builds the organisational systems that turn creativity into commercial and operational outcomes.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is ISO 56001?</h3><p>ISO 56001 is the international standard that specifies requirements for an Innovation Management System (IMS), allowing organisations to certify that they manage innovation in a systematic, auditable way. Building on the ISO 56000 family of guidance, it provides a recognised framework covering innovation leadership, strategy, supporting structures, processes and continual improvement. Achieving ISO 56001 readiness signals to partners, investors and customers that an organisation can innovate reliably and sustainably rather than sporadically.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">Why measure innovation capability?</h3><p>Measuring innovation capability turns an abstract aspiration into a manageable, improvable system. Without measurement, leaders cannot see where innovation breaks down, whether investment is paying off, or how their organisation compares to peers. A capability assessment surfaces specific strengths and gaps across strategy, processes, culture and execution, creating a shared evidence base for decisions. This converts innovation from a matter of opinion into a tracked performance area with baselines, targets and accountability.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is an innovation assessment?</h3><p>An innovation assessment is a structured diagnostic that evaluates how well an organisation generates, develops and commercialises new value. It typically scores performance across several dimensions, such as innovation strategy, idea and execution management, organisational culture, leadership and the financial returns on innovation. The InnoPulse assessment by The Growth System measures five weighted pillars across 62 questions to produce an overall innovation maturity score, a pillar-by-pillar profile, and a recommended improvement pathway.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is innovation maturity?</h3><p>Innovation maturity describes how deeply and consistently the disciplines of innovation are embedded in an organisation. Low-maturity organisations innovate occasionally and reactively, relying on individuals; high-maturity organisations innovate systematically, with clear strategy, repeatable processes, supportive culture and measured returns. An innovation maturity model lets an organisation place itself on that spectrum and chart a path to the next level rather than guessing where to invest.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">How can a business improve its innovation performance?</h3><p>Innovation performance improves when an organisation strengthens the system around it rather than chasing isolated ideas. Practical steps include setting a clear innovation strategy linked to business goals, defining a managed pipeline from idea to launch, building a culture that rewards experimentation and tolerates intelligent failure, equipping leaders to sponsor innovation, and tracking returns so resources flow to what works. Starting with an honest capability assessment ensures these efforts target the real constraints.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">What is innovation culture?</h3><p>Innovation culture is the set of shared values, behaviours and norms that determine whether people in an organisation are willing and able to innovate. It shows up in psychological safety to challenge the status quo, encouragement of experimentation, openness to ideas from anywhere, and how the organisation responds to failure and risk. A strong innovation culture multiplies the impact of good strategy and process; a weak one quietly undermines them.</p></article><article style="margin-bottom:36px"><h3 style="font-size:21px;font-weight:700;color:#0f1530;margin:0 0 8px">How do you implement an innovation management system?</h3><p>Implementing an Innovation Management System (IMS) means putting in place the structures that make innovation repeatable and aligned to the ISO 56001 framework. The typical sequence is to assess current capability and maturity, define innovation strategy and governance, design processes for capturing and developing ideas, allocate resources and roles, embed supportive culture and leadership, and then measure and continually improve. Beginning with a capability assessment provides the baseline that every later step builds on.</p></article><h2 style="font-size:25px;font-weight:800;color:#0f1530;margin:52px 0 18px;text-align:center">The Five Pillars of Innovation Capability</h2><p style="text-align:center;color:#4a5168;max-width:680px;margin:0 auto 26px">InnoPulse measures innovation capability across five weighted pillars that together describe how an organisation turns ideas into value.</p><div style="display:grid;gap:14px"><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Strategic Innovation Intent (25%)</strong><p style="margin:6px 0 0">How clearly innovation is tied to strategy, with leadership direction, ambition and resourcing behind it.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Idea &amp; Execution Management (25%)</strong><p style="margin:6px 0 0">How effectively ideas are captured, prioritised, developed and delivered through a managed pipeline.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Organisational Innovation Culture (20%)</strong><p style="margin:6px 0 0">How far the culture supports experimentation, collaboration, psychological safety and learning from failure.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Innovation Process Maturity (15%)</strong><p style="margin:6px 0 0">How consistent and repeatable the organisation's innovation processes, methods and governance are.</p></div><div style="border:1px solid #e3e6ef;border-radius:12px;padding:16px 18px"><strong style="color:#0f1530">Return on Innovation (15%)</strong><p style="margin:6px 0 0">How well innovation activity translates into measurable commercial, operational and strategic returns.</p></div></div><h2 style="font-size:25px;font-weight:800;color:#0f1530;margin:52px 0 14px;text-align:center">About The Growth System</h2><p>The Growth System is an innovation management consultancy based in South Africa, serving clients across Gauteng, Pretoria and Johannesburg. As an Innovation360 Gold Partner with deep ISO 56001 expertise, The Growth System helps organisations build the strategy, systems and culture needed to innovate systematically. Its services include Innovation Capability Assessments, Innovation Strategy, Innovation Management Systems, ISO 56001 Readiness, Innovation Leadership Development, Innovation Culture Development, CApIL Certification, InnoDrive and Outsourced Innovation Management.</p><h2 style="font-size:25px;font-weight:800;color:#0f1530;margin:52px 0 18px;text-align:center">Frequently Asked Questions</h2><div style="display:grid;gap:14px"><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">How long does the InnoPulse assessment take?</summary><p style="margin:10px 0 0">The assessment covers 62 questions across five pillars and typically takes 15 to 20 minutes to complete, after which you receive an instant innovation maturity score and a recommended pathway.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">Is the InnoPulse assessment free?</summary><p style="margin:10px 0 0">Yes. The InnoPulse innovation capability assessment is free to complete. It gives organisations an objective baseline of their innovation maturity and highlights where to focus improvement.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">Who is the assessment for?</summary><p style="margin:10px 0 0">It is designed for executives, innovation leaders and managers who want an evidence-based view of their organisation's ability to innovate and a clear path to improve it.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">What do I receive after completing it?</summary><p style="margin:10px 0 0">You receive an overall innovation maturity score, a breakdown across the five pillars, benchmarking insight, and a recommended improvement pathway tailored to your results.</p></details><details style="border:1px solid #e3e6ef;border-radius:12px;padding:14px 18px"><summary style="font-weight:700;color:#0f1530;cursor:pointer">How does this relate to ISO 56001?</summary><p style="margin:10px 0 0">The assessment maps to the disciplines described in the ISO 56000 family and ISO 56001 Innovation Management System framework, making it a practical first step toward ISO 56001 readiness.</p></details></div><p style="text-align:center;margin:44px 0 0;color:#4a5168">The Growth System &mdash; innovation management in South Africa. <a href="mailto:info@thegrowthsystem.co.za" style="color:#0f1530;font-weight:600">Contact us</a> to discuss your innovation capability.</p></section>
+<script>
+/* Journey stepper state controller: drives completed/current/upcoming + animated fill. */
+(function(){
+  function bgBehind(j){
+    var bg="#f4f4ec", p=j.parentElement;
+    while(p){ var c=getComputedStyle(p).backgroundColor; if(c && c!=="rgba(0, 0, 0, 0)" && c!=="transparent"){ bg=c; break; } p=p.parentElement; }
+    return bg;
+  }
+  function apply(){
+    var j=document.querySelector(".journey"); if(!j) return;
+    j.style.setProperty("--bg", bgBehind(j));
+    var nodes=Array.prototype.slice.call(j.querySelectorAll(".jnode"));
+    if(!nodes.length) return;
+    var cur=nodes.findIndex(function(n){ return /\bactive\b/.test(n.className); });
+    if(cur<0) cur=0;
+    nodes.forEach(function(n,i){
+      n.classList.remove("completed","current","upcoming");
+      n.classList.add(i<cur?"completed":(i===cur?"current":"upcoming"));
+    });
+    var jr=j.getBoundingClientRect(), dots=j.querySelectorAll(".jdot");
+    if(dots[cur] && dots[0]){
+      var first=dots[0].getBoundingClientRect(), c=dots[cur].getBoundingClientRect();
+      var w=Math.max(0,(c.x+c.width/2)-(first.x+first.width/2));
+      j.style.setProperty("--tgs-fill", w+"px");
+    }
+  }
+  function init(){
+    var j=document.querySelector(".journey"); if(!j){ return setTimeout(init,300); }
+    apply();
+    new MutationObserver(apply).observe(j,{attributes:true,attributeFilter:["class"],subtree:true,childList:true});
+    window.addEventListener("resize", apply);
+  }
+  if(document.readyState!=="loading") init(); else document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
+</body></html>
