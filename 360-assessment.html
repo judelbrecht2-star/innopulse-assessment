@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InnoPulse 360 — Innovation Capability Assessment</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="InnoPulse 360 multi-stakeholder innovation capability assessment.">
+<link rel="canonical" href="https://innopulse.thegrowthsystem.co.za/360-assessment.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--cream:#f2f2ea;--cream2:#e9e9dd;--ink:#16160f;--navy:#1c2400;--navy2:#262f00;--lime:#a8e617;--lime2:#5f8a00;--lime-glow:#d4ff4d;--muted:#5f5f57;--line:#e0e0d2;--white:#fff;--red:#d6483c;--amber:#e0a72e;--green:#5f8a00;--shadow:0 10px 30px rgba(28,36,0,.08);--radius:16px}*{box-sizing:border-box;margin:0;padding:0}html,body{background:var(--cream);color:var(--ink);font-family:'Instrument Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}.wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}.topbar{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:18px 20px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}.brand .badge{background:var(--navy);color:var(--lime);font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.04em}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime2)}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px}h1{font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:10px 0 8px}h2{font-size:21px;letter-spacing:-.01em;margin:0 0 6px}p.lead{color:var(--muted);font-size:16px;margin:8px 0}.notice{background:var(--cream2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:14px;color:var(--muted);margin:18px 0}.tag{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:var(--lime);font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;letter-spacing:.03em}.progress{height:6px;background:var(--cream2);border-radius:999px;overflow:hidden;margin:0 0 22px}.progress>i{display:block;height:100%;background:var(--lime);transition:width .35s ease}.q{padding:18px 0;border-bottom:1px solid var(--line)}.q:last-child{border-bottom:none}.q .txt{font-size:16px;font-weight:600;margin-bottom:14px}.likert{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.likert button{appearance:none;border:1px solid var(--line);background:var(--cream);border-radius:12px;padding:12px 6px;cursor:pointer;font:inherit;font-weight:600;font-size:13px;color:var(--ink);transition:.15s;display:flex;flex-direction:column;gap:4px;align-items:center}.likert button .n{font-size:18px;font-weight:800}.likert button:hover{border-color:var(--lime2)}.likert button[aria-pressed=true]{background:var(--navy);color:var(--white);border-color:var(--navy)}.likert button[aria-pressed=true] .n{color:var(--lime-glow)}.field{margin:14px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:inherit;background:var(--white)}.field textarea{min-height:90px;resize:vertical}.btn{appearance:none;border:none;border-radius:12px;padding:14px 22px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}.btn-primary{background:var(--lime);color:var(--navy)}.btn-primary:hover{background:var(--lime-glow)}.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn[disabled]{opacity:.45;cursor:not-allowed}.row{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:26px}.muted{color:var(--muted);font-size:13px}.err{color:var(--red);font-size:13px;margin-top:6px}.checkrow{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted)}.checkrow input{width:auto;margin-top:3px}.center{text-align:center}.pillar-line{display:flex;align-items:center;gap:12px;margin:10px 0}.pillar-line .bar{flex:1;height:10px;background:var(--cream2);border-radius:999px;overflow:hidden}.pillar-line .bar>i{display:block;height:100%;background:var(--lime2)}.pillar-line .lab{width:160px;font-size:13px;font-weight:600}.pillar-line .val{width:46px;text-align:right;font-weight:700;font-size:14px}@media(max-width:560px){.likert{gap:5px}.likert button{padding:10px 2px;font-size:11px}.pillar-line .lab{width:110px}}</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="360.html">InnoPulse <span class="badge">360</span></a>
+  <span class="muted">by The Growth System</span>
+</div>
+<main class="wrap"><div id="app"></div></main>
+
+<!-- BOOKING_CTA: corporate booking hook lives on 360.html / the dashboard, not in the respondent flow. -->
+
+<!-- Shared five-pillar model (single source of truth) -->
+<script src="pillars.js"></script>
+<!-- Optional: deploy injects the live Apps Script endpoint here.
+     window.INNOPULSE_CONFIG = { endpoint: "<APPS_SCRIPT_WEB_APP_URL>" }; -->
+<script src="360-config.js" onerror="window.__noConfig=1"></script>
+<script>
+/* InnoPulse 360 — respondent assessment.
+   Shares the five-pillar ISO 56001-aligned engine used by the public Pulse Check
+   (loaded from pillars.js). The backend endpoint is supplied by 360-config.js at
+   deploy time. With no endpoint set, responses are stored in localStorage so local
+   or offline testing never loses data. */
+
+const PILLARS = window.INNOPULSE_PILLARS;
+const STAKEHOLDERS = window.INNOPULSE_STAKEHOLDERS;
+const SCALE = [
+  {n:1,lab:"Strongly disagree",v:0},
+  {n:2,lab:"Disagree",v:25},
+  {n:3,lab:"Neutral",v:50},
+  {n:4,lab:"Agree",v:75},
+  {n:5,lab:"Strongly agree",v:100}
+];
+const CONFIG = window.INNOPULSE_CONFIG || {};
+const ENDPOINT = CONFIG.endpoint || "";
+
+function qsp(name){ return new URLSearchParams(location.search).get(name) || ""; }
+function parseContext(){
+  let campaign=qsp("campaign"), stakeholder=qsp("stakeholder"), company=qsp("company");
+  const parts=location.pathname.split("/").filter(Boolean);
+  const ai=parts.indexOf("360");
+  if(ai>=0){ if(!campaign&&parts[ai+1])campaign=parts[ai+1]; if(!stakeholder&&parts[ai+2])stakeholder=parts[ai+2]; }
+  return {company,campaign,stakeholder};
+}
+const ctx=parseContext();
+const answers={}, comments={};
+let qFlat=[]; PILLARS.forEach((p,pi)=>p.questions.forEach((txt,qi)=>qFlat.push({pi,qi,pid:p.id,text:txt})));
+
+function pillarScoreOf(pi){ const p=PILLARS[pi];let total=0,n=0;for(let qi=0;qi<p.questions.length;qi++){const k=pi+"_"+qi;if(answers[k]!=null){total+=answers[k];n++;}}return n===0?null:Math.round((total/n)*10)/10; }
+function allScores(){ return PILLARS.map((_,i)=>pillarScoreOf(i)); }
+function overallOf(scores){ if(scores.some(s=>s==null))return null;let t=0;PILLARS.forEach((p,i)=>t+=scores[i]*p.weight);return Math.round(t*10)/10; }
+function bandOf(v){ return v==null?null:v<45?"low":v<70?"medium":"high"; }
+function answeredCount(){ return Object.keys(answers).length; }
+const app=()=>document.getElementById("app");
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function val(id){ const e=document.getElementById(id);return e?e.value.trim():""; }
+const state={pillarIdx:0,profile:null};
+
+function screenIntro(){
+  const sk=STAKEHOLDERS[ctx.stakeholder]; const validCampaign=!!ctx.campaign, validStakeholder=!!sk; let body="";
+  if(!validCampaign||!validStakeholder){
+    body=\`<div class="card"><div class="eyebrow">InnoPulse 360</div><h1>This assessment link is incomplete</h1><p class="lead">A valid InnoPulse 360 link includes a campaign and a stakeholder group. Please use the personalised link your organisation sent you, or choose your group below if you were given a general campaign link.</p>\${validCampaign?stakeholderPicker():'<div class="notice">No campaign was found in this link. Please contact your assessment administrator for a valid link.</div>'}</div>\`;
+  } else {
+    body=\`<div class="card"><div class="eyebrow">InnoPulse 360 &middot; \${esc(ctx.company||ctx.campaign)}</div><h1>Innovation Capability Assessment</h1><p class="lead">You are responding as <strong>\${esc(sk.label)}</strong>. \${esc(sk.desc)}</p><div class="notice"><strong>Your privacy.</strong> Your response will be used as part of an aggregated organisational assessment. Individual responses will not be shown in the final report unless your organisation has selected a named-response campaign.</div><p class="lead">There are \${qFlat.length} short statements across five innovation pillars. For each, choose how strongly you agree based on your own experience. It takes about 8&ndash;12 minutes.</p><div class="field"><label>Your name (optional)</label><input id="f_name" placeholder="Leave blank to respond anonymously"></div><div class="field"><label>Department / role level (optional)</label><input id="f_dept" placeholder="e.g. Operations, Senior Manager"></div><div class="row"><span class="muted">Pillars: \${PILLARS.map(p=>esc(p.short)).join(" &middot; ")}</span><button class="btn btn-primary" id="startBtn">Begin assessment &rarr;</button></div></div>\`;
+  }
+  app().innerHTML=body;
+  const sb=document.getElementById("startBtn"); if(sb)sb.onclick=()=>{state.profile={name:val("f_name"),dept:val("f_dept")};render("assess");};
+  bindPicker();
+}
+function stakeholderPicker(){ const opts=Object.entries(STAKEHOLDERS).map(([k,v])=>\`<option value="\${k}">\${esc(v.label)}</option>\`).join(""); return \`<div class="field"><label>Select your stakeholder group</label><select id="pickSk"><option value="">Choose&hellip;</option>\${opts}</select></div><div class="row"><span></span><button class="btn btn-primary" id="pickGo" disabled>Continue &rarr;</button></div>\`; }
+function bindPicker(){ const sel=document.getElementById("pickSk"),go=document.getElementById("pickGo"); if(!sel)return; sel.onchange=()=>{go.disabled=!sel.value;}; go.onclick=()=>{ctx.stakeholder=sel.value;render("intro");}; }
+
+function screenAssess(){
+  let html='<div class="card"><div class="progress"><i id="prog" style="width:0%"></i></div><div class="eyebrow" id="pillarTag"></div><h2 id="pillarName" style="margin-bottom:18px"></h2><div id="qlist"></div><div class="row"><button class="btn btn-ghost" id="backBtn">&larr; Back</button><button class="btn btn-primary" id="nextBtn">Next pillar &rarr;</button></div></div>';
+  app().innerHTML=html; state.pillarIdx=state.pillarIdx||0; renderPillar();
+  document.getElementById("backBtn").onclick=()=>{ if(state.pillarIdx>0){state.pillarIdx--;renderPillar();}else render("intro"); };
+  document.getElementById("nextBtn").onclick=()=>{ if(!pillarComplete(state.pillarIdx)){flashIncomplete();return;} if(state.pillarIdx<PILLARS.length-1){state.pillarIdx++;renderPillar();window.scrollTo({top:0,behavior:"smooth"});}else render("review"); };
+}
+function pillarComplete(pi){ const p=PILLARS[pi];for(let qi=0;qi<p.questions.length;qi++){if(answers[pi+"_"+qi]==null)return false;}return true; }
+function flashIncomplete(){ const n=document.getElementById("nextBtn");n.insertAdjacentHTML("afterend",'<div class="err" id="incErr">Please answer every statement before continuing.</div>');setTimeout(()=>{const e=document.getElementById("incErr");if(e)e.remove();},2600); }
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InnoPulse 360 — Innovation Capability Assessment</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="InnoPulse 360 multi-stakeholder innovation capability assessment.">
+<link rel="canonical" href="https://innopulse.thegrowthsystem.co.za/360-assessment.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--cream:#f2f2ea;--cream2:#e9e9dd;--ink:#16160f;--navy:#1c2400;--navy2:#262f00;--lime:#a8e617;--lime2:#5f8a00;--lime-glow:#d4ff4d;--muted:#5f5f57;--line:#e0e0d2;--white:#fff;--red:#d6483c;--amber:#e0a72e;--green:#5f8a00;--shadow:0 10px 30px rgba(28,36,0,.08);--radius:16px}*{box-sizing:border-box;margin:0;padding:0}html,body{background:var(--cream);color:var(--ink);font-family:'Instrument Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}.wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}.topbar{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:18px 20px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}.brand .badge{background:var(--navy);color:var(--lime);font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.04em}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime2)}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px}h1{font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:10px 0 8px}h2{font-size:21px;letter-spacing:-.01em;margin:0 0 6px}p.lead{color:var(--muted);font-size:16px;margin:8px 0}.notice{background:var(--cream2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:14px;color:var(--muted);margin:18px 0}.tag{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:var(--lime);font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;letter-spacing:.03em}.progress{height:6px;background:var(--cream2);border-radius:999px;overflow:hidden;margin:0 0 22px}.progress>i{display:block;height:100%;background:var(--lime);transition:width .35s ease}.q{padding:18px 0;border-bottom:1px solid var(--line)}.q:last-child{border-bottom:none}.q .txt{font-size:16px;font-weight:600;margin-bottom:14px}.likert{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.likert button{appearance:none;border:1px solid var(--line);background:var(--cream);border-radius:12px;padding:12px 6px;cursor:pointer;font:inherit;font-weight:600;font-size:13px;color:var(--ink);transition:.15s;display:flex;flex-direction:column;gap:4px;align-items:center}.likert button .n{font-size:18px;font-weight:800}.likert button:hover{border-color:var(--lime2)}.likert button[aria-pressed=true]{background:var(--navy);color:var(--white);border-color:var(--navy)}.likert button[aria-pressed=true] .n{color:var(--lime-glow)}.field{margin:14px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:inherit;background:var(--white)}.field textarea{min-height:90px;resize:vertical}.btn{appearance:none;border:none;border-radius:12px;padding:14px 22px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}.btn-primary{background:var(--lime);color:var(--navy)}.btn-primary:hover{background:var(--lime-glow)}.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn[disabled]{opacity:.45;cursor:not-allowed}.row{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:26px}.muted{color:var(--muted);font-size:13px}.err{color:var(--red);font-size:13px;margin-top:6px}.checkrow{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted)}.checkrow input{width:auto;margin-top:3px}.center{text-align:center}.pillar-line{display:flex;align-items:center;gap:12px;margin:10px 0}.pillar-line .bar{flex:1;height:10px;background:var(--cream2);border-radius:999px;overflow:hidden}.pillar-line .bar>i{display:block;height:100%;background:var(--lime2)}.pillar-line .lab{width:160px;font-size:13px;font-weight:600}.pillar-line .val{width:46px;text-align:right;font-weight:700;font-size:14px}@media(max-width:560px){.likert{gap:5px}.likert button{padding:10px 2px;font-size:11px}.pillar-line .lab{width:110px}}</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="360.html">InnoPulse <span class="badge">360</span></a>
+  <span class="muted">by The Growth System</span>
+</div>
+<main class="wrap"><div id="app"></div></main>
+
+<!-- BOOKING_CTA: corporate booking hook lives on 360.html / the dashboard, not in the respondent flow. -->
+
+<!-- Shared five-pillar model (single source of truth) -->
+<script src="pillars.js"></script>
+<!-- Optional: deploy injects the live Apps Script endpoint here.
+     window.INNOPULSE_CONFIG = { endpoint: "<APPS_SCRIPT_WEB_APP_URL>" }; -->
+<script src="360-config.js" onerror="window.__noConfig=1"></script>
+<script>
+/* InnoPulse 360 — respondent assessment.
+   Shares the five-pillar ISO 56001-aligned engine used by the public Pulse Check
+   (loaded from pillars.js). The backend endpoint is supplied by 360-config.js at
+   deploy time. With no endpoint set, responses are stored in localStorage so local
+   or offline testing never loses data. */
+
+const PILLARS = window.INNOPULSE_PILLARS;
+const STAKEHOLDERS = window.INNOPULSE_STAKEHOLDERS;
+const SCALE = [
+  {n:1,lab:"Strongly disagree",v:0},
+  {n:2,lab:"Disagree",v:25},
+  {n:3,lab:"Neutral",v:50},
+  {n:4,lab:"Agree",v:75},
+  {n:5,lab:"Strongly agree",v:100}
+];
+const CONFIG = window.INNOPULSE_CONFIG || {};
+const ENDPOINT = CONFIG.endpoint || "";
+
+function qsp(name){ return new URLSearchParams(location.search).get(name) || ""; }
+function parseContext(){
+  let campaign=qsp("campaign"), stakeholder=qsp("stakeholder"), company=qsp("company");
+  const parts=location.pathname.split("/").filter(Boolean);
+  const ai=parts.indexOf("360");
+  if(ai>=0){ if(!campaign&&parts[ai+1])campaign=parts[ai+1]; if(!stakeholder&&parts[ai+2])stakeholder=parts[ai+2]; }
+  return {company,campaign,stakeholder};
+}
+const ctx=parseContext();
+const answers={}, comments={};
+let qFlat=[]; PILLARS.forEach((p,pi)=>p.questions.forEach((txt,qi)=>qFlat.push({pi,qi,pid:p.id,text:txt})));
+
+function pillarScoreOf(pi){ const p=PILLARS[pi];let total=0,n=0;for(let qi=0;qi<p.questions.length;qi++){const k=pi+"_"+qi;if(answers[k]!=null){total+=answers[k];n++;}}return n===0?null:Math.round((total/n)*10)/10; }
+function allScores(){ return PILLARS.map((_,i)=>pillarScoreOf(i)); }
+function overallOf(scores){ if(scores.some(s=>s==null))return null;let t=0;PILLARS.forEach((p,i)=>t+=scores[i]*p.weight);return Math.round(t*10)/10; }
+function bandOf(v){ return v==null?null:v<45?"low":v<70?"medium":"high"; }
+function answeredCount(){ return Object.keys(answers).length; }
+const app=()=>document.getElementById("app");
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function val(id){ const e=document.getElementById(id);return e?e.value.trim():""; }
+const state={pillarIdx:0,profile:null};
+
+function screenIntro(){
+  const sk=STAKEHOLDERS[ctx.stakeholder]; const validCampaign=!!ctx.campaign, validStakeholder=!!sk; let body="";
+  if(!validCampaign||!validStakeholder){
+    body=\`<div class="card"><div class="eyebrow">InnoPulse 360</div><h1>This assessment link is incomplete</h1><p class="lead">A valid InnoPulse 360 link includes a campaign and a stakeholder group. Please use the personalised link your organisation sent you, or choose your group below if you were given a general campaign link.</p>\${validCampaign?stakeholderPicker():'<div class="notice">No campaign was found in this link. Please contact your assessment administrator for a valid link.</div>'}</div>\`;
+  } else {
+    body=\`<div class="card"><div class="eyebrow">InnoPulse 360 &middot; \${esc(ctx.company||ctx.campaign)}</div><h1>Innovation Capability Assessment</h1><p class="lead">You are responding as <strong>\${esc(sk.label)}</strong>. \${esc(sk.desc)}</p><div class="notice"><strong>Your privacy.</strong> Your response will be used as part of an aggregated organisational assessment. Individual responses will not be shown in the final report unless your organisation has selected a named-response campaign.</div><p class="lead">There are \${qFlat.length} short statements across five innovation pillars. For each, choose how strongly you agree based on your own experience. It takes about 8&ndash;12 minutes.</p><div class="field"><label>Your name (optional)</label><input id="f_name" placeholder="Leave blank to respond anonymously"></div><div class="field"><label>Department / role level (optional)</label><input id="f_dept" placeholder="e.g. Operations, Senior Manager"></div><div class="row"><span class="muted">Pillars: \${PILLARS.map(p=>esc(p.short)).join(" &middot; ")}</span><button class="btn btn-primary" id="startBtn">Begin assessment &rarr;</button></div></div>\`;
+  }
+  app().innerHTML=body;
+  const sb=document.getElementById("startBtn"); if(sb)sb.onclick=()=>{state.profile={name:val("f_name"),dept:val("f_dept")};render("assess");};
+  bindPicker();
+}
+function stakeholderPicker(){ const opts=Object.entries(STAKEHOLDERS).map(([k,v])=>\`<option value="\${k}">\${esc(v.label)}</option>\`).join(""); return \`<div class="field"><label>Select your stakeholder group</label><select id="pickSk"><option value="">Choose&hellip;</option>\${opts}</select></div><div class="row"><span></span><button class="btn btn-primary" id="pickGo" disabled>Continue &rarr;</button></div>\`; }
+function bindPicker(){ const sel=document.getElementById("pickSk"),go=document.getElementById("pickGo"); if(!sel)return; sel.onchange=()=>{go.disabled=!sel.value;}; go.onclick=()=>{ctx.stakeholder=sel.value;render("intro");}; }
+
+function screenAssess(){
+  let html='<div class="card"><div class="progress"><i id="prog" style="width:0%"></i></div><div class="eyebrow" id="pillarTag"></div><h2 id="pillarName" style="margin-bottom:18px"></h2><div id="qlist"></div><div class="row"><button class="btn btn-ghost" id="backBtn">&larr; Back</button><button class="btn btn-primary" id="nextBtn">Next pillar &rarr;</button></div></div>';
+  app().innerHTML=html; state.pillarIdx=state.pillarIdx||0; renderPillar();
+  document.getElementById("backBtn").onclick=()=>{ if(state.pillarIdx>0){state.pillarIdx--;renderPillar();}else render("intro"); };
+  document.getElementById("nextBtn").onclick=()=>{ if(!pillarComplete(state.pillarIdx)){flashIncomplete();return;} if(state.pillarIdx<PILLARS.length-1){state.pillarIdx++;renderPillar();window.scrollTo({top:0,behavior:"smooth"});}else render("review"); };
+}
+function pillarComplete(pi){ const p=PILLARS[pi];for(let qi=0;qi<p.questions.length;qi++){if(answers[pi+"_"+qi]==null)return false;}return true; }
+function flashIncomplete(){ const n=document.getElementById("nextBtn");n.insertAdjacentHTML("afterend",'<div class="err" id="incErr">Please answer every statement before continuing.</div>');setTimeout(()=>{const e=document.getElementById("incErr");if(e)e.remove();},2600); }
+function renderPillar(){
+  const pi=state.pillarIdx,p=PILLARS[pi];
+  document.getElementById("pillarTag").textContent="Pillar "+(pi+1)+" of "+PILLARS.length+" \u00b7 "+p.short;
+  document.getElementById("pillarName").textContent=p.name;
+  const qs=p.questions.map((txt,qi)=>{ const k=pi+"_"+qi,cur=answers[k]; const btns=SCALE.map(s=>\`<button data-k="\${k}" data-v="\${s.v}" aria-pressed="\${cur===s.v}" title="\${s.lab}"><span class="n">\${s.n}</span><span>\${s.lab}</span></button>\`).join(""); return \`<div class="q"><div class="txt">\${esc(txt)}</div><div class="likert">\${btns}</div></div>\`; }).join("");
+  const cmt=\`<div class="field" style="margin-top:18px"><label>\${esc(p.commentPrompt||("Comments on "+p.name+" (optional)"))}</label><textarea data-cmt="\${p.id}" placeholder="Optional">\${esc(comments[p.id]||"")}</textarea></div>\`;
+  document.getElementById("qlist").innerHTML=qs+cmt;
+  document.getElementById("nextBtn").textContent=pi<PILLARS.length-1?"Next pillar \u2192":"Review & submit \u2192";
+  document.querySelectorAll("#qlist .likert button").forEach(b=>b.onclick=()=>{ answers[b.dataset.k]=+b.dataset.v; b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b)); updateProgress(); });
+  document.querySelector("#qlist textarea").oninput=(e)=>{comments[p.id]=e.target.value;};
+  updateProgress();
+}
+function updateProgress(){ const pct=Math.round(answeredCount()/qFlat.length*100);const el=document.getElementById("prog");if(el)el.style.width=pct+"%"; }
+
+function screenReview(){
+  const scores=allScores(); let lines=PILLARS.map((p,i)=>{const v=scores[i];return \`<div class="pillar-line"><span class="lab">\${esc(p.short)}</span><span class="bar"><i style="width:\${v||0}%"></i></span><span class="val">\${v==null?"\u2013":v+"%"}</span></div>\`;}).join("");
+  app().innerHTML=\`<div class="card center"><div class="eyebrow">Almost done</div><h1>Review your responses</h1><p class="lead">Here's a private preview of your perception scores. Submitting adds your response to your organisation's aggregated InnoPulse 360 results.</p><div style="text-align:left;margin:22px 0">\${lines}</div><div class="notice center">These pillar scores reflect <strong>your perception</strong> as \${esc((STAKEHOLDERS[ctx.stakeholder]||{}).label||"a stakeholder")}. The organisation's report aggregates all stakeholders.</div><label class="checkrow" style="justify-content:center;margin:8px 0 18px"><input type="checkbox" id="consent"> <span>I understand my response will be aggregated into my organisation's InnoPulse 360 assessment.</span></label><div class="row" style="justify-content:center"><button class="btn btn-ghost" id="rBack">&larr; Back</button><button class="btn btn-primary" id="submitBtn" disabled>Submit my response</button></div><div id="submitMsg" class="muted" style="margin-top:14px"></div></div>\`;
+  document.getElementById("rBack").onclick=()=>{state.pillarIdx=PILLARS.length-1;render("assess");};
+  document.getElementById("consent").onchange=(e)=>{document.getElementById("submitBtn").disabled=!e.target.checked;};
+  document.getElementById("submitBtn").onclick=submitResponse;
+}
+function buildPayload(){
+  const scores=allScores(),overall=overallOf(scores),band=bandOf(overall);
+  const indicators={};PILLARS.forEach((p,pi)=>{p.questions.forEach((_,qi)=>{indicators[p.id+"_q"+(qi+1)]=answers[pi+"_"+qi];});});
+  const pillarScores={};PILLARS.forEach((p,i)=>pillarScores[p.id]=scores[i]);
+  return {event:"innopulse360_response",sentAt:new Date().toISOString(),recordId:"r360_"+Date.now()+"_"+Math.random().toString(36).slice(2,8),mode:"corporate",company:ctx.company||"",campaign:ctx.campaign||"",stakeholder:ctx.stakeholder||"",stakeholderLabel:(STAKEHOLDERS[ctx.stakeholder]||{}).label||"",profile:state.profile||{name:"",dept:""},pillarScores,overallScore:overall,band,indicators,comments};
+}
+function submitResponse(){
+  const btn=document.getElementById("submitBtn");btn.disabled=true;btn.textContent="Submitting\u2026";
+  const payload=buildPayload();const done=()=>render("thanks");
+  if(!ENDPOINT){ try{const k="innopulse360_pending";const arr=JSON.parse(localStorage.getItem(k)||"[]");arr.push(payload);localStorage.setItem(k,JSON.stringify(arr));}catch(e){} console.log("[InnoPulse360] No ENDPOINT set; response stored locally.",payload); setTimeout(done,400); return; }
+  fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).then(()=>done()).catch(err=>{console.error(err);try{const arr=JSON.parse(localStorage.getItem("innopulse360_pending")||"[]");arr.push(payload);localStorage.setItem("innopulse360_pending",JSON.stringify(arr));}catch(e){}done();});
+}
+function screenThanks(){
+  app().innerHTML=\`<div class="card center"><div class="tag">Response recorded</div><h1 style="margin-top:14px">Thank you</h1><p class="lead">Your perspective has been added to \${esc(ctx.company||ctx.campaign||"your organisation")}'s InnoPulse 360 assessment. When the campaign closes, your administrator will see the aggregated results across all stakeholder groups.</p><div class="notice center">You can close this window. If you were sent links for more than one role, you can complete each separately.</div></div>\`;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function render(s){ state.screen=s;({intro:screenIntro,assess:screenAssess,review:screenReview,thanks:screenThanks}[s]||screenIntro)(); }
+function boot(){ if(!window.INNOPULSE_PILLARS){ app().innerHTML='<div class="card"><h1>Could not load assessment</h1><p class="lead">The pillar model (pillars.js) did not load. If you are hosting locally, make sure pillars.js sits next to this file.</p></div>'; return; } render("intro"); }
+document.addEventListener("DOMContentLoaded",boot);
+
+</script>
+</body>
+</html>
