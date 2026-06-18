@@ -2487,4 +2487,71 @@ window.addEventListener('load', render);
   if(document.readyState!=="loading") init(); else document.addEventListener("DOMContentLoaded", init);
 })();
 </script>
+<!-- Return-to-Home navigation (added) -->
+<style>
+  #app .topbar .home-link{
+    appearance:none;-webkit-appearance:none;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;
+    font:inherit;font-size:14px;font-weight:600;line-height:1;
+    color:#2f3b2a;background:#fff;border:1px solid #d7ddd0;
+    padding:9px 16px;border-radius:999px;
+    transition:background .15s ease,border-color .15s ease,box-shadow .15s ease;
+  }
+  #app .topbar .home-link:hover{background:#f1f4ec;border-color:#b9c4ab;}
+  #app .topbar .home-link:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(122,166,76,.45);}
+  #app .topbar .brandmark{cursor:pointer;}
+  @media (max-width:560px){#app .topbar .home-link{padding:8px 12px;font-size:13px;}}
+</style>
+<script>
+(function(){
+  if(window.__homeNavInstalled) return; window.__homeNavInstalled=true;
+  function assessmentInProgress(){
+    var a = state.answers && Object.keys(state.answers).length>0;
+    var p = state.profile && Object.keys(state.profile).length>0;
+    return (state.view==="intake"||state.view==="quiz"||state.view==="preview") && (a||p||state.step>0);
+  }
+  window.goHome=function(){
+    if(assessmentInProgress()){
+      if(!confirm("Return to the home page? Your current assessment progress will be lost.")) return;
+    }
+    state.view="hero"; state.step=0;
+    state.answers={}; state.comments={}; state.profile={}; state.gate={}; state.unlocked=false;
+    render();
+    try{ window.scrollTo({top:0,behavior:"smooth"}); }catch(e){ window.scrollTo(0,0); }
+  };
+  function injectHomeBtn(){
+    document.querySelectorAll("#app .topbar").forEach(function(tb){
+      if(state.view==="hero"||state.view==="dashboard"){
+        var ex=tb.querySelector(".home-link"); if(ex) ex.remove(); return;
+      }
+      if(tb.querySelector(".home-link")) return;
+      var btn=document.createElement("button");
+      btn.type="button"; btn.className="home-link";
+      btn.setAttribute("aria-label","Return to home page");
+      btn.title="Return to home page";
+      btn.innerHTML="&#8592; Home";
+      var pill=tb.querySelector(".toppill");
+      if(pill){ tb.insertBefore(btn,pill); } else { tb.appendChild(btn); }
+    });
+    document.querySelectorAll("#app .brandmark").forEach(function(bm){
+      bm.setAttribute("role","link"); bm.setAttribute("tabindex","0");
+      bm.setAttribute("title","Return to home page");
+    });
+  }
+  if(typeof render==="function"){
+    var _render=render;
+    window.render=function(){ var r=_render.apply(this,arguments); try{ injectHomeBtn(); }catch(e){} return r; };
+  }
+  document.addEventListener("click",function(ev){
+    var el=ev.target.closest&&ev.target.closest(".home-link, #app .brandmark");
+    if(el){ ev.preventDefault(); window.goHome(); }
+  });
+  document.addEventListener("keydown",function(ev){
+    if((ev.key==="Enter"||ev.key===" ")&&ev.target.closest&&ev.target.closest("#app .brandmark")){
+      ev.preventDefault(); window.goHome();
+    }
+  });
+  if(document.querySelector("#app .topbar")) injectHomeBtn();
+})();
+</script>
 </body></html>
