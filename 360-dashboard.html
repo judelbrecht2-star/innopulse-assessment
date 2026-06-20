@@ -10,6 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>:root{--cream:#f2f2ea;--cream2:#e9e9dd;--ink:#16160f;--navy:#1c2400;--navy2:#262f00;--lime:#a8e617;--lime2:#5f8a00;--lime-glow:#d4ff4d;--muted:#5f5f57;--line:#e0e0d2;--white:#fff;--red:#d6483c;--amber:#e0a72e;--green:#5f8a00;--shadow:0 10px 30px rgba(28,36,0,.08);--radius:16px}*{box-sizing:border-box;margin:0;padding:0}html,body{background:var(--cream);color:var(--ink);font-family:'Instrument Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}a{color:var(--lime2)}.topbar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--white);padding:14px 24px;position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}.brand .badge{background:var(--navy);color:var(--lime);font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.04em}.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 90px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime2)}h1{font-size:28px;letter-spacing:-.02em;margin:8px 0}h2{font-size:18px;letter-spacing:-.01em;margin:0 0 14px}h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:20px}.grid{display:grid;gap:20px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.kpi{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:18px}.kpi .v{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1}.kpi .l{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:6px}.muted{color:var(--muted);font-size:13px}.btn{appearance:none;border:none;border-radius:11px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;font-size:14px}.btn-primary{background:var(--lime);color:var(--navy)}.btn-primary:hover{background:var(--lime-glow)}.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn-dark{background:var(--navy);color:var(--lime)}.btn[disabled]{opacity:.45;cursor:not-allowed}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:inherit;background:var(--white)}.inline{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;cursor:pointer;background:var(--cream);user-select:none}.chip[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}.bar{height:9px;background:var(--cream2);border-radius:999px;overflow:hidden;min-width:60px}.bar>i{display:block;height:100%}.heat td.cell{text-align:center;font-weight:700;color:#16160f;border:2px solid var(--white)}.linkbox{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:8px 10px;word-break:break-all}.row{display:flex;gap:12px;align-items:center}.spread{justify-content:space-between}.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}.tag.green{background:rgba(95,138,0,.14);color:var(--green)}.tag.amber{background:rgba(224,167,46,.16);color:#9c6f10}.tag.red{background:rgba(214,72,60,.13);color:var(--red)}.hidden{display:none!important}.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);flex-wrap:wrap;margin-top:10px}.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:14px;height:14px;border-radius:3px;display:inline-block}.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:20px;flex-wrap:wrap}.tabs button{appearance:none;background:none;border:none;font:inherit;font-weight:700;font-size:14px;padding:10px 14px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--lime)}@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}}@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}</style>
+<!-- AUTH GATE (Phase 2 — Supabase) : keep visually hidden until login verified -->
+<style id="authGateStyle">html.auth-checking body{visibility:hidden!important}</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="topbar">
@@ -30,6 +33,52 @@
 <!-- Optional deploy injects the Apps Script endpoint:
      window.INNOPULSE_CONFIG = { endpoint: "<APPS_SCRIPT_WEB_APP_URL>" }; -->
 <script src="360-config.js" onerror="window.__noConfig=1"></script>
+<!-- AUTH GATE LOGIC (Phase 2 — Supabase). Reversible: remove this block + the head block to restore public access. -->
+<script>
+(function authGate(){
+  document.documentElement.classList.add('auth-checking');
+  function reveal(){ document.documentElement.classList.remove('auth-checking'); }
+  function go(url){ window.location.replace(url); }
+  var cfg = window.INNOPULSE_CONFIG || {};
+  var URL = cfg.SUPABASE_URL, KEY = cfg.SUPABASE_PUBLISHABLE_KEY;
+  if(!URL || !KEY || /PASTE_YOUR/.test(KEY) || !window.supabase){
+    // Misconfigured: fail safe to login page rather than expose dashboard.
+    go('360-login.html'); return;
+  }
+  var sb = window.supabase.createClient(URL, KEY);
+  window.__sbClient = sb;
+  sb.auth.getSession().then(function(res){
+    var session = res && res.data && res.data.session;
+    if(!session){ go('360-login.html'); return; }
+    reveal();
+    wireSignOut(sb, session);
+  }).catch(function(){ go('360-login.html'); });
+
+  function wireSignOut(sb, session){
+    try{
+      var bar = document.querySelector('.topbar');
+      if(bar && !document.getElementById('signOutBtn')){
+        var wrap = document.createElement('div');
+        wrap.style.cssText='margin-left:auto;display:flex;align-items:center;gap:10px;font:inherit';
+        var who = document.createElement('span');
+        who.className='muted';
+        who.style.cssText='font-size:13px';
+        who.textContent = (session.user && session.user.email) ? session.user.email : '';
+        var btn = document.createElement('button');
+        btn.id='signOutBtn';
+        btn.type='button';
+        btn.textContent='Sign out';
+        btn.style.cssText='cursor:pointer;border:1px solid var(--line,#ccc);background:var(--white,#fff);border-radius:8px;padding:6px 12px;font:inherit';
+        btn.addEventListener('click', function(){
+          sb.auth.signOut().then(function(){ window.location.replace('360-login.html'); });
+        });
+        wrap.appendChild(who); wrap.appendChild(btn);
+        bar.appendChild(wrap);
+      }
+    }catch(e){}
+  }
+})();
+</script>
 <script>
 /* InnoPulse 360 — admin dashboard.
    Reads corporate responses (from the Apps Script web app, or local pending data),
