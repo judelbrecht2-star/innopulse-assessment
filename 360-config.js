@@ -6,5 +6,5 @@ window.INNOPULSE_CONFIG = {
 ,
   // --- Supabase (Phase 2 auth). Publishable key is safe in the browser (RLS-protected). ---
   SUPABASE_URL: "https://jydbinexjckfzjqgsmjf.supabase.co",
-  SUPABASE_PUBLISHABLE_KEY: sb_publishable_FgOybM1RjofHIl9X6hUIhw_Jfi8AwwV
+  SUPABASE_PUBLISHABLE_KEY: "sb_publishable_FgOybM1RjofHIl9X6hUIhw_Jfi8AwwV"
 };
