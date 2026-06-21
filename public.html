@@ -1935,6 +1935,53 @@ function sendToWebhook(rec){
       headers:{'Content-Type':'text/plain;charset=utf-8'},
       body: JSON.stringify(payload)
     }).catch(()=>{});
+        /* Phase 3: parallel mirror to Supabase (fire-and-forget, never blocks the webhook) */
+        try {
+          var __sbCfg = (window.INNOPULSE_CONFIG || {});
+          var __sbUrl = __sbCfg.SUPABASE_URL, __sbKey = __sbCfg.SUPABASE_PUBLISHABLE_KEY;
+          if (__sbUrl && __sbKey) {
+            var __g = (payload && payload.gate) || {};
+            var __pf = (payload && payload.profile) || {};
+            var __sm = (payload && payload.summary) || {};
+            var __sbRow = {
+              record_id: payload && payload.recordId,
+              event: payload && payload.event,
+              respondent_name: __g.gname || null,
+              email: __g.email || null,
+              phone: __g.phone || null,
+              company: __pf.company || null,
+              industry: __pf.industry || null,
+              years_of_service: __pf.service || null,
+              age: __pf.age || null,
+              education: __pf.education || null,
+              gender: __pf.gender || null,
+              overall_score: (__sm.overallScore != null ? __sm.overallScore : null),
+              band: __sm.band || null,
+              dominant_barrier: __sm.dominantBarrier || null,
+              dominant_pillar: __sm.dominantPillar || null,
+              visibility_risk_pct: (__sm.visibilityRiskPct != null ? __sm.visibilityRiskPct : null),
+              recommended_offer: __sm.recommendedOffer || null,
+              recommended_offer_price: (__sm.recommendedOfferPrice != null ? __sm.recommendedOfferPrice : null),
+              pillar_scores: (payload && payload.row) || null,
+              indicators: (payload && payload.indicators) || null,
+              comments: (payload && payload.comments) || null,
+              profile: __pf,
+              gate: __g,
+              summary: __sm,
+              raw_payload: payload
+            };
+            fetch(__sbUrl.replace(/\/+$/,'') + '/rest/v1/public_assessments', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'apikey': __sbKey,
+                'Authorization': 'Bearer ' + __sbKey,
+                'Prefer': 'return=minimal'
+              },
+              body: JSON.stringify(__sbRow)
+            }).catch(function(){});
+          }
+        } catch (__sbErr) { /* never affect the webhook path */ }
   }catch(e){}
 }
 
