@@ -111,6 +111,46 @@ function upsertCampaign(c){ const a=loadCampaigns();const i=a.findIndex(x=>x.id=
 // Locally we read pending responses captured by the assessment page.
 function localResponses(){ try{return JSON.parse(localStorage.getItem("innopulse360_pending")||"[]");}catch(e){return [];} }
 function fetchResponses(campaignId){
+    /* === SUPABASE_READ_PATH (Phase 3 read migration) — reversible: delete this wrapper to restore Apps-Script-only reads === */
+    try{
+      var __sb = window.__sbClient;
+      if(__sb && typeof __sb.from === 'function'){
+        return __sb.from('responses').select('*').eq('campaign_id', campaignId)
+          .then(function(res){
+            if(res && res.error){ throw res.error; }
+            var rows = (res && res.data) || [];
+            var mapped = rows.map(function(x){
+              return {
+                recordId: x.record_id,
+                campaign: x.campaign_id,
+                campaignCode: x.campaign_code,
+                company: x.company,
+                stakeholder: x.stakeholder_group,
+                stakeholderLabel: x.stakeholder_label,
+                respondentName: x.respondent_name,
+                departmentRole: x.department_role,
+                overallScore: x.overall_score,
+                band: x.band,
+                pillarScores: x.pillar_scores,
+                indicators: x.indicators,
+                comments: x.comments,
+                profile: x.profile,
+                sentAt: x.submitted_at
+              };
+            });
+            var local = localResponses().filter(function(r){ return r.campaign === campaignId; });
+            var seen = {}; mapped.forEach(function(r){ if(r.recordId) seen[r.recordId]=1; });
+            return mapped.concat(local.filter(function(r){ return !r.recordId || !seen[r.recordId]; }));
+          })
+          .catch(function(err){
+            console.warn('[dashboard] Supabase read failed, using Apps Script fallback:', err && err.message);
+            return fetchResponsesLegacy(campaignId);
+          });
+      }
+    }catch(e){ /* fall through to legacy */ }
+    return fetchResponsesLegacy(campaignId);
+  }
+  function fetchResponsesLegacy(campaignId){
   return new Promise(resolve=>{
     const local=localResponses().filter(r=>!campaignId||r.campaign===campaignId);
     if(!ENDPOINT){ resolve(local); return; }
