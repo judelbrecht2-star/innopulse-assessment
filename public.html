@@ -1931,12 +1931,7 @@ function sendToWebhook(rec){
         recommendedOffer: offer ? offer.name : null,
         recommendedOfferPrice: offer ? offer.price : null
       }
-    };
-    fetch(CONFIG.webhookUrl, {
-      method:'POST',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify(payload)
-    }).catch(()=>{});
+    };// Apps Script webhook call removed (2026-06): backend ignored this event; Supabase REST insert below is the system of record.
         /* Phase 3: parallel mirror to Supabase (fire-and-forget, never blocks the webhook) */
         try {
           var __sbCfg = (window.INNOPULSE_CONFIG || {});
