@@ -15,133 +15,90 @@
 <link rel="icon" href="/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  body{background:var(--navy);color:var(--cream)}
-  .c-wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-  .c-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0;flex-wrap:wrap;border-bottom:1px solid var(--navy2)}
-  .c-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cream)}
-  .c-brand img{width:38px;height:38px;border-radius:9px;background:#fff;padding:2px}
-  .c-brand .bt{font-weight:600;font-size:18px}
-  .c-brand .bt span{color:var(--lime)}
-  .c-brand .bs{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9aa583;font-weight:500}
-  .c-menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
-  .c-menu a{text-decoration:none;color:var(--cream);font-weight:500;font-size:15px;opacity:.8}
-  .c-menu a:hover{opacity:1;color:var(--lime)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font-weight:600;font-size:14px;padding:12px 22px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .15s ease}
-  .btn:hover{transform:translateY(-1px)}
-  .btn-lime{background:var(--lime);color:var(--ink)}
-  .c-hero{padding:64px 0 40px;max-width:820px}
-  .c-badge{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--lime);font-weight:600;padding:6px 12px;border-radius:999px;margin-bottom:22px}
-  .c-hero h1{font-size:clamp(32px,4.6vw,52px);font-weight:600;line-height:1.06;margin:0 0 20px;color:#fff}
-  .c-hero p{font-size:clamp(17px,2vw,20px);color:#c7cdb4;margin:0 0 30px;max-width:680px}
-  .c-private{display:flex;align-items:center;gap:10px;font-size:13px;color:#9aa583;margin-top:18px}
-  .c-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:30px 0}
-  @media(max-width:760px){.c-grid{grid-template-columns:1fr}.c-menu{display:none}}
-  .c-feature{background:var(--navy2);border:1px solid #36420a;border-radius:14px;padding:24px}
-  .c-feature h3{font-size:17px;font-weight:600;margin:0 0 8px;color:#fff}
-  .c-feature p{font-size:14px;color:#b9c09c;margin:0;line-height:1.55}
-  .c-section{padding:46px 0;border-top:1px solid var(--navy2)}
-  .c-section h2{font-size:26px;font-weight:600;color:#fff;margin:0 0 8px}
-  .c-section .lead{color:#c7cdb4;max-width:680px;margin:0 0 28px}
-  .c-pills{display:flex;flex-wrap:wrap;gap:10px}
-  .c-pill{border:1px solid #36420a;border-radius:999px;padding:10px 16px;font-size:14px;color:var(--cream)}
-  .c-pill b{color:var(--lime);font-weight:600;margin-right:6px}
-  .c-stake{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  @media(max-width:760px){.c-stake{grid-template-columns:1fr 1fr}}
-  .c-stake .s{background:var(--navy2);border:1px solid #36420a;border-radius:12px;padding:18px;text-align:center;font-weight:500;font-size:15px}
-  .c-cta-box{background:var(--lime);color:var(--ink);border-radius:var(--radius);padding:40px;text-align:center;margin-top:10px}
-  .c-cta-box h2{color:var(--ink);font-size:28px;margin:0 0 10px}
-  .c-cta-box p{color:#2c3a00;margin:0 0 22px;font-size:16px}
-  .c-cta-box .btn{background:var(--navy);color:var(--lime-glow)}
-  .c-foot{border-top:1px solid var(--navy2);padding:28px 0 60px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#9aa583;font-size:13px}
-  .c-foot a{color:#9aa583}
+:root{--cream:#f3f3ec;--cream2:#eaeade;--ink:#15150d;--navy:#1c2400;--navy2:#2c3a00;--lime:#a8e617;--lime2:#5a8400;--lime-glow:#d4ff4d;--muted:#62625a;--line:#e4e4d6;--white:#fff;--radius:24px;--shadow:0 22px 60px rgba(28,36,0,.12);--shadow-sm:0 8px 24px rgba(28,36,0,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:radial-gradient(120% 55% at 85% -8%,#eef7d6 0%,var(--cream) 42%);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+h1,h2,h3{letter-spacing:-.02em}
+.nav{position:sticky;top:0;z-index:50;background:rgba(243,243,236,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .row{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:1180px;margin:0 auto;padding:13px 24px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{height:38px;width:auto;border-radius:10px;background:#fff;padding:5px 8px;box-shadow:var(--shadow-sm)}
+.brand b{font-size:18px;font-weight:700;color:var(--ink)}.brand b i{font-style:normal;color:var(--lime2)}
+.brand span{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.menu a{font-size:15px;font-weight:500;opacity:.82}.menu a:hover{opacity:1;color:var(--lime2)}
+.navcta{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:600;font-size:15px;padding:12px 22px;cursor:pointer;border:1.5px solid transparent;transition:transform .15s,box-shadow .2s,background .2s}
+.btn svg{width:17px;height:17px}.btn:hover{transform:translateY(-2px)}
+.btn-lime{background:var(--lime);color:var(--navy);box-shadow:0 10px 26px rgba(168,230,23,.4)}.btn-lime:hover{background:var(--lime-glow)}
+.btn-navy{background:var(--navy);color:var(--lime-glow)}.btn-navy:hover{box-shadow:var(--shadow)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}.btn-ghost:hover{border-color:var(--navy)}
+.btn-sm{padding:10px 17px;font-size:14px}
+.hero{padding:54px 0 22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime2);font-weight:700;margin:0 0 16px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--lime2);border-radius:2px}
+.hero h1{font-size:clamp(34px,4.6vw,52px);font-weight:700;line-height:1.05;margin:0 0 16px;color:var(--ink)}
+.hero p{font-size:clamp(17px,1.6vw,20px);color:var(--muted);margin:0;max-width:700px}
+nav.crumbs{font-size:13px;color:var(--muted);padding:14px 0}nav.crumbs a{color:var(--muted)}nav.crumbs a:hover{color:var(--lime2)}
+main{padding:8px 0 26px}
+main h2{font-size:clamp(24px,2.6vw,32px);font-weight:700;margin:40px 0 12px;color:var(--navy)}
+main h3{font-size:19px;font-weight:600;margin:24px 0 8px;color:var(--navy2)}
+main p{margin:0 0 16px;font-size:17px;color:#33332b}
+.lead{font-size:20px;color:#28281f}.lead strong{color:var(--navy)}
+ul.ticks,ul.plain{list-style:none;padding:0;margin:18px 0}
+ul.ticks li{position:relative;padding:7px 0 7px 32px;font-size:16.5px}
+ul.ticks li::before{content:"";position:absolute;left:0;top:13px;width:17px;height:17px;border-radius:50%;background:var(--lime);box-shadow:inset 0 0 0 2px var(--navy)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.feature{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s}
+.feature:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.feature h3{margin:0 0 7px;color:var(--navy);font-size:17px;font-weight:700}.feature p{font-size:15px;margin:0;color:var(--muted)}
+.feature h3 a{color:var(--navy)}.feature h3 a:hover{color:var(--lime2)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:20px 0}
+.steps li{position:relative;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px 20px 18px 62px;margin:0 0 12px;box-shadow:var(--shadow-sm)}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--navy);color:var(--lime);font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps li b{color:var(--navy)}
+.callout{background:linear-gradient(150deg,#f2fbdc,#fff);border:1px solid #d6eca6;border-left:4px solid var(--lime);border-radius:16px;padding:22px 26px;margin:26px 0;box-shadow:var(--shadow-sm)}
+.callout p{margin:0 0 10px;font-size:16.5px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--navy);font-weight:600;padding:12px 22px;border-radius:999px;font-size:15px;box-shadow:0 10px 26px rgba(168,230,23,.4);transition:transform .15s,background .2s}
+.cta:hover{transform:translateY(-2px);background:var(--lime-glow)}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+.tags span{font-size:12.5px;font-weight:600;background:var(--white);border:1px solid var(--line);color:var(--navy);padding:7px 14px;border-radius:999px;box-shadow:var(--shadow-sm)}
+.cta-band{background:linear-gradient(135deg,var(--navy),#0e1400);color:#eef2e0;border-radius:var(--radius);padding:42px;margin:34px 0;text-align:center;box-shadow:var(--shadow)}
+.cta-band h2{color:#fff;font-size:clamp(24px,3vw,34px);font-weight:700;margin:0 0 10px}
+.cta-band p{color:#c2d398;margin:0 0 22px;font-size:17px}
+.faq details{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:2px 20px;margin:0 0 10px;box-shadow:var(--shadow-sm)}
+.faq summary{cursor:pointer;font-weight:600;font-size:16.5px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-size:22px;color:var(--lime2)}
+.faq details[open] summary::after{content:"3"}
+.faq details p{padding-bottom:6px;color:var(--muted);font-size:15.5px}
+.related{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:28px 0;box-shadow:var(--shadow-sm)}
+.related b{color:var(--navy);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.related ul{margin:10px 0 0;padding-left:18px}.related li{margin:6px 0;font-size:16px}.related a{color:var(--lime2);font-weight:600}
+.updated{font-size:13px;color:var(--muted);margin-top:28px}
+.foot{margin-top:30px;background:var(--navy);color:#aebd86;border-radius:var(--radius) var(--radius) 0 0}
+.foot .grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:30px;max-width:1180px;margin:0 auto;padding:46px 24px 26px}
+.foot h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin:0 0 14px}
+.foot a{color:#aebd86;display:block;padding:5px 0;font-size:14.5px}.foot a:hover{color:var(--lime)}
+.foot .blurb{font-size:14px;line-height:1.6;max-width:280px;color:#9aa873}
+.foot .fbrand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.foot .fbrand img{height:38px;width:auto;border-radius:10px;background:#fff;padding:5px 8px}
+.foot .fbrand b{color:#fff;font-size:17px;font-weight:700}
+.foot .social{display:flex;gap:10px;margin-top:14px}
+.foot .social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;padding:0}.foot .social svg{width:17px;height:17px}
+.foot .bar{border-top:1px solid rgba(255,255,255,.1);max-width:1180px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
+@media(max-width:820px){.fgrid{grid-template-columns:1fr}.foot .grid{grid-template-columns:1fr 1fr}.menu,.navcta .btn-ghost{display:none}}
+@media(max-width:560px){.foot .grid{grid-template-columns:1fr}.cta-band{padding:30px 22px}}
 </style>
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="InnoPulse 360 — Corporate Innovation Assessment"><meta name="twitter:description" content="A multi-stakeholder innovation capability assessment that combines executive, employee, customer and partner views into one organisational diagnosis."><meta name="twitter:image" content="https://innopulse.thegrowthsystem.co.za/logo.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://thegrowthsystem.co.za/#organization","name":"The Growth System","url":"https://thegrowthsystem.co.za","logo":{"@type":"ImageObject","url":"https://innopulse.thegrowthsystem.co.za/logo.png","caption":"The Growth System"},"image":"https://innopulse.thegrowthsystem.co.za/logo.png","description":"South African innovation management consultancy offering innovation capability assessment, innovation strategy, ISO 56001 readiness, idea management and innovation training.","slogan":"Make innovation a managed, repeatable capability.","telephone":"+27 83 296 6880","hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Innovation360 Gold Partner"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Innovation Master Black Belt (IMBB)"}],"areaServed":[{"@type":"Country","name":"South Africa"},{"@type":"AdministrativeArea","name":"Gauteng"},{"@type":"City","name":"Johannesburg"},{"@type":"City","name":"Pretoria"}],"knowsAbout":["Innovation management","Innovation capability","ISO 56001","ISO 56002","Innovation strategy","Idea management","Innovation culture","Innovation training","Innovation governance"],"email":"info@thegrowthsystem.co.za","founder":{"@id":"https://thegrowthsystem.co.za/#isaiah-engelbrecht"},"memberOf":{"@type":"Organization","name":"Innovation360","url":"https://www.innovation360.com"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/"]},{"@type":["LocalBusiness","ProfessionalService"],"@id":"https://thegrowthsystem.co.za/#localbusiness","name":"The Growth System","url":"https://thegrowthsystem.co.za","logo":{"@type":"ImageObject","url":"https://innopulse.thegrowthsystem.co.za/logo.png"},"image":"https://innopulse.thegrowthsystem.co.za/logo.png","description":"South African innovation management consultancy offering innovation capability assessment, innovation strategy, ISO 56001 readiness, idea management and innovation training.","email":"info@thegrowthsystem.co.za","telephone":"+27 83 296 6880","address":[{"@type":"PostalAddress","streetAddress":"9 Stonehaven Street, Blue Valley Golf Estate","addressLocality":"Centurion","addressRegion":"Gauteng","postalCode":"1491","addressCountry":"ZA"},{"@type":"PostalAddress","streetAddress":"333 Beckett Street, Arcadia","addressLocality":"Pretoria","addressRegion":"Gauteng","postalCode":"0007","addressCountry":"ZA"}],"areaServed":[{"@type":"Country","name":"South Africa"},{"@type":"AdministrativeArea","name":"Gauteng"},{"@type":"City","name":"Johannesburg"},{"@type":"City","name":"Pretoria"}],"knowsAbout":["Innovation management","Innovation capability","ISO 56001","ISO 56002","Innovation strategy","Idea management","Innovation culture","Innovation training","Innovation governance"],"founder":{"@id":"https://thegrowthsystem.co.za/#isaiah-engelbrecht"},"memberOf":{"@type":"Organization","name":"Innovation360","url":"https://www.innovation360.com"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/"]},{"@type":"Person","@id":"https://thegrowthsystem.co.za/#isaiah-engelbrecht","name":"Isaiah Engelbrecht","jobTitle":"Founder","worksFor":{"@id":"https://thegrowthsystem.co.za/#organization"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/"]},{"@type":"Person","@id":"https://thegrowthsystem.co.za/#judith-engelbrecht","name":"Judith Engelbrecht","jobTitle":"Chief Executive Officer","worksFor":{"@id":"https://thegrowthsystem.co.za/#organization"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/"]},{"@type":"WebSite","@id":"https://innopulse.thegrowthsystem.co.za/#website","url":"https://innopulse.thegrowthsystem.co.za/","name":"InnoPulse by The Growth System","publisher":{"@id":"https://thegrowthsystem.co.za/#organization"},"inLanguage":"en-ZA"},{"@type":"WebPage","@id":"https://innopulse.thegrowthsystem.co.za/360.html#webpage","url":"https://innopulse.thegrowthsystem.co.za/360.html","name":"InnoPulse 360 — Multi-Stakeholder Corporate Innovation Assessment","isPartOf":{"@id":"https://innopulse.thegrowthsystem.co.za/#website"},"inLanguage":"en-ZA","description":"InnoPulse 360 is a multi-stakeholder innovation capability assessment combining executive, employee, customer and partner views into one organisational diagnosis.","primaryImageOfPage":{"@type":"ImageObject","url":"https://innopulse.thegrowthsystem.co.za/logo.png"},"breadcrumb":{"@id":"https://innopulse.thegrowthsystem.co.za/360.html#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://innopulse.thegrowthsystem.co.za/360.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innopulse.thegrowthsystem.co.za/"},{"@type":"ListItem","position":2,"name":"InnoPulse 360","item":"https://innopulse.thegrowthsystem.co.za/360.html"}]},{"@type":"Service","@id":"https://innopulse.thegrowthsystem.co.za/360.html#service","name":"InnoPulse 360 Multi-Stakeholder Assessment","serviceType":"InnoPulse 360 Multi-Stakeholder Assessment","provider":{"@id":"https://thegrowthsystem.co.za/#organization"},"areaServed":[{"@type":"Country","name":"South Africa"}],"url":"https://innopulse.thegrowthsystem.co.za/360.html","description":"A commissioned, multi-stakeholder innovation capability assessment producing an executive-ready organisational diagnosis with stakeholder comparison, pillar heatmaps and a roadmap."}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBMSDG3MQV"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-WBMSDG3MQV");</script>
 </head>
 <body>
-<div class="c-wrap">
-  <nav class="c-nav" aria-label="Primary">
-    <a class="c-brand" href="/">
-      <img src="/logo.png" alt="The Growth System logo" width="38" height="38">
-      <span>
-        <span class="bt">Inno<span>Pulse 360</span></span>
-        <span class="bs">By The Growth System</span>
-      </span>
-    </a>
-    <ul class="c-menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/public.html">Free Pulse Check</a></li>
-      <li><a href="/360.html">InnoPulse 360</a></li>
-      <li><a href="/services.html">Services</a></li>
-      <li><a href="/innovation-methodology.jpg">Methodology</a></li>
-    </ul>
-    <!-- BOOKING_CTA: replace href with the calendar/booking app URL when ready -->
-    <a class="btn btn-lime" href="/book.html" data-booking-cta>Book Consultation</a>
-  </nav>
-
-  <header class="c-hero">
-    <div class="c-badge">Corporate &middot; Private Engagement</div>
-    <h1>InnoPulse 360: Multi-Stakeholder Corporate Innovation Assessment</h1>
-    <p>A multi-stakeholder innovation capability assessment that combines the views of executives, employees, customers, and partners into one organizational diagnosis.</p>
-    <a class="btn btn-lime" href="#request">Request a Corporate Assessment</a>
-    <div class="c-private">
-      <span>&#128274;</span>
-      <span>Private, commissioned engagement. Aggregated organizational reporting &mdash; not a public quiz.</span>
-    </div>
-  </header>
-
-  <section class="c-section">
-    <h2>What an InnoPulse 360 engagement includes</h2>
-    <p class="lead">When a company commissions The Growth System, we assess innovation capability across every stakeholder group and aggregate it into one executive-ready diagnosis.</p>
-    <div class="c-grid">
-      <div class="c-feature"><h3>Company-level profile</h3><p>Responses are collected under a single company campaign and aggregated into an overall innovation capability score and maturity level.</p></div>
-      <div class="c-feature"><h3>Stakeholder comparison</h3><p>See how executives, employees, customers, and service providers each experience innovation &mdash; and where their perceptions diverge.</p></div>
-      <div class="c-feature"><h3>Pillar heatmap &amp; gap analysis</h3><p>A stakeholder-by-pillar heatmap surfaces strengths, blockers, and the biggest gaps between groups.</p></div>
-      <div class="c-feature"><h3>Executive report &amp; roadmap</h3><p>Top strengths, top weaknesses, recommended next steps, and a consulting roadmap drawn from the data.</p></div>
-    </div>
-  </section>
-
-  <section class="c-section">
-    <h2>Five capability pillars</h2>
-    <p class="lead">Every stakeholder group answers questions mapped to the same five pillars, phrased from their own perspective.</p>
-    <div class="c-pills">
-      <span class="c-pill"><b>01</b>Strategic Innovation Intent</span>
-      <span class="c-pill"><b>02</b>Innovation Process</span>
-      <span class="c-pill"><b>03</b>People &amp; Capability</span>
-      <span class="c-pill"><b>04</b>Culture &amp; Environment</span>
-      <span class="c-pill"><b>05</b>Implementation &amp; Value Realization</span>
-    </div>
-  </section>
-
-  <section class="c-section">
-    <h2>Built for every stakeholder voice</h2>
-    <p class="lead">At minimum, four groups assess the organization. Additional groups can be added per campaign.</p>
-    <div class="c-stake">
-      <div class="s">Executives</div>
-      <div class="s">Employees</div>
-      <div class="s">Customers / Beneficiaries</div>
-      <div class="s">Service Providers / Partners</div>
-    </div>
-  </section>
-
-  <section class="c-section" id="request">
-    <div class="c-cta-box">
-      <h2>Request a Corporate Assessment</h2>
-      <p>Tell us about your organization and we will set up your private InnoPulse 360 campaign.</p>
-      <!-- BOOKING_CTA: replace href with the calendar/booking app URL when ready -->
-      <a class="btn" href="/book.html" data-booking-cta>Book a Consultation</a>
-      <p class="c-admin-note" style="margin-top:14px;font-size:13px;opacity:.7">Already running a campaign? <a href="/360-dashboard.html">Open the InnoPulse 360 dashboard</a> to manage stakeholders, generate links and view results.</p>
-    </div>
-  </section>
-
-  <footer class="c-foot">
-    <span>&copy; The Growth System &mdash; InnoPulse 360</span>
-    <span><a href="/privacy.html">Privacy Policy</a></span>
-  </footer>
-</div>
+<header class="nav"><div class="row"><a class="brand" href="/"><img src="/logo.svg" alt="The Growth System logo" width="64" height="38"><span><b>Inno<i>Pulse</i></b><span>by The Growth System</span></span></a><ul class="menu"><li><a href="/">Home</a></li><li><a href="/360.html">InnoPulse 360</a></li><li><a href="/services.html">Services</a></li></ul><div class="navcta"><a class="btn btn-ghost btn-sm" href="/public.html">Start free check</a><a class="btn btn-navy btn-sm" href="/book.html">Book a consultation</a></div></div></header><section class="hero"><div class="wrap"><div class="eyebrow">Corporate &middot; private engagement</div><h1>InnoPulse 360: multi-stakeholder corporate innovation assessment</h1><p>A multi-stakeholder innovation capability assessment that combines the views of executives, employees, customers and partners into one organisational diagnosis.</p><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn btn-lime" href="#request">Request a corporate assessment</a><a class="btn btn-ghost" href="/public.html">Try the free check first</a></div></div></section><main class="wrap"><p class="lead"><strong>InnoPulse 360</strong> is a commissioned, multi-stakeholder innovation capability assessment that combines the views of executives, employees, customers and partners into one executive-ready organisational diagnosis &mdash; not a public quiz, but a private engagement.</p><h2>What an InnoPulse 360 engagement includes</h2><p>When a company commissions The Growth System, we assess innovation capability across every stakeholder group and aggregate it into one clear diagnosis.</p><div class="fgrid"><div class="feature"><h3>Company-level profile</h3><p>Responses collected under a single company campaign and aggregated into an overall capability score and maturity level.</p></div><div class="feature"><h3>Stakeholder comparison</h3><p>See how executives, employees, customers and service providers each experience innovation &mdash; and where they diverge.</p></div><div class="feature"><h3>Pillar heatmap &amp; gap analysis</h3><p>A stakeholder-by-pillar heatmap surfaces strengths, blockers and the biggest gaps between groups.</p></div><div class="feature"><h3>Executive report &amp; roadmap</h3><p>Top strengths, top weaknesses, recommended next steps and a consulting roadmap drawn from the data.</p></div></div><h2>Five capability pillars</h2><p>Every stakeholder group answers questions mapped to the same five pillars, phrased from their own perspective.</p><div class="tags"><span>01 &middot; Strategic Innovation Intent</span><span>02 &middot; Innovation Process</span><span>03 &middot; People &amp; Capability</span><span>04 &middot; Culture &amp; Environment</span><span>05 &middot; Implementation &amp; Value</span></div><h2>Built for every stakeholder voice</h2><p>At minimum, four groups assess the organisation. Additional groups can be added per campaign.</p><div class="fgrid"><div class="feature"><h3>Executives</h3><p>Strategy, intent and the resourcing of innovation from the top.</p></div><div class="feature"><h3>Employees</h3><p>How innovation is really experienced day to day on the ground.</p></div><div class="feature"><h3>Customers &amp; beneficiaries</h3><p>The outside-in view of whether innovation creates real value.</p></div><div class="feature"><h3>Service providers &amp; partners</h3><p>How the wider ecosystem experiences working with you.</p></div></div><div class="cta-band" id="request"><h2>Request a corporate assessment</h2><p>Tell us about your organisation and we&rsquo;ll set up your private InnoPulse 360 campaign.</p><a class="cta" href="/book.html" data-booking-cta>Book a consultation</a><p style="margin-top:16px;font-size:13px;color:#8ea05f">Already running a campaign? <a href="/360-dashboard.html" style="color:var(--lime)">Open the InnoPulse 360 dashboard</a> to manage stakeholders and view results.</p></div></main>
+<footer class="foot"><div class="grid"><div><div class="fbrand"><img src="/logo.svg" alt="The Growth System logo" width="64" height="38"><b>InnoPulse</b></div><p class="blurb">Innovation capability assessment, strategy, ISO 56001 readiness, training and idea management. Serving South Africa from Pretoria &amp; Centurion.</p><div class="social"><a href="https://www.linkedin.com/company/the-growth-system-pty-ltd/" aria-label="LinkedIn" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4z"/></svg></a></div></div><div><h4>Assess</h4><a href="/public.html">Free Pulse Check</a><a href="/360.html">InnoPulse 360</a><a href="/innovation-capability.html">Innovation capability</a></div><div><h4>Build</h4><a href="/innovation-strategy.html">Innovation strategy</a><a href="/iso-56001-advisory.html">ISO 56001 advisory</a><a href="/innovation-training.html">Innovation training</a><a href="/services.html">All services</a></div><div><h4>Contact</h4><a href="mailto:info@thegrowthsystem.co.za">info@thegrowthsystem.co.za</a><a href="tel:+27832966880">+27 83 296 6880</a><a href="/book.html">Book a consultation</a><a href="/privacy.html">Privacy policy</a></div></div><div class="bar"><span>&copy; The Growth System &mdash; Innovation that&rsquo;s managed, not accidental.</span><span>Innovation360 Gold Partner &middot; IMBB &middot; ISO 56001</span></div></footer>
 </body>
 </html>

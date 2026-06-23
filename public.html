@@ -81,7 +81,7 @@
       ]
     }
   </script>
-<link rel="preload" href="/styles.css" as="style"><link rel="preload" href="/logo.png" as="image"><link rel="preload" href="/innovation-methodology.jpg" as="image"><link rel="stylesheet" href="/styles.css">
+<link rel="preload" href="/styles.css" as="style"><link rel="preload" href="/logo.svg" as="image"><link rel="preload" href="/innovation-methodology.jpg" as="image"><link rel="stylesheet" href="/styles.css">
 <!-- Funnel analytics (optional): to enable GA4 event tracking, set CONFIG.analyticsId
      in the script below to your GA4 Measurement ID (e.g. "G-XXXXXXXXXX") and
      uncomment the two tags below. trackEvent() will then forward hero/intake/
@@ -1237,7 +1237,7 @@ const $app = ()=>document.getElementById('app');
 function topbarHTML(){
   return `<div class="topbar">
     <div class="brandmark">
-      <div class="logo"><img src="/logo.png" alt="The Growth System logo" width="30" height="30" decoding="async" style="display:block;width:30px;height:auto"></div>
+      <div class="logo"><img src="/logo.svg" alt="The Growth System logo" width="30" height="30" decoding="async" style="display:block;width:30px;height:auto"></div>
       <div>
         <div class="name">${CONFIG.product} <span style="color:var(--lime2)">Check</span></div>
         <div class="sub">by ${CONFIG.brand}</div>
@@ -1282,7 +1282,7 @@ function renderHero(){
     <p class="small muted" style="margin-top:14px">${CONFIG.narrative}</p>
   </div>
 
-  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>
+  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>
   ${videoModalHTML()}`;
 }
 function attachHero(){
@@ -1539,7 +1539,7 @@ function renderIntake(){
     <button class="btn btn-primary btn-block" data-start ${canStart?'':'disabled'}>Start the InnoPulse Check →</button>
     ${canStart ? '' : '<p class="small muted" style="margin-top:8px">Please complete the required fields above to continue.</p>'}
   </div>
-  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 function attachIntake(){
   const btn = document.querySelector('[data-start]');
@@ -1611,7 +1611,7 @@ function renderQuiz(){
     </div>
     <div id="qBody"><div class="qcard">${body}</div></div>
   </div>
-  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 
 function renderPillarIntro(pi){
@@ -1814,7 +1814,7 @@ function renderPreview(){
       <p class="small muted" style="margin-top:10px">Your details are stored only for this assessment record and to share your report with you — never sold or shared with third parties. Primary barrier detected: <strong>${db.pillar.barrier}</strong> (${db.pillar.short}).</p>
     </div>
   </div>
-  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 
 function attachPreview(){
@@ -2222,7 +2222,7 @@ function renderDashboard(){
     <p class="small muted" style="margin-top:10px">The respondent register automatically records every completed &amp; unlocked InnoPulse Check — ${registeredRecords().length} response${registeredRecords().length===1?'':'s'} captured so far.</p>
   </div>
 
-  <div class="footer"><img src="/logo.png" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull} · <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
+  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull} · <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
 }
 
 /* ---------- Comparison / Team mode ---------- */
