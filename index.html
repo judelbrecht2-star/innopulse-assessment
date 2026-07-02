@@ -555,6 +555,8 @@
       box-shadow: 0 0 0 70px rgba(186,255,24,.06), 0 0 0 140px rgba(186,255,24,.035);
     }
     .final-copy { position: relative; max-width: 790px; }
+    .final-oxy { position: absolute; right: 44px; bottom: 0; width: clamp(230px, 25vw, 350px); height: auto; pointer-events: none; filter: drop-shadow(0 24px 44px rgba(0,0,0,.45)); }
+    @media (max-width: 940px) { .final-oxy { display: none; } }
     .final-copy .eyebrow { color: var(--lime); }
     .final-copy h2 { margin-bottom: 26px; }
     .final-copy .lead { color: rgba(255,255,255,.6); }
@@ -936,6 +938,7 @@
             <a class="button button-secondary" href="https://innopulse.thegrowthsystem.co.za/book.html">Book a consultation</a>
           </div>
         </div>
+        <img class="final-oxy" src="assets/oxy-thinker.webp" width="720" height="1080" alt="Oxy, the InnoPulse mascot, thinking on a rock" loading="lazy" decoding="async">
       </div>
     </section>
   </main>

@@ -90,7 +90,7 @@
       <link rel="stylesheet" href="assets/public-a11y.css">
       <script src="assets/public-a11y.js" defer=""></script>
       <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650;12..96,750;12..96,800&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="assets/site.css?v=20260702-signal">
+      <link rel="stylesheet" href="assets/site.css?v=20260702-footer2">
       <style>
       /* The site-redesign shell styles generic h1/h2/h3 at homepage display scale.
          Re-assert the assessment app's own type scale inside #app so quiz screens
@@ -2544,34 +2544,6 @@ window.addEventListener('load', render);
   if(document.readyState!=="loading") init(); else document.addEventListener("DOMContentLoaded", init);
 })();
 </script>
-<!-- Return-to-Home navigation (added) -->
-<style>
-  #app .topbar .home-link{
-    appearance:none;-webkit-appearance:none;cursor:pointer;
-    display:inline-flex;align-items:center;gap:6px;
-    font:inherit;font-size:14px;font-weight:600;line-height:1;
-    color:#2f3b2a;background:#fff;border:1px solid #d7ddd0;
-    padding:9px 16px;border-radius:999px;
-    transition:background .15s ease,border-color .15s ease,box-shadow .15s ease;
-  }
-  #app .topbar .home-link:hover{background:#f1f4ec;border-color:#b9c4ab;}
-  #app .topbar .home-link:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(122,166,76,.45);}
-  #app .topbar .brandmark{cursor:pointer;}
-  @media (max-width:560px){#app .topbar .home-link{padding:8px 12px;font-size:13px;}}
-</style>
-<script>
-(function(){
-  if(window.__homeNavInstalled) return; window.__homeNavInstalled=true;
-  function assessmentInProgress(){
-    var a = state.answers && Object.keys(state.answers).length>0;
-    var p = state.profile && Object.keys(state.profile).length>0;
-    return (state.view==="intake"||state.view==="quiz"||state.view==="preview") && (a||p||state.step>0);
-  }
-  window.goHome=function(){
-    if(assessmentInProgress()){
-      if(!confirm("Return to the home page? Your current assessment progress will be lost.")) return;
-    }
-    state.view="hero"; state.step=0;
-    state.answers={}; state.comments={}; state.profile={}; state.gate={}; state.unlocked=false;
-    render();
-    try{ 
+<!-- The old return-to-home topbar script was removed: the shared site header now provides Home navigation. -->
+<footer class="site-foot" aria-label="Site footer"><div class="wrap"><div class="footer-top"><a class="brand" href="https://innopulse.thegrowthsystem.co.za/" aria-label="InnoPulse home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 22" fill="none"><path d="M2 12h6l3-8 5 16 4-12 3 4h7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span><span class="brand-name">INNO<span>PULSE</span></span><small class="brand-by">by The Growth System</small></span></a><nav class="footer-links" aria-label="Footer navigation"><a href="https://innopulse.thegrowthsystem.co.za/360.html">InnoPulse 360</a><a href="https://innopulse.thegrowthsystem.co.za/services.html">Services</a><a href="mailto:info@thegrowthsystem.co.za">Contact</a><a href="https://innopulse.thegrowthsystem.co.za/privacy.html">Privacy</a></nav></div><div class="footer-bottom"><span>© The Growth System — Innovation that’s managed, not accidental.</span><span>Pretoria &amp; Centurion · South Africa</span></div></div></footer>
+</body></html>
