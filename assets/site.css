@@ -1031,3 +1031,23 @@
     z-index: 86 !important;
   }
 }
+
+
+/* --- Mobile hero: purpose-built portrait Oxy image as the hero background (copy overlaid on the empty top) --- */
+@media (max-width: 1000px) {
+  .route-index .hero-card {
+    position: relative !important;
+    display: block !important;
+    min-height: 830px !important;
+    overflow: hidden !important;
+    background: #f6f4eb url("oxy-hero-mobile.webp") center top / cover no-repeat !important;
+  }
+  .route-index .hero-art { display: none !important; }
+  .route-index .hero-card::after { display: none !important; }
+  .route-index .oxy-tag { display: none !important; }
+  .route-index .hero-copy {
+    position: relative !important; z-index: 2 !important;
+    width: 100% !important; background: transparent !important;
+    padding: 34px 24px 40px !important;
+  }
+}
