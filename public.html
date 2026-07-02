@@ -137,7 +137,109 @@
           <path d="M1 2h22M1 9h22M1 16h22"></path>
         </svg>
       </button>
-    </div></header><main id="main-content"><div class="app" id="app"></div></main><div id="report" class="hide"></div><script>
+    </div></header><style>/* ===================== Full-Scale rebuild (fs-*) ===================== */
+.fs-hero{position:relative;overflow:hidden;background:radial-gradient(120% 95% at 82% -12%,#26350c 0%,#14170c 56%);color:#eef2df;border-bottom:1px solid rgba(186,255,24,.16)}
+.fs-inner{max-width:1120px;margin:0 auto;padding:0 24px}
+.fs-hero .fs-inner{display:grid;grid-template-columns:1.06fr .94fr;gap:52px;align-items:center;padding-top:64px;padding-bottom:58px}
+.fs-eyebrow{display:inline-flex;align-items:center;gap:9px;font:700 12px/1 var(--font-utility,monospace);letter-spacing:.18em;text-transform:uppercase;color:#baff18;margin:0 0 18px}
+.fs-eyebrow::before{content:"";width:24px;height:2px;background:#baff18;border-radius:2px}
+.fs-hero h1{font:800 clamp(31px,4.3vw,54px)/1.05 var(--font-display,sans-serif)!important;letter-spacing:-.025em!important;color:#fff!important;margin:0 0 18px!important}
+.fs-hero .fs-sub{font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:#c3d0a6;max-width:560px;margin:0 0 26px}
+.fs-cta{display:flex;flex-wrap:wrap;gap:12px}
+.fs-btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;font:700 15px/1 var(--font-body,sans-serif);padding:14px 26px;cursor:pointer;border:1.5px solid transparent;transition:transform .15s,box-shadow .2s,background .2s;text-decoration:none}
+.fs-btn:hover{transform:translateY(-2px)}
+.fs-btn--lime{background:#baff18;color:#14170c;box-shadow:0 12px 30px rgba(186,255,24,.26)}.fs-btn--lime:hover{background:#cdff54}
+.fs-btn--ghost{background:transparent;color:#eef2df;border-color:rgba(255,255,255,.28)}.fs-btn--ghost:hover{border-color:#baff18;color:#fff}
+.fs-hero-visual{position:relative}
+.fs-radar{width:100%;max-width:400px;margin:0 auto;display:block}
+.fs-strip{display:flex;gap:24px;flex-wrap:wrap;margin-top:26px;font:600 12.5px/1.4 var(--font-utility,monospace);color:#9fb277;letter-spacing:.02em}
+.fs-strip b{color:#baff18}
+.fs-sec{padding:74px 0}
+.fs-sec--dark{background:#14170c;color:#e8eede}
+.fs-kicker{font:700 12px/1 var(--font-utility,monospace);letter-spacing:.18em;text-transform:uppercase;color:#5a8400;margin:0 0 14px}
+.fs-sec--dark .fs-kicker{color:#baff18}
+.fs-h2{font:800 clamp(26px,3vw,38px)/1.08 var(--font-display,sans-serif)!important;letter-spacing:-.02em!important;color:var(--ink)!important;margin:0 0 16px!important}
+.fs-sec--dark .fs-h2{color:#fff!important}
+.fs-lead{font-size:clamp(17px,1.5vw,21px);line-height:1.58;color:#3a3a30;max-width:800px;margin:0}
+.fs-sec--dark .fs-lead{color:#c8d2b3}
+.fs-p{font-size:16.5px;line-height:1.62;color:#4a4a3f;max-width:760px;margin:14px 0 0}
+.fs-sec--dark .fs-p{color:#b7c199}
+.fs-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px;margin-top:34px}
+.fs-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 8px 24px rgba(28,36,0,.06)}
+.fs-sec--dark .fs-card{background:#1c2110;border-color:rgba(186,255,24,.13)}
+.fs-card .ic{width:42px;height:42px;border-radius:12px;background:#eef7cf;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.fs-sec--dark .fs-card .ic{background:rgba(186,255,24,.13)}
+.fs-card .ic svg{width:21px;height:21px;stroke:#4d6800;fill:none;stroke-width:1.8}.fs-sec--dark .fs-card .ic svg{stroke:#baff18}
+.fs-card h3{font:700 17px/1.25 var(--font-body,sans-serif)!important;color:var(--ink)!important;margin:0 0 7px!important}
+.fs-sec--dark .fs-card h3{color:#fff!important}
+.fs-card p{font-size:14.5px;line-height:1.55;color:var(--muted);margin:0}.fs-sec--dark .fs-card p{color:#a9b487}
+.fs-steps{margin-top:38px;display:grid;gap:14px}
+.fs-step{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;background:#1c2110;border:1px solid rgba(186,255,24,.13);border-radius:16px;padding:22px 24px}
+.fs-step .n{width:44px;height:44px;border-radius:12px;background:#baff18;color:#14170c;font:800 18px/1 var(--font-display,sans-serif);display:flex;align-items:center;justify-content:center}
+.fs-step h3{font:700 18px/1.3 var(--font-body,sans-serif)!important;color:#fff!important;margin:0 0 5px!important}
+.fs-step p{font-size:15px;line-height:1.55;color:#aeb98d;margin:0}
+.fs-pillars{margin-top:30px;display:grid;gap:16px;max-width:760px}
+.fs-pillar .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;gap:12px}
+.fs-pillar .lab{font:600 15.5px/1.3 var(--font-body,sans-serif);color:var(--ink)}
+.fs-pillar .pct{font:700 13px/1 var(--font-utility,monospace);color:#5a8400}
+.fs-pillar .bar{height:9px;border-radius:99px;background:#e7ead9;overflow:hidden}
+.fs-pillar .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#a8e617,#baff18)}
+.fs-note{font:600 12.5px/1.5 var(--font-utility,monospace);color:var(--muted);margin:16px 0 0}
+.fs-iso{background:linear-gradient(135deg,#171b0d,#0a0c05);color:#e8eede;border-radius:22px;padding:clamp(34px,4vw,54px);max-width:1120px;margin:0 auto;position:relative;overflow:hidden}
+.fs-iso::after{content:"";position:absolute;top:30px;right:34px;width:150px;height:64px;border-top:2px solid #baff18;border-right:2px solid #baff18;transform:skewX(-26deg);opacity:.6}
+.fs-iso .badge{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--font-utility,monospace);letter-spacing:.13em;text-transform:uppercase;color:#14170c;background:#baff18;padding:8px 14px;border-radius:999px;margin-bottom:18px}
+.fs-iso h2{font:800 clamp(24px,2.8vw,34px)/1.1 var(--font-display,sans-serif)!important;color:#fff!important;margin:0 0 14px!important}
+.fs-iso .fs-p{color:#c8d2b3;max-width:720px}
+.fs-iso ul{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 30px}
+.fs-iso li{position:relative;padding-left:28px;font-size:15px;line-height:1.5;color:#dbe3c6}
+.fs-iso li::before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:#baff18;box-shadow:0 0 0 4px rgba(186,255,24,.14)}
+.fs-compare{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fs-col{border-radius:20px;padding:30px;border:1px solid var(--line);background:#fff}
+.fs-col--full{background:#14170c;border-color:#14170c;color:#eef2df}
+.fs-col .tag{font:700 12px/1 var(--font-utility,monospace);letter-spacing:.12em;text-transform:uppercase;color:#5a8400}.fs-col--full .tag{color:#baff18}
+.fs-col h3{font:800 22px/1.14 var(--font-display,sans-serif)!important;color:var(--ink)!important;margin:9px 0 3px!important}.fs-col--full h3{color:#fff!important}
+.fs-col .sub{font-size:13.5px;color:var(--muted);margin:0 0 18px}.fs-col--full .sub{color:#a9b487}
+.fs-col ul{list-style:none;padding:0;margin:0 0 24px}
+.fs-col li{position:relative;padding:9px 0 9px 30px;font-size:14.5px;line-height:1.45;border-top:1px solid var(--soft-rule);color:#3a3a30}
+.fs-col--full li{border-color:rgba(255,255,255,.08);color:#d3ddbc}
+.fs-col li:first-child{border-top:0}
+.fs-col li::before{content:"\2713";position:absolute;left:0;top:9px;width:18px;height:18px;font:700 11px/18px var(--font-body,sans-serif);text-align:center;border-radius:50%;background:#dfeeb0;color:#3f5600}
+.fs-col--full li::before{background:#baff18;color:#14170c}
+.fs-final{background:radial-gradient(120% 130% at 82% -10%,#2b3b0d,#14170c);color:#eef2df;border-radius:24px;padding:clamp(42px,5vw,70px);max-width:1120px;margin:0 auto;text-align:center;position:relative;overflow:hidden}
+.fs-final h2{font:800 clamp(28px,3.4vw,44px)/1.08 var(--font-display,sans-serif)!important;color:#fff!important;margin:0 0 12px!important}
+.fs-final p{color:#c8d2b3;font-size:18px;margin:0 auto 26px;max-width:580px}
+.fs-final .fs-cta{justify-content:center}
+@media(max-width:900px){.fs-hero .fs-inner{grid-template-columns:1fr;gap:32px}.fs-hero-visual{order:-1;max-width:340px;margin:0 auto}.fs-iso ul{grid-template-columns:1fr}.fs-compare{grid-template-columns:1fr}.fs-sec{padding:56px 0}}
+
+/* ---- Free page hero + extras ---- */
+.fr-hero{background:radial-gradient(120% 85% at 88% -12%,#eef7d6,#f6f4eb 58%);border-bottom:1px solid var(--line,#e4e4d6)}
+.fr-hero .fs-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:56px;padding-bottom:50px}
+.fr-h1{font:800 clamp(31px,4.3vw,52px)/1.05 var(--font-display,sans-serif)!important;color:#151512!important;letter-spacing:-.025em!important;margin:0 0 16px!important}
+.fr-sub{font-size:clamp(16px,1.5vw,19px);line-height:1.56;color:#49493e;max-width:540px;margin:0 0 24px}
+.fr-strip{font:600 13px/1.5 var(--font-utility,monospace);color:#5a8400;letter-spacing:.02em;margin-top:18px}
+.fr-oxy img{width:100%;max-width:410px;display:block;margin:0 auto}
+.fr-ghost{background:transparent;color:#151512;border-color:var(--line,#e4e4d6)}.fr-ghost:hover{border-color:#1c2400;color:#151512}
+.fr-report{margin-top:34px;background:#fff;border:1px solid var(--line,#e4e4d6);border-radius:20px;padding:30px 32px;box-shadow:0 10px 30px rgba(28,36,0,.06);max-width:720px}
+.fr-report h3{font:800 19px/1.2 var(--font-display,sans-serif)!important;color:#151512!important;margin:0 0 4px!important}
+.fr-report .doc{font:600 12px/1 var(--font-utility,monospace);letter-spacing:.1em;text-transform:uppercase;color:#5a8400;margin-bottom:14px;display:block}
+.fr-ticks{list-style:none;padding:0;margin:8px 0 0}
+.fr-ticks li{position:relative;padding:9px 0 9px 32px;font-size:15.5px;line-height:1.45;border-top:1px solid var(--soft-rule,rgba(21,21,18,.08));color:#3a3a30}
+.fr-ticks li:first-child{border-top:0}
+.fr-ticks li::before{content:"\2713";position:absolute;left:0;top:9px;width:18px;height:18px;font:700 11px/18px sans-serif;text-align:center;border-radius:50%;background:#dfeeb0;color:#3f5600}
+.fr-note{margin-top:8px;background:linear-gradient(150deg,#fff8e6,#fff);border:1px solid #f0e2b8;border-left:4px solid #e0a92a;border-radius:16px;padding:24px 28px;max-width:840px;box-shadow:0 8px 24px rgba(28,36,0,.05)}
+.fr-note p{margin:0;font-size:16px;line-height:1.6;color:#4a4a3f}.fr-note b{color:#151512}
+@media(max-width:900px){.fr-hero .fs-inner{grid-template-columns:1fr;gap:24px}.fr-oxy{order:-1;max-width:280px;margin:0 auto}}
+</style>
+<section class="fr-hero"><div class="fs-inner"><div><div class="fs-eyebrow" style="color:#5a8400">Free &middot; Individual snapshot &middot; ISO 56001:2024</div><h1 class="fr-h1">InnoPulse Free Assessment</h1><p class="fr-sub">Get a quick snapshot of your organisation&rsquo;s innovation health. Complete a short innovation-capability assessment and receive a concise report showing how you perceive your organisation&rsquo;s innovation management maturity.</p><div class="fs-cta"><a class="fs-btn fs-btn--lime" href="#main-content">Take the Free InnoPulse Assessment</a><a class="fs-btn fr-ghost" href="full-scale.html">Request a Full Organisational Assessment</a></div><div class="fr-strip">About 15 minutes &middot; 62 questions &middot; Instant 2&ndash;3 page report</div></div><div class="fr-oxy"><img src="assets/oxy-hero-1024.webp" alt="Oxy, the InnoPulse innovation mascot" width="1024" height="547" loading="lazy"></div></div></section>
+<section class="fs-sec" style="padding-bottom:0"><div class="fs-inner"><div class="fs-kicker">What it is</div><h2 class="fs-h2">A quick innovation-capability snapshot</h2><p class="fs-lead">The Free InnoPulse Assessment lets one individual complete a short questionnaire based on their personal view of the organisation&rsquo;s innovation management maturity, capability and health.</p><p class="fs-p">It&rsquo;s designed to create awareness of what innovation capability means, give you an initial indicator of where your organisation stands, and help you understand exactly what the InnoPulse assessment measures &mdash; the perfect first step before a deeper, representative diagnosis.</p></div></section>
+<section class="fs-sec"><div class="fs-inner"><div class="fs-kicker">What you receive</div><h2 class="fs-h2">A concise 2&ndash;3 page innovation report</h2><p class="fs-lead">Instant, and yours to keep. After completing the assessment you receive a short report covering:</p><div class="fr-report"><span class="doc">Your InnoPulse report &middot; ~2&ndash;3 pages</span><ul class="fr-ticks"><li>A high-level innovation capability score</li><li>A brief view of perceived organisational innovation health</li><li>Initial strengths and possible improvement areas</li><li>A basic indication of performance against key innovation management principles</li><li>A short explanation of what your results may mean</li></ul></div></div></section>
+<section class="fs-sec fs-sec--dark"><div class="fs-inner"><div class="fs-kicker">How it works</div><h2 class="fs-h2">Three simple steps</h2><div class="fs-cards"><div class="fs-card"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span><h3>Answer the questionnaire</h3><p>Respond to 62 short statements across the five innovation pillars, based on your own experience of the organisation. It takes about 15 minutes.</p></div><div class="fs-card"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Get your instant score</h3><p>See a high-level innovation-capability score and where your organisation sits on the innovation-maturity scale.</p></div><div class="fs-card"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><h3>Receive your report</h3><p>A concise 2&ndash;3 page report summarising your innovation health, initial strengths and possible improvement areas.</p></div></div></div></section>
+<section class="fs-sec" style="padding-bottom:0"><div class="fs-inner"><div class="fs-kicker">Why it matters</div><h2 class="fs-h2">A starting point for the conversation</h2><p class="fs-lead">The Free InnoPulse Assessment helps individuals start the conversation about innovation capability.</p><p class="fs-p">It builds awareness, gives you a first, honest indicator of your organisation&rsquo;s innovation health, and shows you what a fuller assessment can reveal &mdash; so you know whether a deeper, representative diagnosis is your right next step.</p></div></section>
+<section class="fs-sec"><div class="fs-inner"><div class="fr-note"><p><b>Good to know:</b> the free version reflects the view of <b>one person only</b>. It&rsquo;s a useful initial indicator, but not yet a fully representative organisational diagnosis &mdash; treat it as a starting point for discussion, not a final assessment. For a representative, evidence-based view, the <a href="full-scale.html" style="color:#5a8400;font-weight:700">Full-Scale Organisational Assessment</a> brings in multiple stakeholders, interviews and facilitated workshops.</p></div></div></section>
+<section class="fs-sec"><div class="fs-inner"><div class="fs-iso"><div class="badge">ISO 56001:2024</div><h2>Aligned to the Innovation Management System standard</h2><p class="fs-p">Both InnoPulse assessments are structured around the principles of ISO&nbsp;56001:2024, the international standard for Innovation Management Systems &mdash; so even your quick snapshot maps onto a recognised, auditable framework.</p><ul><li>Leadership &amp; innovation intent</li><li>Innovation strategy &amp; objectives</li><li>Culture, people &amp; competence</li><li>Innovation processes &amp; idea flow</li><li>Governance, support &amp; resources</li><li>Measurement &amp; continual improvement</li></ul></div></div></section>
+<section class="fs-sec"><div class="fs-inner"><div class="fs-kicker">Free vs Full-Scale</div><h2 class="fs-h2">Where to go next</h2><p class="fs-lead">Start here to open the conversation &mdash; step up to the full diagnosis when you&rsquo;re ready to act.</p><div class="fs-compare"><div class="fs-col"><span class="tag">You are here</span><h3>Free InnoPulse Assessment</h3><p class="sub">One individual &middot; quick snapshot</p><ul><li>Completed by one individual</li><li>Provides a quick snapshot</li><li>Based on personal perception</li><li>Generates a short 2&ndash;3 page report</li><li>Useful for awareness &amp; lead generation</li><li>Helps users understand the assessment</li><li>Not fully representative of the organisation</li><li>Best for first-time exploration</li></ul><a class="fs-btn fs-btn--lime" href="#main-content">Take the free assessment</a></div><div class="fs-col fs-col--full"><span class="tag">Next step for organisations</span><h3>Full-Scale Organisational Assessment</h3><p class="sub">Multiple groups &middot; representative diagnosis</p><ul><li>Completed by multiple employees &amp; role groups</li><li>Provides a representative organisational view</li><li>Combines survey data with qualitative insights</li><li>Includes focus groups &amp; interviews</li><li>Produces a detailed diagnostic report</li><li>Includes workshops to discuss results</li><li>Identifies gaps &amp; improvement priorities</li><li>Best for organisations serious about improving</li></ul><a class="fs-btn fs-btn--ghost" href="full-scale.html">Explore the full assessment</a></div></div></div></section>
+<section class="fs-sec"><div class="fs-inner"><div class="fs-final"><h2>Ready to take your snapshot?</h2><p>Complete the free InnoPulse assessment now &mdash; it takes about 15 minutes and your report is instant.</p><div class="fs-cta"><a class="fs-btn fs-btn--lime" href="#main-content">Take the Free InnoPulse Assessment</a><a class="fs-btn fs-btn--ghost" href="full-scale.html">Request a Full Organisational Assessment</a></div></div></div></section>
+<main id="main-content"><div class="app" id="app"></div></main><div id="report" class="hide"></div><script>
 const PILLARS = [
   {
     "id": "sii",
