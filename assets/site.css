@@ -917,7 +917,7 @@
   }
   .route-index .quick-facts {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 10px 14px;
   }
   .route-index .quick-facts li:last-child { grid-column: 1 / -1; }
