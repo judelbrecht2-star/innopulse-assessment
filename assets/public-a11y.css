@@ -1,0 +1,62 @@
+.assessment-skip {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  color: #fff;
+  background: #151512;
+  transform: translateY(-150%);
+}
+
+.assessment-skip:focus { transform: translateY(0); }
+
+.qopt:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #a91520 !important;
+  outline-offset: 3px;
+}
+
+.qopt[aria-checked="true"] {
+  border-color: #5a7800;
+  box-shadow: inset 4px 0 0 #5a7800;
+}
+
+.qfieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.qlegend {
+  display: block;
+  width: 100%;
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.qopt:has(.qopt-input:focus-visible) {
+  outline: 3px solid #a91520;
+  outline-offset: 3px;
+}
+
+.qopt:has(.qopt-input:checked) {
+  border-color: #5a7800;
+  box-shadow: inset 4px 0 0 #5a7800;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
