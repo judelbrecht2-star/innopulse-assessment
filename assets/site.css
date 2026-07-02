@@ -1044,7 +1044,11 @@
   }
   .route-index .hero-art { display: none !important; }
   .route-index .hero-card::after { display: none !important; }
-  .route-index .oxy-tag { display: none !important; }
+  .route-index .oxy-tag {
+    display: block !important;
+    right: 16px !important; bottom: 22px !important; left: auto !important; top: auto !important;
+    width: 166px !important; z-index: 3 !important;
+  }
   .route-index .hero-copy {
     position: relative !important; z-index: 2 !important;
     width: 100% !important; background: transparent !important;
