@@ -1,266 +1,987 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InnoPulse by The Growth System — Measure Innovation Capability</title>
-<meta name="description" content="InnoPulse helps individuals, teams and organisations understand where innovation is strong, where it is blocked, and what to improve next. Take a free pulse check or commission a full InnoPulse 360 organisational diagnosis.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="The Growth System">
-<meta name="keywords" content="innovation capability assessment, innovation maturity, InnoPulse, InnoPulse 360, organisational innovation diagnosis, The Growth System">
-<link rel="canonical" href="https://innopulse.thegrowthsystem.co.za/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="The Growth System">
-<meta property="og:title" content="InnoPulse by The Growth System — Measure Innovation Capability">
-<meta property="og:description" content="From one person's pulse to a full organisational diagnosis.">
-<meta property="og:url" content="https://innopulse.thegrowthsystem.co.za/">
-<link rel="icon" href="/logo.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#f3f3ec;--cream2:#eaeade;--ink:#15150d;--navy:#1c2400;--navy2:#2c3a00;--lime:#a8e617;--lime2:#5a8400;--lime-glow:#d4ff4d;--muted:#62625a;--line:#e4e4d6;--white:#fff;--radius:24px;--shadow:0 22px 60px rgba(28,36,0,.12);--shadow-sm:0 8px 24px rgba(28,36,0,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:radial-gradient(120% 60% at 80% -10%,#eef7d6 0%,var(--cream) 45%);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-h1,h2,h3{letter-spacing:-.02em;margin:0}
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(243,243,236,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
-.brand{display:flex;align-items:center;gap:11px}
-.brand img{height:38px;width:auto;border-radius:10px;background:#fff;padding:5px 8px;box-shadow:var(--shadow-sm)}
-.brand b{font-size:18px;font-weight:700;letter-spacing:-.01em}.brand b i{font-style:normal;color:var(--lime2)}
-.brand span{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.menu{display:flex;align-items:center;gap:28px;list-style:none;margin:0;padding:0}
-.menu a{font-size:15px;font-weight:500;color:var(--ink);opacity:.82}.menu a:hover{opacity:1;color:var(--lime2)}
-.navcta{display:flex;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;font-weight:600;font-size:15px;padding:13px 24px;cursor:pointer;border:1.5px solid transparent;transition:transform .15s,box-shadow .2s,background .2s}
-.btn svg{width:18px;height:18px}
-.btn:hover{transform:translateY(-2px)}
-.btn-lime{background:var(--lime);color:var(--navy);box-shadow:0 10px 26px rgba(168,230,23,.45)}.btn-lime:hover{background:var(--lime-glow)}
-.btn-navy{background:var(--navy);color:var(--lime-glow)}.btn-navy:hover{box-shadow:var(--shadow)}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}.btn-ghost:hover{border-color:var(--navy)}
-.btn-sm{padding:10px 18px;font-size:14px}
-/* hero */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:54px 0 34px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime2);font-weight:700;margin-bottom:20px}
-.eyebrow::before{content:"";width:22px;height:2px;background:var(--lime2);border-radius:2px}
-h1.big{font-size:clamp(40px,5.6vw,68px);font-weight:700;line-height:1.02;margin:0 0 22px}
-.hl{position:relative;display:inline-block;color:var(--navy);padding:0 .12em;z-index:1}
-.hl::before{content:"";position:absolute;inset:6% -4%;background:var(--lime);border-radius:.32em;z-index:-1;transform:rotate(-1.6deg)}
-.lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:540px;margin:0 0 28px}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:13.5px;color:var(--muted);font-weight:500}
-.hero-meta span{display:inline-flex;align-items:center;gap:7px}
-.hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(168,230,23,.25)}
-.hero-art{position:relative}
-.hero-card{position:relative;background:var(--white);border:1px solid var(--line);border-radius:28px;padding:26px 22px 20px;box-shadow:var(--shadow)}
-.hero-card .cap{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
-.hero-card .cap b{font-size:15px;font-weight:700}.hero-card .cap em{font-style:normal;font-size:12px;color:var(--lime2);font-weight:700;background:#eef7d6;padding:4px 10px;border-radius:999px}
-.hero-card .score{position:absolute;right:26px;bottom:24px;text-align:right}
-.hero-card .score .n{font-size:34px;font-weight:700;color:var(--navy);line-height:1}.hero-card .score .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.spark{position:absolute;color:var(--lime);pointer-events:none}
-.spark svg{width:100%;height:100%}
-/* credentials bar */
-.creds{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 0 6px}
-.chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:9px 15px;box-shadow:var(--shadow-sm)}
-.chip svg{width:15px;height:15px;color:var(--lime2)}
-.creds .lbl{font-size:12.5px;color:var(--muted);font-weight:600;margin-right:4px}
-/* section */
-section{padding:50px 0}
-.sec-head{max-width:640px;margin:0 0 30px}
-.sec-head .eyebrow{margin-bottom:14px}
-.sec-head h2{font-size:clamp(28px,3.4vw,42px);font-weight:700;line-height:1.06;margin:0 0 12px}
-.sec-head p{font-size:17px;color:var(--muted);margin:0}
-/* path cards */
-.paths{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.path{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:transform .18s,box-shadow .18s}
-.path:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.path.dark{background:linear-gradient(160deg,var(--navy),#0f1500);border-color:var(--navy2);color:#eef2e0}
-.path .ic{width:50px;height:50px;border-radius:14px;background:var(--lime);color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.path.dark .ic{background:rgba(168,230,23,.16);color:var(--lime)}
-.path .ic svg{width:25px;height:25px}
-.path .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--lime2);margin-bottom:8px}
-.path.dark .tag{color:var(--lime)}
-.path h3{font-size:24px;font-weight:700;margin:0 0 10px}
-.path p{font-size:15.5px;color:var(--muted);margin:0 0 22px;line-height:1.55}.path.dark p{color:#b9c98a}
-.path .grow{flex:1}
-.path .sup{font-size:13px;color:var(--muted);margin:14px 0 0}.path.dark .sup{color:#8ea05f}
-.path .btn{align-self:flex-start}
-/* pillars */
-.pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.pillar{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px 18px;box-shadow:var(--shadow-sm)}
-.pillar .ic{width:42px;height:42px;border-radius:12px;background:#eef7d6;color:var(--lime2);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.pillar .ic svg{width:21px;height:21px}
-.pillar .num{font-size:11px;font-weight:700;color:var(--lime2);letter-spacing:.1em}
-.pillar h3{font-size:16px;font-weight:700;margin:4px 0 7px;line-height:1.2}
-.pillar p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.5}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.step{position:relative;padding:26px 24px;background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm)}
-.step .n{width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--lime);font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.step h3{font-size:18px;font-weight:700;margin:0 0 7px}
-.step p{font-size:14.5px;color:var(--muted);margin:0}
-/* services */
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
-.svc{display:flex;align-items:center;gap:13px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:15px 17px;font-weight:600;font-size:15px;box-shadow:var(--shadow-sm);transition:border-color .15s,transform .15s}
-.svc:hover{border-color:var(--lime2);transform:translateY(-2px)}
-.svc .ic{width:34px;height:34px;border-radius:10px;background:#eef7d6;color:var(--lime2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.svc .ic svg{width:17px;height:17px}
-.svc.all{background:var(--navy);color:var(--lime-glow);border-color:var(--navy)}.svc.all .ic{background:rgba(168,230,23,.16);color:var(--lime)}
-/* faq */
-.faq details{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:2px 20px;margin:0 0 10px;box-shadow:var(--shadow-sm)}
-.faq summary{cursor:pointer;font-weight:600;font-size:16.5px;padding:17px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:22px;color:var(--lime2);font-weight:400;display:inline-block;transition:transform .2s ease}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq p{margin:0 0 16px;color:var(--muted);font-size:15.5px}
-/* cta band */
-.band{background:linear-gradient(135deg,var(--navy),#0e1400);border-radius:var(--radius);padding:46px;text-align:center;color:#eef2e0;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.band h2{font-size:clamp(26px,3.2vw,38px);font-weight:700;margin:0 0 12px;color:#fff}
-.band .hl::before{background:var(--lime)}
-.band p{color:#c2d398;margin:0 0 24px;font-size:17px}
-/* footer */
-.foot{margin-top:30px;background:var(--navy);color:#aebd86;border-radius:var(--radius) var(--radius) 0 0}
-.foot .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px;padding:48px 0 28px}
-.foot h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin:0 0 14px}
-.foot a{color:#aebd86;display:block;padding:5px 0;font-size:14.5px}.foot a:hover{color:var(--lime)}
-.foot .blurb{font-size:14px;line-height:1.6;max-width:280px;color:#9aa873}
-.foot .fbrand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.foot .fbrand img{height:38px;width:auto;border-radius:10px;background:#fff;padding:5px 8px}
-.foot .fbrand b{color:#fff;font-size:17px;font-weight:700}
-.foot .social{display:flex;gap:10px;margin-top:14px}
-.foot .social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;padding:0}
-.foot .social svg{width:17px;height:17px}
-.foot .bar{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
-/* responsive */
-@media(max-width:900px){.hero{grid-template-columns:1fr;gap:30px}.hero-art{order:-1;max-width:420px}.pillars{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.paths{grid-template-columns:1fr}.foot .grid{grid-template-columns:1fr 1fr}.menu,.navcta .btn-ghost{display:none}}
-@media(max-width:560px){.pillars{grid-template-columns:1fr}.foot .grid{grid-template-columns:1fr}.band{padding:32px 22px}.path{padding:26px}}
-@media(max-width:900px){.nav .row{flex-wrap:wrap;row-gap:8px}.menu{display:flex!important;order:3;width:100%;justify-content:center;gap:18px;font-size:14px;border-top:1px solid var(--line);padding-top:10px;margin-top:2px}}</style>
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="InnoPulse by The Growth System — Measure Innovation Capability"><meta name="twitter:description" content="From one person’s pulse to a full organisational innovation diagnosis. Measure and build innovation capability with The Growth System."><meta name="twitter:image" content="https://innopulse.thegrowthsystem.co.za/logo.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://thegrowthsystem.co.za/#organization","name":"The Growth System","url":"https://thegrowthsystem.co.za","logo":{"@type":"ImageObject","url":"https://innopulse.thegrowthsystem.co.za/logo.png","caption":"The Growth System"},"image":"https://innopulse.thegrowthsystem.co.za/logo.png","description":"South African innovation management consultancy offering innovation capability assessment, innovation strategy, ISO 56001 readiness, idea management and innovation training.","slogan":"Make innovation a managed, repeatable capability.","telephone":"+27 83 296 6880","hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Innovation360 Gold Partner"},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Innovation Master Black Belt (IMBB)"}],"areaServed":[{"@type":"Country","name":"South Africa"},{"@type":"AdministrativeArea","name":"Gauteng"},{"@type":"City","name":"Johannesburg"},{"@type":"City","name":"Pretoria"}],"knowsAbout":["Innovation management","Innovation capability","ISO 56001","ISO 56002","Innovation strategy","Idea management","Innovation culture","Innovation training","Innovation governance"],"email":"info@thegrowthsystem.co.za","founder":{"@id":"https://thegrowthsystem.co.za/#isaiah-engelbrecht"},"memberOf":{"@type":"Organization","name":"Innovation360","url":"https://www.innovation360.com"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/","https://www.facebook.com/p/The-Growth-System-100086005580854/"]},{"@type":["LocalBusiness","ProfessionalService"],"@id":"https://thegrowthsystem.co.za/#localbusiness","name":"The Growth System","url":"https://thegrowthsystem.co.za","logo":{"@type":"ImageObject","url":"https://innopulse.thegrowthsystem.co.za/logo.png"},"image":"https://innopulse.thegrowthsystem.co.za/logo.png","description":"South African innovation management consultancy offering innovation capability assessment, innovation strategy, ISO 56001 readiness, idea management and innovation training.","email":"info@thegrowthsystem.co.za","telephone":"+27 83 296 6880","address":[{"@type":"PostalAddress","streetAddress":"9 Stonehaven Street, Blue Valley Golf Estate","addressLocality":"Centurion","addressRegion":"Gauteng","postalCode":"1491","addressCountry":"ZA"},{"@type":"PostalAddress","streetAddress":"333 Beckett Street, Arcadia","addressLocality":"Pretoria","addressRegion":"Gauteng","postalCode":"0007","addressCountry":"ZA"}],"areaServed":[{"@type":"Country","name":"South Africa"},{"@type":"AdministrativeArea","name":"Gauteng"},{"@type":"City","name":"Johannesburg"},{"@type":"City","name":"Pretoria"}],"knowsAbout":["Innovation management","Innovation capability","ISO 56001","ISO 56002","Innovation strategy","Idea management","Innovation culture","Innovation training","Innovation governance"],"founder":{"@id":"https://thegrowthsystem.co.za/#isaiah-engelbrecht"},"memberOf":{"@type":"Organization","name":"Innovation360","url":"https://www.innovation360.com"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/","https://www.facebook.com/p/The-Growth-System-100086005580854/"]},{"@type":"Person","@id":"https://thegrowthsystem.co.za/#isaiah-engelbrecht","name":"Isaiah Engelbrecht","jobTitle":"Founder","worksFor":{"@id":"https://thegrowthsystem.co.za/#organization"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/"]},{"@type":"Person","@id":"https://thegrowthsystem.co.za/#judith-engelbrecht","name":"Judith Engelbrecht","jobTitle":"Chief Executive Officer","worksFor":{"@id":"https://thegrowthsystem.co.za/#organization"},"sameAs":["https://www.linkedin.com/company/the-growth-system-pty-ltd/"]},{"@type":"WebSite","@id":"https://innopulse.thegrowthsystem.co.za/#website","url":"https://innopulse.thegrowthsystem.co.za/","name":"InnoPulse by The Growth System","publisher":{"@id":"https://thegrowthsystem.co.za/#organization"},"inLanguage":"en-ZA"},{"@type":"WebPage","@id":"https://innopulse.thegrowthsystem.co.za/#webpage","url":"https://innopulse.thegrowthsystem.co.za/","name":"InnoPulse by The Growth System — Measure Innovation Capability","isPartOf":{"@id":"https://innopulse.thegrowthsystem.co.za/#website"},"inLanguage":"en-ZA","description":"Measure innovation capability with InnoPulse and build it with The Growth System: innovation strategy, ISO 56001 readiness, training and innovation management systems for South African organisations.","primaryImageOfPage":{"@type":"ImageObject","url":"https://innopulse.thegrowthsystem.co.za/logo.png"},"breadcrumb":{"@id":"https://innopulse.thegrowthsystem.co.za/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://innopulse.thegrowthsystem.co.za/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://innopulse.thegrowthsystem.co.za/"}]},{"@type":"Service","@id":"https://innopulse.thegrowthsystem.co.za/#service","name":"Innovation Capability Building","serviceType":"Innovation Capability Building","provider":{"@id":"https://thegrowthsystem.co.za/#organization"},"areaServed":[{"@type":"Country","name":"South Africa"}],"url":"https://innopulse.thegrowthsystem.co.za/","description":"Assessment, strategy, management systems, training and delivery support that build an organisation's innovation capability."},{"@type":"FAQPage","@id":"https://innopulse.thegrowthsystem.co.za/#faq","mainEntity":[{"@type":"Question","name":"What is an innovation capability assessment?","acceptedAnswer":{"@type":"Answer","text":"An innovation capability assessment measures how well an organisation can repeatedly generate, develop and scale new value. InnoPulse scores five pillars - strategy, execution, culture, insight and results - and returns a maturity profile showing strengths, gaps and the highest-leverage priorities."}},{"@type":"Question","name":"What is innovation management?","acceptedAnswer":{"@type":"Answer","text":"Innovation management is the deliberate practice of organising strategy, processes, people and measurement so an organisation can innovate reliably rather than by chance. It is the discipline that an innovation management system, and the ISO 56001 standard, put into practice."}},{"@type":"Question","name":"What is ISO 56001?","acceptedAnswer":{"@type":"Answer","text":"ISO 56001 is the international standard, published in 2024, that specifies the requirements for an innovation management system. It is the first standard in its family that an organisation can be independently certified against."}},{"@type":"Question","name":"Why do innovation efforts fail?","acceptedAnswer":{"@type":"Answer","text":"Most innovation efforts fail not from a shortage of ideas but from structural gaps: strategy that is never funded, no clear process or decision gates, a culture that punishes intelligent failure, or missing measurement. Building capability means treating these as one connected system."}},{"@type":"Question","name":"How does The Growth System help companies innovate?","acceptedAnswer":{"@type":"Answer","text":"The Growth System helps South African organisations measure their innovation capability with InnoPulse, then build it through innovation strategy, management systems, training, culture work and ISO 56001 readiness - including hands-on delivery and outsourced innovation management."}}]}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBMSDG3MQV"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-WBMSDG3MQV");</script>
-</head>
-<body>
-<header class="nav"><div class="wrap row">
-  <a class="brand" href="/"><img src="/logo.svg" alt="The Growth System logo" width="64" height="38"><span><b>Inno<i>Pulse</i></b><span>by The Growth System</span></span></a>
-  <ul class="menu">
-    <li><a href="/360.html">InnoPulse 360</a></li>
-    <li><a href="/services.html">Services</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-  <div class="navcta">
-    <a class="btn btn-ghost btn-sm" href="/public.html">Start free check</a>
-    <a class="btn btn-navy btn-sm" href="/book.html" data-booking-cta>Book a consultation</a>
-  </div>
-</div></header>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Measure your organisation's innovation capability with InnoPulse — a practical assessment from The Growth System.">
+  <title>InnoPulse — Find your innovation pulse</title>
+  <style>
+    :root {
+      --ink: #151512;
+      --muted: #66665f;
+      --paper: #f6f4eb;
+      --white: #fffefa;
+      --lime: #baff18;
+      --lime-dark: #7eab00;
+      --red: #e82f37;
+      --red-dark: #a91520;
+      --line: rgba(21, 21, 18, .13);
+      --shadow: 0 24px 70px rgba(40, 42, 28, .12);
+      --radius: 28px;
+      --max: 1240px;
+    }
 
-<div class="wrap">
-  <section class="hero">
-    <div class="hero-copy">
-      <div class="eyebrow">Innovation capability assessment</div>
-      <h1 class="big">Measure your <span class="hl">innovation</span> capability &mdash; then build it.</h1>
-      <p class="lead">InnoPulse scores your organisation across five pillars and shows exactly where innovation is strong, where it&rsquo;s blocked, and what to improve next &mdash; from one person&rsquo;s pulse to a full organisational diagnosis.</p>
-      <div class="cta-row">
-        <a class="btn btn-lime" href="/public.html">Start your free Pulse Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="/book.html" data-booking-cta>Book a consultation</a>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .26;
+      z-index: 20;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--lime-dark);
+      font-size: .74rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 3px;
+      border-radius: 9px;
+      background: currentColor;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { letter-spacing: -.045em; }
+    h2 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      font-size: clamp(2.35rem, 5vw, 4.9rem);
+      line-height: .98;
+    }
+    .lead {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      line-height: 1.65;
+    }
+    .section { padding: 110px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 54px; }
+    .section-head .lead { max-width: 440px; margin-bottom: 8px; }
+
+    .topnote {
+      color: #fff;
+      background: var(--ink);
+      font-size: .78rem;
+      font-weight: 760;
+      letter-spacing: .04em;
+    }
+    .topnote .wrap {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+    .topnote i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 16px var(--lime);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 15;
+      background: rgba(246, 244, 235, .85);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: var(--ink);
+      background: var(--lime);
+    }
+    .brand-mark svg { width: 27px; }
+    .brand-name { font-size: 1.02rem; font-weight: 900; letter-spacing: -.03em; line-height: 1; }
+    .brand-name span { color: var(--lime-dark); }
+    .brand-by { display: block; margin-top: 5px; color: var(--muted); font-size: .56rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: .9rem; font-weight: 720; }
+    .nav-links a:not(.nav-cta) { position: relative; }
+    .nav-links a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -7px;
+      height: 2px;
+      background: var(--red);
+      transition: right .25s ease;
+    }
+    .nav-links a:hover::after { right: 0; }
+    .nav-cta, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 850;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .nav-cta { min-height: 46px; color: #fff; background: var(--ink); }
+    .button:hover, .nav-cta:hover { transform: translateY(-2px); }
+    .button-primary {
+      color: var(--ink);
+      background: var(--lime);
+      box-shadow: 0 12px 30px rgba(158, 216, 0, .25);
+    }
+    .button-primary:hover { box-shadow: 0 16px 36px rgba(158, 216, 0, .34); }
+    .button-secondary { border-color: var(--line); background: rgba(255,255,255,.52); }
+    .button-dark { color: #fff; background: var(--ink); }
+    .button svg { width: 18px; transition: transform .2s ease; }
+    .button:hover svg { transform: translateX(3px); }
+    .menu-button { display: none; border: 0; background: transparent; padding: 8px; }
+
+    .hero { padding: 26px 0 0; }
+    .hero-card {
+      position: relative;
+      isolation: isolate;
+      min-height: 700px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(104, 130, 0, .16);
+      border-radius: 38px;
+      background: #fbfaee;
+      box-shadow: var(--shadow);
+    }
+    .hero-art { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(251,250,238,.97) 0%, rgba(251,250,238,.93) 39%, rgba(251,250,238,.2) 63%, transparent 100%);
+    }
+    .hero-copy { width: 58%; padding: 72px 0 68px 6.7%; }
+    .hero h1 {
+      max-width: 720px;
+      margin-bottom: 24px;
+      font-size: clamp(3.8rem, 7.3vw, 7.45rem);
+      line-height: .87;
+    }
+    .hero h1 .pulse-word {
+      position: relative;
+      display: inline-block;
+      z-index: 0;
+    }
+    .hero h1 .pulse-word::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: -2%;
+      right: -4%;
+      bottom: .01em;
+      height: .27em;
+      border-radius: 999px;
+      background: var(--lime);
+      transform: rotate(-1deg);
+    }
+    .hero .lead { max-width: 600px; margin-bottom: 32px; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .quick-facts { display: flex; flex-wrap: wrap; gap: 17px; margin: 25px 0 0; padding: 0; list-style: none; color: #4e4f48; font-size: .79rem; font-weight: 730; }
+    .quick-facts li { display: flex; align-items: center; gap: 7px; }
+    .quick-facts i { width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+    .oxy-tag {
+      position: absolute;
+      right: 4.3%;
+      bottom: 5%;
+      width: 184px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 17px;
+      color: #fff;
+      background: rgba(21, 21, 18, .86);
+      box-shadow: 0 12px 35px rgba(0,0,0,.2);
+      backdrop-filter: blur(12px);
+    }
+    .oxy-tag strong { display: block; margin-bottom: 3px; font-size: .93rem; }
+    .oxy-tag span { display: block; color: rgba(255,255,255,.68); font-size: .7rem; line-height: 1.4; }
+
+    .trust {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .trust-row { display: flex; align-items: center; gap: 28px; }
+    .trust-label { flex: 0 0 auto; color: var(--muted); font-size: .68rem; font-weight: 840; letter-spacing: .12em; text-transform: uppercase; }
+    .trust-list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .trust-list li {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0 24px;
+      border-left: 1px solid var(--line);
+      font-size: .82rem;
+      font-weight: 760;
+    }
+    .trust-list svg { flex: 0 0 auto; width: 19px; color: var(--lime-dark); }
+
+    .assessment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .assessment-card {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 46px;
+      border-radius: var(--radius);
+    }
+    .assessment-card:first-child { background: var(--white); border: 1px solid var(--line); }
+    .assessment-card.dark { color: #fff; background: var(--ink); }
+    .assessment-card .kicker { color: var(--red); font-size: .69rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .assessment-card.dark .kicker { color: var(--lime); }
+    .assessment-card h3 { max-width: 430px; margin: 19px 0 15px; font-size: clamp(2rem, 4vw, 3.6rem); line-height: .98; }
+    .assessment-card p { max-width: 480px; color: var(--muted); line-height: 1.65; }
+    .assessment-card.dark p { color: rgba(255,255,255,.64); }
+    .card-bottom { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+    .card-link { display: inline-flex; align-items: center; gap: 9px; font-size: .9rem; font-weight: 850; }
+    .card-link svg { width: 17px; }
+    .radar-icon {
+      position: relative;
+      flex: 0 0 auto;
+      width: 106px;
+      height: 106px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .dark .radar-icon { border-color: rgba(255,255,255,.16); background: #22231e; }
+    .radar-icon::before, .radar-icon::after { content: ""; position: absolute; border: 1px solid rgba(126,171,0,.45); border-radius: 50%; }
+    .radar-icon::before { inset: 22px; }
+    .radar-icon::after { inset: 38px; background: var(--red); border: 0; box-shadow: 0 0 0 8px rgba(232,47,55,.13); }
+    .radar-icon svg { width: 52px; color: var(--lime-dark); }
+
+    .pillars {
+      overflow: hidden;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 44px;
+    }
+    .pillars .eyebrow { color: var(--lime); }
+    .pillars .lead { color: rgba(255,255,255,.56); }
+    .pillar-list { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid rgba(255,255,255,.12); }
+    .pillar {
+      position: relative;
+      min-height: 330px;
+      padding: 32px 26px;
+      border-right: 1px solid rgba(255,255,255,.12);
+      transition: background .25s ease;
+    }
+    .pillar:last-child { border-right: 0; }
+    .pillar:hover { background: rgba(255,255,255,.05); }
+    .pillar-num { display: flex; align-items: center; justify-content: space-between; margin-bottom: 75px; color: var(--lime); font-size: .68rem; font-weight: 900; letter-spacing: .1em; }
+    .pillar-dot { width: 9px; height: 9px; border: 2px solid var(--lime); border-radius: 50%; }
+    .pillar h3 { margin-bottom: 13px; font-size: 1.4rem; line-height: 1.05; letter-spacing: -.03em; }
+    .pillar p { margin: 0; color: rgba(255,255,255,.52); font-size: .83rem; line-height: 1.55; }
+    .pillar-bar { position: absolute; left: 26px; right: 26px; bottom: 29px; height: 3px; overflow: hidden; border-radius: 9px; background: rgba(255,255,255,.1); }
+    .pillar-bar i { display: block; width: var(--bar); height: 100%; background: var(--lime); transform-origin: left; transition: transform .35s ease; }
+    .pillar:hover .pillar-bar i { transform: scaleX(.84); }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .step {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.68);
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+    .step::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: var(--ink);
+    }
+    .step:nth-child(2)::before { background: var(--red); }
+    .step:nth-child(3)::before { background: var(--lime); }
+    .step::after {
+      content: "01";
+      position: absolute;
+      top: 18px;
+      right: 26px;
+      color: var(--ink);
+      font-size: 6.5rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -.08em;
+      opacity: .035;
+      pointer-events: none;
+    }
+    .step:nth-child(2)::after { content: "02"; color: var(--red); opacity: .07; }
+    .step:nth-child(3)::after { content: "03"; color: var(--lime-dark); opacity: .08; }
+    .step:hover { border-color: rgba(20,20,17,.24); box-shadow: 0 22px 45px rgba(20,20,17,.08); transform: translateY(-5px); }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 52px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-size: .8rem;
+      font-weight: 900;
+    }
+    .step:nth-child(2) .step-num { color: #fff; border-color: var(--red); background: var(--red); }
+    .step:nth-child(3) .step-num { border-color: var(--lime); background: var(--lime); }
+    .step h3 { margin-bottom: 12px; font-size: 2rem; }
+    .step p { max-width: 340px; margin: 0; color: var(--muted); line-height: 1.65; }
+    .step-points { display: grid; gap: 9px; margin: 24px 0 30px; padding: 0; list-style: none; }
+    .step-points li {
+      position: relative;
+      padding-left: 22px;
+      color: #3f3f39;
+      font-size: .76rem;
+      font-weight: 700;
+    }
+    .step-points li::before {
+      content: "";
+      position: absolute;
+      top: .6em;
+      left: 1px;
+      width: 9px;
+      height: 5px;
+      border-bottom: 2px solid var(--lime-dark);
+      border-left: 2px solid var(--lime-dark);
+      transform: rotate(-45deg);
+    }
+    .step-output {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .step-output span { color: var(--muted); font-size: .6rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .step-output strong { font-size: .82rem; text-align: right; }
+    .journey-result {
+      display: grid;
+      grid-template-columns: 1.25fr auto auto;
+      align-items: center;
+      gap: 32px;
+      margin-top: 20px;
+      padding: 30px 34px;
+      border-radius: 20px;
+      color: #fff;
+      background: var(--ink);
+    }
+    .journey-result small { display: block; margin-bottom: 7px; color: var(--lime); font-size: .62rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .journey-result strong { display: block; max-width: 600px; font-size: clamp(1.15rem, 2vw, 1.65rem); line-height: 1.2; }
+    .journey-flow { display: flex; align-items: center; gap: 9px; color: rgba(255,255,255,.6); font-size: .68rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .journey-flow i { width: 24px; height: 1px; display: block; background: var(--red); }
+    .journey-result .journey-cta {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 8px;
+      color: var(--ink);
+      background: var(--lime);
+      font-size: .72rem;
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .oxy-break { padding: 0 0 110px; }
+    .oxy-break-card {
+      position: relative;
+      overflow: hidden;
+      width: min(calc(100% - 40px), 1180px);
+      display: grid;
+      grid-template-columns: minmax(410px, .96fr) minmax(0, 1.04fr);
+      align-items: center;
+      gap: clamp(22px, 3vw, 48px);
+      min-height: 410px;
+      padding: 34px 54px 34px 30px;
+      border-radius: 32px;
+      color: #fff;
+      background: var(--red);
+    }
+    .oxy-runner {
+      width: min(116%, 570px);
+      height: auto;
+      display: block;
+      margin: -40px -12px -38px -24px;
+      filter: drop-shadow(0 26px 24px rgba(91, 4, 10, .2));
+    }
+    .oxy-quote { width: 100%; max-width: 590px; }
+    .oxy-quote blockquote { max-width: 570px; margin: 0 0 28px; font-size: clamp(2.65rem, 3.35vw, 3.55rem); font-weight: 850; line-height: .98; letter-spacing: -.045em; }
+    .oxy-quote p {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.24);
+      color: rgba(255,255,255,.72);
+      font-size: .76rem;
+      font-weight: 720;
+      line-height: 1.45;
+    }
+    .oxy-quote p strong { flex: 0 0 auto; color: var(--lime); font-size: .67rem; letter-spacing: .06em; text-transform: uppercase; }
+
+    .faq-wrap { display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); align-items: start; gap: 70px; }
+    .faq-intro { position: relative; }
+    .faq-list { display: grid; gap: 10px; counter-reset: faq; }
+    .faq-list details {
+      counter-increment: faq;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.45);
+      transition: border-color .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+    .faq-list details[open] {
+      border-color: rgba(232,47,55,.42);
+      background: rgba(255,255,255,.8);
+      box-shadow: 0 15px 35px rgba(21,21,18,.06);
+    }
+    .faq-list summary {
+      min-height: 92px;
+      display: grid;
+      grid-template-columns: 34px 1fr 34px;
+      align-items: center;
+      gap: 20px;
+      padding: 0 18px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::before {
+      content: "0" counter(faq);
+      color: var(--lime-dark);
+      font-size: .62rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .faq-list summary::after {
+      content: "+";
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: 400;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .faq-list details[open] summary::after { color: #fff; border-color: var(--red); background: var(--red); transform: rotate(45deg); }
+    .faq-list details p { max-width: 650px; margin: 0; padding: 0 64px 30px 72px; color: var(--muted); line-height: 1.65; }
+
+    .final-cta { padding: 30px 0 50px; }
+    .final-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 510px;
+      display: flex;
+      align-items: end;
+      padding: 64px;
+      border-radius: 42px;
+      color: #fff;
+      background: var(--ink);
+    }
+    .final-card::before {
+      content: "";
+      position: absolute;
+      top: -190px;
+      right: -90px;
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(186,255,24,.32);
+      border-radius: 50%;
+      box-shadow: 0 0 0 70px rgba(186,255,24,.06), 0 0 0 140px rgba(186,255,24,.035);
+    }
+    .final-copy { position: relative; max-width: 790px; }
+    .final-copy .eyebrow { color: var(--lime); }
+    .final-copy h2 { margin-bottom: 26px; }
+    .final-copy .lead { color: rgba(255,255,255,.6); }
+    .final-copy .hero-actions { margin-top: 28px; }
+    .final-copy .button-secondary { color: #fff; border-color: rgba(255,255,255,.25); background: transparent; }
+
+    footer { padding: 34px 0 46px; }
+    .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--line); }
+    .footer-links { display: flex; gap: 24px; color: var(--muted); font-size: .8rem; font-weight: 720; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 25px; padding-top: 24px; color: #85857c; font-size: .7rem; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1000px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero-card { min-height: 810px; align-items: start; }
+      .hero-art { height: 53%; top: auto; object-position: 68% center; }
+      .hero-card::after { background: linear-gradient(180deg, rgba(251,250,238,.99) 0 53%, rgba(251,250,238,.4) 78%, transparent 100%); }
+      .hero-copy { width: 100%; padding: 60px 7%; }
+      .hero h1 { max-width: 790px; font-size: clamp(3.7rem, 11vw, 6.7rem); }
+      .oxy-tag { bottom: 4%; }
+      .trust-row { align-items: start; flex-direction: column; gap: 14px; }
+      .trust-list { grid-template-columns: 1fr 1fr; }
+      .trust-list li:nth-child(odd) { border-left: 0; padding-left: 0; }
+      .assessment-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step:last-child { grid-column: 1 / -1; }
+      .journey-result { grid-template-columns: 1fr auto; }
+      .journey-result .journey-cta { grid-column: 1 / -1; }
+      .pillar-list { grid-template-columns: 1fr 1fr; }
+      .pillar { border-bottom: 1px solid rgba(255,255,255,.12); }
+      .pillar:last-child { grid-column: 1 / -1; min-height: 230px; }
+      .pillar-num { margin-bottom: 40px; }
+      .oxy-break-card { grid-template-columns: minmax(300px, .9fr) 1.1fr; padding: 30px 38px 30px 24px; }
+      .oxy-runner { width: min(112%, 490px); margin-inline: -20px -8px; }
+      .oxy-quote blockquote { font-size: clamp(2.35rem, 5.4vw, 3.1rem); }
+      .faq-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .faq-intro { position: static; }
+    }
+
+    @media (max-width: 700px) {
+      .wrap { width: min(calc(100% - 24px), var(--max)); }
+      .section { padding: 80px 0; }
+      .section-head { align-items: start; flex-direction: column; gap: 6px; margin-bottom: 38px; }
+      .nav { height: 70px; }
+      .nav-cta { display: none; }
+      .menu-button { display: block; }
+      .hero { padding-top: 12px; }
+      .hero-card { min-height: 820px; border-radius: 26px; }
+      .hero-copy { padding: 42px 24px; }
+      .hero h1 { font-size: clamp(3.2rem, 17vw, 5rem); }
+      .hero .lead { font-size: .95rem; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .button { width: 100%; }
+      .hero-art { height: 46%; object-position: 67% center; }
+      .hero-card::after { background: linear-gradient(180deg, rgba(251,250,238,.99) 0 57%, rgba(251,250,238,.55) 75%, transparent 100%); }
+      .oxy-tag { right: 16px; bottom: 16px; width: 158px; }
+      .trust-list { grid-template-columns: 1fr; }
+      .trust-list li, .trust-list li:nth-child(odd) { min-height: 42px; padding-left: 0; border-left: 0; }
+      .assessment-card { min-height: 410px; padding: 30px; }
+      .radar-icon { width: 82px; height: 82px; }
+      .pillars { border-radius: 28px; }
+      .pillars .section-head { padding-inline: 22px; }
+      .pillar-list { grid-template-columns: 1fr; }
+      .pillar, .pillar:last-child { grid-column: auto; min-height: 245px; border-right: 0; }
+      .steps { grid-template-columns: 1fr; }
+      .step, .step:last-child { grid-column: auto; min-height: 410px; padding: 30px 26px; }
+      .step-num { margin-bottom: 34px; }
+      .journey-result { display: flex; align-items: stretch; flex-direction: column; gap: 22px; padding: 28px 26px; }
+      .journey-flow { flex-wrap: wrap; }
+      .journey-result .journey-cta { width: 100%; }
+      .oxy-break-card { width: min(calc(100% - 24px), var(--max)); display: flex; align-items: start; flex-direction: column; gap: 0; padding: 18px 26px 34px; border-radius: 26px; }
+      .oxy-runner { width: min(108%, 390px); margin: -16px auto -34px; }
+      .oxy-quote { max-width: none; }
+      .oxy-quote blockquote { max-width: 9.5em; margin-bottom: 22px; font-size: 2.25rem; }
+      .oxy-quote p { align-items: flex-start; flex-direction: column; gap: 5px; padding-top: 15px; }
+      .faq-list summary { min-height: 84px; grid-template-columns: 28px 1fr 30px; gap: 11px; padding: 0 12px; font-size: .92rem; }
+      .faq-list summary::after { width: 29px; height: 29px; }
+      .faq-list details p { padding: 0 18px 26px 51px; font-size: .9rem; }
+      .final-card { min-height: 550px; padding: 38px 26px; border-radius: 28px; }
+      .footer-top, .footer-bottom { align-items: start; flex-direction: column; }
+      .footer-links { flex-wrap: wrap; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650;12..96,750;12..96,800&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="assets/site.css?v=20260702-signal">
+      <script src="assets/site.js?v=20260702-signal" defer=""></script>
+    </head>
+<body class="route-index site-redesign" data-route="index">
+      <a class="skip-link" href="#main-content">Skip to main content</a>
+      <div class="living-pulse-rail" aria-hidden="true">
+        <span class="rail-dot"></span>
+        <svg viewBox="0 0 20 220" preserveAspectRatio="none">
+          <path d="M10 0v66l-6 9 12 12-12 15 12 13-6 10v75"></path>
+        </svg>
+        <span class="rail-label">INNOVATION SIGNAL</span>
       </div>
-      <div class="hero-meta"><span><span class="dot"></span>Free</span><span><span class="dot"></span>15&ndash;20 minutes</span><span><span class="dot"></span>Instant personalised report</span></div>
+    
+  
+
+  
+      <header class="nav">
+        <div class="row">
+          <a class="brand" href="index.html" aria-current="page">
+            <img src="assets/logo.svg" alt="The Growth System logo" width="64" height="38">
+            <span><b>Inno<i>Pulse</i></b><span>by The Growth System</span></span>
+          </a>
+          <ul class="menu" id="primary-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="360.html">InnoPulse 360</a></li>
+            <li><a href="services.html">Services</a></li>
+          </ul>
+          <div class="navcta" id="nav-actions">
+            <a class="btn btn-ghost btn-sm" href="public.html">Start free check</a>
+            <a class="btn btn-navy btn-sm" href="book.html">Book a consultation</a>
+          </div>
+        
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu nav-actions">
+        <span>Menu</span>
+        <svg viewBox="0 0 24 18" aria-hidden="true" focusable="false">
+          <path d="M1 2h22M1 9h22M1 16h22"></path>
+        </svg>
+      </button>
     </div>
-    <div class="hero-art">
-      <div class="hero-card">
-        <div class="cap"><b>Innovation Capability Profile</b><em>InnoPulse 360</em></div>
-        <svg viewBox="-46 -24 412 376" width="100%%" height="100%%" role="img" aria-label="InnoPulse five-pillar capability radar" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4ff4d"/><stop offset="1" stop-color="#a8e617"/></linearGradient></defs><polygon points="160.0,32.0 281.7,120.4 235.2,263.6 84.8,263.6 38.3,120.4" fill="none" stroke="#cfe39a" stroke-width="1" opacity="0.90"/><polygon points="160.0,64.0 251.3,130.3 216.4,237.7 103.6,237.7 68.7,130.3" fill="none" stroke="#cfe39a" stroke-width="1" opacity="0.72"/><polygon points="160.0,96.0 220.9,140.2 197.6,211.8 122.4,211.8 99.1,140.2" fill="none" stroke="#cfe39a" stroke-width="1" opacity="0.54"/><polygon points="160.0,128.0 190.4,150.1 178.8,185.9 141.2,185.9 129.6,150.1" fill="none" stroke="#cfe39a" stroke-width="1" opacity="0.36"/><line x1="160" y1="160" x2="160.0" y2="32.0" stroke="#cfe39a" stroke-width="1"/><line x1="160" y1="160" x2="281.7" y2="120.4" stroke="#cfe39a" stroke-width="1"/><line x1="160" y1="160" x2="235.2" y2="263.6" stroke="#cfe39a" stroke-width="1"/><line x1="160" y1="160" x2="84.8" y2="263.6" stroke="#cfe39a" stroke-width="1"/><line x1="160" y1="160" x2="38.3" y2="120.4" stroke="#cfe39a" stroke-width="1"/><polygon points="160.0,49.9 237.9,134.7 229.2,255.3 118.6,217.0 65.0,129.1" fill="url(#lg)" fill-opacity="0.85" stroke="#1c2400" stroke-width="2.5" stroke-linejoin="round"/><circle cx="160.0" cy="49.9" r="5" fill="#1c2400"/><circle cx="160.0" cy="49.9" r="2" fill="#d4ff4d"/><circle cx="237.9" cy="134.7" r="5" fill="#1c2400"/><circle cx="237.9" cy="134.7" r="2" fill="#d4ff4d"/><circle cx="229.2" cy="255.3" r="5" fill="#1c2400"/><circle cx="229.2" cy="255.3" r="2" fill="#d4ff4d"/><circle cx="118.6" cy="217.0" r="5" fill="#1c2400"/><circle cx="118.6" cy="217.0" r="2" fill="#d4ff4d"/><circle cx="65.0" cy="129.1" r="5" fill="#1c2400"/><circle cx="65.0" cy="129.1" r="2" fill="#d4ff4d"/><text x="160.0" y="14.0" text-anchor="middle" font-size="13" font-weight="600" fill="#1c2400">Strategy</text><text x="302.7" y="117.6" text-anchor="start" font-size="13" font-weight="600" fill="#1c2400">Process</text><text x="248.2" y="285.4" text-anchor="start" font-size="13" font-weight="600" fill="#1c2400">People</text><text x="71.8" y="285.4" text-anchor="end" font-size="13" font-weight="600" fill="#1c2400">Culture</text><text x="17.3" y="117.6" text-anchor="end" font-size="13" font-weight="600" fill="#1c2400">Results</text></svg>
-        <div class="score"><div class="n">72%</div><div class="l">Maturity</div></div>
+      </header>
+    
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-card wrap">
+        <img class="hero-art" src="assets/oxy-hero-1600.webp" alt="Oxy, the friendly red InnoPulse mascot, welcoming you" srcset="assets/oxy-hero-640.webp 640w, assets/oxy-hero-1024.webp 1024w, assets/oxy-hero-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 1240px" width="1600" height="853" fetchpriority="high">
+        <div class="hero-copy">
+          <p class="eyebrow">Innovation capability assessment</p>
+          <h1>Find your innovation <span class="pulse-word">pulse.</span></h1>
+          <p class="lead">Oxy helps you turn instinct into insight. Measure how your organisation innovates across five critical pillars — then see exactly what to strengthen next.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://innopulse.thegrowthsystem.co.za/public.html">
+              Start your free Pulse Check
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+            <a class="button button-secondary" href="https://innopulse.thegrowthsystem.co.za/book.html">Book a consultation</a>
+          </div>
+          <ul class="quick-facts" aria-label="Assessment facts">
+            <li><i aria-hidden="true"></i> Free</li>
+            <li><i aria-hidden="true"></i> 15–20 minutes</li>
+            <li><i aria-hidden="true"></i> Instant personalised report</li>
+          </ul>
+        </div>
+        <div class="oxy-tag" aria-hidden="true">
+          <strong>Hi, I’m Oxy.</strong>
+          <span>I make innovation capability easier to understand.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" aria-label="Credentials">
+      <div class="trust-row wrap">
+        <span class="trust-label">Built on experience</span>
+        <ul class="trust-list">
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="m5 10 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> Innovation360 Gold Partner</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="m5 10 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> IMBB Certified</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="m5 10 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> ISO 56001 expertise</li>
+          <li><svg viewBox="0 0 20 20" fill="none"><path d="M10 3v14M5 8l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> South African insight</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="assessments">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Choose your depth</p>
+            <h2>One pulse. Two ways to measure it.</h2>
+          </div>
+          <p class="lead">Start with your own experience, or build a shared picture across your whole organisation.</p>
+        </div>
+        <div class="assessment-grid">
+          <article class="assessment-card reveal">
+            <div>
+              <span class="kicker">For individuals · Free</span>
+              <h3>Free Innovation Pulse Check</h3>
+              <p>A fast, honest read on how innovation is really experienced inside your organisation — with a personalised score you can use immediately.</p>
+            </div>
+            <div class="card-bottom">
+              <a class="card-link" href="https://innopulse.thegrowthsystem.co.za/public.html">Take the free check <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+              <div class="radar-icon" aria-hidden="true"></div>
+            </div>
+          </article>
+          <article class="assessment-card dark reveal">
+            <div>
+              <span class="kicker">For organisations · 360°</span>
+              <h3>InnoPulse 360</h3>
+              <p>Bring executives, employees, customers and partners into one evidence-based diagnosis — complete with stakeholder gaps, heatmaps and a practical roadmap.</p>
+            </div>
+            <div class="card-bottom">
+              <a class="card-link" href="https://innopulse.thegrowthsystem.co.za/360.html">Explore the 360 assessment <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+              <div class="radar-icon" aria-hidden="true"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillars section" id="pillars">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">The five vital signs</p>
+            <h2>Innovation works as a system.</h2>
+          </div>
+          <p class="lead">A weakness in one pillar can cap the rest. InnoPulse shows you where energy is flowing — and where it’s getting stuck.</p>
+        </div>
+        <div class="pillar-list">
+          <article class="pillar reveal">
+            <div class="pillar-num"><span>01 / 05</span><i class="pillar-dot"></i></div>
+            <h3>Strategic<br>intent</h3>
+            <p>A clear, funded innovation ambition linked to business strategy.</p>
+            <div class="pillar-detail" id="pillar-detail-1" aria-hidden="true">
+              <span class="pillar-detail-label">What we examine</span>
+              <p>Whether leaders have translated ambition into deliberate choices, funded priorities and a portfolio connected to measurable business value.</p>
+              <ul><li>Strategic alignment</li><li>Leadership commitment</li><li>Portfolio focus</li></ul>
+            </div>
+            <button class="pillar-toggle" type="button" aria-expanded="false" aria-controls="pillar-detail-1"><span>Explore pillar</span><i aria-hidden="true">+</i></button>
+          </article>
+          <article class="pillar reveal">
+            <div class="pillar-num"><span>02 / 05</span><i class="pillar-dot"></i></div>
+            <h3>Innovation<br>process</h3>
+            <p>The gates and portfolio governance that move ideas to launch.</p>
+            <div class="pillar-detail" id="pillar-detail-2" aria-hidden="true">
+              <span class="pillar-detail-label">What we examine</span>
+              <p>How ideas enter the system, become experiments and earn further investment through clear evidence, decisions and accountable governance.</p>
+              <ul><li>Idea intake</li><li>Experimentation</li><li>Decision gates</li></ul>
+            </div>
+            <button class="pillar-toggle" type="button" aria-expanded="false" aria-controls="pillar-detail-2"><span>Explore pillar</span><i aria-hidden="true">+</i></button>
+          </article>
+          <article class="pillar reveal">
+            <div class="pillar-num"><span>03 / 05</span><i class="pillar-dot"></i></div>
+            <h3>People &amp;<br>capability</h3>
+            <p>Leadership, skills and the safety to experiment and learn.</p>
+            <div class="pillar-detail" id="pillar-detail-3" aria-hidden="true">
+              <span class="pillar-detail-label">What we examine</span>
+              <p>Whether people have the skills, time, ownership and leadership support to turn uncertainty into learning without fear or organisational friction.</p>
+              <ul><li>Innovation skills</li><li>Clear ownership</li><li>Psychological safety</li></ul>
+            </div>
+            <button class="pillar-toggle" type="button" aria-expanded="false" aria-controls="pillar-detail-3"><span>Explore pillar</span><i aria-hidden="true">+</i></button>
+          </article>
+          <article class="pillar reveal">
+            <div class="pillar-num"><span>04 / 05</span><i class="pillar-dot"></i></div>
+            <h3>Culture &amp;<br>environment</h3>
+            <p>The behaviours that make experimentation safe and routine.</p>
+            <div class="pillar-detail" id="pillar-detail-4" aria-hidden="true">
+              <span class="pillar-detail-label">What we examine</span>
+              <p>How incentives, collaboration and everyday leadership behaviour encourage curiosity, constructive challenge and learning from evidence.</p>
+              <ul><li>Collaboration</li><li>Learning behaviour</li><li>Aligned incentives</li></ul>
+            </div>
+            <button class="pillar-toggle" type="button" aria-expanded="false" aria-controls="pillar-detail-4"><span>Explore pillar</span><i aria-hidden="true">+</i></button>
+          </article>
+          <article class="pillar reveal">
+            <div class="pillar-num"><span>05 / 05</span><i class="pillar-dot"></i></div>
+            <h3>Implementation<br>&amp; value</h3>
+            <p>Measurement and the discipline to scale what works.</p>
+            <div class="pillar-detail" id="pillar-detail-5" aria-hidden="true">
+              <span class="pillar-detail-label">What we examine</span>
+              <p>Whether validated ideas move into operations with accountable owners, adoption support and benefits that remain visible after launch.</p>
+              <ul><li>Operational handover</li><li>Value tracking</li><li>Repeatable scaling</li></ul>
+            </div>
+            <button class="pillar-toggle" type="button" aria-expanded="false" aria-controls="pillar-detail-5"><span>Explore pillar</span><i aria-hidden="true">+</i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">How it works</p>
+            <h2>From “maybe” to measurable.</h2>
+          </div>
+          <p class="lead">A simple progression from insight to action — without burying your team in theory.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <span class="step-num">01</span>
+            <h3>Measure</h3>
+            <p>Build an evidence-based baseline across the five pillars with a focused assessment.</p>
+            <ul class="step-points">
+              <li>Five-pillar capability view</li>
+              <li>Evidence-based starting point</li>
+            </ul>
+            <div class="step-output"><span>Output</span><strong>Baseline score</strong></div>
+          </article>
+          <article class="step reveal">
+            <span class="step-num">02</span>
+            <h3>Diagnose</h3>
+            <p>See strengths, blockers and the single pillar holding the rest of your system back.</p>
+            <ul class="step-points">
+              <li>Strengths and blockers</li>
+              <li>Highest-leverage priority</li>
+            </ul>
+            <div class="step-output"><span>Output</span><strong>Priority gap</strong></div>
+          </article>
+          <article class="step reveal">
+            <span class="step-num">03</span>
+            <h3>Build</h3>
+            <p>Close the gaps with strategy, systems, training and practical delivery support.</p>
+            <ul class="step-points">
+              <li>Targeted capability actions</li>
+              <li>Practical delivery support</li>
+            </ul>
+            <div class="step-output"><span>Output</span><strong>Action roadmap</strong></div>
+          </article>
+        </div>
+        <div class="journey-result reveal">
+          <div>
+            <small>What you leave with</small>
+            <strong>A shared view of what matters now—and a practical route forward.</strong>
+          </div>
+          <div class="journey-flow" aria-label="Evidence to priority to action">
+            <span>Evidence</span><i aria-hidden="true"></i><span>Priority</span><i aria-hidden="true"></i><span>Action</span>
+          </div>
+          <a class="journey-cta" href="public.html">Start with the free check&nbsp; →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="oxy-break">
+      <div class="oxy-break-card wrap reveal">
+        <img class="oxy-runner" src="assets/oxy-running.png" alt="Oxy running forward with energy" width="1536" height="1024" loading="lazy" decoding="async">
+        <div class="oxy-quote">
+          <blockquote>“Innovation shouldn’t depend on a lucky heartbeat.”</blockquote>
+          <p><strong>Oxy’s rule #1</strong><span>Make the system visible, then make it stronger.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="faq-wrap wrap">
+        <div class="faq-intro reveal">
+          <p class="eyebrow">Good questions</p>
+          <h2>Before you take the pulse.</h2>
+          <p class="lead">The essentials, explained without the consulting fog.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details open="">
+            <summary>What is an innovation capability assessment?</summary>
+            <p>It is a structured way to measure how well your organisation turns ideas into value. InnoPulse looks beyond idea volume to the strategy, processes, people, culture and delivery systems that make innovation repeatable.</p>
+          </details>
+          <details>
+            <summary>Who should take the free Pulse Check?</summary>
+            <p>Anyone who wants an honest read on how innovation is experienced in their organisation. It is useful for leaders, managers, innovation teams and employees alike.</p>
+          </details>
+          <details>
+            <summary>What makes InnoPulse 360 different?</summary>
+            <p>It compares perspectives across stakeholder groups, revealing gaps that a single survey average can hide. The result is an executive-ready diagnosis and a clearer roadmap for action.</p>
+          </details>
+          <details>
+            <summary>What happens after the assessment?</summary>
+            <p>You receive a clear view of strengths and blockers. The Growth System can then help you prioritise improvements through strategy, ISO 56001 advisory, training, idea management and hands-on implementation support.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="final-card wrap reveal">
+        <div class="final-copy">
+          <p class="eyebrow">Your next move</p>
+          <h2>Ready to see what’s really powering your innovation?</h2>
+          <p class="lead">Take the free Pulse Check now, or talk to The Growth System about a full organisational diagnosis.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://innopulse.thegrowthsystem.co.za/public.html">
+              Start the free check
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+            <a class="button button-secondary" href="https://innopulse.thegrowthsystem.co.za/book.html">Book a consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="https://innopulse.thegrowthsystem.co.za/" aria-label="InnoPulse home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 22" fill="none"><path d="M2 12h6l3-8 5 16 4-12 3 4h7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+          <span><span class="brand-name">INNO<span>PULSE</span></span><small class="brand-by">by The Growth System</small></span>
+        </a>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="https://innopulse.thegrowthsystem.co.za/360.html">InnoPulse 360</a>
+          <a href="https://innopulse.thegrowthsystem.co.za/services.html">Services</a>
+          <a href="mailto:info@thegrowthsystem.co.za">Contact</a>
+          <a href="https://innopulse.thegrowthsystem.co.za/privacy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© The Growth System — Innovation that’s managed, not accidental.</span>
+        <span>Pretoria &amp; Centurion · South Africa</span>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <section aria-label="Credentials" style="padding:6px 0 8px">
-    <div class="creds">
-      <span class="lbl">Backed by:</span>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Innovation360 Gold Partner</span> <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>IMBB Certified</span> <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>ISO 56001 expertise</span> <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-5-5.9"/></svg>Founder-led</span> <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>Pretoria &amp; Centurion</span>
-    </div>
-    <!-- TODO (client to provide): real testimonials, client/partner logos, and a true headline stat. Swap into a 'social proof' band here. -->
-  </section>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-  <section aria-label="Choose your assessment">
-    <div class="paths">
-      <article class="path">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
-        <div class="tag">Public &middot; Free</div>
-        <h3>Free Innovation Pulse Check</h3>
-        <p>For individuals who want a fast, honest read on how innovation is really experienced inside their organisation.</p>
-        <div class="grow"></div>
-        <a class="btn btn-lime" href="/public.html">Start your free check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="sup">Takes 15&ndash;20 minutes &middot; instant individual perception score.</p>
-      </article>
-      <article class="path dark">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-        <div class="tag">Corporate</div>
-        <h3>InnoPulse 360 for organisations</h3>
-        <p>A formal, multi-stakeholder capability assessment across executives, employees, customers and partners &mdash; one executive-ready diagnosis.</p>
-        <div class="grow"></div>
-        <a class="btn btn-lime" href="/360.html">Request corporate assessment <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <p class="sup">Stakeholder comparison, pillar heatmaps, gap analysis &amp; roadmap.</p>
-      </article>
-    </div>
-  </section>
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 
-  <section aria-label="The five pillars">
-    <div class="sec-head"><div class="eyebrow">What we measure</div><h2>The five pillars of innovation capability</h2><p>Weakness in any one pillar caps the others &mdash; which is why InnoPulse measures all five and shows you where to focus first.</p></div>
-    <div class="pillars">
-      <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div><div class="num">01</div><h3>Strategic Innovation Intent</h3><p>A clear, funded innovation ambition linked to business strategy.</p></div> <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="6" height="6" rx="1.5"/><rect x="15" y="14" width="6" height="6" rx="1.5"/><path d="M9 7h4a3 3 0 0 1 3 3v4"/></svg></div><div class="num">02</div><h3>Innovation Process</h3><p>The gates and portfolio governance that move ideas to launch.</p></div> <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-5-5.9"/></svg></div><div class="num">03</div><h3>People &amp; Capability</h3><p>Leadership, skills and the safety to experiment and learn.</p></div> <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.9 1 1 1.7l.1.5h5l.1-.5c.1-.7.5-1.3 1-1.7A6 6 0 0 0 12 3z"/></svg></div><div class="num">04</div><h3>Culture &amp; Environment</h3><p>The behaviours that make experimentation safe and routine.</p></div> <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><div class="num">05</div><h3>Implementation &amp; Value</h3><p>Measurement and the discipline to scale what works.</p></div>
-    </div>
-  </section>
 
-  <section aria-label="How it works">
-    <div class="sec-head"><div class="eyebrow">How it works</div><h2>From a baseline to a built capability</h2></div>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Measure</h3><p>Establish an evidence-based baseline across the five pillars with InnoPulse.</p></div>
-      <div class="step"><div class="n">2</div><h3>Diagnose</h3><p>See your strengths, blockers and the single pillar holding the rest back.</p></div>
-      <div class="step"><div class="n">3</div><h3>Build</h3><p>Close the gaps with strategy, systems, training and hands-on delivery support.</p></div>
-    </div>
-  </section>
-
-  <section aria-label="Innovation services">
-    <div class="sec-head"><div class="eyebrow">What we do</div><h2>Innovation services for South African organisations</h2><p>From measuring your capability to building &mdash; and running &mdash; the system behind it.</p></div>
-    <div class="svc-grid">
-      <a class="svc" href="/innovation-consulting.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></span>Innovation Consulting</a> <a class="svc" href="/innovation-strategy.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>Innovation Strategy</a> <a class="svc" href="/iso-56001-advisory.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span>ISO 56001 Advisory</a> <a class="svc" href="/innovation-management-system.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="6" height="6" rx="1.5"/><rect x="15" y="14" width="6" height="6" rx="1.5"/><path d="M9 7h4a3 3 0 0 1 3 3v4"/></svg></span>Innovation Management System</a> <a class="svc" href="/innovation-training.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-5-5.9"/></svg></span>Innovation Training</a> <a class="svc" href="/idea-management.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.9 1 1 1.7l.1.5h5l.1-.5c.1-.7.5-1.3 1-1.7A6 6 0 0 0 12 3z"/></svg></span>Idea Management</a> <a class="svc" href="/innovation-culture.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-5-5.9"/></svg></span>Innovation Culture</a> <a class="svc" href="/innovation-workshops.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.9 1 1 1.7l.1.5h5l.1-.5c.1-.7.5-1.3 1-1.7A6 6 0 0 0 12 3z"/></svg></span>Innovation Workshops</a> <a class="svc" href="/outsourced-innovation-management.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="6" height="6" rx="1.5"/><rect x="15" y="14" width="6" height="6" rx="1.5"/><path d="M9 7h4a3 3 0 0 1 3 3v4"/></svg></span>Outsourced Innovation</a> <a class="svc" href="/innodrive.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>InnoDrive Programme</a> <a class="svc all" href="/services.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>All services</a>
-    </div>
-  </section>
-
-  <section id="faq" aria-label="FAQ">
-    <div class="sec-head"><div class="eyebrow">FAQ</div><h2>Innovation questions, answered</h2></div>
-    <div class="faq"><details><summary>What is an innovation capability assessment?</summary><p>An innovation capability assessment measures how well an organisation can repeatedly generate, develop and scale new value. InnoPulse scores five pillars and returns a maturity profile showing strengths, gaps and the highest-leverage priorities.</p></details><details><summary>What is innovation management?</summary><p>Innovation management is the deliberate practice of organising strategy, processes, people and measurement so an organisation can innovate reliably rather than by chance — the discipline an innovation management system and ISO 56001 put into practice.</p></details><details><summary>What is ISO 56001?</summary><p>ISO 56001 is the international standard, published in 2024, that specifies the requirements for an innovation management system. It is the first standard in its family that an organisation can be independently certified against.</p></details><details><summary>Why do innovation efforts fail?</summary><p>Most innovation efforts fail not from a shortage of ideas but from structural gaps: strategy that is never funded, no clear process or decision gates, a culture that punishes intelligent failure, or missing measurement. Building capability means treating these as one connected system.</p></details><details><summary>How does The Growth System help companies innovate?</summary><p>We help South African organisations measure their innovation capability with InnoPulse, then build it through innovation strategy, management systems, training, culture work and ISO 56001 readiness — including hands-on and outsourced delivery.</p></details></div>
-  </section>
-
-  <section>
-    <div class="band">
-      <h2>Ready to measure your <span class="hl">innovation</span> capability?</h2>
-      <p>Start with a free Pulse Check, or talk to The Growth System about a full organisational diagnosis.</p>
-      <div class="cta-row" style="justify-content:center">
-        <a class="btn btn-lime" href="/public.html">Start free Pulse Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="/book.html" data-booking-cta style="color:#eef2e0;border-color:rgba(255,255,255,.3)">Book a consultation</a>
-      </div>
-    </div>
-  </section>
-</div>
-
-<footer class="foot"><div class="wrap">
-  <div class="grid">
-    <div>
-      <div class="fbrand"><img src="/logo.svg" alt="The Growth System logo" width="64" height="38"><b>InnoPulse</b></div>
-      <p class="blurb">Innovation capability assessment, strategy, ISO 56001 readiness, training and idea management. Serving South Africa from Pretoria &amp; Centurion.</p>
-      <div class="social"><a href="https://www.facebook.com/p/The-Growth-System-100086005580854/" aria-label="Facebook" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a><a href="https://www.linkedin.com/company/the-growth-system-pty-ltd/" aria-label="LinkedIn" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4z"/></svg></a></div>
-    </div>
-    <div><h4>Assess</h4><a href="/public.html">Free Pulse Check</a><a href="/360.html">InnoPulse 360</a><a href="/innovation-capability.html">Innovation capability</a></div>
-    <div><h4>Build</h4><a href="/innovation-strategy.html">Innovation strategy</a><a href="/iso-56001-advisory.html">ISO 56001 advisory</a><a href="/innovation-training.html">Innovation training</a><a href="/services.html">All services</a></div>
-    <div><h4>Contact</h4><a href="mailto:info@thegrowthsystem.co.za">info@thegrowthsystem.co.za</a><a href="tel:+27832966880">+27 83 296 6880</a><a href="/book.html">Book a consultation</a><a href="/privacy.html">Privacy policy</a></div>
-  </div>
-  <div class="bar"><span>&copy; The Growth System &mdash; Innovation that&rsquo;s managed, not accidental.</span><span>Innovation360 Gold Partner &middot; IMBB &middot; ISO 56001</span></div>
-</div></footer>
-</body>
-</html>
+</body></html>
