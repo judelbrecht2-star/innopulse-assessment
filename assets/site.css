@@ -1055,3 +1055,16 @@
     padding: 34px 24px 40px !important;
   }
 }
+
+
+/* --- 360.html hero: long heading was inheriting the 121px interior display-h1 and colliding with Oxy; size it to fit and keep the text column clear of the mascot --- */
+.route-360 .hero h1 {
+  font-size: clamp(31px, 3.4vw, 46px);
+  line-height: 1.12;
+  max-width: 620px;
+}
+.route-360 .hero .wrap > p:not(.eyebrow) { max-width: 560px; }
+@media (max-width: 700px) {
+  .route-360 .hero h1 { font-size: clamp(30px, 8.4vw, 40px); max-width: none; }
+  .route-360 .hero .wrap > p:not(.eyebrow) { max-width: none; }
+}
