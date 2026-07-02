@@ -982,3 +982,21 @@
   }
   .content-reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Shared minimal footer (ported from the homepage) ---------- */
+.site-redesign footer.site-foot { padding: 34px 0 46px; }
+.site-redesign footer.site-foot .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid rgba(21,21,18,.13); }
+.site-redesign footer.site-foot .brand { display: flex; align-items: center; gap: 12px; color: #151512; }
+.site-redesign footer.site-foot .brand-mark { position: relative; width: 44px; height: 44px; overflow: hidden; display: grid; place-items: center; border-radius: 14px; color: #151512; background: #baff18; }
+.site-redesign footer.site-foot .brand-mark svg { width: 27px; }
+.site-redesign footer.site-foot .brand-name { font-size: 1.02rem; font-weight: 900; letter-spacing: -.03em; line-height: 1; color: #151512; }
+.site-redesign footer.site-foot .brand-name span { color: #7eab00; }
+.site-redesign footer.site-foot .brand-by { display: block; margin-top: 5px; color: #66665f; font-size: .56rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+.site-redesign footer.site-foot .footer-links { display: flex; gap: 24px; color: #66665f; font-size: .8rem; font-weight: 720; }
+.site-redesign footer.site-foot .footer-links a { color: inherit; }
+.site-redesign footer.site-foot .footer-links a:hover { color: #151512; }
+.site-redesign footer.site-foot .footer-bottom { display: flex; justify-content: space-between; gap: 25px; padding-top: 24px; color: #85857c; font-size: .7rem; }
+@media (max-width: 760px) {
+  .site-redesign footer.site-foot .footer-top, .site-redesign footer.site-foot .footer-bottom { align-items: start; flex-direction: column; }
+  .site-redesign footer.site-foot .footer-links { flex-wrap: wrap; }
+}
