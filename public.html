@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
   <!-- Shared config: provides window.INNOPULSE_CONFIG (Supabase URL + publishable key) for parallel mirroring -->
   <script src="360-config.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://www.youtube.com"><link rel="preconnect" href="https://i.ytimg.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"><title>Innovation Capability Assessment (InnoPulse) | The Growth System</title>
   <meta name="description" content="InnoPulse by The Growth System is a free innovation capability assessment measuring your organisation's innovation maturity across five pillars. Get a personalised report and benchmark your innovation performance.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Innovation Capability Assessment (InnoPulse) | The Growth System">
   <meta name="twitter:description" content="Measure your organisation's innovation maturity across five pillars with InnoPulse from The Growth System."><meta name="twitter:image" content="https://innopulse.thegrowthsystem.co.za/logo.png">
-  <meta name="theme-color" content="#1c2400"><link rel="icon" type="image/png" href="/logo.png"><link rel="apple-touch-icon" href="/logo.png"><link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#1c2400"><link rel="icon" type="image/png" href="logo.png"><link rel="apple-touch-icon" href="logo.png"><link rel="manifest" href="site.webmanifest">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -79,7 +79,7 @@
       ]
     }
   </script>
-<link rel="preload" href="/styles.css" as="style"><link rel="preload" href="/logo.svg" as="image"><link rel="stylesheet" href="/styles.css">
+<link rel="preload" href="styles.css" as="style"><link rel="preload" href="logo.svg" as="image"><link rel="stylesheet" href="styles.css">
 <!-- Funnel analytics (optional): to enable GA4 event tracking, set CONFIG.analyticsId
      in the script below to your GA4 Measurement ID (e.g. "G-XXXXXXXXXX") and
      uncomment the two tags below. trackEvent() will then forward hero/intake/
@@ -89,8 +89,26 @@
 
       <link rel="stylesheet" href="assets/public-a11y.css">
       <script src="assets/public-a11y.js" defer=""></script>
+      <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650;12..96,750;12..96,800&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="assets/site.css?v=20260702-signal">
+      <script src="assets/site.js?v=20260702-signal" defer=""></script>
     </head>
-<body class="route-public" data-route="public"><a class="assessment-skip" href="#main-content">Skip to assessment</a><main id="main-content"><div class="app" id="app"></div></main><div id="report" class="hide"></div><script>
+<body class="route-public site-redesign" data-route="public"><a class="assessment-skip" href="#main-content">Skip to assessment</a>
+      <div class="living-pulse-rail" aria-hidden="true">
+        <span class="rail-dot"></span>
+        <svg viewBox="0 0 20 220" preserveAspectRatio="none">
+          <path d="M10 0v66l-6 9 12 12-12 15 12 13-6 10v75"></path>
+        </svg>
+        <span class="rail-label">INNOVATION SIGNAL</span>
+      </div>
+    <header class="nav"><div class="row"><a class="brand" href="index.html"><img src="assets/logo.svg" alt="The Growth System logo" width="64" height="38"><span><b>Inno<i>Pulse</i></b><span>by The Growth System</span></span></a><ul class="menu" id="primary-menu"><li><a href="index.html">Home</a></li><li><a href="360.html">InnoPulse 360</a></li><li><a href="services.html">Services</a></li></ul><div class="navcta" id="nav-actions"><a class="btn btn-ghost btn-sm" href="public.html" aria-current="page">Start free check</a><a class="btn btn-navy btn-sm" href="book.html">Book a consultation</a></div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu nav-actions">
+        <span>Menu</span>
+        <svg viewBox="0 0 24 18" aria-hidden="true" focusable="false">
+          <path d="M1 2h22M1 9h22M1 16h22"></path>
+        </svg>
+      </button>
+    </div></header><main id="main-content"><div class="app" id="app"></div></main><div id="report" class="hide"></div><script>
 const PILLARS = [
   {
     "id": "sii",
@@ -531,6 +549,17 @@ const totalQ = PILLARS.reduce((s,p)=>s+p.questions.length,0); // 62
    ============================================================ */
 let state = loadState();
 let SAVED = loadSaved();
+
+/* Always land visitors on the hero screen. Saved mid-flow progress
+   (intake/quiz/preview) is kept and offered as a "Continue" option
+   instead of auto-resuming past the landing page. Completed
+   assessments still open on the dashboard. */
+const RESUME = {
+  view: state.view,
+  inProgress: (state.view==='intake'||state.view==='quiz'||state.view==='preview') &&
+              (Object.keys(state.answers||{}).length>0 || (state.step||0)>0 || Object.keys(state.profile||{}).length>0)
+};
+if(state.view!=='dashboard' && state.view!=='hero'){ state.view='hero'; }
 
 function defaultState(){
   return {
@@ -1236,16 +1265,9 @@ function pillarIconHTML(pillarId){
 const $app = ()=>document.getElementById('app');
 
 function topbarHTML(){
-  return `<div class="topbar">
-    <div class="brandmark">
-      <div class="logo"><img src="/logo.svg" alt="The Growth System logo" width="30" height="30" decoding="async" style="display:block;width:30px;height:auto"></div>
-      <div>
-        <div class="name">${CONFIG.product} <span style="color:var(--lime2)">Check</span></div>
-        <div class="sub">by ${CONFIG.brand}</div>
-      </div>
-    </div>
-    <div class="toppill">${CONFIG.productFull}</div>
-  </div>`;
+  // The shared site-redesign header now renders above the app shell,
+  // so the per-screen topbar is retired.
+  return ``;
 }
 
 function render(){
@@ -1278,18 +1300,29 @@ function renderHero(){
       <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11 V7 a5 5 0 0 1 10 0 v4"/></svg> Your answers stay private</span>
     </div>
     <div style="margin-top:18px">
-      <button class="btn btn-primary" data-begin>Begin My InnoPulse Check →</button>
+      <button class="btn btn-primary" data-begin>${RESUME.inProgress ? 'Continue where you left off →' : 'Begin My InnoPulse Check →'}</button>
+      ${RESUME.inProgress ? '<div style="margin-top:10px"><button class="btn-link" data-start-fresh style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Start over from the beginning</button></div>' : ''}
     </div>
     <p class="small muted" style="margin-top:14px">${CONFIG.narrative}</p>
   </div>
 
-  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>
+  <div class="footer"><img src="logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>
   ${videoModalHTML()}`;
 }
 function attachHero(){
   trackEvent('hero_view');
   document.querySelectorAll('[data-begin]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{ trackEvent('intake_start'); state.view='intake'; save(); render(); });
+    btn.addEventListener('click', ()=>{
+      if(RESUME.inProgress){ trackEvent('assessment_resume'); state.view=RESUME.view; }
+      else { trackEvent('intake_start'); state.view='intake'; }
+      save(); render();
+    });
+  });
+  const fresh = document.querySelector('[data-start-fresh]');
+  if(fresh) fresh.addEventListener('click', ()=>{
+    RESUME.inProgress = false; RESUME.view = 'hero';
+    state = defaultState(); state.view='intake';
+    trackEvent('intake_start'); save(); render();
   });
   attachMethodology();
 }
@@ -1390,14 +1423,15 @@ function methodologySectionHTML(){
     <div style="max-width:640px;margin:0 auto">
       <div class="eyebrow">Before You Begin</div>
       <h2 class="hero-title" style="font-size:clamp(22px,3.2vw,30px)">Understand the Innovation System</h2>
-      <p class="tagline center" style="margin:0 auto 18px">Why innovation efforts stall — and the framework behind this assessment. Click to watch a 2-minute overview.</p>
+      <p class="tagline center" style="margin:0 auto 18px">Why innovation efforts stall — and the framework behind this assessment. Watch the 2-minute overview below.</p>
       <div class="meth-media">
-        <div class="meth-img-wrap" data-meth-open tabindex="0" role="button" aria-label="Watch the methodology overview video">
-          <img class="meth-img" loading="lazy" decoding="async" src="innovation-methodology.jpg" alt="Illustration of common innovation barriers — confusion, frustration, resistance, anxiety and false starts — leading to busy teams with no impact, alongside The Growth System's Clarity, Process, Capability, Culture, Results methodology.">
-          <span class="meth-video-icon" aria-hidden="true">${playIconSVG()}</span>
-        </div>
-        <div class="meth-watch-label" data-meth-open tabindex="0" role="button" aria-label="Watch the methodology overview video">
-          ${playIconSVG()} Watch Methodology Overview
+        <div class="meth-img-wrap" style="cursor:default">
+          <video class="meth-img" controls preload="metadata" playsinline data-meth-video
+            poster="innovation-methodology.jpg"
+            aria-label="Methodology overview video">
+            <source src="assets/methodology-overview.mp4" type="video/mp4">
+            Your browser can&rsquo;t play this video. <a href="assets/methodology-overview.mp4">Download it instead</a>.
+          </video>
         </div>
       </div>
       <div class="meth-journey">
@@ -1407,73 +1441,34 @@ function methodologySectionHTML(){
   </div>`;
 }
 function videoModalHTML(){
-  return `<div class="modal-bg hide" data-meth-modal-bg>
-    <div class="modal meth-modal" role="dialog" aria-modal="true" aria-label="Methodology overview video">
-      <button class="close" data-meth-close aria-label="Close video">×</button>
-      <div class="meth-video-frame" data-meth-video-frame></div>
-    </div>
-  </div>`;
-}
-let _methScrollY = 0;
-let _methLastFocus = null;
-function _methKeydown(e){
-  const bg = document.querySelector('[data-meth-modal-bg]');
-  if(!bg || bg.classList.contains('hide')) return;
-  if(e.key === 'Escape'){ e.preventDefault(); closeMethodologyVideo(); return; }
-  if(e.key === 'Tab'){
-    const focusable = bg.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    if(!focusable.length) return;
-    const first = focusable[0], last = focusable[focusable.length-1];
-    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-  }
-}
-function openMethodologyVideo(){
-  const bg = document.querySelector('[data-meth-modal-bg]');
-  const frame = document.querySelector('[data-meth-video-frame]');
-  const closeBtn = document.querySelector('[data-meth-close]');
-  if(!bg || !frame) return;
-  trackEvent('methodology_video_open');
-  _methScrollY = window.scrollY;
-  _methLastFocus = document.activeElement;
-  frame.innerHTML = `<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/6EYP4k5iNkQ?rel=0" title="InnoPulse Methodology Overview" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-  bg.classList.remove('hide');
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('keydown', _methKeydown);
-  if(closeBtn) closeBtn.focus();
-}
-function closeMethodologyVideo(){
-  const bg = document.querySelector('[data-meth-modal-bg]');
-  const frame = document.querySelector('[data-meth-video-frame]');
-  if(!bg) return;
-  bg.classList.add('hide');
-  if(frame) frame.innerHTML = '';
-  document.body.style.overflow = '';
-  document.removeEventListener('keydown', _methKeydown);
-  trackEvent('methodology_video_close');
-  // restore exactly where the visitor was, then nudge them toward the next step
-  window.scrollTo({top:_methScrollY, behavior:'auto'});
-  if(_methLastFocus && typeof _methLastFocus.focus === 'function') _methLastFocus.focus();
-  _methLastFocus = null;
-  const cta = document.querySelector('[data-begin]');
-  if(cta){
-    cta.classList.add('pulse');
-    setTimeout(()=>cta.classList.remove('pulse'), 1600);
-  }
+  // The methodology video now plays inline with a local <video> element —
+  // no YouTube, no modal.
+  return ``;
 }
 function attachMethodology(){
-  const openers = document.querySelectorAll('[data-meth-open]');
-  const bg = document.querySelector('[data-meth-modal-bg]');
-  const closeBtn = document.querySelector('[data-meth-close]');
-  if(!openers.length || !bg) return;
-  openers.forEach(el=>{
-    el.addEventListener('click', openMethodologyVideo);
-    el.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openMethodologyVideo(); }
-    });
+  const video = document.querySelector('[data-meth-video]');
+  if(!video) return;
+  // Until the video file is uploaded (or if it ever fails to load),
+  // fall back to showing the methodology graphic as a plain image.
+  const swapToImage = ()=>{
+    if(video.dataset.swapped) return; video.dataset.swapped='1';
+    const img = document.createElement('img');
+    img.className='meth-img'; img.src=video.getAttribute('poster');
+    img.alt='Common innovation barriers leading to busy teams with no impact — The Growth System methodology.';
+    img.loading='lazy'; img.decoding='async';
+    video.replaceWith(img);
+  };
+  const srcEl = video.querySelector('source');
+  if(srcEl) srcEl.addEventListener('error', swapToImage);
+  video.addEventListener('error', swapToImage);
+  video.addEventListener('play', ()=>{
+    if(!video.dataset.trackedPlay){ video.dataset.trackedPlay = '1'; trackEvent('methodology_video_open'); }
   });
-  if(closeBtn) closeBtn.addEventListener('click', closeMethodologyVideo);
-  bg.addEventListener('click', (e)=>{ if(e.target === bg) closeMethodologyVideo(); });
+  video.addEventListener('ended', ()=>{
+    trackEvent('methodology_video_close');
+    const cta = document.querySelector('[data-begin]');
+    if(cta){ cta.classList.add('pulse'); setTimeout(()=>cta.classList.remove('pulse'), 1600); }
+  });
 }
 
 /* ---------- INTAKE (profile / demographics) ---------- */
@@ -1540,7 +1535,7 @@ function renderIntake(){
     <button class="btn btn-primary btn-block" data-start ${canStart?'':'disabled'}>Start the InnoPulse Check →</button>
     ${canStart ? '' : '<p class="small muted" style="margin-top:8px">Please complete the required fields above to continue.</p>'}
   </div>
-  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 function attachIntake(){
   const btn = document.querySelector('[data-start]');
@@ -1612,7 +1607,7 @@ function renderQuiz(){
     </div>
     <div id="qBody"><div class="qcard">${body}</div></div>
   </div>
-  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 
 function renderPillarIntro(pi){
@@ -1822,7 +1817,7 @@ function renderPreview(){
       <p class="small muted" style="margin-top:10px">Your details are stored only for this assessment record and to share your report with you — never sold or shared with third parties. Primary barrier detected: <strong>${db.pillar.barrier}</strong> (${db.pillar.short}).</p>
     </div>
   </div>
-  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
+  <div class="footer"><img src="logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>`;
 }
 
 function attachPreview(){
@@ -2079,7 +2074,7 @@ function renderDashboard(){
   <div class="section">
     <div class="eyebrow">InnoPulse Results — ${escapeHtml(rec.profile.company||'Your organisation')}</div>
     <h1 class="hero-title">${BANDS[band].label} band — Innovation Health ${fmtPct(overall)}</h1>
-    <p class="tagline">${OVERALL_TEXT[band]}</p><p class="tagline" style="margin-top:14px;font-size:14px;color:var(--muted)"><strong>This result is based on your individual perception. It is not a full organizational diagnosis.</strong></p><p style="margin-top:8px"><a class="btn btn-primary" href="/360.html">Want a complete company view? Request an InnoPulse 360 Assessment &rarr;</a></p>
+    <p class="tagline">${OVERALL_TEXT[band]}</p><p class="tagline" style="margin-top:14px;font-size:14px;color:var(--muted)"><strong>This result is based on your individual perception. It is not a full organizational diagnosis.</strong></p><p style="margin-top:8px"><a class="btn btn-primary" href="360.html">Want a complete company view? Request an InnoPulse 360 Assessment &rarr;</a></p>
   </div>
 
   <div class="section card" id="pulseCard">
@@ -2230,7 +2225,7 @@ function renderDashboard(){
     <p class="small muted" style="margin-top:10px">The respondent register automatically records every completed &amp; unlocked InnoPulse Check — ${registeredRecords().length} response${registeredRecords().length===1?'':'s'} captured so far.</p>
   </div>
 
-  <div class="footer"><img src="/logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull} · <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
+  <div class="footer"><img src="logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull} · <button class="btn-link" data-restart style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Take another assessment</button></div>`;
 }
 
 /* ---------- Comparison / Team mode ---------- */
@@ -2606,5 +2601,5 @@ window.addEventListener('load', render);
   if(document.querySelector("#app .topbar")) injectHomeBtn();
 })();
 </script>
-
+<footer class="foot" aria-label="Site footer"><div class="grid"><div><div class="fbrand"><img src="assets/logo.svg" alt="The Growth System logo" width="64" height="38"><b>InnoPulse</b></div><p class="blurb">Innovation capability assessment, strategy, ISO 56001 readiness, training and idea management. Serving South Africa from Pretoria &amp; Centurion.</p><div class="social"><a href="https://www.facebook.com/p/The-Growth-System-100086005580854/" aria-label="Facebook" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a><a href="https://www.linkedin.com/company/the-growth-system-pty-ltd/" aria-label="LinkedIn" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4z"></path></svg></a></div></div><div><h4>Assess</h4><a href="public.html">Free Pulse Check</a><a href="360.html">InnoPulse 360</a><a href="innovation-capability.html">Innovation capability</a></div><div><h4>Build</h4><a href="innovation-strategy.html">Innovation strategy</a><a href="iso-56001-advisory.html">ISO 56001 advisory</a><a href="innovation-training.html">Innovation training</a><a href="services.html">All services</a></div><div><h4>Contact</h4><a href="mailto:info@thegrowthsystem.co.za">info@thegrowthsystem.co.za</a><a href="tel:+27832966880">+27 83 296 6880</a><a href="book.html">Book a consultation</a><a href="privacy.html">Privacy policy</a></div></div><div class="bar"><span>© The Growth System — Innovation that’s managed, not accidental.</span><span>Innovation360 Gold Partner · IMBB · ISO 56001</span></div></footer>
 </body></html>
