@@ -251,6 +251,16 @@
       .rz-offer-side p{font-size:14.5px;line-height:1.6;color:#3a3a30;margin:0 0 14px}
       .rz-link{display:inline-block;font-weight:700;color:var(--ink);margin:2px 0 14px;text-decoration:none}
       .rz-link:hover{color:var(--lime2)}
+      .rz-cmp{margin:2px 0 14px}
+      .rz-cmp-toggle{display:inline-flex;align-items:center;gap:8px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--ink)}
+      .rz-cmp-toggle:hover{color:var(--lime2)}
+      .rz-cmp.open .rz-chev{transform:rotate(180deg)}
+      .rz-cmp-body{display:none;margin-top:12px}
+      .rz-cmp.open .rz-cmp-body{display:block;animation:rzDrop .26s ease}
+      .rz-cmp-item{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+      .rz-cmp-name{font-size:15px;font-weight:700;color:var(--ink)}
+      .rz-cmp-price{font-size:13.5px;font-weight:800;color:var(--lime2);margin:3px 0 8px}
+      .rz-cmp-desc{font-size:13.5px;line-height:1.5;color:#3a3a30;margin:0}
       /* first 90 */
       .rz-90-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
       .rz-90{border:1px solid var(--line);border-radius:14px;padding:18px}
@@ -2402,7 +2412,10 @@ function rzMaturityHTML(overall){
       </div>
       <div class="rz-offer-side">
         <p>A 30-minute call to walk through this report with an innovation specialist — no obligation, and you keep the plan either way.</p>
-        <a class="rz-link" href="${CONFIG.schedulingUrl}">&#9656; Compare all programmes</a>
+        <div class="rz-cmp">
+          <button class="rz-cmp-toggle" data-cmp-toggle aria-expanded="false"><span class="rz-chev">${RZ_CHEVRON}</span>Compare all programmes</button>
+          <div class="rz-cmp-body">${CONFIG.offers.filter(o=>o.id!==path.offerId).map(o=>`<div class="rz-cmp-item"><div class="rz-cmp-name">${o.name}</div><div class="rz-cmp-price">${o.price}</div><p class="rz-cmp-desc">${o.desc}</p></div>`).join('')}</div>
+        </div>
         <p>Want the organisation-wide view instead of one person’s perception? Ask about the <a href="full-scale.html"><strong>InnoPulse Full-Scale Assessment</strong></a>.</p>
       </div>
     </div>
@@ -2668,6 +2681,16 @@ function attachDashboard(){
           }));
         }
       }
+    });
+  }
+  // compare-programmes disclosure
+  const cmpBtn = document.querySelector('[data-cmp-toggle]');
+  if(cmpBtn){
+    cmpBtn.addEventListener('click', ()=>{
+      const wrap = cmpBtn.closest('.rz-cmp');
+      const open = cmpBtn.getAttribute('aria-expanded')==='true';
+      cmpBtn.setAttribute('aria-expanded', String(!open));
+      wrap.classList.toggle('open', !open);
     });
   }
   // utilities
