@@ -189,9 +189,12 @@
       .rz-leak-callout strong{color:var(--red)}
       /* collapse (indicators) */
       .rz-collapse-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:none;border:none;padding:0;cursor:pointer;text-align:left}
-      .rz-chev{transition:transform .25s ease;color:var(--muted);font-size:13px;flex-shrink:0}
+      .rz-chev{display:inline-flex;align-items:center;justify-content:center;color:var(--muted);flex-shrink:0;transition:transform .28s ease}
+      .rz-chev svg{display:block;width:20px;height:20px}
+      @keyframes rzDrop{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
       .rz-collapse.open .rz-chev,.rz-pil.open .rz-chev{transform:rotate(180deg)}
-      .rz-collapse-body{margin-top:16px}
+      .rz-collapse-body{display:none;margin-top:16px}
+      .rz-collapse.open .rz-collapse-body{display:block;animation:rzDrop .26s ease}
       .rz-ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
       .rz-ind{border:1px solid var(--line);border-radius:14px;padding:16px}
       .rz-ind-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:10px}
@@ -216,7 +219,8 @@
       .rz-pil-score{font-size:22px;font-weight:800;color:var(--ink);min-width:54px;text-align:right}
       .rz-pil-band{font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:4px 11px;border-radius:999px;white-space:nowrap}
       .rz-pil-band.low{background:#fbe6e3;color:var(--red)} .rz-pil-band.medium{background:#fbf1da;color:#b0801a} .rz-pil-band.high{background:#e7f5cf;color:var(--green)}
-      .rz-pil-body{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:6px 18px 22px;border-top:1px solid var(--line)}
+      .rz-pil-body{display:none;grid-template-columns:1fr 1fr;gap:28px;padding:14px 18px 22px;border-top:1px solid var(--line)}
+      .rz-pil.open .rz-pil-body{display:grid;animation:rzDrop .26s ease}
       .rz-lab{font-size:11.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--lime2);margin:16px 0 8px}
       .rz-pil-col p{font-size:14px;line-height:1.55;color:#3a3a30;margin:0}
       .rz-actions{margin:0;padding-left:20px} .rz-actions li{font-size:14px;line-height:1.5;margin-bottom:9px;color:#3a3a30}
@@ -261,7 +265,8 @@
         .rz-sec{padding:22px 18px}
         .rz-stat-row,.rz-90-grid{grid-template-columns:1fr}
         .rz-mat-steps{grid-template-columns:repeat(2,1fr)}
-        .rz-mat-grid,.rz-pil-body{grid-template-columns:1fr;gap:16px}
+        .rz-mat-grid{grid-template-columns:1fr;gap:16px}
+        .rz-pil.open .rz-pil-body{grid-template-columns:1fr;gap:16px}
         .rz-pil-head{grid-template-columns:1fr auto 22px;gap:8px 12px}
         .rz-pil-bar{grid-column:1/-1;order:5;margin-top:4px}
       }
@@ -2251,6 +2256,7 @@ const RZ_HEADLINE = {
   high:'Building value — now protect and scale it.'
 };
 const RZ_BENCH = {sii:55, iem:52, oic:50, ipm:58, roi:50};
+const RZ_CHEVRON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
 const RZ_STAGE_DESC = ['Finding out where you stand','Leadership agrees on priorities','Consistent, repeatable practice','Embedded in daily work','Compounding, measured value'];
 const RZ_IC = {
   warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 21 20 3 20Z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17.2" x2="12" y2="17.2"/></svg>',
@@ -2340,9 +2346,9 @@ function rzPillarProfileHTML(scores, overall){
         <span class="rz-pil-bar"><span class="rz-pil-fill" data-w="${sc||0}" style="background:${color}"></span><span class="rz-pil-bench" style="left:${bench}%"></span></span>
         <span class="rz-pil-score">${fmtPct(sc)}</span>
         <span class="rz-pil-band ${b}">${BANDS[b].label}</span>
-        <span class="rz-chev">▾</span>
+        <span class="rz-chev">${RZ_CHEVRON}</span>
       </button>
-      <div class="rz-pil-body" hidden>
+      <div class="rz-pil-body">
         <div class="rz-pil-col">
           <div class="rz-lab">What this score means</div>
           <p>${p.bands[b].text}</p>
@@ -2412,8 +2418,8 @@ function rzIndicatorsHTML(answers){
     return `<div class="rz-ind"><div class="rz-ind-name">${ind.name}</div><div class="rz-ind-row"><span class="rz-ind-pct">${fmtPct(val)}</span><span class="rz-ind-badge ${st.cls}">${st.label}</span></div><div class="rz-ind-bar"><span data-w="${val||0}" style="background:${color}"></span></div><div class="rz-ind-desc">${ind.desc}${ind.inverse?' <em>(lower is better)</em>':''}</div></div>`;
   }).join('');
   return `<section class="rz-sec rz-collapse">
-    <button class="rz-collapse-head" data-collapse-toggle aria-expanded="false"><span class="rz-h3">Deeper diagnostics — 8 executive indicators</span><span class="rz-chev">▾</span></button>
-    <div class="rz-collapse-body" hidden>
+    <button class="rz-collapse-head" data-collapse-toggle aria-expanded="false"><span class="rz-h3">Deeper diagnostics — 8 executive indicators</span><span class="rz-chev">${RZ_CHEVRON}</span></button>
+    <div class="rz-collapse-body">
       <p class="rz-sub" style="margin-top:16px">Derived from your pillar answers. Bars are normalised so <strong>fuller always = healthier</strong>, even for inverse measures.</p>
       <div class="rz-ind-grid">${cards}</div>
     </div>
@@ -2648,7 +2654,6 @@ function attachDashboard(){
       const open = h.getAttribute('aria-expanded')==='true';
       h.setAttribute('aria-expanded', String(!open));
       pil.classList.toggle('open', !open);
-      if(body) body.hidden = open;
     });
   });
   // deeper diagnostics collapse (animate indicator bars on first open)
@@ -2661,7 +2666,6 @@ function attachDashboard(){
       ct.setAttribute('aria-expanded', String(!open));
       sec.classList.toggle('open', !open);
       if(body){
-        body.hidden = open;
         if(!open){
           requestAnimationFrame(()=>requestAnimationFrame(()=>{
             body.querySelectorAll('.rz-ind-bar span[data-w]').forEach(el=>{ el.style.width = (el.dataset.w||0)+'%'; });
