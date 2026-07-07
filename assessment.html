@@ -1332,7 +1332,7 @@ function renderHero(){
       <button class="btn btn-primary" data-begin>${RESUME.inProgress ? 'Continue where you left off →' : 'Begin My InnoPulse Check →'}</button>
       ${RESUME.inProgress ? '<div style="margin-top:10px"><button class="btn-link" data-start-fresh style="background:none;border:none;color:var(--lime2);font-weight:700;cursor:pointer;text-decoration:underline">Start over from the beginning</button></div>' : ''}
     </div>
-    <p class="small muted" style="margin-top:14px">${CONFIG.narrative}</p>
+    <p class="small muted" style="margin:14px auto 0;max-width:520px">${CONFIG.narrative}</p>
   </div>
 
   <div class="footer"><img src="logo.svg" alt="The Growth System logo" width="40" height="40" decoding="async" style="display:block;width:40px;height:auto;margin:0 auto 12px">${CONFIG.brand} · ${CONFIG.productFull}</div>
