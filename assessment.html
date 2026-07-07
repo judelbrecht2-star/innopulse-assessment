@@ -271,6 +271,43 @@
       .rz-90-barrier{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600;color:var(--muted)}
       /* utility */
       .rz-utility{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:26px 0 6px}
+      /* ===================== Downloadable report ===================== */
+      #report{color:var(--ink);font-family:'Instrument Sans',system-ui,-apple-system,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      #report .rp-cover{border-bottom:3px solid var(--navy);padding-bottom:20px;margin-bottom:26px}
+      #report .rp-brand{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+      #report .rp-logo{width:34px;height:24px}
+      #report .rp-brand-name{font-weight:800;font-size:16px;letter-spacing:.3px}
+      #report .rp-brand-name i{font-style:normal;color:var(--lime2)}
+      #report .rp-brand-by{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px}
+      #report .rp-title{font-size:30px;font-weight:700;letter-spacing:-.02em;margin:0 0 8px;color:var(--ink)}
+      #report .rp-cover-meta{font-size:13px;color:var(--muted);margin-bottom:18px}
+      #report .rp-score{display:flex;align-items:center;gap:16px}
+      #report .rp-score-num{font-size:48px;font-weight:800;line-height:1}
+      #report .rp-score-lab{font-size:13px;color:var(--muted);line-height:1.6}
+      #report .rp-chip{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:3px 11px;border-radius:999px}
+      #report .rp-chip.low{background:#fbe6e3;color:#a32d2d} #report .rp-chip.medium{background:#fbf1da;color:#8a6a12} #report .rp-chip.high{background:#e7f5cf;color:#3b6d11}
+      #report h2{font-size:16px;font-weight:700;color:var(--navy);border-bottom:1.5px solid var(--line);padding-bottom:6px;margin:0 0 12px}
+      #report p{font-size:13px;line-height:1.6;margin:0 0 10px;color:#2c2c26}
+      #report .rp-lead{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px}
+      #report .rp-note{font-size:12px;background:#f6f4eb;border-left:3px solid var(--lime2);padding:10px 14px;margin-top:4px}
+      #report table.rp-kv{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+      #report table.rp-kv th{text-align:left;font-weight:700;color:var(--muted);width:42%;padding:5px 10px 5px 0;vertical-align:top;border:none;background:none}
+      #report table.rp-kv td{padding:5px 0;border:none}
+      #report .rp-leak{font-size:13px;background:#fdecea;border-left:3px solid var(--red);padding:9px 14px;margin-top:8px}
+      #report .rp-leak strong{color:#a32d2d}
+      #report .rp-pillar{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px;page-break-inside:avoid}
+      #report .rp-pillar-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+      #report .rp-pillar-name{font-size:15px;font-weight:700}
+      #report .rp-pillar-score{font-size:16px;font-weight:800;margin-left:auto}
+      #report .rp-barrier{color:var(--muted)}
+      #report .rp-actions{margin:6px 0}
+      #report .rp-actions ol{margin:4px 0 0;padding-left:20px}
+      #report .rp-actions li{font-size:13px;line-height:1.5;margin-bottom:4px;color:#2c2c26}
+      #report .rp-help{font-size:12.5px;color:var(--lime2);margin-top:6px}
+      #report .rp-90{border:1px solid var(--line);border-left:4px solid var(--navy);padding:10px 14px;margin-bottom:8px;font-size:13px;line-height:1.55}
+      #report .rp-offer{border:1.5px solid var(--lime2);background:#f5fbe0;border-radius:10px;padding:12px 16px;margin:8px 0}
+      #report .rp-foot{font-size:11px;color:var(--muted);text-align:center;border-top:1px solid var(--line);padding-top:12px;margin-top:26px}
+      @media print{ #report .rp-section{page-break-inside:avoid} #report .rp-cover{page-break-after:auto} }
       @media (max-width:820px){
         .rz-sec{padding:22px 18px}
         .rz-stat-row,.rz-90-grid{grid-template-columns:1fr}
@@ -2571,78 +2608,107 @@ function closePillar(){
 /* ---------- Print report ---------- */
 function buildPrintReport(rec){
   const band = bandOf(rec.overall);
+  const bc = band==='high'?'var(--green)':(band==='medium'?'var(--amber)':'var(--red)');
   const db = dominantBarrier(rec.scores);
   const vl = valueLeakage(rec.scores);
-  const wins = quickWins(rec.scores, rec.vis);
   const plan = ninetyDayPlan(rec.scores);
-  const recs = recommendedSolutions(rec.scores);
-  const bandColor = band==='high'?'var(--green)':(band==='medium'?'var(--amber)':'var(--red)');
+  const path = pathwayOf(rec.overall);
+  const offer = offerById(path.offerId);
+  const others = CONFIG.offers.filter(o=>o.id!==path.offerId);
+  const leakLabel = vl.level==='high'?'High':(vl.level==='medium'?'Moderate':'Low');
+  const confLabel = rec.vis.level==='low'?'Good':(rec.vis.level==='medium'?'Fair':'Low');
+  const contribs = vl.contributors;
+  const leakName = contribs.length ? contribs.map(p=>p.short).join(', ') : db.pillar.short;
+  const eqOrder = EQ_CHAIN.filter(n=>n.id!=='results');
+  const d = new Date(rec.createdAt).toLocaleDateString('en-ZA',{year:'numeric',month:'long',day:'numeric'});
   const html = `
-    <div class="rp-header">
-      <div>
-        <h1>${CONFIG.productFull}</h1>
-        <div class="rp-meta">${CONFIG.brand} · Innovation Capability Report</div>
-      </div>
-      <div class="rp-meta" style="text-align:right">
-        ${escapeHtml(rec.profile.company||'')}<br>
-        ${new Date(rec.createdAt).toLocaleDateString()}
-      </div>
-    </div>
+  <div class="rp-cover">
+    <div class="rp-brand"><svg class="rp-logo" viewBox="0 0 32 22" fill="none" aria-hidden="true"><path d="M2 12h6l3-8 5 16 4-12 3 4h7" stroke="#5f8a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="rp-brand-name">Inno<i>Pulse</i></div><div class="rp-brand-by">by ${CONFIG.brand}</div></div></div>
+    <h1 class="rp-title">Innovation Health Report</h1>
+    <div class="rp-cover-meta">${escapeHtml(rec.profile.company||'Your organisation')} &middot; ${d}</div>
+    <div class="rp-score"><div class="rp-score-num" style="color:${bc}">${fmtPct(rec.overall)}</div><div class="rp-score-lab">Innovation Health<br><span class="rp-chip ${band}">${BANDS[band].label} band</span></div></div>
+  </div>
 
-    <div class="rp-section">
-      <h2>Executive Summary</h2>
-      <p>Overall Innovation Health: <strong>${fmtPct(rec.overall)}</strong> —
-        <span class="rp-band" style="background:${bandColor}">${BANDS[band].label}</span>
-      </p>
-      <p>${OVERALL_TEXT[band]}</p>
-      <p>Dominant barrier: <strong>${db.pillar.barrier}</strong> (${db.pillar.short}, ${fmtPct(db.score)}). Visibility risk: <strong>${rec.vis.pct}%</strong> "Don't know" responses (${rec.vis.level} risk). Value leakage risk: <strong>${vl.level}</strong>.</p>
-    </div>
+  <div class="rp-section">
+    <h2>About this report</h2>
+    <p>This InnoPulse Innovation Health Report is a strategic snapshot of how your organisation&rsquo;s innovation system is performing, based on your responses to the InnoPulse assessment by ${CONFIG.brand}. It measures five weighted pillars &mdash; aligned to the ISO 56001:2024 innovation-management framework &mdash; to show where innovation value is flowing and where it is leaking out.</p>
+    <p class="rp-note"><strong>Please note:</strong> this result reflects one individual&rsquo;s perception across ${totalQ} statements. It is a directional snapshot, not a full organisational diagnosis. For an evidence-based, organisation-wide view, ask about the InnoPulse Full-Scale Assessment.</p>
+  </div>
 
-    <div class="rp-section">
-      <h2>Pillar Scores — The Innovation Leadership Equation</h2>
-      <table>
-        <tr><th>Pillar</th><th>Equation term</th><th>Score</th><th>Band</th><th>Barrier if weak</th></tr>
-        ${PILLARS.map((p,i)=>`<tr><td>${p.name}</td><td>${p.eq}</td><td>${fmtPct(rec.scores[i])}</td><td>${BANDS[bandOf(rec.scores[i])].label}</td><td>${p.barrier}</td></tr>`).join('')}
-      </table>
-    </div>
+  <div class="rp-section">
+    <h2>Executive summary</h2>
+    <p class="rp-lead">${RZ_HEADLINE[band]}</p>
+    <p>${OVERALL_TEXT[band]}</p>
+    <table class="rp-kv">
+      <tr><th>Overall innovation health</th><td>${fmtPct(rec.overall)} &mdash; ${BANDS[band].label} band</td></tr>
+      <tr><th>Dominant barrier</th><td>${db.pillar.barrier} &mdash; ${db.pillar.short} (${fmtPct(db.score)})</td></tr>
+      <tr><th>Value-leakage risk</th><td>${leakLabel}</td></tr>
+      <tr><th>Answer confidence</th><td>${confLabel} &mdash; ${rec.vis.pct}% &ldquo;don&rsquo;t know&rdquo; responses</td></tr>
+    </table>
+  </div>
 
-    <div class="rp-section">
-      <h2>Quick Wins</h2>
-      <ul>${wins.map(w=>`<li>${w}</li>`).join('')}</ul>
-    </div>
+  <div class="rp-section">
+    <h2>The Innovation Leadership Equation</h2>
+    <p>Innovation value flows through five linked pillars, from intent through to results. A weak link doesn&rsquo;t just lower its own score &mdash; it caps everything downstream.</p>
+    <table>
+      <tr><th>Pillar</th><th>Equation term</th><th>Weight</th><th>Score</th><th>Band</th></tr>
+      ${eqOrder.map(n=>{const i=pillarIndexById(n.id);const p=PILLARS[i];const b=bandOf(rec.scores[i]);return `<tr><td>${p.short}</td><td>${n.label}</td><td>${Math.round(p.weight*100)}%</td><td>${fmtPct(rec.scores[i])}</td><td>${BANDS[b].label}</td></tr>`;}).join('')}
+      <tr><td><strong>Results</strong></td><td>Overall</td><td>&mdash;</td><td><strong>${fmtPct(rec.overall)}</strong></td><td><strong>${BANDS[band].label}</strong></td></tr>
+    </table>
+    <p class="rp-leak">Value is leaking at: <strong>${leakName}</strong>. Fix these links first &mdash; they cap everything downstream.</p>
+  </div>
 
-    <div class="rp-section">
-      <h2>First 90 Days</h2>
-      <ul>${plan.map(s=>`<li><strong>${s.window} — ${s.title}:</strong> ${s.text}</li>`).join('')}</ul>
-    </div>
+  <div class="rp-section">
+    <h2>Findings and recommendations by pillar</h2>
+    ${PILLARS.map((p,i)=>{const b=bandOf(rec.scores[i]);return `<div class="rp-pillar">
+      <div class="rp-pillar-head"><span class="rp-pillar-name">${p.short}</span><span class="rp-chip ${b}">${BANDS[b].label}</span><span class="rp-pillar-score">${fmtPct(rec.scores[i])}</span></div>
+      <p><strong>What this means.</strong> ${p.bands[b].text}</p>
+      <p class="rp-barrier"><strong>Barrier if weak &mdash; ${p.barrier}.</strong> ${p.barrierNote}</p>
+      <div class="rp-actions"><strong>Top 3 actions</strong><ol>${p.bands[b].actions.map(a=>`<li>${a}</li>`).join('')}</ol></div>
+      <p class="rp-help"><strong>Where ${CONFIG.brand} can help:</strong> ${p.solutions[b].join(' &middot; ')}</p>
+    </div>`;}).join('')}
+  </div>
 
-    <div class="rp-section">
-      <h2>Recommended Solutions</h2>
-      ${recs.map(r=>`<p><strong>${r.pillar.short}</strong> (${BANDS[r.band].label}): ${r.solutions.join(', ')}</p>`).join('')}
-    </div>
+  <div class="rp-section">
+    <h2>Your first 90 days</h2>
+    <p>Three moves, in priority order, drawn from your three weakest pillars &mdash; each removes the barrier costing you the most value right now.</p>
+    ${plan.map(st=>`<div class="rp-90"><strong>${st.window} &mdash; ${st.title}.</strong> ${st.text}</div>`).join('')}
+  </div>
 
-    <div class="rp-section">
-      <h2>Respondent Details</h2>
-      <table>
-        <tr><th>Name</th><td>${escapeHtml(rec.gate.gname||'')}</td><th>Email</th><td>${escapeHtml(rec.gate.email||'')}</td></tr>
-        <tr><th>Phone</th><td>${escapeHtml(rec.gate.phone||'')}</td><th>Company</th><td>${escapeHtml(rec.profile.company||'')}</td></tr>
-        <tr><th>Industry</th><td>${escapeHtml(rec.profile.industry||'')}</td><th>Years of service</th><td>${escapeHtml(rec.profile.service||'')}</td></tr>
-      </table>
-    </div>
+  <div class="rp-section">
+    <h2>Recommended pathway &mdash; ${path.stage}</h2>
+    <p>${path.tagline}</p>
+    <div class="rp-offer"><strong>Recommended for your band: ${offer.name}</strong> &mdash; ${offer.price}<p style="margin:6px 0 0">${offer.desc}</p></div>
+    <p style="margin-top:10px"><strong>Other programmes</strong></p>
+    ${others.map(o=>`<p style="margin:0 0 6px"><strong>${o.name}</strong> &mdash; ${o.price}. ${o.desc}</p>`).join('')}
+  </div>
 
-    <div class="rp-foot">${CONFIG.narrative}<br>${CONFIG.brand} · ${CONFIG.productFull} · Report generated ${new Date().toLocaleString()}</div>
+  <div class="rp-section">
+    <h2>Next steps</h2>
+    <p>Book a free 30-minute results workshop to walk through this report with an innovation specialist &mdash; no obligation, and you keep the plan either way. Email <strong>info@thegrowthsystem.co.za</strong> or visit <strong>thegrowthsystem.co.za</strong>.</p>
+    <p>Want the organisation-wide picture instead of one person&rsquo;s perception? Ask about the <strong>InnoPulse Full-Scale Assessment</strong> &mdash; an evidence-based diagnosis across your teams.</p>
+  </div>
+
+  <div class="rp-section">
+    <h2>Respondent details</h2>
+    <table class="rp-kv">
+      <tr><th>Name</th><td>${escapeHtml(rec.gate.gname||'&mdash;')}</td></tr>
+      <tr><th>Email</th><td>${escapeHtml(rec.gate.email||'&mdash;')}</td></tr>
+      <tr><th>Company</th><td>${escapeHtml(rec.profile.company||'&mdash;')}</td></tr>
+      <tr><th>Industry</th><td>${escapeHtml(rec.profile.industry||'&mdash;')}</td></tr>
+      <tr><th>Years of service</th><td>${escapeHtml(rec.profile.service||'&mdash;')}</td></tr>
+    </table>
+  </div>
+
+  <div class="rp-foot">${CONFIG.narrative}<br>${CONFIG.brand} &middot; Innovation Health Report &middot; Generated ${new Date().toLocaleString('en-ZA')}</div>
   `;
   const report = document.getElementById('report');
   report.innerHTML = html;
   report.classList.remove('hide');
   document.body.classList.add('printing');
-  const restore = ()=>{
-    document.body.classList.remove('printing');
-    report.classList.add('hide');
-    window.removeEventListener('afterprint', restore);
-  };
+  const restore = ()=>{ document.body.classList.remove('printing'); report.classList.add('hide'); window.removeEventListener('afterprint', restore); };
   window.addEventListener('afterprint', restore);
-  setTimeout(()=>window.print(), 50);
+  setTimeout(()=>window.print(), 60);
 }
 
 /* ---------- Attach / animate ---------- */
