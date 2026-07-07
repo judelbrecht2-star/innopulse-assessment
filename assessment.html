@@ -2606,109 +2606,175 @@ function closePillar(){
 }
 
 /* ---------- Print report ---------- */
+function reportBandColor(b){ return b==='high'?'#5f8a00':(b==='medium'?'#e0a72e':'#d6483c'); }
+function reportBandTint(b){ return b==='high'?'#e7f5cf':(b==='medium'?'#fbf1da':'#fbe6e3'); }
+
 function buildPrintReport(rec){
-  const band = bandOf(rec.overall);
-  const bc = band==='high'?'var(--green)':(band==='medium'?'var(--amber)':'var(--red)');
-  const db = dominantBarrier(rec.scores);
-  const vl = valueLeakage(rec.scores);
-  const plan = ninetyDayPlan(rec.scores);
-  const path = pathwayOf(rec.overall);
-  const offer = offerById(path.offerId);
+  const btn = document.querySelector('[data-print]');
+  const orig = btn ? btn.textContent : '';
+  if(btn){ btn.textContent = 'Preparing report…'; btn.disabled = true; }
+  const done = ()=>{ if(btn){ btn.textContent = orig; btn.disabled = false; } };
+  const go = ()=>{
+    try{
+      if(window.pdfMake && !window.pdfMake.vfs && window.pdfFonts){ window.pdfMake.vfs = (window.pdfFonts.pdfMake || window.pdfFonts).vfs; }
+      generateReportPDF(rec);
+    }catch(e){ alert('Sorry — the report could not be generated: ' + e.message); }
+    done();
+  };
+  if(window.pdfMake && window.pdfMake.createPdf && window.pdfMake.vfs){ go(); return; }
+  loadScriptSeq([
+    'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.js'
+  ], go, ()=>{ alert('Could not load the PDF library — please check your connection and try again.'); done(); });
+}
+
+function loadScriptSeq(srcs, onDone, onErr){
+  let i = 0;
+  (function next(){
+    if(i >= srcs.length){ onDone(); return; }
+    const sc = document.createElement('script');
+    sc.src = srcs[i++]; sc.onload = next; sc.onerror = onErr;
+    document.head.appendChild(sc);
+  })();
+}
+
+function generateReportPDF(rec){
+  const NAVY='#1c2400', INK='#16160f', MUTED='#5f5f57', LINE='#e0e0d2', LIME='#5f8a00', BODY='#2c2c26';
+  const band = bandOf(rec.overall), bc = reportBandColor(band);
+  const db = dominantBarrier(rec.scores), vl = valueLeakage(rec.scores);
+  const plan = ninetyDayPlan(rec.scores), path = pathwayOf(rec.overall), offer = offerById(path.offerId);
   const others = CONFIG.offers.filter(o=>o.id!==path.offerId);
   const leakLabel = vl.level==='high'?'High':(vl.level==='medium'?'Moderate':'Low');
   const confLabel = rec.vis.level==='low'?'Good':(rec.vis.level==='medium'?'Fair':'Low');
-  const contribs = vl.contributors;
-  const leakName = contribs.length ? contribs.map(p=>p.short).join(', ') : db.pillar.short;
-  const eqOrder = EQ_CHAIN.filter(n=>n.id!=='results');
-  const d = new Date(rec.createdAt).toLocaleDateString('en-ZA',{year:'numeric',month:'long',day:'numeric'});
-  const html = `
-  <div class="rp-cover">
-    <div class="rp-brand"><svg class="rp-logo" viewBox="0 0 32 22" fill="none" aria-hidden="true"><path d="M2 12h6l3-8 5 16 4-12 3 4h7" stroke="#5f8a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="rp-brand-name">Inno<i>Pulse</i></div><div class="rp-brand-by">by ${CONFIG.brand}</div></div></div>
-    <h1 class="rp-title">Innovation Health Report</h1>
-    <div class="rp-cover-meta">${escapeHtml(rec.profile.company||'Your organisation')} &middot; ${d}</div>
-    <div class="rp-score"><div class="rp-score-num" style="color:${bc}">${fmtPct(rec.overall)}</div><div class="rp-score-lab">Innovation Health<br><span class="rp-chip ${band}">${BANDS[band].label} band</span></div></div>
-  </div>
+  const leakName = vl.contributors.length ? vl.contributors.map(p=>p.short).join(', ') : db.pillar.short;
+  const company = rec.profile.company || 'Your organisation';
+  const dateStr = new Date(rec.createdAt).toLocaleDateString('en-ZA',{year:'numeric',month:'long',day:'numeric'});
 
-  <div class="rp-section">
-    <h2>About this report</h2>
-    <p>This InnoPulse Innovation Health Report is a strategic snapshot of how your organisation&rsquo;s innovation system is performing, based on your responses to the InnoPulse assessment by ${CONFIG.brand}. It measures five weighted pillars &mdash; aligned to the ISO 56001:2024 innovation-management framework &mdash; to show where innovation value is flowing and where it is leaking out.</p>
-    <p class="rp-note"><strong>Please note:</strong> this result reflects one individual&rsquo;s perception across ${totalQ} statements. It is a directional snapshot, not a full organisational diagnosis. For an evidence-based, organisation-wide view, ask about the InnoPulse Full-Scale Assessment.</p>
-  </div>
+  const rule = ()=>({canvas:[{type:'line',x1:0,y1:0,x2:515,y2:0,lineWidth:1,lineColor:LINE}],margin:[0,3,0,8]});
+  const sec = (t)=>[{text:t, style:'h2', margin:[0,15,0,3]}, rule()];
+  const kvRow = (k,v)=>[{text:k, bold:true, color:MUTED, margin:[0,2,0,2]},{text:v, margin:[0,2,0,2]}];
+  const th = (t)=>({text:t, bold:true, color:'#ffffff', fillColor:NAVY, fontSize:9});
+  const td = (t)=>({text:String(t), fontSize:9.5, color:BODY});
+  const bandCell = (b,strong)=>({text:BANDS[b].label, color:reportBandColor(b), bold:true, fillColor:reportBandTint(b), fontSize:9.5});
+  const callout = (node, tint, accent)=>({
+    table:{widths:['*'], body:[[{ text:node, stack:node.stack, fillColor:tint, margin:[12,9,12,9] }]]},
+    layout:{ hLineWidth:()=>0, vLineWidth:(i)=> i===0?3:0, vLineColor:()=>accent, paddingLeft:()=>0, paddingRight:()=>0, paddingTop:()=>0, paddingBottom:()=>0 },
+    margin:[0,4,0,4]
+  });
+  const card = (content)=>({
+    table:{widths:['*'], body:[[{ stack:content, margin:[13,11,13,11] }]]},
+    layout:{ hLineWidth:()=>0.7, vLineWidth:()=>0.7, hLineColor:()=>LINE, vLineColor:()=>LINE, paddingLeft:()=>0, paddingRight:()=>0, paddingTop:()=>0, paddingBottom:()=>0 },
+    unbreakable:true, margin:[0,0,0,10]
+  });
+  const eqLayout = { hLineWidth:(i,node)=> (i===0||i===1||i===node.table.body.length)?0.9:0.5, hLineColor:()=>LINE, vLineWidth:()=>0, paddingLeft:()=>7, paddingRight:()=>7, paddingTop:()=>5, paddingBottom:()=>5 };
+  const pulse = {canvas:[{type:'polyline', lineWidth:2.4, lineColor:LIME, closePath:false, points:[{x:0,y:15},{x:9,y:15},{x:14,y:3},{x:22,y:27},{x:28,y:9},{x:32,y:15},{x:42,y:15}]}], width:46};
 
-  <div class="rp-section">
-    <h2>Executive summary</h2>
-    <p class="rp-lead">${RZ_HEADLINE[band]}</p>
-    <p>${OVERALL_TEXT[band]}</p>
-    <table class="rp-kv">
-      <tr><th>Overall innovation health</th><td>${fmtPct(rec.overall)} &mdash; ${BANDS[band].label} band</td></tr>
-      <tr><th>Dominant barrier</th><td>${db.pillar.barrier} &mdash; ${db.pillar.short} (${fmtPct(db.score)})</td></tr>
-      <tr><th>Value-leakage risk</th><td>${leakLabel}</td></tr>
-      <tr><th>Answer confidence</th><td>${confLabel} &mdash; ${rec.vis.pct}% &ldquo;don&rsquo;t know&rdquo; responses</td></tr>
-    </table>
-  </div>
+  const content = [];
 
-  <div class="rp-section">
-    <h2>The Innovation Leadership Equation</h2>
-    <p>Innovation value flows through five linked pillars, from intent through to results. A weak link doesn&rsquo;t just lower its own score &mdash; it caps everything downstream.</p>
-    <table>
-      <tr><th>Pillar</th><th>Equation term</th><th>Weight</th><th>Score</th><th>Band</th></tr>
-      ${eqOrder.map(n=>{const i=pillarIndexById(n.id);const p=PILLARS[i];const b=bandOf(rec.scores[i]);return `<tr><td>${p.short}</td><td>${n.label}</td><td>${Math.round(p.weight*100)}%</td><td>${fmtPct(rec.scores[i])}</td><td>${BANDS[b].label}</td></tr>`;}).join('')}
-      <tr><td><strong>Results</strong></td><td>Overall</td><td>&mdash;</td><td><strong>${fmtPct(rec.overall)}</strong></td><td><strong>${BANDS[band].label}</strong></td></tr>
-    </table>
-    <p class="rp-leak">Value is leaking at: <strong>${leakName}</strong>. Fix these links first &mdash; they cap everything downstream.</p>
-  </div>
+  content.push({ margin:[0,86,0,0], stack:[
+    {columns:[ pulse, {width:'*', margin:[8,5,0,0], stack:[
+      {text:[{text:'Inno', bold:true, color:INK},{text:'Pulse', bold:true, color:LIME}], fontSize:16},
+      {text:'BY THE GROWTH SYSTEM', color:MUTED, fontSize:8, characterSpacing:1.4, margin:[0,2,0,0]}
+    ]} ]},
+    {text:'Innovation Health Report', fontSize:32, bold:true, color:INK, margin:[0,36,0,6]},
+    {text:company + '     ·     ' + dateStr, color:MUTED, fontSize:11, margin:[0,0,0,34]},
+    {columns:[
+      {width:'auto', text:fmtPct(rec.overall), fontSize:58, bold:true, color:bc},
+      {width:'auto', margin:[18,10,0,0], stack:[
+        {text:'Innovation Health', color:MUTED, fontSize:11},
+        {text:BANDS[band].label + ' band', color:bc, bold:true, fontSize:13, margin:[0,3,0,0]}
+      ]}
+    ]},
+    {margin:[0,26,0,0], canvas:[{type:'line',x1:0,y1:0,x2:515,y2:0,lineWidth:2,lineColor:NAVY}]},
+    {text:'A strategic snapshot of your organisation’s innovation system — where value is flowing, and where it is leaking out.', color:MUTED, fontSize:11, italics:true, margin:[0,10,0,0]}
+  ]});
+  content.push({ text:'', pageBreak:'after' });
 
-  <div class="rp-section">
-    <h2>Findings and recommendations by pillar</h2>
-    ${PILLARS.map((p,i)=>{const b=bandOf(rec.scores[i]);return `<div class="rp-pillar">
-      <div class="rp-pillar-head"><span class="rp-pillar-name">${p.short}</span><span class="rp-chip ${b}">${BANDS[b].label}</span><span class="rp-pillar-score">${fmtPct(rec.scores[i])}</span></div>
-      <p><strong>What this means.</strong> ${p.bands[b].text}</p>
-      <p class="rp-barrier"><strong>Barrier if weak &mdash; ${p.barrier}.</strong> ${p.barrierNote}</p>
-      <div class="rp-actions"><strong>Top 3 actions</strong><ol>${p.bands[b].actions.map(a=>`<li>${a}</li>`).join('')}</ol></div>
-      <p class="rp-help"><strong>Where ${CONFIG.brand} can help:</strong> ${p.solutions[b].join(' &middot; ')}</p>
-    </div>`;}).join('')}
-  </div>
+  content.push(...sec('About this report'));
+  content.push({text:'This InnoPulse Innovation Health Report is a strategic snapshot of how your organisation’s innovation system is performing, based on your responses to the InnoPulse assessment by ' + CONFIG.brand + '. It measures five weighted pillars — aligned to the ISO 56001:2024 innovation-management framework — to show where innovation value is flowing and where it is leaking out.', margin:[0,0,0,4]});
+  content.push(callout({text:[{text:'Please note: ', bold:true},{text:'this result reflects one individual’s perception across ' + totalQ + ' statements. It is a directional snapshot, not a full organisational diagnosis. For an evidence-based, organisation-wide view, ask about the InnoPulse Full-Scale Assessment.'}], fontSize:9}, '#f6f4eb', LIME));
 
-  <div class="rp-section">
-    <h2>Your first 90 days</h2>
-    <p>Three moves, in priority order, drawn from your three weakest pillars &mdash; each removes the barrier costing you the most value right now.</p>
-    ${plan.map(st=>`<div class="rp-90"><strong>${st.window} &mdash; ${st.title}.</strong> ${st.text}</div>`).join('')}
-  </div>
+  content.push(...sec('Executive summary'));
+  content.push({text:RZ_HEADLINE[band], fontSize:15, bold:true, color:INK, margin:[0,0,0,6]});
+  content.push({text:OVERALL_TEXT[band], margin:[0,0,0,8]});
+  content.push({ layout:'noBorders', table:{widths:[155,'*'], body:[
+    kvRow('Overall innovation health', fmtPct(rec.overall) + ' — ' + BANDS[band].label + ' band'),
+    kvRow('Dominant barrier', db.pillar.barrier + ' — ' + db.pillar.short + ' (' + fmtPct(db.score) + ')'),
+    kvRow('Value-leakage risk', leakLabel),
+    kvRow('Answer confidence', confLabel + ' — ' + rec.vis.pct + '% “don’t know” responses')
+  ]}, margin:[0,0,0,4] });
 
-  <div class="rp-section">
-    <h2>Recommended pathway &mdash; ${path.stage}</h2>
-    <p>${path.tagline}</p>
-    <div class="rp-offer"><strong>Recommended for your band: ${offer.name}</strong> &mdash; ${offer.price}<p style="margin:6px 0 0">${offer.desc}</p></div>
-    <p style="margin-top:10px"><strong>Other programmes</strong></p>
-    ${others.map(o=>`<p style="margin:0 0 6px"><strong>${o.name}</strong> &mdash; ${o.price}. ${o.desc}</p>`).join('')}
-  </div>
+  content.push(...sec('The Innovation Leadership Equation'));
+  content.push({text:'Innovation value flows through five linked pillars, from intent through to results. A weak link doesn’t just lower its own score — it caps everything downstream.', margin:[0,0,0,8]});
+  const eqBody = [[th('Pillar'), th('Equation term'), th('Weight'), th('Score'), th('Band')]];
+  EQ_CHAIN.filter(n=>n.id!=='results').forEach(n=>{ const i=pillarIndexById(n.id); const p=PILLARS[i]; const b=bandOf(rec.scores[i]); eqBody.push([ td(p.short), td(n.label), td(Math.round(p.weight*100)+'%'), td(fmtPct(rec.scores[i])), bandCell(b) ]); });
+  eqBody.push([ {text:'Results', bold:true, fontSize:9.5, color:INK}, td('Overall'), td('—'), {text:fmtPct(rec.overall), bold:true, fontSize:9.5, color:INK}, bandCell(band,true) ]);
+  content.push({ table:{headerRows:1, widths:['*','*','auto','auto','auto'], body:eqBody}, layout:eqLayout, margin:[0,0,0,8] });
+  content.push(callout({text:[{text:'Value is leaking at: ', color:INK},{text:leakName, bold:true, color:'#a32d2d'},{text:'. Fix these links first — they cap everything downstream.', color:INK}], fontSize:9.5}, '#fdecea', '#d6483c'));
 
-  <div class="rp-section">
-    <h2>Next steps</h2>
-    <p>Book a free 30-minute results workshop to walk through this report with an innovation specialist &mdash; no obligation, and you keep the plan either way. Email <strong>info@thegrowthsystem.co.za</strong> or visit <strong>thegrowthsystem.co.za</strong>.</p>
-    <p>Want the organisation-wide picture instead of one person&rsquo;s perception? Ask about the <strong>InnoPulse Full-Scale Assessment</strong> &mdash; an evidence-based diagnosis across your teams.</p>
-  </div>
+  content.push(...sec('Findings and recommendations by pillar'));
+  PILLARS.forEach((p,i)=>{ const b=bandOf(rec.scores[i]); content.push(card([
+    {columns:[
+      {width:'*', text:[{text:p.short, bold:true, fontSize:12, color:INK},{text:'    ' + BANDS[b].label.toUpperCase(), bold:true, fontSize:8, color:reportBandColor(b)}]},
+      {width:'auto', text:fmtPct(rec.scores[i]), bold:true, fontSize:13, color:INK, alignment:'right'}
+    ]},
+    {text:[{text:'What this means. ', bold:true, color:INK},{text:p.bands[b].text, color:BODY}], margin:[0,7,0,0]},
+    {text:[{text:'Barrier if weak — ' + p.barrier + '. ', bold:true, color:MUTED},{text:p.barrierNote, color:MUTED}], margin:[0,4,0,0]},
+    {text:'Top 3 actions', bold:true, color:INK, margin:[0,7,0,3]},
+    {ol:p.bands[b].actions, color:BODY},
+    {text:[{text:'Where ' + CONFIG.brand + ' can help: ', bold:true, color:LIME},{text:p.solutions[b].join('     ·     '), color:LIME}], fontSize:9, margin:[0,7,0,0]}
+  ])); });
 
-  <div class="rp-section">
-    <h2>Respondent details</h2>
-    <table class="rp-kv">
-      <tr><th>Name</th><td>${escapeHtml(rec.gate.gname||'&mdash;')}</td></tr>
-      <tr><th>Email</th><td>${escapeHtml(rec.gate.email||'&mdash;')}</td></tr>
-      <tr><th>Company</th><td>${escapeHtml(rec.profile.company||'&mdash;')}</td></tr>
-      <tr><th>Industry</th><td>${escapeHtml(rec.profile.industry||'&mdash;')}</td></tr>
-      <tr><th>Years of service</th><td>${escapeHtml(rec.profile.service||'&mdash;')}</td></tr>
-    </table>
-  </div>
+  content.push(...sec('Your first 90 days'));
+  content.push({text:'Three moves, in priority order, drawn from your three weakest pillars — each removes the barrier costing you the most value right now.', margin:[0,0,0,6]});
+  plan.forEach(st=>{ content.push(callout({text:[{text:st.window + ' — ' + st.title + '. ', bold:true, color:INK},{text:st.text, color:BODY}], fontSize:9.5}, '#f6f4eb', NAVY)); });
 
-  <div class="rp-foot">${CONFIG.narrative}<br>${CONFIG.brand} &middot; Innovation Health Report &middot; Generated ${new Date().toLocaleString('en-ZA')}</div>
-  `;
-  const report = document.getElementById('report');
-  report.innerHTML = html;
-  report.classList.remove('hide');
-  document.body.classList.add('printing');
-  const restore = ()=>{ document.body.classList.remove('printing'); report.classList.add('hide'); window.removeEventListener('afterprint', restore); };
-  window.addEventListener('afterprint', restore);
-  setTimeout(()=>window.print(), 60);
+  content.push(...sec('Recommended pathway — ' + path.stage));
+  content.push({text:path.tagline, margin:[0,0,0,6]});
+  content.push(callout({stack:[
+    {text:[{text:'Recommended for your band: ', bold:true, color:INK},{text:offer.name, bold:true, color:INK},{text:'     ' + offer.price, bold:true, color:LIME}]},
+    {text:offer.desc, color:BODY, margin:[0,4,0,0]}
+  ]}, '#f5fbe0', LIME));
+  content.push({text:'Other programmes', bold:true, color:INK, margin:[0,9,0,4]});
+  others.forEach(o=>{ content.push({text:[{text:o.name + ' — ' + o.price + '. ', bold:true, color:INK},{text:o.desc, color:BODY}], fontSize:9.5, margin:[0,0,0,5]}); });
+
+  content.push(...sec('Next steps'));
+  content.push({text:[{text:'Book a free 30-minute results workshop to walk through this report with an innovation specialist — no obligation, and you keep the plan either way. Email '},{text:'info@thegrowthsystem.co.za', bold:true},{text:' or visit '},{text:'thegrowthsystem.co.za', bold:true},{text:'.'}], margin:[0,0,0,6]});
+  content.push({text:[{text:'Want the organisation-wide picture instead of one person’s perception? Ask about the '},{text:'InnoPulse Full-Scale Assessment', bold:true},{text:' — an evidence-based diagnosis across your teams.'}]});
+
+  content.push(...sec('Respondent details'));
+  content.push({ layout:'noBorders', table:{widths:[155,'*'], body:[
+    kvRow('Name', rec.gate.gname || '—'),
+    kvRow('Email', rec.gate.email || '—'),
+    kvRow('Company', rec.profile.company || '—'),
+    kvRow('Industry', rec.profile.industry || '—'),
+    kvRow('Years of service', rec.profile.service || '—')
+  ]} });
+
+  const dd = {
+    pageSize:'A4',
+    pageMargins:[42, 52, 42, 46],
+    info:{ title:'InnoPulse Innovation Health Report', author:CONFIG.brand, subject:'Innovation Health Report — ' + company },
+    defaultStyle:{ fontSize:10, color:BODY, lineHeight:1.32 },
+    styles:{ h2:{ fontSize:14, bold:true, color:NAVY } },
+    header:function(currentPage){
+      if(currentPage===1) return '';
+      return { margin:[42,22,42,0], columns:[
+        {text:'InnoPulse Innovation Health Report', color:MUTED, fontSize:8},
+        {text:company, color:MUTED, fontSize:8, alignment:'right'}
+      ]};
+    },
+    footer:function(currentPage, pageCount){
+      return { margin:[42,8,42,0], columns:[
+        {text:CONFIG.brand, color:MUTED, fontSize:8},
+        {text:'Innovation that’s managed, not accidental.', color:MUTED, fontSize:8, alignment:'center'},
+        {text:'Page ' + currentPage + ' of ' + pageCount, color:MUTED, fontSize:8, alignment:'right'}
+      ]};
+    },
+    content:content
+  };
+  const safe = company.replace(/[\\/:*?"<>|]+/g,'').trim();
+  pdfMake.createPdf(dd).download('InnoPulse Innovation Health Report - ' + safe + '.pdf');
 }
 
 /* ---------- Attach / animate ---------- */
