@@ -2329,7 +2329,6 @@ function rzValueFlowHTML(scores, overall){
   const contribs = valueLeakage(scores).contributors;
   const leakName = contribs.length ? contribs.map(p=>p.short).join(', ') : dominantBarrier(scores).pillar.short;
   return `<section class="rz-sec">
-    <div class="rz-eyebrow"><span class="rz-tick"></span> The Innovation Leadership Equation — live</div>
     <h2 class="rz-h">Where value flows — and where it leaks</h2>
     <p class="rz-sub">Innovation value flows left to right. A weak link doesn’t just lower its own score — it blocks value from reaching results.</p>
     <div class="rz-flow">${cells}</div>
@@ -2365,7 +2364,6 @@ function rzPillarProfileHTML(scores, overall){
     </div>`;
   }).join('');
   return `<section class="rz-sec">
-    <div class="rz-eyebrow"><span class="rz-tick"></span> Pillar profile</div>
     <h2 class="rz-h">The five pillars behind your ${fmtPct(overall)}</h2>
     <p class="rz-sub">Tap a pillar to see what the score means, your three priority actions, and where we can help. ▾ marks an illustrative peer benchmark.</p>
     <div class="rz-pil-list">${rows}</div>
@@ -2380,7 +2378,6 @@ function rzFirst90HTML(scores){
     return `<div class="rz-90"><span class="rz-90-win">${meta[i].win}</span><div class="rz-90-lab">${meta[i].lab}</div><div class="rz-90-title">${x.p.short} — ${fmtPct(x.score)}</div><p class="rz-90-desc">${action}</p><span class="rz-90-barrier">Barrier: ${x.p.barrier}</span></div>`;
   }).join('');
   return `<section class="rz-sec">
-    <div class="rz-eyebrow"><span class="rz-tick"></span> Your first 90 days</div>
     <h2 class="rz-h">Start here: three moves, in order</h2>
     <p class="rz-sub">Drawn from your three weakest pillars — each move removes the barrier that’s costing you the most value right now.</p>
     <div class="rz-90-grid">${cards}</div>
@@ -2392,7 +2389,6 @@ function rzMaturityHTML(overall){
   const offer = offerById(path.offerId);
   const steps = ROAD_STOPS.map((s,i)=>`<div class="rz-mat-step ${i<idx?'passed':''} ${i===idx?'here':''}"><div class="rz-mat-name">${s}</div><div class="rz-mat-desc">${RZ_STAGE_DESC[i]}</div>${i===idx?'<div class="rz-here">YOU ARE HERE</div>':''}</div>`).join('');
   return `<section class="rz-sec">
-    <div class="rz-eyebrow"><span class="rz-tick"></span> Maturity journey</div>
     <h2 class="rz-h">You’re at ${ROAD_STOPS[idx]} — the path is ${path.stage}</h2>
     <div class="rz-mat-steps">${steps}</div>
     <div class="rz-mat-grid">
