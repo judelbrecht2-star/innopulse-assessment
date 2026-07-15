@@ -1643,15 +1643,21 @@ function methodologySectionHTML(){
     <div style="max-width:640px;margin:0 auto">
       <h2 class="hero-title" style="font-size:clamp(22px,3.2vw,30px)">Understand the Innovation System</h2>
       <p class="tagline center" style="margin:0 auto 18px">Why innovation efforts stall — and the framework behind this assessment. Watch the 2-minute overview below.</p>
+      <style>
+      .meth-yt{display:block;position:relative;width:100%;padding:0;border:0;background:transparent;cursor:pointer;border-radius:14px;overflow:hidden}
+      .meth-yt .meth-img{display:block;width:100%;height:auto;border-radius:14px}
+      .meth-yt-play{position:absolute;inset:0;margin:auto;width:72px;height:72px;display:flex;align-items:center;justify-content:center;background:rgba(232,47,55,.92);border-radius:50%;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .18s ease,background .18s ease}
+      .meth-yt-play svg{width:30px;height:30px;color:#fff;margin-left:3px}
+      .meth-yt:hover .meth-yt-play,.meth-yt:focus-visible .meth-yt-play{transform:scale(1.08);background:#e82f37}
+      .meth-yt:focus-visible{outline:3px solid #a8e617;outline-offset:3px}
+      .meth-yt-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
+      .meth-yt-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+      </style>
       <div class="meth-media">
-        <div class="meth-img-wrap" style="cursor:default">
-          <video class="meth-img" controls preload="metadata" playsinline data-meth-video
-            poster="innovation-methodology.jpg"
-            aria-label="Methodology overview video">
-            <source src="assets/methodology-overview.mp4" type="video/mp4">
-            Your browser can&rsquo;t play this video. <a href="assets/methodology-overview.mp4">Download it instead</a>.
-          </video>
-        </div>
+        <button type="button" class="meth-yt" data-meth-video data-yt-id="6EYP4k5iNkQ" aria-label="Play the 2-minute methodology overview video">
+          <img class="meth-img" src="innovation-methodology.jpg" alt="Common innovation barriers leading to busy teams with no impact - The Growth System methodology." loading="lazy" decoding="async">
+          <span class="meth-yt-play" aria-hidden="true">${playIconSVG()}</span>
+        </button>
       </div>
       <div class="meth-journey">
         ${METH_JOURNEY.map((s,i)=>`<div class="meth-step ${i===0?'active':''}"><span class="meth-step-num">${i+1}</span><span>${s}</span></div>`).join('')}
@@ -1665,28 +1671,21 @@ function videoModalHTML(){
   return ``;
 }
 function attachMethodology(){
-  const video = document.querySelector('[data-meth-video]');
-  if(!video) return;
-  // Until the video file is uploaded (or if it ever fails to load),
-  // fall back to showing the methodology graphic as a plain image.
-  const swapToImage = ()=>{
-    if(video.dataset.swapped) return; video.dataset.swapped='1';
-    const img = document.createElement('img');
-    img.className='meth-img'; img.src=video.getAttribute('poster');
-    img.alt='Common innovation barriers leading to busy teams with no impact — The Growth System methodology.';
-    img.loading='lazy'; img.decoding='async';
-    video.replaceWith(img);
-  };
-  const srcEl = video.querySelector('source');
-  if(srcEl) srcEl.addEventListener('error', swapToImage);
-  video.addEventListener('error', swapToImage);
-  video.addEventListener('play', ()=>{
-    if(!video.dataset.trackedPlay){ video.dataset.trackedPlay = '1'; trackEvent('methodology_video_open'); }
-  });
-  video.addEventListener('ended', ()=>{
-    trackEvent('methodology_video_close');
-    const cta = document.querySelector('[data-begin]');
-    if(cta){ cta.classList.add('pulse'); setTimeout(()=>cta.classList.remove('pulse'), 1600); }
+  const trigger = document.querySelector('[data-meth-video]');
+  if(!trigger) return;
+  trigger.addEventListener('click', ()=>{
+    if(trigger.dataset.loaded) return; trigger.dataset.loaded='1';
+    trackEvent('methodology_video_open');
+    const id = trigger.getAttribute('data-yt-id');
+    const frame = document.createElement('div');
+    frame.className = 'meth-yt-frame';
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1';
+    iframe.title = 'Methodology overview video';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    frame.appendChild(iframe);
+    trigger.replaceWith(frame);
   });
 }
 
