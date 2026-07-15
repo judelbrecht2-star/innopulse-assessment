@@ -129,7 +129,24 @@
       /* ===== Tighter questionnaire — fit within one viewport ===== */
       .quiz-wrap{max-width:720px!important}
       .progress-shell{margin-bottom:8px!important}
-      .quiz-wrap .journey{margin-bottom:4px!important}
+      /* Assessment journey stepper — live styles (scoped to .quiz-wrap to override styles.css) */
+.quiz-wrap .journey{display:flex;justify-content:space-between;align-items:flex-start;position:relative;width:100%;margin:2px 0 12px;padding:4px 0 0;background:none;border:0;box-shadow:none;--orb:18px;--green:#baff18;--green-deep:#5f8a00;--grey:#cfcfc4;--grey-line:#e2e2d6}
+.quiz-wrap .journey .jpath{display:none!important}
+.quiz-wrap .journey::before,.quiz-wrap .journey::after{content:"";position:absolute;top:calc(4px + var(--orb)/2);left:calc(100%/6/2);right:calc(100%/6/2);height:3px;transform:translateY(-50%);border-radius:3px;z-index:0}
+.quiz-wrap .journey::before{background:var(--grey-line)}
+.quiz-wrap .journey::after{right:auto;width:var(--fill,0%);background:linear-gradient(90deg,var(--green-deep),var(--green));box-shadow:0 0 8px rgba(183,230,58,.45);transition:width .6s cubic-bezier(.4,0,.2,1)}
+.quiz-wrap .journey .jnode{position:relative;z-index:1;flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0;background:none}
+.quiz-wrap .journey .jdot{width:var(--orb);height:var(--orb);border-radius:50%;background:#fff;border:2px solid var(--grey);box-sizing:border-box;position:relative;box-shadow:0 0 0 4px var(--bg,#f4f4ec);transition:background .4s ease,border-color .4s ease,box-shadow .4s ease}
+.quiz-wrap .journey .jnode.completed .jdot{background:var(--green);border-color:var(--green-deep);box-shadow:0 0 0 4px var(--bg,#f4f4ec),0 0 10px rgba(183,230,58,.5)}
+.quiz-wrap .journey .jnode.completed .jdot::after{content:"";position:absolute;left:50%;top:47%;width:4px;height:8px;border:solid #2e4a00;border-width:0 2px 2px 0;transform:translate(-50%,-55%) rotate(45deg)}
+.quiz-wrap .journey .jnode.current .jdot{background:var(--green);border:2px solid var(--green-deep);box-shadow:0 0 0 4px var(--bg,#f4f4ec),0 0 0 4px rgba(186,255,24,.45),0 0 12px rgba(183,230,58,.6);animation:jPulse 2s ease-in-out infinite}
+@keyframes jPulse{0%,100%{box-shadow:0 0 0 4px var(--bg,#f4f4ec),0 0 0 4px rgba(186,255,24,.45),0 0 10px rgba(183,230,58,.4)}50%{box-shadow:0 0 0 4px var(--bg,#f4f4ec),0 0 0 8px rgba(186,255,24,.14),0 0 16px rgba(183,230,58,.6)}}
+.quiz-wrap .journey .jlabel{font-size:clamp(10px,1.3vw,12.5px);line-height:1.25;text-align:center;letter-spacing:.01em;color:#9a9a8c;font-weight:500;max-width:min(110px,17vw);transition:color .35s ease,font-weight .35s ease;background:none}
+.quiz-wrap .journey .jnode.completed .jlabel{color:#5f8a00}
+.quiz-wrap .journey .jnode.current .jlabel{color:#16160f;font-weight:700}
+.quiz-wrap .journey .jnode.upcoming .jlabel{color:#b4b4a6;font-weight:500}
+@media (max-width:640px){.quiz-wrap .journey{--orb:14px}.quiz-wrap .journey .jnode{gap:6px}.quiz-wrap .journey .jlabel{font-size:9.5px;max-width:54px}}
+@media (prefers-reduced-motion:reduce){.quiz-wrap .journey .jnode.current .jdot{animation:none}.quiz-wrap .journey::after{transition:width .2s linear}}
       .quiz-wrap ~ .footer{display:none!important}
       .qcard{padding:14px 20px!important}
       .qcard .qpill{margin-bottom:8px!important;padding:4px 10px!important}
@@ -1135,81 +1152,7 @@ function radarSVG(scores, opts){
       .radar-dot{opacity:0;animation:radarDot .4s ease forwards}
       @keyframes radarGrow{to{opacity:1;transform:scale(1)}}
       @keyframes radarDot{to{opacity:1}}
-    
-/* ============================================================
-   Section Progress Navigation (journey stepper) — redesigned
-   Completed / Current / Upcoming states + animated progress line
-   ============================================================ */
-.journey{
-  display:flex; justify-content:space-between; align-items:flex-start;
-  position:relative; width:100%;
-  --orb:18px; --orb-current:24px;
-  --green:#baff18; --green-deep:#5F8A00; --grey:#cfcfc4; --grey-line:#e2e2d6;
-  padding-top:4px;
-}
-.journey::before, .journey::after{
-  content:""; position:absolute; top:calc(4px + var(--orb)/2);
-  left:calc(100%/6/2); right:calc(100%/6/2);
-  height:3px; transform:translateY(-50%); border-radius:3px; z-index:0;
-}
-.journey::before{ background:var(--grey-line); }
-.journey::after{
-  background:linear-gradient(90deg,var(--green-deep),var(--green));
-  right:auto; width:var(--fill,0%);
-  box-shadow:0 0 8px rgba(183,230,58,.45);
-  transition:width .65s cubic-bezier(.4,0,.2,1);
-}
-.journey .jpath{ display:none !important; }
-.jnode{
-  position:relative; z-index:1; flex:1 1 0;
-  display:flex; flex-direction:column; align-items:center; gap:9px; min-width:0;
-}
-.jnode .jdot{
-  width:var(--orb); height:var(--orb); border-radius:50%;
-  background:#fff; border:2px solid var(--grey); box-sizing:border-box; position:relative;
-  box-shadow:0 0 0 5px var(--bg,#f4f4ec);
-  transition:background .5s ease, border-color .5s ease, box-shadow .5s ease,
-             width .35s cubic-bezier(.34,1.56,.64,1), height .35s cubic-bezier(.34,1.56,.64,1);
-}
-.jnode.completed .jdot{
-  background:var(--green); border-color:var(--green-deep);
-  box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 10px rgba(183,230,58,.55);
-}
-.jnode.completed .jdot::after{
-  content:""; position:absolute; left:50%; top:46%; width:5px; height:9px;
-  border:solid var(--green-deep); border-width:0 2px 2px 0;
-  transform:translate(-50%,-55%) rotate(45deg);
-}
-.jnode.current .jdot, .jnode.active .jdot{
-  background:#fff; border:3px solid var(--green-deep);
-  box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 0 3px rgba(186,255,24,.5);
-  animation:tgsPulse 2s ease-in-out infinite;
-}
-.jnode.current .jdot::before, .jnode.active .jdot::before{
-  content:""; position:absolute; left:50%; top:50%; width:8px; height:8px;
-  background:var(--green); border-radius:50%; transform:translate(-50%,-50%);
-}
-@keyframes tgsPulse{
-  0%,100%{ box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 0 4px rgba(183,230,58,.35), 0 0 6px rgba(183,230,58,.30); }
-  50%{ box-shadow:0 0 0 5px var(--bg,#f4f4ec), 0 0 0 8px rgba(183,230,58,.12), 0 0 14px rgba(183,230,58,.55); }
-}
-.jnode > span, .jnode .jlabel{
-  font-size:clamp(10px,1.3vw,13px); line-height:1.25; text-align:center;
-  letter-spacing:.01em; color:#9a9a8c; font-weight:500;
-  max-width:min(118px,18vw); transition:color .4s ease,font-weight .4s ease;
-}
-.jnode.completed > span, .jnode.completed .jlabel{ color:#5F8A00; }
-.jnode.current > span, .jnode.current .jlabel, .jnode.active > span{ color:#16160f; font-weight:700; }
-@media (max-width:640px){
-  .journey{ --orb:14px; --orb-current:19px; }
-  .jnode{ gap:6px; }
-  .jnode > span, .jnode .jlabel{ font-size:9.5px; max-width:52px; }
-}
-@media (prefers-reduced-motion:reduce){
-  .jnode.current .jdot, .jnode.active .jdot{ animation:none; }
-  .journey::after{ transition:width .2s linear; }
-}
-</style>
+    </style>
     ${rings}${axes}
     ${overlayHtml}
     ${main.poly}${main.dots}
@@ -2870,4 +2813,4 @@ window.addEventListener('load', render);
 </script>
 <!-- The old return-to-home topbar script was removed: the shared site header now provides Home navigation. -->
 <footer class="site-foot" aria-label="Site footer"><div class="wrap"><div class="footer-top"><a class="brand" href="https://innopulse.thegrowthsystem.co.za/" aria-label="InnoPulse home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 22" fill="none"><path d="M2 12h6l3-8 5 16 4-12 3 4h7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span><span class="brand-name">INNO<span>PULSE</span></span><small class="brand-by">by The Growth System</small></span></a><nav class="footer-links" aria-label="Footer navigation"><a href="https://innopulse.thegrowthsystem.co.za/full-scale.html">InnoPulse Full-Scale</a><a href="mailto:info@thegrowthsystem.co.za">Contact</a><a href="https://innopulse.thegrowthsystem.co.za/privacy.html">Privacy</a></nav></div><div class="footer-bottom"><span>© The Growth System — Innovation that’s managed, not accidental.</span><span>Pretoria &amp; Centurion · South Africa</span></div></div></footer>
-</body></html>
+</body></html>                                                                                                                                                                                                                                                                                                                                 
