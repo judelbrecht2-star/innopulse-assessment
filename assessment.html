@@ -2096,6 +2096,24 @@ function sendToWebhook(rec){
     const offer = offerById(path.offerId);
     const payload = {
       event: 'innopulse_unlock',
+      /* Flat fields required by the Apps Script backend's doPost validation
+         (name/email/company are mandatory there). The nested objects below are
+         kept for the Supabase mirror and future use. Fixed 2026-07-21. */
+      assessmentId: rec.id,
+      name: (rec.gate && rec.gate.gname) || '',
+      email: (rec.gate && rec.gate.email) || '',
+      phone: (rec.gate && rec.gate.phone) || '',
+      company: (rec.profile && rec.profile.company) || '',
+      industry: (rec.profile && rec.profile.industry) || '',
+      service: (rec.profile && rec.profile.service) || '',
+      age: (rec.profile && rec.profile.age) || '',
+      education: (rec.profile && rec.profile.education) || '',
+      gender: (rec.profile && rec.profile.gender) || '',
+      overall: rec.overall,
+      pillars: { sii: rec.scores[0], iem: rec.scores[1], oic: rec.scores[2], ipm: rec.scores[3], roi: rec.scores[4] },
+      visibilityRisk: rec.vis ? rec.vis.pct : null,
+      pathway: BANDS[band].label,
+      offer: offer ? offer.name : null,
       sentAt: new Date().toISOString(),
       recordId: rec.id,
       gate: rec.gate,
